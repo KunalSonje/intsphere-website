@@ -130,6 +130,7 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -455,15 +456,15 @@
             line-height: 1.6;
         }
 
-        /* CTA Section */
-        .cta {
+        /* Contact Section */
+        .contact {
             background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
             text-align: center;
             padding: 120px 0;
             position: relative;
         }
 
-        .cta::before {
+        .contact::before {
             content: '';
             position: absolute;
             top: 0;
@@ -474,7 +475,7 @@
             background-size: cover;
         }
 
-        .cta h2 {
+        .contact h2 {
             font-size: 3rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
@@ -483,7 +484,7 @@
             z-index: 1;
         }
 
-        .cta p {
+        .contact p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
             max-width: 700px;
@@ -492,6 +493,59 @@
             opacity: 0.9;
             position: relative;
             z-index: 1;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(93, 219, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .contact-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(93, 219, 255, 0.5);
         }
 
         /* Footer */
@@ -674,6 +728,10 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -690,7 +748,7 @@
                 padding: 30px 20px;
             }
             
-            .cta h2 {
+            .contact h2 {
                 font-size: 2.2rem;
             }
 
@@ -710,19 +768,7 @@
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <svg class="logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="200" fill="#1e3c72"/>
-                    <ellipse cx="100" cy="100" rx="70" ry="70" fill="none" stroke="#5ddbff" stroke-width="1.5" opacity="0.3"/>
-                    <ellipse cx="100" cy="100" rx="70" ry="50" fill="none" stroke="#5ddbff" stroke-width="1.5" opacity="0.4"/>
-                    <ellipse cx="100" cy="100" rx="70" ry="30" fill="none" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
-                    <line x1="100" y1="30" x2="100" y2="170" stroke="#5ddbff" stroke-width="2" opacity="0.7"/>
-                    <line x1="30" y1="100" x2="170" y2="100" stroke="#5ddbff" stroke-width="2" opacity="0.7"/>
-                    <circle cx="30" cy="100" r="6" fill="#5ddbff" opacity="0.6"/>
-                    <circle cx="170" cy="100" r="6" fill="#5ddbff" opacity="0.6"/>
-                    <circle cx="100" cy="30" r="6" fill="#5ddbff" opacity="0.6"/>
-                    <circle cx="100" cy="170" r="6" fill="#5ddbff" opacity="0.6"/>
-                    <circle cx="100" cy="100" r="10" fill="#5ddbff" opacity="0.9"/>
-                </svg>
+                <img src="Logo.png" alt="IntSphere Logo" class="logo-img">
                 <div class="logo-text">IntSphere</div>
             </div>
             <button class="nav-toggle" id="navToggle">
@@ -735,7 +781,7 @@
                     <li><a href="#consulting" class="nav-link">Consulting</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#platform" class="nav-link">Platform</a></li>
-                    <li><a href="http://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a></li>
+                    <li><a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a></li>
                     <li><a href="#contact" class="btn">Contact</a></li>
                 </ul>
             </nav>
@@ -745,11 +791,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Transform Your OIC Experience</h1>
+            <h1>Transform Your Oracle Integration Cloud (OIC) Experience</h1>
             <p>Comprehensive monitoring, deployment, and productivity improvement tools in one unified platform for Oracle Integration Cloud excellence</p>
             <div class="hero-buttons">
                 <a href="#consulting" class="btn">Get Started Today</a>
-                <a href="http://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a>
+                <a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a>
             </div>
         </div>
     </section>
@@ -930,12 +976,43 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2>Ready to Transform Your OIC Operations?</h2>
-            <p>Join the future of OIC management with IntSphere. Experience the power of unified platform management and expert consulting services.</p>
-            <a href="mailto:kunal@intsphere.com" class="btn">Contact Us Today</a>
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us to learn more about IntSphere and how we can help transform your OIC operations</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:kunal@intsphere.com" class="contact-link">kunal@intsphere.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+918149434549" class="contact-link">+91 8149434549</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Global Services</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -961,7 +1038,8 @@
                         <li><a href="#consulting"><i class="fas fa-chevron-right"></i> Consulting</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
                         <li><a href="#platform"><i class="fas fa-chevron-right"></i> Platform</a></li>
-                        <li><a href="presentation.html"><i class="fas fa-chevron-right"></i> View Presentation</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="https://presentation.intsphere.com/"><i class="fas fa-chevron-right"></i> View Presentation</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -982,7 +1060,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
+                <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
             </div>
         </div>
     </footer>
@@ -1048,7 +1126,7 @@
         }, observerOptions);
 
         // Observe all feature cards and service items
-        document.querySelectorAll('.feature-card, .service-card, .service-item, .stat-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .service-card, .service-item, .stat-item, .contact-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
