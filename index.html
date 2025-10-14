@@ -40,6 +40,7 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(93, 219, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .container {
@@ -113,6 +114,8 @@
             color: var(--text-light);
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
         }
 
         .btn {
@@ -151,6 +154,70 @@
             color: var(--primary);
         }
 
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--dark-blue);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: all 0.3s ease;
+                border-left: 1px solid rgba(93, 219, 255, 0.2);
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                width: 100%;
+                font-size: 1.1rem;
+            }
+
+            nav ul li a.btn {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            /* Overlay when menu is open */
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                display: none;
+            }
+
+            .nav-overlay.active {
+                display: block;
+            }
+        }
+
+        /* Rest of your existing CSS remains the same */
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -659,42 +726,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--dark-blue);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: all 0.3s ease;
-                border-top: 1px solid rgba(93, 219, 255, 0.2);
-                gap: 0;
-            }
-
-            nav ul.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            nav ul li {
-                margin: 1rem 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 1rem 2rem;
-            }
-
             .hero {
                 padding: 100px 0 60px;
             }
@@ -786,8 +817,11 @@
                 </ul>
             </nav>
         </div>
+        <!-- Mobile Navigation Overlay -->
+        <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
+    <!-- Rest of your HTML content remains exactly the same -->
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
@@ -1060,19 +1094,34 @@
     </footer>
 
     <script>
-        // Mobile Navigation Toggle
+        // Mobile Navigation Toggle - Fixed Version
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
         
-        navToggle.addEventListener('click', () => {
+        function toggleMobileMenu() {
             navMenu.classList.toggle('active');
-        });
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        navToggle.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', toggleMobileMenu);
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
             });
+        });
+        
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
         
         // Smooth scrolling for anchor links
