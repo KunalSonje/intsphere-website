@@ -3,60 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntSphere - Transform Your OIC Experience</title>
-	<link rel="icon" href="Logo.png">
+    <title>IntSphere - Transform Your Oracle Integration Cloud Experience</title>
+    <meta name="description" content="Comprehensive monitoring, deployment, and productivity tools for Oracle Integration Cloud excellence. Expert OIC consulting, VBCS development, and automation services.">
+    <meta name="author" content="IntSphere">
+    <meta name="keywords" content="Oracle Integration Cloud, OIC, Oracle PaaS, VBCS, Oracle consulting, cloud integration, process automation, Oracle Fusion">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="IntSphere - Transform Your Oracle Integration Cloud Experience">
+    <meta property="og:description" content="Comprehensive monitoring, deployment, and productivity tools for Oracle Integration Cloud excellence. Expert OIC consulting services.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IntSphere - Oracle Integration Cloud Excellence">
+    <meta name="twitter:description" content="Comprehensive OIC monitoring, deployment, and consulting services">
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         :root {
-            --primary: #1e3c72;
-            --secondary: #2a5298;
-            --accent: #5ddbff;
-            --light-blue: #e8f4ff;
-            --dark-blue: #0f2a5c;
-            --text-light: #ffffff;
-            --text-dark: #333333;
+            /* IntSphere Brand Colors */
+            --background: hsl(222, 47%, 11%);
+            --foreground: hsl(0, 0%, 100%);
+            --card: hsl(223, 45%, 15%);
+            --card-foreground: hsl(0, 0%, 100%);
+            --primary: hsl(222, 58%, 28%);
+            --primary-foreground: hsl(0, 0%, 100%);
+            --accent: hsl(191, 100%, 68%);
+            --accent-glow: hsl(191, 100%, 75%);
+            --accent-foreground: hsl(222, 58%, 28%);
+            --muted: hsl(223, 40%, 20%);
+            --muted-foreground: hsl(191, 20%, 70%);
+            --border: hsl(222, 40%, 25%);
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: Georgia,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text-light);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg,
+                hsl(222, 47%, 11%) 0%,
+                hsl(222, 50%, 12%) 25%,
+                hsl(223, 45%, 14%) 50%,
+                hsl(222, 48%, 13%) 75%,
+                hsl(222, 47%, 11%) 100%);
+            background-attachment: fixed;
+            color: var(--foreground);
             line-height: 1.6;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Header & Navigation */
-        header {
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
+        
+        /* Container */
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
-
-        .nav-container {
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(18, 23, 39, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            height: 80px;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
@@ -76,853 +112,1324 @@
             text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
         }
 
-        nav ul {
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-icon {
+            position: relative;
+        }
+        
+        
+        
+        .logo-wrapper {
+            position: relative;
+            background: linear-gradient(to bottom right, var(--card), var(--muted));
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(93, 219, 255, 0.3);
+            transition: border-color 0.3s ease;
+        }
+        
+        .logo:hover .logo-wrapper {
+            border-color: rgba(93, 219, 255, 0.6);
+        }
+        
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 15px rgba(93, 219, 255, 0.8));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-image {
+            transform: scale(1.1);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav {
             display: flex;
-            list-style: none;
-            gap: 0.7rem;
             align-items: center;
+            gap: 2rem;
         }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
+        
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none !important;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            white-space: nowrap;
+            transition: color 0.3s ease;
         }
-
-        nav ul li a.nav-link {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        nav ul li a.nav-link:hover {
+        
+        nav a:hover {
             color: var(--accent);
-            background: rgba(93, 219, 255, 0.1);
-            transform: translateY(-2px);
         }
-
-        .nav-toggle {
+        
+        /* Remove all link underlines */
+        a {
+            text-decoration: none !important;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: inline-block;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--accent-foreground);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, 
+                rgba(93, 219, 255, 0.9) 0%,
+                rgba(93, 219, 255, 0.8) 50%,
+                rgba(0, 200, 255, 0.85) 100%);
+            color: var(--accent-foreground);
+            box-shadow: 0 0 20px rgba(93, 219, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(93, 219, 255, 0.7);
+            transform: scale(1.05);
+            background: linear-gradient(135deg, 
+                rgba(100, 230, 255, 1) 0%,
+                rgba(93, 219, 255, 0.9) 50%,
+                rgba(50, 200, 255, 0.95) 100%);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent);
-            box-shadow: 0 5px 20px rgba(93, 219, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            white-space: nowrap;
+            color: var(--foreground);
+            font-size: 1.75rem;
             cursor: pointer;
         }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(93, 219, 255, 0.6);
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            z-index: 999;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
+        
+        .mobile-menu.active {
+            display: block !important;
         }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--primary);
+        
+        .mobile-menu nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
-
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--dark-blue);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: all 0.3s ease;
-                border-left: 1px solid rgba(93, 219, 255, 0.2);
-                gap: 0;
-                z-index: 999;
-                overflow-y: auto;
-            }
-
-            nav ul.active {
-                right: 0;
-            }
-
-            nav ul li {
-                margin: 0.5rem 0;
-                width: 100%;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                width: 100%;
-                font-size: 1.1rem;
-            }
-
-            nav ul li a.btn {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            /* Overlay when menu is open */
-            .nav-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 998;
-                display: none;
-            }
-
-            .nav-overlay.active {
-                display: block;
-            }
+        
+        .mobile-menu .btn {
+            width: 100%;
+            text-align: center;
         }
-
-        /* Rest of your existing CSS remains the same */
+        
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            position: relative;
+           
             display: flex;
             align-items: center;
-            position: relative;
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px;
         }
-
-        .hero::before {
-            content: '';
+        
+        .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            inset: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23121721" width="1200" height="600"/></svg>');
             background-size: cover;
+            background-position: center;
         }
-
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(18, 23, 39, 0.6) 0%,
+                rgba(26, 43, 84, 0.5) 50%,
+                hsl(222, 47%, 11%) 100%);
+        }
+        
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.2;
+            background-image: 
+                linear-gradient(to right, rgba(93, 219, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(93, 219, 255, 0.1) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        
         .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            padding: 3rem 1rem;
+            animation: fadeInUp 1s ease;
         }
-
+        
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 30px rgba(93, 219, 255, 0.5);
-            background: linear-gradient(135deg, var(--accent) 0%, #ffffff 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent), var(--accent-glow), var(--accent));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
         }
-
+        
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.8;
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
+        
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
-
-        /* Sections */
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(28, 34, 51, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(93, 219, 255, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-top: 0.5rem;
+        }
+        
+        /* Section Styles */
         section {
-            padding: 100px 0;
+            padding: 4rem 0;
+            position: relative;
         }
-
-        .section-title {
+        
+        section:nth-child(odd) {
+            background: linear-gradient(135deg, 
+                rgba(222, 47%, 11%, 0.3) 0%, 
+                rgba(191, 100%, 68%, 0.05) 50%, 
+                rgba(222, 47%, 11%, 0.3) 100%);
+        }
+        
+        section:nth-child(even) {
+            background: linear-gradient(45deg, 
+                rgba(30, 58, 95, 0.2) 0%, 
+                rgba(26, 43, 84, 0.1) 50%, 
+                rgba(30, 58, 95, 0.2) 100%);
+        }
+        
+        .section-header {
             text-align: center;
             margin-bottom: 4rem;
         }
-
-        .section-title h2 {
-            font-size: 2.0rem;
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.3);
         }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            max-width: 800px;
             margin: 0 auto;
         }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
-        }
-
-        .features-grid {
+        
+        /* Card Grid */
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
+        
+        .card {
+            background: linear-gradient(135deg, 
+                rgba(28, 34, 51, 0.7) 0%,
+                rgba(30, 58, 95, 0.4) 50%,
+                rgba(28, 34, 51, 0.6) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(93, 219, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        
+        .card:hover {
             border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(93, 219, 255, 0.3);
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 95, 0.8) 0%,
+                rgba(42, 82, 152, 0.5) 50%,
+                rgba(30, 58, 95, 0.7) 100%);
         }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--accent);
+        
+        .card-glow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, 
+                rgba(93, 219, 255, 0.15) 0%,
+                rgba(30, 58, 95, 0.1) 50%,
+                rgba(93, 219, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .card:hover .card-glow {
+            opacity: 1;
+        }
+        
+        .card-icon {
+            display: inline-flex;
+            padding: 1rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg, 
+                rgba(93, 219, 255, 0.25) 0%,
+                rgba(93, 219, 255, 0.08) 100%);
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
+            transition: all 0.3s ease;
         }
-
-        .feature-card h3 {
+        
+        .card:hover .card-icon {
+            background: linear-gradient(135deg, 
+                rgba(93, 219, 255, 0.4) 0%,
+                rgba(93, 219, 255, 0.15) 100%);
+            transform: scale(1.1);
+        }
+        
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent);
+        }
+        
+        .card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+        
+        .card:hover h3 {
             color: var(--accent);
         }
-
-        .feature-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Consulting Section */
-        .consulting {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .consulting-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .consulting-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .consulting-text p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
+        
+        .card p {
+            color: var(--muted-foreground);
             line-height: 1.7;
         }
-
-        .consulting-services {
+        
+        /* Consulting Section */
+        .consulting-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
-
-        .service-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid var(--accent);
+        
+        .consulting-content h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .consulting-content p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .service-card {
+            background: rgba(28, 34, 51, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-        }
-
-        .service-item:hover {
-            transform: translateX(10px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-item h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.2rem;
+            gap: 1rem;
         }
-
-        .service-item h4 i {
+        
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(93, 219, 255, 0.2);
+        }
+        
+        .service-icon {
+            padding: 0.75rem;
+            border-radius: 12px;
+            background: linear-gradient(to bottom right, rgba(93, 219, 255, 0.2), rgba(93, 219, 255, 0.05));
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background: linear-gradient(to bottom right, rgba(93, 219, 255, 0.3), rgba(93, 219, 255, 0.1));
+        }
+        
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
             color: var(--accent);
-            text-shadow: 0 0 10px rgba(93, 219, 255, 0.5);
         }
-
-        .service-item p {
-            opacity: 0.9;
-            line-height: 1.6;
+        
+        .service-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
         }
-
-        /* Platform Section */
-        .platform {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
+        
+        .service-card:hover h4 {
+            color: var(--accent);
         }
-
-        .platform-stats {
+        
+        /* Contact Section */
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
-        .stat-item {
+        
+        .contact-card {
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
         }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        
+        .contact-card a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            font-size: 1.125rem;
+            transition: color 0.3s ease;
         }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .stat-text {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        
+        .contact-card a:hover {
             color: var(--accent);
         }
-
-        .service-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
-            text-align: center;
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+        
+        .contact-card h3 {
             color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-            position: relative;
-            z-index: 1;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
         }
-
-        .contact p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
+        
+        /* Contact Info Section */
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-
+        
         .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(93, 219, 255, 0.2);
+            background: linear-gradient(135deg, rgba(28, 34, 51, 0.7) 0%, rgba(30, 58, 95, 0.4) 50%, rgba(28, 34, 51, 0.6) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
             transition: all 0.3s ease;
         }
-
+        
         .contact-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(93, 219, 255, 0.3);
             border-color: var(--accent);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
-
+        
         .contact-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--accent);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
+            margin-bottom: 1.5rem;
         }
-
+        
         .contact-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
             color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
         }
-
+        
         .contact-item p {
-            opacity: 0.9;
-            margin-bottom: 0;
+            color: var(--muted-foreground);
+            margin: 0;
         }
-
+        
         .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
+            color: white !important;
+            text-decoration: none !important;
         }
-
+        
         .contact-link:hover {
-            color: var(--text-light);
-            text-shadow: 0 0 10px rgba(93, 219, 255, 0.5);
+            color: var(--accent) !important;
         }
-
+        
         /* Footer */
         footer {
-            background: var(--dark-blue);
-            padding: 80px 0 30px;
-            border-top: 1px solid rgba(93, 219, 255, 0.2);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            margin-top: 5rem;
         }
-
+        
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
-
-        .footer-column h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+        
+        .footer-section h3 {
             color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 700;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 0.5rem;
         }
-
-        .footer-column h3::after {
+        
+        .footer-section h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 2px;
             background: var(--accent);
-            border-radius: 2px;
         }
-
-        .footer-column p {
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.65);
             margin-bottom: 1rem;
-            opacity: 0.8;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
-
+        
         .footer-links {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
-
+        
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 0.5rem;
         }
-
+        
         .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.65);
             text-decoration: none;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 0.9rem;
         }
-
+        
         .footer-links a:hover {
             color: var(--accent);
             transform: translateX(5px);
         }
 
+        
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-
-        .social-links a {
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg,
+                rgba(30, 58, 95, 0.6) 0%,
+                rgba(26, 43, 84, 0.4) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--text-light);
             transition: all 0.3s ease;
-            border: 1px solid rgba(93, 219, 255, 0.3);
+            border: 1px solid rgba(93, 219, 255, 0.2);
         }
-
-        .social-links a:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(93, 219, 255, 0.4);
+        
+        .social-link:hover {
+            background: linear-gradient(135deg,
+                rgba(93, 219, 255, 0.8) 0%,
+                rgba(93, 219, 255, 0.6) 100%);
+            box-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
+            transform: scale(1.1);
         }
-
+        
         .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            color: var(--muted-foreground);
         }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .consulting-content {
-                grid-template-columns: 1fr;
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                display: none;
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
+            .mobile-menu-btn {
+                display: block;
             }
-
-            nav ul {
-                gap: 1rem;
+            
+            .consulting-grid {
+                grid-template-columns: 1fr;
             }
         }
-
+        
         @media (max-width: 768px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
+            .container {
+                padding: 0 1rem;
             }
             
-            .btn {
-                padding: 12px 25px;
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Fix footer layout on mobile */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-section h3 {
+                margin-bottom: 1rem;
+            }
+            
+            .footer-section p {
                 font-size: 0.85rem;
             }
             
-            .feature-card, .service-card {
-                padding: 30px 20px;
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-content {
+                height: 70px;
             }
             
-            .contact h2 {
-                font-size: 2.2rem;
-            }
-
             .logo-text {
-                font-size: 1.5rem;
+                font-size: 1rem;
+                display: block;
             }
-
-            .logo-img {
-                width: 40px;
-                height: 40px;
+            
+            .mobile-menu {
+                top: 70px;
             }
+            
+            .logo-wrapper {
+                padding: 6px;
+            }
+            
+            .logo-image {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.75rem, 5vw, 2.5rem);
+            }
+            
+            .hero p {
+                font-size: clamp(0.9rem, 1.5vw, 1rem);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                padding: 1rem 1.5rem !important;
+                font-size: 0.95rem !important;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Contact Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, rgba(28, 34, 51, 0.95) 0%, rgba(30, 58, 95, 0.7) 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid rgba(93, 219, 255, 0.3);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(16px);
+        }
+        
+        .close-modal {
+            color: var(--accent);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent-glow);
+        }
+        
+        .modal-content h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+        
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .modal-content input,
+        .modal-content textarea {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(18, 23, 39, 0.8);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .modal-content input:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(93, 219, 255, 0.3);
+        }
+        
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .modal-content button {
+            padding: 0.75rem;
+            background: linear-gradient(135deg, rgba(93, 219, 255, 0.9) 0%, rgba(0, 200, 255, 0.85) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .modal-content button:hover {
+            box-shadow: 0 0 30px rgba(93, 219, 255, 0.4);
+            transform: scale(1.02);
+        }
+        
+        /* ===== IMPROVEMENTS ===== */
+        
+        /* 1. Hero Animations */
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(93, 219, 255, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: heroGlow 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero p {
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        /* 2. Enhanced Button Feedback */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(93, 219, 255, 0.6), inset 0 0 20px rgba(93, 219, 255, 0.1);
+        }
+        
+        .btn-outline:hover {
+            box-shadow: 0 0 20px rgba(93, 219, 255, 0.4);
+        }
+        
+        /* 3. Card Animations */
+        .card {
+            animation: fadeInUp 0.6s ease backwards;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* 4. Form Success/Error States */
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            animation: slideDown 0.3s ease;
+            display: none;
+        }
+        
+        .form-message.show {
+            display: block;
+        }
+        
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4caf50;
+            color: #81c784;
+        }
+        
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #ef5350;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 5. FAQ Section */
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: linear-gradient(135deg, rgba(28, 34, 51, 0.7) 0%, rgba(30, 58, 95, 0.4) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(93, 219, 255, 0.2);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .faq-question:hover {
+            background: rgba(93, 219, 255, 0.05);
+        }
+        
+        .faq-question h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .faq-toggle {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0.5rem 1.5rem 1.5rem;
+        }
+        
+        /* 6. Social Proof Section */
+        .social-proof-container {
+            background: linear-gradient(135deg, rgba(28, 34, 51, 0.5) 0%, rgba(30, 58, 95, 0.3) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .social-proof-container h3 {
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+        
+        .social-proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+        
+        .social-proof-item {
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px dashed rgba(93, 219, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .social-proof-item:hover {
+            border-color: var(--accent);
+            background: rgba(93, 219, 255, 0.05);
+        }
+        
+        .social-proof-placeholder {
+            color: var(--muted-foreground);
+            font-size: 0.9rem;
+        }
+        
+        /* 7. Better Spacing */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-header {
+            margin-bottom: 4rem;
+        }
+        
+        /* 8. Scroll Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card, .contact-item, .stat-card {
+            will-change: transform;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+               
+                     <div class="logo">
                 <img src="Logo.png" alt="IntSphere Logo" class="logo-img">
                 <div class="logo-text">IntSphere</div>
             </div>
-            <button class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </button>
+                   
+                
+                
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#consulting">Consulting</a>
+                    <a href="#services">Services</a>
+                    <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank">View Presentation</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal()">Contact</a>
+                </nav>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
             <nav>
-                <ul id="navMenu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#features" class="nav-link">Features</a></li>
-                    <li><a href="#consulting" class="nav-link">Consulting</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#platform" class="nav-link">Platform</a></li>
-                    <li><a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a></li>
-                    <li><a href="#contact" class="btn">Contact</a></li>
-                </ul>
+                <a href="#home" onclick="toggleMobileMenu()">Home</a>
+                <a href="#features" onclick="toggleMobileMenu()">Features</a>
+                <a href="#consulting" onclick="toggleMobileMenu()">Consulting</a>
+                <a href="#services" onclick="toggleMobileMenu()">Services</a>
+                <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank">View Presentation</a>
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="toggleMobileMenu(); openModal()">Contact</a>
             </nav>
         </div>
-        <!-- Mobile Navigation Overlay -->
-        <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
-    <!-- Rest of your HTML content remains exactly the same -->
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Transform Your Oracle Integration Cloud (OIC) Experience</h1>
-            <p>Comprehensive monitoring, deployment, and productivity improvement tools in one unified platform for Oracle Integration Cloud excellence</p>
+    <section id="home" class="hero" style="padding-bottom:2rem;">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-grid"></div>
+        
+        <div class="hero-content">
+            <h1>
+                Transform Your <span class="gradient-text">Oracle Integration Cloud</span> Experience
+            </h1>
+            
+            <p>
+                Comprehensive monitoring, deployment, and productivity improvement tools in one unified
+                platform for Oracle Integration Cloud excellence
+            </p>
+            
             <div class="hero-buttons">
-                <a href="#consulting" class="btn">Get Started Today</a>
-                <a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a>
+                <a href="javascript:void(0)" class="btn btn-primary" style="padding: 1.5rem 2rem; font-size: 1.125rem;" onclick="openModal()">Get Started Today</a>
+                <a href="https://presentation.intsphere.com/" class="btn btn-outline" style="padding: 1.5rem 2rem; font-size: 1.125rem;" target="_blank">View Presentation</a>
+            </div>
+            
+              <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value">70%</div>
+                    <div class="stat-label">Deployment Time Reduced</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">80%</div>
+                    <div class="stat-label">Post Development Tasks Automated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">50%</div>
+                    <div class="stat-label">Faster Error Resolution with AI Assistance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
+    <section id="features">
         <div class="container">
-            <div class="section-title">
-                <h2>Platform Features</h2>
+            <div class="section-header">
+                <h2>Platform <span class="gradient-text">Features</span></h2>
                 <p>IntSphere provides a comprehensive suite of tools to enhance your Oracle Integration Cloud operations</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                        </div>
+                        <h3>One-Click Deployment</h3>
+                        <p>Deploy integrations instantly with automated processes and reduce manual errors by 90%.</p>
                     </div>
-                    <h3>One-Click Deployment</h3>
-                    <p>Deploy integrations instantly with automated processes and reduce manual errors by 90%.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                        </div>
+                        <h3>TDD Generation</h3>
+                        <p>Automatic Technical Design Document creation for all your integration projects with consistent formatting.</p>
                     </div>
-                    <h3>TDD Generation</h3>
-                    <p>Automatic Technical Design Document creation for all your integration projects with consistent formatting.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-project-diagram"></i>
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                        </div>
+                        <h3>Flow Diagram Generation</h3>
+                        <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
                     </div>
-                    <h3>Flow Diagram Generation</h3>
-                    <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bug"></i>
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
+                        </div>
+                        <h3>Test Case Generation</h3>
+                        <p>Automated Postman test cases at your fingertips for comprehensive API testing and validation.</p>
                     </div>
-                    <h3>Test Case Generation</h3>
-                    <p>Automated Postman test cases at your fingertips for comprehensive API testing and validation.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                        </div>
+                        <h3>Real-Time Monitoring</h3>
+                        <p>Track integration health and performance with comprehensive dashboards and alert systems.</p>
                     </div>
-                    <h3>Real-Time Monitoring</h3>
-                    <p>Track integration health and performance with comprehensive dashboards and alert systems.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                
+                <div class="card">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Team Collaboration</h3>
+                        <p>Streamline team workflows with assignment, notification, and approval features.</p>
                     </div>
-                    <h3>Team Collaboration</h3>
-                    <p>Streamline team workflows with assignment, notification, and approval features.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Consulting Section -->
-    <section class="consulting" id="consulting">
+    <section id="consulting">
         <div class="container">
-            <div class="section-title">
-                <h2>Oracle PaaS Consulting</h2>
+            <div class="section-header">
+                <h2>Oracle PaaS <span class="gradient-text">Consulting</span></h2>
                 <p>Expert consulting services to maximize your Oracle Platform as a Service investments</p>
             </div>
-            <div class="consulting-content">
-                <div class="consulting-text">
+            
+            <div class="consulting-grid">
+                <div class="consulting-content">
                     <h3>Maximize Your Oracle Cloud Investment</h3>
-                    <p>Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.</p>
-                    <p>We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.</p>
-                    <a href="#contact" class="btn">Schedule a Consultation</a>
+                    <p>
+                        Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.
+                    </p>
+                    <p>
+                        We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.
+                    </p>
+                    <a href="#contact" class="btn btn-primary" style="padding: 1.5rem 2rem; font-size: 1.125rem;">Schedule a Consultation</a>
                 </div>
-                <div class="consulting-services">
-                    <div class="service-item">
-                        <h4><i class="fas fa-paint-brush"></i> VBCS (Visual Builder Cloud Service)</h4>
-                        <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation with enterprise-grade features.</p>
+                
+                <div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
+                        </div>
+                        <div>
+                            <h4>VBCS (Visual Builder Cloud Service)</h4>
+                            <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation with enterprise-grade features.</p>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-cogs"></i> Oracle Process Automation</h4>
-                        <p>End-to-end business process automation solutions to streamline operations, reduce manual work, and improve efficiency across departments.</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
+                        </div>
+                        <div>
+                            <h4>Oracle Process Automation</h4>
+                            <p>End-to-end business process automation solutions to streamline operations, reduce manual work, and improve efficiency across departments.</p>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-database"></i> Fusion Technical</h4>
-                        <p>Technical implementation and customization of Oracle Fusion Applications to meet specific business needs and integration requirements.</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
+                        </div>
+                        <div>
+                            <h4>Fusion Technical</h4>
+                            <p>Technical implementation and customization of Oracle Fusion Applications to meet specific business needs and integration requirements.</p>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-code"></i> Extensions Development</h4>
-                        <p>Custom extensions for Oracle Cloud Applications to enhance functionality, address unique requirements, and integrate with third-party systems.</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <div>
+                            <h4>Extensions Development</h4>
+                            <p>Custom extensions for Oracle Cloud Applications to enhance functionality, address unique requirements, and integrate with third-party systems.</p>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-headset"></i> Support & Maintenance</h4>
-                        <p>Ongoing technical support, maintenance, and optimization services for your Oracle PaaS implementations with 24/7 monitoring.</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Support & Maintenance</h4>
+                            <p>Ongoing technical support, maintenance, and optimization services for your Oracle PaaS implementations with 24/7 monitoring.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -930,94 +1437,91 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Oracle PaaS Expertise</h2>
+            <div class="section-header">
+                <h2>Our Oracle PaaS <span class="gradient-text">Expertise</span></h2>
                 <p>Comprehensive services across the Oracle Cloud Platform ecosystem</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
+            
+            <div class="card-grid">
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                        </div>
+                        <h3>Oracle Integration Cloud</h3>
+                        <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring and management.</p>
                     </div>
-                    <h3>Oracle Integration Cloud</h3>
-                    <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring and management.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="12" x="2" y="6" rx="1"/><path d="M13 8.32a7.43 7.43 0 0 1 0 7.36"/><path d="M16.46 6.21a11.76 11.76 0 0 1 0 11.58"/><path d="M19.91 4.1a15.91 15.91 0 0 1 .01 15.8"/></svg>
+                        </div>
+                        <h3>VBCS Development</h3>
+                        <p>Custom web and mobile applications built with Oracle's Visual Builder Cloud Service for rapid digital transformation.</p>
                     </div>
-                    <h3>VBCS Development</h3>
-                    <p>Custom web and mobile applications built with Oracle's Visual Builder Cloud Service for rapid digital transformation.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-stream"></i>
+                
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                        </div>
+                        <h3>Process Automation</h3>
+                        <p>Automate complex business processes with Oracle Process Cloud Service to improve efficiency and reduce errors.</p>
                     </div>
-                    <h3>Process Automation</h3>
-                    <p>Automate complex business processes with Oracle Process Cloud Service to improve efficiency and reduce errors.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-puzzle-piece"></i>
+                
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.4-1.4l5.66 5.65a1 1 0 0 1 0 1.4l-5.66 5.66a1 1 0 0 1-1.4-1.41L13.69 13H2.05A10 10 0 1 0 12 2Z"/></svg>
+                        </div>
+                        <h3>Fusion Extensions</h3>
+                        <p>Custom extensions and personalizations for Oracle Fusion Applications to meet unique business requirements.</p>
                     </div>
-                    <h3>Fusion Extensions</h3>
-                    <p>Custom extensions and personalizations for Oracle Fusion Applications to meet unique business requirements.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                        </div>
+                        <h3>Security & Compliance</h3>
+                        <p>Ensure your Oracle Cloud implementations meet security and compliance requirements with best practices.</p>
                     </div>
-                    <h3>Security & Compliance</h3>
-                    <p>Ensure your Oracle Cloud implementations meet security and compliance requirements with best practices.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tachometer-alt"></i>
+                
+                <div class="card" style="text-align: center;">
+                    <div class="card-glow"></div>
+                    <div style="position: relative; z-index: 10;">
+                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                        </div>
+                        <h3>Performance Optimization</h3>
+                        <p>Optimize the performance of your Oracle Cloud applications and integrations for maximum efficiency.</p>
                     </div>
-                    <h3>Performance Optimization</h3>
-                    <p>Optimize the performance of your Oracle Cloud applications and integrations for maximum efficiency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Platform Section -->
-    <section class="platform" id="platform">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose IntSphere Platform</h2>
-                <p>Our platform delivers measurable results for organizations using Oracle Integration Cloud</p>
-            </div>
-            <div class="platform-stats">
-                <div class="stat-item">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-text">Reduction in Deployment Time</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">80%</div>
-                    <div class="stat-text">Automation of Manual Tasks</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50%</div>
-                    <div class="stat-text">Faster Error Resolution</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-text">Client Satisfaction Rate</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch with us to learn more about IntSphere and how we can help transform your OIC operations</p>
+            <div class="section-header">
+                <h2>Get In <span class="gradient-text">Touch</span></h2>
+                <p>Learn more about IntSphere and how we can help transform your OIC operations</p>
             </div>
+            
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">
@@ -1040,143 +1544,250 @@
                     <h3>Location</h3>
                     <p>Global Services</p>
                 </div>
-                
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted By <span class="gradient-text">Industry Leaders</span></h2>
+                <p>Join hundreds of organizations transforming their Oracle Integration Cloud operations</p>
+            </div>
+            
+            <div class="social-proof-container">
+                <h3>Partner & Client Logos Coming Soon</h3>
+                <div class="social-proof-grid">
+                    <div class="social-proof-item">
+                        <div class="social-proof-placeholder">🏢 Enterprise Client</div>
+                    </div>
+                    <div class="social-proof-item">
+                        <div class="social-proof-placeholder">🏢 Fortune 500</div>
+                    </div>
+                    <div class="social-proof-item">
+                        <div class="social-proof-placeholder">🏢 Tech Leader</div>
+                    </div>
+                    <div class="social-proof-item">
+                        <div class="social-proof-placeholder">🏢 Global Brand</div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--muted-foreground);">Ready to add your organization? <a href="javascript:void(0)" onclick="openModal()" style="color: var(--accent); text-decoration: none;">Get in touch</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p>Find answers to common questions about IntSphere and our services</p>
+            </div>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is IntSphere?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        IntSphere is an all-in-one platform designed to transform your Oracle Integration Cloud experience. We provide comprehensive monitoring, deployment automation, and productivity tools to help you optimize your OIC operations and accelerate digital transformation.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Who should use IntSphere?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        IntSphere is ideal for organizations using Oracle Integration Cloud (OIC) who want to streamline their integration operations, improve deployment efficiency, and reduce operational overhead. It's perfect for enterprises of any size managing complex integration landscapes.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What services does IntSphere offer?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer OIC development, VBCS development, process automation, Fusion technical consulting, extensions development, security & compliance services, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can we get started with IntSphere?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Getting started is simple! Click the "Get Started Today" button or "Contact" link to schedule a personalized demo with our team. We'll assess your needs and create a customized solution for your organization.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you provide support after implementation?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We provide comprehensive support & maintenance services including 24/7 monitoring, regular optimization, performance tuning, and technical support. Our team is committed to your long-term success.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>IntSphere</h3>
-                    <p>All-in-One Platform for Oracle Integration Cloud (OIC) Excellence with comprehensive consulting services.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="#consulting"><i class="fas fa-chevron-right"></i> Consulting</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#platform"><i class="fas fa-chevron-right"></i> Platform</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                        <li><a href="https://presentation.intsphere.com/"><i class="fas fa-chevron-right"></i> View Presentation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-						<li><a href="#"><i class="fas fa-chevron-right"></i> OIC Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> VBCS Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Process Automation</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fusion Technical</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Extensions Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Support & Maintenance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> kunal@intsphere.com</p>
-                    <p><i class="fas fa-phone"></i> +91 8149434549</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Global Services</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>IntSphere</h3>
+                <p>All-in-One Platform for Oracle Integration Cloud (OIC) Excellence with comprehensive consulting services.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#consulting">Consulting</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://presentation.intsphere.com/" target="_blank">View Presentation</a></li>
+                </ul>
             </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">OIC Development</a></li>
+                    <li><a href="#">VBCS Development</a></li>
+                    <li><a href="#">Process Automation</a></li>
+                    <li><a href="#">Fusion Technical</a></li>
+                    <li><a href="#">Extensions Development</a></li>
+                    <li><a href="#">Support & Maintenance</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i><a style="margin-left:0.5rem;" href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
+                    <li> <i class="fas fa-phone"></i><a href="tel:+918149434549" style="margin-left:0.5rem;">+91 8149434549</a></li>
+                    <li><i style="margin-right:0.5rem;" class="fas fa-map-marker-alt"></i> Global Services </li>
+                </ul>
+            </div>
+			
+        </div>
+        
+        <div style="text-align: center; border-top: 1px solid rgba(0, 217, 255, 0.1); padding-top: 2rem; color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">
+            <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation Toggle - Fixed Version
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-        
-        function toggleMobileMenu() {
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        navToggle.addEventListener('click', toggleMobileMenu);
-        navOverlay.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Close menu when pressing Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                toggleMobileMenu();
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
         
-        // Smooth scrolling for anchor links
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
                         behavior: 'smooth'
                     });
                 }
             });
         });
+    </script>
+    
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Get In Touch</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
         
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.background = 'rgba(15, 42, 92, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'rgba(30, 60, 114, 0.95)';
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
-        });
-
-        // Add animation to elements when they come into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        }
+        
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                faqItem.classList.toggle('active');
             });
-        }, observerOptions);
-
-        // Observe all feature cards and service items
-        document.querySelectorAll('.feature-card, .service-card, .service-item, .stat-item, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
         });
+        
+        // Form Submission Handler with Success Message
+        const demoForm = document.getElementById('demoForm');
+        if (demoForm) {
+            demoForm.addEventListener('submit', function(e) {
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // After submission (when Web3Forms redirects), show success message
+                setTimeout(() => {
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'form-message success show';
+                    successMsg.textContent = '✓ Thank you! We\'ll get back to you soon.';
+                    this.appendChild(successMsg);
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1000);
+            });
+        }
     </script>
 </body>
 </html>
