@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://www.intsphere.com/sitemap.xml
+
+# Allow Google crawlers
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing crawlers
+User-agent: Bingbot
+Allow: /
+
+# Delay for other bots
+User-agent: *
+Crawl-delay: 1
