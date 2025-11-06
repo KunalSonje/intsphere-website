@@ -23,6 +23,52 @@
     <meta name="twitter:image" content="https://www.intsphere.com/Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Top Notification Styles */
+        #topNotification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(93, 219, 255, 0.95) 0%, rgba(0, 212, 255, 0.95) 100%);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(93, 219, 255, 0.3), 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 2000;
+            font-weight: 500;
+            font-size: 15px;
+            display: none;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #topNotification.hide {
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+
         /* Reset & Base Styles */
         * {
             margin: 0;
@@ -1769,6 +1815,11 @@
         });
     </script>
     
+    <!-- Top Notification -->
+    <div id="topNotification">
+        <span id="notificationText">✓ Mail Sent Successfully</span>
+    </div>
+
     <!-- Contact Form Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
@@ -1800,6 +1851,67 @@
             }
         }
         
+        // Show top notification function
+        function showNotification(message = '✓ Mail Sent For Demo') {
+            const notification = document.getElementById('topNotification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            notification.classList.remove('hide');
+            
+            // Auto-hide after 4 seconds
+            setTimeout(() => {
+                notification.classList.add('hide');
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500);
+            }, 4000);
+        }
+        
+        // Form Submission Handler with Success Message
+        const contactForm = document.querySelector('#contactModal form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Send form data using fetch (no page redirect)
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: new FormData(this)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Close modal
+                        closeModal();
+                        
+                        // Show top notification
+                        showNotification('✓ Mail Sent Successfully');
+                        
+                        // Reset form
+                        contactForm.reset();
+                    } else {
+                        showNotification('⚠ Error sending mail. Please try again.');
+                    }
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('⚠ Error sending mail. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+        
         // FAQ Toggle Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
@@ -1817,28 +1929,6 @@
             });
         });
         
-        // Form Submission Handler with Success Message
-        const demoForm = document.getElementById('demoForm');
-        if (demoForm) {
-            demoForm.addEventListener('submit', function(e) {
-                // Show loading state
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // After submission (when Web3Forms redirects), show success message
-                setTimeout(() => {
-                    const successMsg = document.createElement('div');
-                    successMsg.className = 'form-message success show';
-                    successMsg.textContent = '✓ Thank you! We\'ll get back to you soon.';
-                    this.appendChild(successMsg);
-                    
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            });
-        }
     </script>
 </body>
 </html>
