@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntSphere - Transform Your OIC Experience</title>
-    <meta name="description" content="IntSphere: All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services. Transform your OIC operations today.">
-    <meta name="keywords" content="Oracle Integration Cloud, OIC Platform, OIC Monitoring, Integration Monitoring, Deployment Automation, OIC Consulting, Oracle Consulting">
+    <title>IntSphere | Oracle Integration Cloud Platform</title>
+    <meta name="description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
+    
     <link rel="canonical" href="https://www.intsphere.com">
     <meta name="author" content="IntSphere">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="IntSphere - Transform Your OIC Experience">
-    <meta property="og:description" content="IntSphere: All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services. Transform your OIC operations today.">
+    <meta property="og:description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.intsphere.com">
     <meta property="og:image" content="https://www.intsphere.com/Logo.png">
     <meta property="og:site_name" content="IntSphere">
+	<meta property="og:image:alt" content="IntSphere Logo - Oracle OIC Platform">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="IntSphere - Oracle Integration Cloud Platform">
-    <meta name="twitter:description" content="IntSphere: All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services. Transform your OIC operations today.">
+    <meta name="twitter:description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <meta name="twitter:image" content="https://www.intsphere.com/Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -383,6 +388,13 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 3rem;
+			
+        }
+        /* Hide hero-buttons on desktop (tablets and larger) */
+        @media (min-width: 768px) {
+            .hero-buttons {
+                display: none;
+            }
         }
         
         .stats {
@@ -1258,7 +1270,7 @@
         "url": "https://www.intsphere.com",
         "logo": "https://www.intsphere.com/Logo.png",
         "description": "All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services.",
-        "foundingDate": "2024",
+        "foundingDate": "2025",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+91-8149434549",
@@ -1268,38 +1280,68 @@
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "Global"
+        }
+    }
+    </script>
+	<!-- Service Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "IntSphere",
+      "image": "https://www.intsphere.com/Logo.png",
+      "description": "All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services.",
+      "telephone": "+91-8149434549",
+      "email": "kunal@intsphere.com",
+      "areaServed": "Global",
+      "service": [
+        {
+          "@type": "Service",
+          "name": "OIC Monitoring",
+          "description": "Real-time monitoring and analytics for Oracle Integration Cloud with comprehensive insights"
         },
-        "sameAs": [
-            "https://www.linkedin.com/company/intsphere",
-            "https://twitter.com/intsphere",
-            "https://www.facebook.com/intsphere"
-        ]
+        {
+          "@type": "Service",
+          "name": "Deployment Automation",
+          "description": "One-click deployment automation reducing deployment time by 70%"
+        },
+        {
+          "@type": "Service",
+          "name": "Oracle PaaS Consulting",
+          "description": "Expert consulting services for Oracle Integration Cloud, VBCS, and Process Automation"
+        }
+      ]
     }
     </script>
     
     <!-- Additional Schema for Better SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org/",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.intsphere.com"
-        }, {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": "https://www.intsphere.com#services"
-        }, {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Contact",
-            "item": "https://www.intsphere.com#contact"
-        }]
+    <!-- BreadcrumbList + Organization Schema -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.intsphere.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.intsphere.com/#services" },
+      { "@type": "ListItem", "position": 3, "name": "Contact", "item": "https://www.intsphere.com/#contact" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IntSphere",
+    "url": "https://www.intsphere.com/",
+    "logo": "https://www.intsphere.com/Logo.png",
+    "description": "All-in-one Oracle Integration Cloud (OIC) platform for monitoring, deployment automation, and expert consulting.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@intsphere.com",
+      "contactType": "Customer Support"
     }
-    </script>
+  }
+]
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -1355,7 +1397,10 @@
                 platform for Oracle Integration Cloud excellence
             </p>
             
-            
+             <div class="hero-buttons">
+                <a href="javascript:void(0)" class="btn btn-primary" style="padding: 1.5rem 2rem; font-size: 1.125rem;" onclick="openModal()">Get Started Today</a>
+                <a href="https://presentation.intsphere.com/" class="btn btn-outline" style="padding: 1.5rem 2rem; font-size: 1.125rem;" target="_blank">View Presentation</a>
+            </div>
             
             <div class="stats">
                 <div class="stat-card">
