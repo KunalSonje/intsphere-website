@@ -3,18 +3,16 @@
   RewriteEngine On
   RewriteBase /
 
-  # Force HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # Force www
+  # Force HTTPS and www in single rule to avoid loops
+  RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteCond %{HTTP_HOST} !^$
-  RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+  RewriteRule ^ https://www.%1%{REQUEST_URI} [L,R=301]
 
-  # Remove trailing slash
+  # Remove trailing slash (only if not a directory)
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)/$ /$1 [L,R=301]
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteRule ^ %1 [L,R=301]
 </IfModule>
 
 # Caching
@@ -43,4 +41,9 @@
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Add caching for static resources
+  <FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|woff|woff2)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
 </IfModule>
