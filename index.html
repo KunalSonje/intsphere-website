@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- CRITICAL FIX: Add robots meta tag -->
     <meta name="robots" content="index, follow">
     <title>IntSphere | Oracle Integration Cloud Platform</title>
     <meta name="description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
@@ -11,26 +10,23 @@
     <link rel="canonical" href="https://www.intsphere.com">
     <meta name="author" content="IntSphere">
     
-    <!-- Open Graph / Social Media -->
     <meta property="og:title" content="IntSphere - Transform Your OIC Experience">
     <meta property="og:description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.intsphere.com">
     <meta property="og:image" content="https://www.intsphere.com/Logo.png">
     <meta property="og:site_name" content="IntSphere">
-	<meta property="og:image:alt" content="IntSphere Logo - Oracle OIC Platform">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="IntSphere Logo - Oracle OIC Platform">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-
-    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="IntSphere - Oracle Integration Cloud Platform">
     <meta name="twitter:description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <meta name="twitter:image" content="https://www.intsphere.com/Logo.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Schema.org Structured Data for Google Search -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -58,1118 +54,167 @@
     </script>
     
     <style>
-        /* Top Notification Styles */
-        #topNotification {
+        /* =========================================
+           SELF-HOSTED FONTS
+           ========================================= */
+        @font-face {
+            font-family: 'Outfit';
+            src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
+        /* =========================================
+           JAZZY THEME VARIABLES
+           ========================================= */
+        :root {
+            /* Vibrant Blue Palette */
+            --primary-blue: #2563eb;       /* Royal Blue */
+            --primary-dark: #1e40af;       /* Deep Indigo */
+            --accent-cyan: #06b6d4;        /* Cyan for pop */
+            --accent-purple: #7c3aed;      /* Purple for gradients */
             
-			position: fixed;
-            top: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #00d4ff 0%, #5ddbff 100%);
-            color: #0f1419;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            z-index: 9999;
-            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.4);
-            animation: slideInNotification 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            letter-spacing: 0.5px;
-			display: none;
+            /* Gradients */
+            --grad-main: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --grad-bg: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+            --grad-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+            
+            /* Text & Layout */
+            --heading-color: #0f172a;      /* Slate 900 */
+            --text-color: #334155;         /* Slate 700 */
+            --bg-body: #f8fafc;            /* Very light blue-grey */
+            --container-width: 1200px;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        #topNotification.hide {
-            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-20px);
-            }
-        }
-
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            /* IntSphere Brand Colors */
-            --background: hsl(222, 47%, 11%);
-            --foreground: hsl(0, 0%, 100%);
-            --card: hsl(223, 45%, 15%);
-            --card-foreground: hsl(0, 0%, 100%);
-            --primary: hsl(222, 58%, 28%);
-            --primary-foreground: hsl(0, 0%, 100%);
-            --accent: hsl(191, 100%, 68%);
-            --accent-glow: hsl(191, 100%, 75%);
-            --accent-foreground: hsl(222, 58%, 28%);
-            --muted: hsl(223, 40%, 20%);
-            --muted-foreground: hsl(191, 20%, 70%);
-            --border: hsl(222, 40%, 25%);
-        }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(180deg,
-                hsl(222, 47%, 11%) 0%,
-                hsl(222, 50%, 12%) 25%,
-                hsl(223, 45%, 14%) 50%,
-                hsl(222, 48%, 13%) 75%,
-                hsl(222, 47%, 11%) 100%);
-            background-attachment: fixed;
-            color: var(--foreground);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            background-color: rgba(18, 23, 39, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            filter: drop-shadow(0 0 10px rgba(93, 219, 255, 0.5));
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .logo-icon {
-            position: relative;
-        }
-        
-        
-        
-        .logo-wrapper {
-            position: relative;
-            background: linear-gradient(to bottom right, var(--card), var(--muted));
-            padding: 8px;
-            border-radius: 12px;
-            border: 1px solid rgba(93, 219, 255, 0.3);
-            transition: border-color 0.3s ease;
-        }
-        
-        .logo:hover .logo-wrapper {
-            border-color: rgba(93, 219, 255, 0.6);
-        }
-        
-        .logo-image {
-            width: 40px;
-            height: 40px;
-            filter: drop-shadow(0 0 15px rgba(93, 219, 255, 0.8));
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover .logo-image {
-            transform: scale(1.1);
-        }
-        
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--accent), var(--accent-glow));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none !important;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: var(--accent);
-        }
-        
-        /* Remove all link underlines */
-        a {
-            text-decoration: none !important;
-        }
-        
-        .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            display: inline-block;
-        }
-        
-        .btn-outline {
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            background: transparent;
-        }
-        
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--accent-foreground);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, 
-                rgba(93, 219, 255, 0.9) 0%,
-                rgba(93, 219, 255, 0.8) 50%,
-                rgba(0, 200, 255, 0.85) 100%);
-            color: var(--accent-foreground);
-            box-shadow: 0 0 20px rgba(93, 219, 255, 0.4);
-        }
-        
-        .btn-primary:hover {
-            box-shadow: 0 0 40px rgba(93, 219, 255, 0.7);
-            transform: scale(1.05);
-            background: linear-gradient(135deg, 
-                rgba(100, 230, 255, 1) 0%,
-                rgba(93, 219, 255, 0.9) 50%,
-                rgba(50, 200, 255, 0.95) 100%);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--foreground);
-            font-size: 1.75rem;
-            cursor: pointer;
-        }
-        
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            background: var(--card);
-            border-top: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            z-index: 999;
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-        }
-        
-        .mobile-menu.active {
-            display: block !important;
-        }
-        
-        .mobile-menu nav {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .mobile-menu .btn {
-            width: 100%;
-            text-align: center;
-        }
-        
-        /* Hero Section */
-        .hero {
-            position: relative;
-           
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23121721" width="1200" height="600"/></svg>');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, 
-                rgba(18, 23, 39, 0.6) 0%,
-                rgba(26, 43, 84, 0.5) 50%,
-                hsl(222, 47%, 11%) 100%);
-        }
-        
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            opacity: 0.2;
-            background-image: 
-                linear-gradient(to right, rgba(93, 219, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(93, 219, 255, 0.1) 1px, transparent 1px);
-            background-size: 64px 64px;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 1000px;
-            padding: 3rem 1rem;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(to right, var(--accent), var(--accent-glow), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shimmer 3s linear infinite;
-        }
-        
-        .hero p {
-            font-size: clamp(1.125rem, 2vw, 1.5rem);
-            color: var(--muted-foreground);
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-			
-        }
-        /* Hide hero-buttons on desktop (tablets and larger) */
-        @media (min-width: 768px) {
-            .hero-buttons {
-                display: none;
-            }
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-card {
-            background: rgba(28, 34, 51, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(93, 219, 255, 0.3);
-        }
-        
-        .stat-value {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--accent), var(--accent-glow));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            margin-top: 0.5rem;
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 4rem 0;
-            position: relative;
-        }
-        
-        section:nth-child(odd) {
-            background: linear-gradient(135deg, 
-                rgba(222, 47%, 11%, 0.3) 0%, 
-                rgba(191, 100%, 68%, 0.05) 50%, 
-                rgba(222, 47%, 11%, 0.3) 100%);
-        }
-        
-        section:nth-child(even) {
-            background: linear-gradient(45deg, 
-                rgba(30, 58, 95, 0.2) 0%, 
-                rgba(26, 43, 84, 0.1) 50%, 
-                rgba(30, 58, 95, 0.2) 100%);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .section-header p {
-            font-size: 1.25rem;
-            color: var(--muted-foreground);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Card Grid */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .card {
-            background: linear-gradient(135deg, 
-                rgba(28, 34, 51, 0.7) 0%,
-                rgba(30, 58, 95, 0.4) 50%,
-                rgba(28, 34, 51, 0.6) 100%);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 40px rgba(93, 219, 255, 0.3);
-            transform: translateY(-8px);
-            background: linear-gradient(135deg, 
-                rgba(30, 58, 95, 0.8) 0%,
-                rgba(42, 82, 152, 0.5) 50%,
-                rgba(30, 58, 95, 0.7) 100%);
-        }
-        
-        .card-glow {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, 
-                rgba(93, 219, 255, 0.15) 0%,
-                rgba(30, 58, 95, 0.1) 50%,
-                rgba(93, 219, 255, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .card:hover .card-glow {
-            opacity: 1;
-        }
-        
-        .card-icon {
-            display: inline-flex;
-            padding: 1rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg, 
-                rgba(93, 219, 255, 0.25) 0%,
-                rgba(93, 219, 255, 0.08) 100%);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover .card-icon {
-            background: linear-gradient(135deg, 
-                rgba(93, 219, 255, 0.4) 0%,
-                rgba(93, 219, 255, 0.15) 100%);
-            transform: scale(1.1);
-        }
-        
-        .card-icon svg {
-            width: 32px;
-            height: 32px;
-            color: var(--accent);
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
-        }
-        
-        .card:hover h3 {
-            color: var(--accent);
-        }
-        
-        .card p {
-            color: var(--muted-foreground);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-color);
             line-height: 1.7;
-        }
-        
-        /* Consulting Section */
-        .consulting-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        
-        .consulting-content h3 {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-        
-        .consulting-content p {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .service-card {
-            background: rgba(28, 34, 51, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .service-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(93, 219, 255, 0.2);
-        }
-        
-        .service-icon {
-            padding: 0.75rem;
-            border-radius: 12px;
-            background: linear-gradient(to bottom right, rgba(93, 219, 255, 0.2), rgba(93, 219, 255, 0.05));
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover .service-icon {
-            background: linear-gradient(to bottom right, rgba(93, 219, 255, 0.3), rgba(93, 219, 255, 0.1));
-        }
-        
-        .service-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--accent);
-        }
-        
-        .service-card h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .service-card:hover h4 {
-            color: var(--accent);
-        }
-        
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .contact-card {
-            text-align: center;
-        }
-        
-        .contact-card a {
-            color: var(--muted-foreground);
-            text-decoration: none;
-            font-size: 1.125rem;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-card a:hover {
-            color: var(--accent);
-        }
-        
-        .contact-card h3 {
-            color: var(--accent);
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        /* Contact Info Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .contact-item {
-            background: linear-gradient(135deg, rgba(28, 34, 51, 0.7) 0%, rgba(30, 58, 95, 0.4) 50%, rgba(28, 34, 51, 0.6) 100%);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 40px rgba(93, 219, 255, 0.3);
-            border-color: var(--accent);
-        }
-        
-        .contact-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-item h3 {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .contact-item p {
-            color: var(--muted-foreground);
-            margin: 0;
-        }
-        
-        .contact-link {
-            color: white !important;
-            text-decoration: none !important;
-        }
-        
-        .contact-link:hover {
-            color: var(--accent) !important;
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 3rem 5%;
-            border-top: 1px solid rgba(0, 217, 255, 0.2);
-            margin-top: 5rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--accent);
-        }
-        
-        .footer-section p {
-            color: rgba(255, 255, 255, 0.65);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        .footer-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
+            font-weight: 400;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg,
-                rgba(30, 58, 95, 0.6) 0%,
-                rgba(26, 43, 84, 0.4) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg,
-                rgba(93, 219, 255, 0.8) 0%,
-                rgba(93, 219, 255, 0.6) 100%);
-            box-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-            transform: scale(1.1);
-        }
-        
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--muted-foreground);
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes shimmer {
-            to {
-                background-position: 200% center;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            nav {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .consulting-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Fix footer layout on mobile */
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-section h3 {
-                margin-bottom: 1rem;
-            }
-            
-            .footer-section p {
-                font-size: 0.85rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header-content {
-                height: 70px;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-                display: block;
-            }
-            
-            .mobile-menu {
-                top: 70px;
-            }
-            
-            .logo-wrapper {
-                padding: 6px;
-            }
-            
-            .logo-image {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .hero h1 {
-                font-size: clamp(1.75rem, 5vw, 2.5rem);
-            }
-            
-            .hero p {
-                font-size: clamp(0.9rem, 1.5vw, 1rem);
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                padding: 1rem 1.5rem !important;
-                font-size: 0.95rem !important;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .stat-value {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Contact Form Modal */
-        .modal {
-            display: none;
+        /* Tech Dot Pattern Background (New) */
+        body::before {
+            content: "";
             position: fixed;
-            z-index: 2000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease;
+            background-image: radial-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+            pointer-events: none;
+            /* Fade out at the bottom */
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        /* Modern Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading-color);
+            font-family: 'Outfit', sans-serif; /* Stylish heading font */
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
-        
-        .modal-content {
-            background: linear-gradient(135deg, rgba(28, 34, 51, 0.95) 0%, rgba(30, 58, 95, 0.7) 100%);
-            margin: 5% auto;
-            padding: 2rem;
-            border: 1px solid rgba(93, 219, 255, 0.3);
-            border-radius: 16px;
-            width: 90%;
-            max-width: 500px;
-            backdrop-filter: blur(16px);
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
         }
-        
-        .close-modal {
-            color: var(--accent);
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
+
+        a:hover {
+            color: var(--accent-cyan);
         }
-        
-        .close-modal:hover {
-            color: var(--accent-glow);
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
         }
-        
-        .modal-content h2 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            margin-top: 0;
-        }
-        
-        .modal-content form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .modal-content input,
-        .modal-content textarea {
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: rgba(18, 23, 39, 0.8);
-            color: white;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .modal-content input:focus,
-        .modal-content textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(93, 219, 255, 0.3);
-        }
-        
-        .modal-content textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .modal-content button {
-            padding: 0.75rem;
-            background: linear-gradient(135deg, rgba(93, 219, 255, 0.9) 0%, rgba(0, 200, 255, 0.85) 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .modal-content button:hover {
-            box-shadow: 0 0 30px rgba(93, 219, 255, 0.4);
-            transform: scale(1.02);
-        }
-        
-        /* ===== IMPROVEMENTS ===== */
-        
-        /* 1. Hero Animations */
-        @keyframes heroGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(93, 219, 255, 0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            animation: heroGlow 4s ease-in-out infinite;
+
+        /* Background Blob Animation */
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
             pointer-events: none;
         }
-        
-        .hero h1 {
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        .hero p {
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-        
-        .hero-buttons {
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-        
-        /* 2. Enhanced Button Feedback */
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
+
+        .blob {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
         }
-        
-        .btn:active::before {
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(6, 182, 212, 0.2);
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
             width: 300px;
             height: 300px;
+            background: rgba(124, 58, 237, 0.15);
+            animation-delay: -10s;
         }
-        
-        .btn-primary:hover {
-            box-shadow: 0 0 20px rgba(93, 219, 255, 0.6), inset 0 0 20px rgba(93, 219, 255, 0.1);
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
         }
-        
-        .btn-outline:hover {
-            box-shadow: 0 0 20px rgba(93, 219, 255, 0.4);
-        }
-        
-        /* 3. Card Animations */
-        .card {
-            animation: fadeInUp 0.6s ease backwards;
-        }
-        
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
-        
-        /* 4. Form Success/Error States */
-        .form-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            animation: slideDown 0.3s ease;
-            display: none;
-        }
-        
-        .form-message.show {
-            display: block;
-        }
-        
-        .form-message.success {
-            background: rgba(76, 175, 80, 0.2);
-            border: 1px solid #4caf50;
-            color: #81c784;
-        }
-        
-        .form-message.error {
-            background: rgba(244, 67, 54, 0.2);
-            border: 1px solid #f44336;
-            color: #ef5350;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* 5. FAQ Section */
+		/* 5. FAQ Section */
         .faq-section {
             max-width: 900px;
             margin: 0 auto;
         }
         
         .faq-item {
-            background: linear-gradient(135deg, rgba(28, 34, 51, 0.7) 0%, rgba(30, 58, 95, 0.4) 100%);
+            background: white;
             backdrop-filter: blur(16px);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -1225,164 +270,777 @@
             max-height: 500px;
             padding: 0.5rem 1.5rem 1.5rem;
         }
-        
-        /* 6. Social Proof Section */
-        .social-proof-container {
-            background: linear-gradient(135deg, rgba(28, 34, 51, 0.5) 0%, rgba(30, 58, 95, 0.3) 100%);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 2rem 0;
+        /* =========================================
+           SCROLL ANIMATIONS
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
         
-        .social-proof-container h3 {
-            color: var(--accent);
-            margin-bottom: 2rem;
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .social-proof-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
+
+        /* =========================================
+           BUTTONS (Jazzy Gradients + Shine)
+           ========================================= */
+        .btn {
+            display: inline-flex;
             align-items: center;
-            justify-items: center;
-        }
-        
-        .social-proof-item {
-            padding: 1rem;
+            justify-content: center;
+            padding: 14px 32px;
             border-radius: 12px;
-            border: 2px dashed rgba(93, 219, 255, 0.3);
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--grad-main);
+            color: #ffffff !important;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Shine Effect */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff !important;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline:hover {
+            background: #ffffff;
+            color: var(--primary-blue) !important;
+            border-color: #ffffff;
+        }
+
+        /* =========================================
+           HEADER (Glassmorphism)
+           ========================================= */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
             transition: all 0.3s ease;
         }
-        
-        .social-proof-item:hover {
-            border-color: var(--accent);
-            background: rgba(93, 219, 255, 0.05);
+
+        /* Floating Glass Header */
+        .header-inner {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: auto;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--grad-main);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            font-size: 1.75rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 110px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 2rem;
+            z-index: 999;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .mobile-menu.active { display: block; animation: slideDown 0.3s ease; }
+        .mobile-menu nav { display: flex; flex-direction: column; gap: 1rem; text-align: center; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           HERO SECTION (Rich Blue Gradient)
+           ========================================= */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            /* Deep Slate & Azure Theme - No Violet */
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0ea5e9);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            /* Angled bottom */
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px; /* Pull next section up */
         }
         
-        .social-proof-placeholder {
-            color: var(--muted-foreground);
-            font-size: 0.9rem;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animated Mesh Overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
-        /* 7. Better Spacing */
-        section {
-            padding: 3rem 0;
+        /* Hero Heading Glow */
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            position: relative;
         }
         
-        .section-header {
+        .hero h1::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.4);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, #67e8f9, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
             margin-bottom: 4rem;
         }
+
+        /* Stats Cards in Hero - Floating Glass */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 cols on desktop */
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           SECTIONS & CARDS
+           ========================================= */
+        section {
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+
+        /* Modern Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Colorful top border on hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--grad-main);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Enhanced Hover State with Colored Shadow */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2);
+            background: #ffffff;
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            padding: 15px;
+            border-radius: 14px;
+            background: #eff6ff; /* Light blue bg for icon */
+            color: var(--primary-blue);
+            transition: 0.3s;
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary-blue);
+            color: white;
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* =========================================
+           CONSULTING (UPDATED LAYOUT)
+           ========================================= */
+        .consulting-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem auto;
+        }
         
-        /* 8. Scroll Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        .service-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            /* margin-bottom: 1rem; -- Removed for grid gap consistency */
+            display: flex;
+            gap: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: 0.3s;
+            height: 100%; /* Equal height in grid */
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-icon {
+            color: var(--accent-purple);
+            background: #f3e8ff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+           ========================================= */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-link {
+            color: var(--text-color) !important;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        /* Skeleton Loaders for Social Proof */
+        .skeleton {
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            border-radius: 8px;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* =========================================
+           FOOTER (Dark Navy for Contrast)
+           ========================================= */
+        footer {
+            background: #0f172a; /* Dark Slate */
+            color: #94a3b8;
+            padding: 2rem 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ONE ROW LAYOUT FOR DESKTOP */
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Custom widths for better spacing */
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-cyan);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+
+        .footer-links i {
+            color: var(--accent-cyan);
+            margin-right: 8px;
+        }
+
+        /* =========================================
+           MODAL (Clean & Jazzy)
+           ========================================= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7); /* Dark navy overlay */
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .close-modal {
+            color: #94a3b8;
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover { color: var(--primary-blue); }
+
+        .modal-content h2 {
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+            font-family: inherit;
+            color: var(--heading-color);
+            transition: 0.3s;
+        }
+
+        .modal-content input:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 16px;
+            background: var(--grad-main);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-content button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .modal-content button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .modal-content button:hover::after {
+            left: 100%;
+        }
+
+        /* Notification */
+        #topNotification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid var(--accent-cyan);
+            z-index: 9999;
+            display: none;
+            font-weight: 600;
+            color: var(--heading-color);
+            animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(120%); }
+            to { transform: translateX(0); }
+        }
+
+        /* =========================================
+           RESPONSIVE & MOBILE COMPATIBILITY
+           ========================================= */
+        @media (max-width: 1024px) {
+            nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .consulting-grid { grid-template-columns: 1fr; }
+            
+            /* Footer: Break to 2 columns on tablets */
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            header { top: 0; }
+            .header-inner { border-radius: 0; border: none; border-bottom: 1px solid #e2e8f0; }
+            .hero { margin-bottom: 0; clip-path: none; padding-top: 140px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            
+            /* Mobile Stats - 2x2 grid */
+            .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .stat-value { font-size: 2rem; }
+            
+            /* Mobile Cards - Stacked */
+            .card-grid { grid-template-columns: 1fr; }
+            
+            /* Footer - Stacked single column on mobile */
+            .footer-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: left; }
+            
+            .section-header h2 { font-size: 2rem; }
+            
+            /* Service cards mobile optimization */
+            .service-card {
+                padding: 1.2rem;
+                align-items: flex-start;
             }
         }
         
-        .card, .contact-item, .stat-card {
-            will-change: transform;
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .stats { grid-template-columns: 1fr; } /* Stack stats on very small screens */
+            .service-card { flex-direction: column; }
+            .service-icon { margin-bottom: 1rem; }
+            .modal-content { padding: 1.5rem; width: 95%; margin: 15% auto; }
         }
     </style>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "IntSphere",
-  "url": "https://www.intsphere.com",
-  "logo": "https://www.intsphere.com/Logo.png",
-  "description": "Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting.",
-  "sameAs": [
-    "https://www.linkedin.com/company/intsphere",
-    "https://twitter.com/intsphere"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Sales",
-    "telephone": "+91-8149434549",
-    "email": "contact@intsphere.com"
-  }
-}
-</script>
-	<!-- Service Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "IntSphere",
-      "image": "https://www.intsphere.com/Logo.png",
-      "description": "All-in-one platform for Oracle Integration Cloud (OIC) monitoring, deployment automation, and consulting services.",
-      "telephone": "+91-8149434549",
-      "email": "kunal@intsphere.com",
-      "areaServed": "Global",
-      "service": [
-        {
-          "@type": "Service",
-          "name": "OIC Monitoring",
-          "description": "Real-time monitoring and analytics for Oracle Integration Cloud with comprehensive insights"
-        },
-        {
-          "@type": "Service",
-          "name": "Deployment Automation",
-          "description": "One-click deployment automation reducing deployment time by 70%"
-        },
-        {
-          "@type": "Service",
-          "name": "Oracle PaaS Consulting",
-          "description": "Expert consulting services for Oracle Integration Cloud, VBCS, and Process Automation"
-        }
-      ]
-    }
-    </script>
-    
-    <!-- Additional Schema for Better SEO -->
-    <!-- BreadcrumbList + Organization Schema -->
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.intsphere.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.intsphere.com/#services" },
-      { "@type": "ListItem", "position": 3, "name": "Contact", "item": "https://www.intsphere.com/#contact" }
-    ]
-  }
-]
-</script>
 </head>
 <body>
-    <!-- Header -->
+    
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="topNotification">
+        <span id="notificationText">✓ Mail Sent Successfully</span>
+    </div>
+
     <header id="header">
-        <div class="container">
-            <div class="header-content">
-               
-                     <div class="logo">
-                <img src="Logo.png" alt="IntSphere Logo" class="logo-img">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="Logo.png" alt="IntSphere Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'">
                 <div class="logo-text">IntSphere</div>
-            </div>
-                   
-                
-                
-                <nav>
-                    <a href="#home">Home</a>
-                    <a href="#features">Features</a>
-                    <a href="#consulting">Consulting</a>
-                    <a href="#services">Services</a>
-                    <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank">View Presentation</a>
-                    <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal()">Contact</a>
-                </nav>
-                
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-            </div>
+            </a>
+            
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#consulting">Consulting</a>
+                <a href="#services">Services</a>
+                <a href="javascript:void(0)" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;" onclick="openModal()">Contact</a>
+            </nav>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
         
         <div class="mobile-menu" id="mobileMenu">
@@ -1391,310 +1049,276 @@
                 <a href="#features" onclick="toggleMobileMenu()">Features</a>
                 <a href="#consulting" onclick="toggleMobileMenu()">Consulting</a>
                 <a href="#services" onclick="toggleMobileMenu()">Services</a>
-                <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank">View Presentation</a>
+                <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank" style="color: var(--primary-blue) !important; border-color: var(--primary-blue);">View Presentation</a>
                 <a href="javascript:void(0)" class="btn btn-primary" onclick="toggleMobileMenu(); openModal()">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" style="padding-bottom:2rem;">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-grid"></div>
-        
-        <div class="hero-content">
-            <h1>
-                Transform Your <span class="gradient-text">Oracle Integration Cloud</span> Experience
-            </h1>
-            
-            <p>
-                Comprehensive monitoring, deployment, and productivity improvement tools in one unified
-                platform for Oracle Integration Cloud excellence
-            </p>
-            
-             <div class="hero-buttons">
-                <a href="javascript:void(0)" class="btn btn-primary" style="padding: 1.5rem 2rem; font-size: 1.125rem;" onclick="openModal()">Get Started Today</a>
-                <a href="https://presentation.intsphere.com/" class="btn btn-outline" style="padding: 1.5rem 2rem; font-size: 1.125rem;" target="_blank">View Presentation</a>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-value">70%</div>
-                    <div class="stat-label">Deployment Time Reduced</div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1>
+                    Transform Your <br>
+                    <span>Oracle Integration Cloud</span> Experience
+                </h1>
+                
+                <p>
+                    Comprehensive monitoring, deployment, and productivity improvement tools in one unified
+                    platform for Oracle Integration Cloud excellence.
+                </p>
+                
+                 <div class="hero-buttons">
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal()">Get Started Today</a>
+                    <a href="https://presentation.intsphere.com/" class="btn btn-outline" target="_blank">View Presentation</a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">80%</div>
-                    <div class="stat-label">Post Development Tasks Automated</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">50%</div>
-                    <div class="stat-label">Faster Resolution</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value">70%</div>
+                        <div class="stat-label">Deployment Time Reduced</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">80%</div>
+                        <div class="stat-label">Post Dev Tasks Automated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">50%</div>
+                        <div class="stat-label">Faster Resolution</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
         <div class="container">
-            <div class="section-header">
-                <h2>Platform <span class="gradient-text">Features</span></h2>
+            <div class="section-header reveal">
+                <h2>Platform Features</h2>
                 <p>IntSphere provides a comprehensive suite of tools to enhance your Oracle Integration Cloud operations</p>
             </div>
             
             <div class="card-grid">
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-                        </div>
-                        <h3>One-Click Deployment</h3>
-                        <p>Deploy integrations instantly with automated processes and reduce manual errors by 90%.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
                     </div>
+                    <h3>One-Click Deployment</h3>
+                    <p>Deploy integrations instantly with automated processes and reduce manual errors by 90%.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
-                        </div>
-                        <h3>TDD Generation</h3>
-                        <p>Automatic Technical Design Document creation for your integrations, VBCS projects.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
                     </div>
+                    <h3>TDD Generation</h3>
+                    <p>Automatic Technical Design Document creation for your integrations, VBCS projects.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-                        </div>
-                        <h3>Flow Diagram Generation</h3>
-                        <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
                     </div>
+                    <h3>Flow Diagram Generation</h3>
+                    <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
-                        </div>
-                        <h3>Postman Collection Generation</h3>
-                        <p>Automated Postman collection generation for your integrations at your fingertips for comprehensive API testing and validation.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
                     </div>
+                    <h3>Postman Collection Gen</h3>
+                    <p>Automated Postman collection generation for your integrations at your fingertips for comprehensive API testing.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-                        </div>
-                        <h3>Real-Time Monitoring</h3>
-                        <p>Track environment health,integrations and BIP reports performance with comprehensive dashboards.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
                     </div>
+                    <h3>Real-Time Monitoring</h3>
+                    <p>Track environment health, integrations and BIP reports performance with comprehensive dashboards.</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h3>Team Collaboration</h3>
-                        <p>Streamline team workflows with assignment, notification features.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Streamline team workflows with assignment, notification features.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Consulting Section -->
     <section id="consulting">
         <div class="container">
-            <div class="section-header">
-                <h2>Oracle PaaS <span class="gradient-text">Consulting</span></h2>
+            <div class="section-header reveal">
+                <h2>Oracle PaaS Consulting</h2>
                 <p>Expert consulting services to maximize your Oracle Platform as a Service investments</p>
             </div>
             
-            <div class="consulting-grid">
-                <div class="consulting-content">
-                    <h3>Maximize Your Oracle Cloud Investment</h3>
-                    <p>
-                        Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.
-                    </p>
-                    <p>
-                        We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.
-                    </p>
-                 
-					<a href="javascript:void(0)" class="btn btn-primary" style="padding: 1.5rem 2rem; font-size: 1.125rem;" onclick="openModal()">Schedule a Consultation</a>
+            <div class="consulting-intro reveal">
+                <h3>Maximize Your Oracle Cloud Investment</h3>
+                <p>
+                    Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.
+                </p>
+                <p>
+                    We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.
+                </p>
+                <br>
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal()">Schedule a Consultation</a>
+            </div>
+            
+            <div class="card-grid reveal">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
+                    </div>
+                    <div>
+                        <h4>VBCS (Visual Builder)</h4>
+                        <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation.</p>
+                    </div>
                 </div>
                 
-                <div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
-                        </div>
-                        <div>
-                            <h4>VBCS (Visual Builder Cloud Service)</h4>
-                            <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation with enterprise-grade features.</p>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
-                        </div>
-                        <div>
-                            <h4>Oracle Process Automation</h4>
-                            <p>End-to-end business process automation solutions to streamline operations, reduce manual work, and improve efficiency across departments.</p>
-                        </div>
+                    <div>
+                        <h4>Oracle Process Automation</h4>
+                        <p>End-to-end business process automation solutions to streamline operations and reduce manual work.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
-                        </div>
-                        <div>
-                            <h4>Fusion Technical</h4>
-                            <p>Technical implementation and customization of Oracle Fusion Applications to meet specific business needs and integration requirements.</p>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <div>
-                            <h4>Extensions Development</h4>
-                            <p>Custom extensions for Oracle Cloud Applications to enhance functionality, address unique requirements, and integrate with third-party systems.</p>
-                        </div>
+                    <div>
+                        <h4>Fusion Technical</h4>
+                        <p>Technical implementation and customization of Oracle Fusion Applications to meet specific needs.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/></svg>
-                        </div>
-                        <div>
-                            <h4>Support & Maintenance</h4>
-                            <p>Ongoing technical support, maintenance, and optimization services for your Oracle PaaS implementations with 24/7 monitoring.</p>
-                        </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div>
+                        <h4>Extensions Development</h4>
+                        <p>Custom extensions for Oracle Cloud Applications to enhance functionality and integrate with third-party systems.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Support & Maintenance</h4>
+                        <p>Ongoing technical support, maintenance, and optimization services for your Oracle PaaS implementations.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    </div>
+                    <div>
+                        <h4>Oracle CPQ</h4>
+                        <p>We empower businesses with intelligent CPQ solutions that streamline quoting, accelerate sales cycles and maximize revenue efficiency.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Oracle PaaS <span class="gradient-text">Expertise</span></h2>
+            <div class="section-header reveal">
+                <h2>Our Oracle PaaS Expertise</h2>
                 <p>Comprehensive services across the Oracle Cloud Platform ecosystem</p>
             </div>
             
             <div class="card-grid">
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-                        </div>
-                        <h3>Oracle Integration Cloud</h3>
-                        <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring and management.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
                     </div>
+                    <h3>Oracle Integration Cloud</h3>
+                    <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring and management.</p>
                 </div>
                 
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="12" x="2" y="6" rx="1"/><path d="M13 8.32a7.43 7.43 0 0 1 0 7.36"/><path d="M16.46 6.21a11.76 11.76 0 0 1 0 11.58"/><path d="M19.91 4.1a15.91 15.91 0 0 1 .01 15.8"/></svg>
-                        </div>
-                        <h3>VBCS Development</h3>
-                        <p>Custom web and mobile applications built with Oracle's Visual Builder Cloud Service for rapid digital transformation.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="12" x="2" y="6" rx="1"/><path d="M13 8.32a7.43 7.43 0 0 1 0 7.36"/><path d="M16.46 6.21a11.76 11.76 0 0 1 0 11.58"/><path d="M19.91 4.1a15.91 15.91 0 0 1 .01 15.8"/></svg>
                     </div>
+                    <h3>VBCS Development</h3>
+                    <p>Custom web and mobile applications built with Oracle's Visual Builder Cloud Service for rapid digital transformation.</p>
                 </div>
                 
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                        </div>
-                        <h3>Process Automation</h3>
-                        <p>Automate complex business processes with Oracle Process Cloud Service to improve efficiency and reduce errors.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                     </div>
+                    <h3>Process Automation</h3>
+                    <p>Automate complex business processes with Oracle Process Cloud Service to improve efficiency and reduce errors.</p>
                 </div>
                 
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.4-1.4l5.66 5.65a1 1 0 0 1 0 1.4l-5.66 5.66a1 1 0 0 1-1.4-1.41L13.69 13H2.05A10 10 0 1 0 12 2Z"/></svg>
-                        </div>
-                        <h3>Fusion Extensions</h3>
-                        <p>Custom extensions and personalizations for Oracle Fusion Applications to meet unique business requirements.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.4-1.4l5.66 5.65a1 1 0 0 1 0 1.4l-5.66 5.66a1 1 0 0 1-1.4-1.41L13.69 13H2.05A10 10 0 1 0 12 2Z"/></svg>
                     </div>
+                    <h3>Fusion Extensions</h3>
+                    <p>Custom extensions and personalizations for Oracle Fusion Applications to meet unique business requirements.</p>
                 </div>
                 
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                        </div>
-                        <h3>Security & Compliance</h3>
-                        <p>Ensure your Oracle Cloud implementations meet security and compliance requirements with best practices.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
+                    <h3>Security & Compliance</h3>
+                    <p>Ensure your Oracle Cloud implementations meet security and compliance requirements with best practices.</p>
                 </div>
                 
-                <div class="card" style="text-align: center;">
-                    <div class="card-glow"></div>
-                    <div style="position: relative; z-index: 10;">
-                        <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
-                        </div>
-                        <h3>Performance Optimization</h3>
-                        <p>Optimize the performance of your Oracle Cloud applications and integrations for maximum efficiency.</p>
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
                     </div>
+                    <h3>Performance Optimization</h3>
+                    <p>Optimize the performance of your Oracle Cloud applications and integrations for maximum efficiency.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Get In <span class="gradient-text">Touch</span></h2>
+            <div class="section-header reveal">
+                <h2>Get In Touch</h2>
                 <p>Learn more about IntSphere and how we can help transform your OIC operations</p>
             </div>
             
             <div class="contact-info">
-                <div class="contact-item">
+                <div class="contact-item reveal">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email Us</h3>
-                    <p><a href="mailto:kunal@intsphere.com" class="contact-link" style="color:white;">kunal@intsphere.com</a></p>
+                    <p><a href="mailto:kunal@intsphere.com" class="contact-link">kunal@intsphere.com</a></p>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Call Us</h3>
-                    <p><a href="tel:+918149434549" class="contact-link" style="color:white;">+91 8149434549</a></p>
+                    <p><a href="tel:+918149434549" class="contact-link">+91 8149434549</a></p>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -1705,44 +1329,35 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section id="social-proof">
+    <section id="social-proof" style="background: #fff;">
         <div class="container">
-            <div class="section-header">
-                <h2>Trusted By <span class="gradient-text">Industry Leaders</span></h2>
-                <p>Join hundreds of organizations transforming their Oracle Integration Cloud operations</p>
+            <div class="section-header reveal" style="margin-bottom: 2rem;">
+                <h2>Trusted By Industry Leaders</h2>
+                <p>Join journey of transforming Oracle Integration Cloud operations</p>
             </div>
             
-            <div class="social-proof-container">
-                <h3>Partner & Client Logos Coming Soon</h3>
-                <div class="social-proof-grid">
-                    <div class="social-proof-item">
-                        <div class="social-proof-placeholder">🏢 Enterprise Client</div>
-                    </div>
-                    <div class="social-proof-item">
-                        <div class="social-proof-placeholder">🏢 Fortune 500</div>
-                    </div>
-                    <div class="social-proof-item">
-                        <div class="social-proof-placeholder">🏢 Tech Leader</div>
-                    </div>
-                    <div class="social-proof-item">
-                        <div class="social-proof-placeholder">🏢 Global Brand</div>
-                    </div>
+            <div class="reveal" style="background: var(--bg-body); padding: 3rem; border-radius: 16px; text-align: center; border: 1px dashed #cbd5e1;">
+                <h3 style="color: var(--text-color);">Partner & Client Logos Coming Soon</h3>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; opacity: 0.6;">
+                    <div class="skeleton"></div>
+                    <div class="skeleton"></div>
+                    <div class="skeleton"></div>
+                    <div class="skeleton"></div>
                 </div>
-                <p style="margin-top: 2rem; color: var(--muted-foreground);">Ready to add your organization? <a href="javascript:void(0)" onclick="openModal()" style="color: var(--accent); text-decoration: none;">Get in touch</a></p>
+                <p style="margin-top: 2rem; color: #64748b;">Ready to add your organization? <a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a></p>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq">
         <div class="container">
-            <div class="section-header">
-                <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+            <div class="section-header reveal">
+                <h2>Frequently Asked Questions</h2>
                 <p>Find answers to common questions about IntSphere and our services</p>
             </div>
             
-            <div class="faq-section">
+            <div class="reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-section">
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>What is IntSphere?</h3>
@@ -1769,7 +1384,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        We offer OIC development, VBCS development, process automation, Fusion technical consulting, extensions development, security & compliance services, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
+                        We offer OIC development, VBCS development, process automation, Fusion technical consulting,PaaS4SaaS extensions development, Oracle CPQ implementation, security & compliance services, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
                     </div>
                 </div>
 
@@ -1779,7 +1394,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Getting started is simple! Click the "Get Started Today" button or "Contact" link to schedule a personalized demo with our team.
+                        Getting started is simple! Click the "Get Started Today" button or click "Get in touch" link to schedule a personalized demo with our team.<a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a>
                     </div>
                 </div>
 
@@ -1793,68 +1408,59 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>IntSphere</h3>
-                <p>All-in-One Platform for Oracle Integration Cloud (OIC) Excellence with comprehensive consulting services.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>IntSphere</h3>
+                    <p>All-in-One Platform for Oracle Integration Cloud (OIC) Excellence with comprehensive consulting services.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#consulting">Consulting</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://presentation.intsphere.com/" target="_blank">View Presentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">OIC Development</a></li>
+                        <li><a href="#">VBCS Development</a></li>
+                        <li><a href="#">Process Automation</a></li>
+                        <li><a href="#">Fusion Technical</a></li>
+                        <li><a href="#">Extensions Development</a></li>
+                        <li><a href="#">Support & Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                         <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
+                        <li> <i class="fas fa-phone"></i><a href="tel:+918149434549">+91 8149434549</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#consulting">Consulting</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://presentation.intsphere.com/" target="_blank">View Presentation</a></li>
-                </ul>
+            <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #64748b; font-size: 0.85rem;">
+                <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#">OIC Development</a></li>
-                    <li><a href="#">VBCS Development</a></li>
-                    <li><a href="#">Process Automation</a></li>
-                    <li><a href="#">Fusion Technical</a></li>
-                    <li><a href="#">Extensions Development</a></li>
-                    <li><a href="#">Support & Maintenance</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <ul class="footer-links">
-                     <li><i class="fas fa-envelope"></i><a style="margin-left:0.5rem;" href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
-                    <li> <i class="fas fa-phone"></i><a href="tel:+918149434549" style="margin-left:0.5rem;">+91 8149434549</a></li>
-                    <li><i style="margin-right:0.5rem;" class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
-                </ul>
-            </div>
-			
-        </div>
-        
-        <div style="text-align: center; border-top: 1px solid rgba(0, 217, 255, 0.1); padding-top: 2rem; color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">
-            <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
+    <script>
         // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1873,14 +1479,26 @@
                 }
             });
         });
+        
+        // Intersection Observer for Scroll Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
     </script>
     
-    <!-- Top Notification -->
-    <div id="topNotification">
-        <span id="notificationText">✓ Mail Sent Successfully</span>
-    </div>
-
-    <!-- Contact Form Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -1888,6 +1506,7 @@
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
                 <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="company" placeholder="Company Name">
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Submit</button>
@@ -1918,18 +1537,14 @@
             
             notificationText.textContent = message;
             notification.style.display = 'block';
-            notification.classList.remove('hide');
             
             // Auto-hide after 4 seconds
             setTimeout(() => {
-                notification.classList.add('hide');
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 500);
-            }, 2000);
+                notification.style.display = 'none';
+            }, 4000);
         }
         
-        // Form Submission Handler with Success Message
+        // Form Submission Handler
         const contactForm = document.querySelector('#contactModal form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -1948,18 +1563,12 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Close modal
                         closeModal();
-                        
-                        // Show top notification
                         showNotification('✓ Mail Sent Successfully');
-                        
-                        // Reset form
                         contactForm.reset();
                     } else {
                         showNotification('⚠ Error sending mail. Please try again.');
                     }
-                    
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 })
@@ -1971,8 +1580,8 @@
                 });
             });
         }
-        
-        // FAQ Toggle Functionality
+		
+		// FAQ Toggle Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
                 const faqItem = this.parentElement;
