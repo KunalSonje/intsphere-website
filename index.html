@@ -6,7 +6,7 @@
     <meta name="robots" content="index, follow">
     <title>IntSphere | Oracle PaaS Platform & Consulting</title>
     <meta name="description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
-    <link rel="icon" href="/Logo.png" type="image/png">
+    <link rel="icon" href="Logo.png" type="image/png">
     <link rel="canonical" href="https://www.intsphere.com">
     <meta name="author" content="IntSphere">
     
@@ -110,10 +110,10 @@
             color: var(--text-color);
             line-height: 1.7;
             font-weight: 400;
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            overflow-x: hidden;
         }
 
-        /* Tech Dot Pattern Background (New) */
+        /* Tech Dot Pattern Background */
         body::before {
             content: "";
             position: fixed;
@@ -207,7 +207,7 @@
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(30px, 50px); }
         }
-		/* 5. FAQ Section */
+		/* FAQ Section */
         .faq-section {
             max-width: 900px;
             margin: 0 auto;
@@ -270,9 +270,7 @@
             max-height: 500px;
             padding: 0.5rem 1.5rem 1.5rem;
         }
-        /* =========================================
-           SCROLL ANIMATIONS
-           ========================================= */
+        
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -284,9 +282,7 @@
             transform: translateY(0);
         }
 
-        /* =========================================
-           BUTTONS (Jazzy Gradients + Shine)
-           ========================================= */
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -311,7 +307,6 @@
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
         }
 
-        /* Shine Effect */
         .btn-primary::after {
             content: '';
             position: absolute;
@@ -345,26 +340,21 @@
             border-color: #ffffff;
         }
 
-        /* =========================================
-           HEADER (Glassmorphism)
-           ========================================= */
+        /* Header */
         header {
             position: fixed;
-            
             left: 0;
             right: 0;
             z-index: 1000;
-            height: 80px;
+            height: 90px;
             transition: all 0.3s ease;
         }
 
-        /* Floating Glass Header */
         .header-inner {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-           
             padding: 0 2rem;
             display: flex;
             align-items: center;
@@ -375,65 +365,89 @@
             margin: 0 auto;
         }
 
+        /* =========================================
+           UPDATED LOGO STYLING - FIX FOR UNDERLINE
+           ========================================= */
         .logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-}
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
 
-.logo-img {
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-}
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
 
-.logo-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
+        .logo-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            /* FIX: Restrict width to the widest child (tagline), preventing extra stretch */
+            width: max-content;
+        }
 
- .intsphere-universal { font-size: 1.6rem; font-weight: 700; color: #0891b2; letter-spacing: 2px; position: relative; display: inline-block; } .intsphere-universal::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #0891b2, #06b6d4, #0891b2); border-radius: 2px; box-shadow: 0 0 10px rgba(8, 145, 178, 0.5); }
+        .intsphere-universal {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            line-height: 1;
+            /* Force width to 100% of the container (which is now size of tagline) */
+            width: max-content;
+            display: block;
+            border-bottom: 3px solid var(--accent-cyan);
+            padding-bottom: 4px;
+            margin-bottom: 2px;
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+            text-transform: none; 
+            text-align: left;
+        }
 
-.logo-tagline {
-    font-size: 0.75rem;
-    color: #0891b2;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    opacity: 0.8;
-    line-height: 1;
-}
+        .logo-tagline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
 
-/* Hover effect */
-.logo:hover .intsphere-universal {
-    filter: brightness(1.1);
-}
+        .logo-tagline-list li {
+            position: relative;
+        }
 
-.logo:hover .logo-tagline {
-    opacity: 1;
-}
+        .logo-tagline-list li:not(:last-child)::after {
+            content: "•";
+            position: absolute;
+            right: -8px;
+            color: var(--accent-cyan);
+            opacity: 0.6;
+        }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .logo {
-        gap: 0.8rem;
-    }
+        .logo:hover .intsphere-universal { filter: brightness(1.1); }
+        .logo:hover .logo-tagline-list { color: var(--accent-cyan); }
 
-    .logo-img {
-        height: 40px;
-        width: 40px;
-    }
 
-    .intsphere-universal {
-        font-size: 1.4rem;
-    }
+        @media (max-width: 768px) {
+            .logo { gap: 0.8rem; }
+            .logo-img { height: 42px; }
+            .intsphere-universal { font-size: 1.3rem; border-bottom-width: 2px; }
+            .logo-tagline-list { font-size: 0.5rem; gap: 8px; }
+            .logo-tagline-list li:not(:last-child)::after { right: -5px; }
+        }
 
-    .logo-tagline {
-        font-size: 0.65rem;
-    }
-}
 
         nav {
             display: flex;
@@ -475,7 +489,7 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 110px;
+            top: 95px;
             left: 20px;
             right: 20px;
             background: rgba(255, 255, 255, 0.95);
@@ -495,21 +509,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* =========================================
-           HERO SECTION (Rich Blue Gradient)
-           ========================================= */
+        /* Hero */
         .hero {
-    padding-top: 8rem;
-    padding-bottom: 100px;
-    background: linear-gradient(-45deg, #1a2d42 0%, #2d4563 25%, #3b5998 60%, #0ea5e9 100%);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: white;
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    margin-bottom: -50px;
-}
+            padding-top: 9rem;
+            padding-bottom: 100px;
+            background: linear-gradient(-45deg, #1a2d42 0%, #2d4563 25%, #3b5998 60%, #0ea5e9 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
+        }
         
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -517,18 +529,15 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Animated Mesh Overlay */
-      .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    z-index: 1;
-    pointer-events: none;
-}
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+        }
         .hero-content {
             text-align: center;
             position: relative;
@@ -537,7 +546,6 @@
             margin: 0 auto;
         }
         
-        /* Hero Heading Glow */
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 3rem);
             color: #ffffff;
@@ -585,10 +593,9 @@
             margin-bottom: 4rem;
         }
 
-        /* Stats Cards in Hero - Floating Glass */
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 cols on desktop */
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-top: 3rem;
         }
@@ -623,9 +630,6 @@
             letter-spacing: 1px;
         }
 
-        /* =========================================
-           SECTIONS & CARDS
-           ========================================= */
         section {
             padding: 2rem 0;
             position: relative;
@@ -653,7 +657,6 @@
             margin: 10px auto 0;
         }
 
-        /* Modern Cards */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -672,7 +675,6 @@
             overflow: hidden;
         }
 
-        /* Colorful top border on hover */
         .card::before {
             content: '';
             position: absolute;
@@ -685,7 +687,6 @@
             transition: opacity 0.3s;
         }
 
-        /* Enhanced Hover State with Colored Shadow */
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2);
@@ -702,7 +703,7 @@
             margin-bottom: 1.5rem;
             padding: 15px;
             border-radius: 14px;
-            background: #eff6ff; /* Light blue bg for icon */
+            background: #eff6ff;
             color: var(--primary-blue);
             transition: 0.3s;
         }
@@ -718,9 +719,6 @@
             height: 32px;
         }
 
-        /* =========================================
-           CONSULTING (UPDATED LAYOUT)
-           ========================================= */
         .consulting-intro {
             text-align: center;
             max-width: 900px;
@@ -731,13 +729,12 @@
             background: white;
             padding: 1.5rem;
             border-radius: 12px;
-            /* margin-bottom: 1rem; -- Removed for grid gap consistency */
             display: flex;
             gap: 1rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border: 1px solid rgba(226, 232, 240, 0.8);
             transition: 0.3s;
-            height: 100%; /* Equal height in grid */
+            height: 100%;
         }
 
         .service-card:hover {
@@ -758,9 +755,6 @@
             flex-shrink: 0;
         }
 
-        /* =========================================
-           CONTACT SECTION
-           ========================================= */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -801,7 +795,6 @@
             color: var(--primary-blue) !important;
         }
 
-        /* Skeleton Loaders for Social Proof */
         .skeleton {
             width: 120px;
             height: 60px;
@@ -816,9 +809,6 @@
             100% { background-position: -200% 0; }
         }
 
-        /* =========================================
-           FOOTER (Dark Navy for Contrast)
-           ========================================= */
         footer {
             background: #0f172a; /* Dark Slate */
             color: #94a3b8;
@@ -827,10 +817,9 @@
             z-index: 2;
         }
 
-        /* ONE ROW LAYOUT FOR DESKTOP */
         .footer-content {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Custom widths for better spacing */
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 2rem;
             margin-bottom: 3rem;
             width: 100%;
@@ -875,9 +864,6 @@
             margin-right: 8px;
         }
 
-        /* =========================================
-           MODAL (Clean & Jazzy)
-           ========================================= */
         .modal {
             display: none;
             position: fixed;
@@ -886,7 +872,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 23, 42, 0.7); /* Dark navy overlay */
+            background-color: rgba(15, 23, 42, 0.7); 
             backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease;
         }
@@ -979,7 +965,6 @@
             left: 100%;
         }
 
-        /* Notification */
         #topNotification {
             position: fixed;
             top: 30px;
@@ -1001,15 +986,10 @@
             to { transform: translateX(0); }
         }
 
-        /* =========================================
-           RESPONSIVE & MOBILE COMPATIBILITY
-           ========================================= */
         @media (max-width: 1024px) {
             nav { display: none; }
             .mobile-menu-btn { display: block; }
             .consulting-grid { grid-template-columns: 1fr; }
-            
-            /* Footer: Break to 2 columns on tablets */
             .footer-content { grid-template-columns: 1fr 1fr; gap: 3rem; }
         }
 
@@ -1017,33 +997,20 @@
             .container { padding: 0 1.5rem; }
             header { top: 0; }
             .header-inner { border-radius: 0; border: none; border-bottom: 1px solid #e2e8f0; }
-            .hero { margin-bottom: 0; clip-path: none; padding-top: 9rem; }
+            .hero { margin-bottom: 0; clip-path: none; padding-top: 10rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
-            
-            /* Mobile Stats - 2x2 grid */
             .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .stat-value { font-size: 2rem; }
-            
-            /* Mobile Cards - Stacked */
             .card-grid { grid-template-columns: 1fr; }
-            
-            /* Footer - Stacked single column on mobile */
             .footer-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: left; }
-            
             .section-header h2 { font-size: 2rem; }
-            
-            /* Service cards mobile optimization */
-            .service-card {
-                padding: 1.2rem;
-                align-items: flex-start;
-            }
+            .service-card { padding: 1.2rem; align-items: flex-start; }
         }
         
-        /* Extra small devices */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
-            .stats { grid-template-columns: 1fr; } /* Stack stats on very small screens */
+            .stats { grid-template-columns: 1fr; }
             .service-card { flex-direction: column; }
             .service-icon { margin-bottom: 1rem; }
             .modal-content { padding: 1.5rem; width: 95%; margin: 15% auto; }
@@ -1065,13 +1032,17 @@
     <header id="header">
         <div class="header-inner">
             <a href="#" class="logo">
-    <img src="Logo.png" alt="IntSphere Logo" class="logo-img" 
-         onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'">
-    <div class="logo-content">
-        <div class="intsphere-universal">IntSphere</div>
-        
-    </div>
-</a>
+                <img src="Logo.png" alt="IntSphere Logo" class="logo-img" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'">
+                <div class="logo-content">
+                    <div class="intsphere-universal">IntSphere</div>
+                    <ul class="logo-tagline-list">
+                        <li>Integration</li>
+                        <li>Innovation</li>
+                        <li>Automation</li>
+                    </ul>
+                </div>
+            </a>
             
             <nav>
                 <a href="#home">Home</a>
@@ -1110,8 +1081,6 @@
                 <p>
                     Your Unified Command Center for Oracle Integration Cloud. <br>We fuse powerful automation tools with expert advisory services to accelerate and streamline your integration journey.
                 </p>
-                
-                 
                 
                 <div class="stats">
                     <div class="stat-card">
@@ -1516,13 +1485,11 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
         }
         
-        // Smooth scroll for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1535,7 +1502,6 @@
             });
         });
         
-        // Intersection Observer for Scroll Animation
         const observerOptions = {
             threshold: 0.1
         };
@@ -1585,7 +1551,6 @@
             }
         }
         
-        // Show top notification function
         function showNotification(message = '✓ Mail Sent For Demo') {
             const notification = document.getElementById('topNotification');
             const notificationText = document.getElementById('notificationText');
@@ -1593,13 +1558,11 @@
             notificationText.textContent = message;
             notification.style.display = 'block';
             
-            // Auto-hide after 4 seconds
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 4000);
         }
         
-        // Form Submission Handler
         const contactForm = document.querySelector('#contactModal form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -1610,7 +1573,6 @@
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
                 
-                // Send form data using fetch (no page redirect)
                 fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: new FormData(this)
@@ -1636,14 +1598,12 @@
             });
         }
 		
-		// FAQ Toggle Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
                 const faqItem = this.parentElement;
                 const answer = faqItem.querySelector('.faq-answer');
                 const toggle = this.querySelector('.faq-toggle');
                 
-                // Close other items
                 document.querySelectorAll('.faq-item').forEach(item => {
                     if (item !== faqItem) {
                         item.classList.remove('active');
@@ -1652,7 +1612,6 @@
                     }
                 });
                 
-                // Toggle current item
                 faqItem.classList.toggle('active');
                 if (answer.style.display === 'none' || !answer.style.display) {
                     answer.style.display = 'block';
