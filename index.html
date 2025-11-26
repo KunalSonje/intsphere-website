@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>IntSphere | Oracle Integration Cloud Platform</title>
+    <title>IntSphere | Oracle PaaS Platform & Consulting</title>
     <meta name="description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <link rel="icon" href="/Logo.png" type="image/png">
     <link rel="canonical" href="https://www.intsphere.com">
@@ -400,7 +400,7 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 1.5rem;
         }
 
         nav a {
@@ -461,19 +461,17 @@
            HERO SECTION (Rich Blue Gradient)
            ========================================= */
         .hero {
-            padding-top: 8rem;
-            padding-bottom: 100px;
-            /* Deep Slate & Azure Theme - No Violet */
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0ea5e9);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            /* Angled bottom */
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: -50px; /* Pull next section up */
-        }
+    padding-top: 8rem;
+    padding-bottom: 100px;
+    background: linear-gradient(-45deg, #1a2d42 0%, #2d4563 25%, #3b5998 60%, #0ea5e9 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: -50px;
+}
         
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -482,14 +480,17 @@
         }
 
         /* Animated Mesh Overlay */
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
+      .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1;
+    pointer-events: none;
+}
         .hero-content {
             text-align: center;
             position: relative;
@@ -1061,12 +1062,12 @@
             <div class="hero-content reveal">
                 <h1>
                     Transform Your <br>
-                    <span>Oracle Integration Cloud</span> Experience
+                    <span>Oracle Integration Cloud</span> <br>Experience
                 </h1>
                 
                 <p>
                     Comprehensive monitoring, deployment, and productivity improvement tools in one unified
-                    platform for Oracle Integration Cloud excellence.
+                    platform for Oracle Integration Cloud excellence with comprehensive consulting services.
                 </p>
                 
                  <div class="hero-buttons">
