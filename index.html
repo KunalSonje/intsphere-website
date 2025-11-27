@@ -25,7 +25,9 @@
     <meta name="twitter:description" content="Boost Oracle Integration Cloud (OIC) efficiency with IntSphere's monitoring, deployment automation, and expert consulting. Reduce deployment time by 70%—start transforming today.">
     <meta name="twitter:image" content="https://www.intsphere.com/Logo.png">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="font" href="fonts/Outfit-VariableFont_wght.ttf" type="font/ttf" crossorigin>
+    <link rel="preload" as="font" href="fonts/Inter-VariableFont_slnt,wght.ttf" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <script type="application/ld+json">
     {
@@ -1071,6 +1073,54 @@
             .service-icon { margin-bottom: 1rem; }
             .modal-content { padding: 1.5rem; width: 95%; margin: 15% auto; }
         }
+        
+        /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+        @media (max-width: 768px) {
+            /* Hide GPU-intensive blob animations on mobile */
+            .blob {
+                display: none !important;
+            }
+            
+            /* Remove backdrop filters on mobile */
+            .modal {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            
+            header {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+            
+            /* Reduce animation durations on mobile */
+            * {
+                animation-duration: 0.3s !important;
+                transition-duration: 0.2s !important;
+            }
+            
+            /* Disable scroll reveal animations on mobile */
+            .reveal {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+        
+        /* Accessibility: Respect user's motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .blob {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1633,7 +1683,7 @@ and intelligent automation—powered by our unified command center.</p>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                         <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
+                         <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#0269776c636e426b6c7671726a6770672c616d6f"><span class="__cf_email__" data-cfemail="8de6f8e3ece1cde4e3f9fefde5e8ffe8a3eee2e0">[email&#160;protected]</span></a></li>
                         <li> <i class="fas fa-phone"></i><a href="tel:+918149434549">+91 8149434549</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
                     </ul>
@@ -1646,7 +1696,7 @@ and intelligent automation—powered by our unified command center.</p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
@@ -1664,22 +1714,35 @@ and intelligent automation—powered by our unified command center.</p>
             });
         });
         
-        const observerOptions = {
-            threshold: 0.1
-        };
+        
+        // Optimized Intersection Observer: Skip on mobile for better performance
+        const shouldObserve = window.innerWidth > 768 && 
+                            !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (shouldObserve) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        } else {
+            // On mobile or with reduced motion: add active class immediately
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('active');
+            });
+        }
     </script>
     
     <div id="contactModal" class="modal">
@@ -1777,7 +1840,7 @@ and intelligent automation—powered by our unified command center.</p>
                 faqItem.classList.toggle('active');
                 if (answer.style.display === 'none' || !answer.style.display) {
                     answer.style.display = 'block';
-                    toggle.textContent = '−';
+                      toggle.textContent = '−';
                 } else {
                     answer.style.display = 'none';
                     toggle.textContent = '+';
@@ -1785,5 +1848,6 @@ and intelligent automation—powered by our unified command center.</p>
             });
         });
     </script>
+
 </body>
 </html>
