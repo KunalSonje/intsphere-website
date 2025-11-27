@@ -75,14 +75,14 @@
            JAZZY THEME VARIABLES
            ========================================= */
         :root {
-            /* Vibrant Blue Palette */
-            --primary-blue: #2563eb;       /* Royal Blue */
-            --primary-dark: #1e40af;       /* Deep Indigo */
-            --accent-cyan: #06b6d4;        /* Cyan for pop */
-            --accent-purple: #7c3aed;      /* Purple for gradients */
+            /* IntSphere Brand Palette */
+            --primary-color: #0891b2;       /* Brand Cyan */
+            --secondary-color: #06b6d4;     /* Lighter Cyan */
+            --dark-variant: #0c5460;        /* Dark Cyan */
+            --primary-blue: #1e40af;        /* Deep Blue */
             
             /* Gradients */
-            --grad-main: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --grad-main: linear-gradient(-45deg, #1a2d42 0%, #2d4563 25%, #3b5998 60%, #0ea5e9 100%);
             --grad-bg: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
             --grad-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
             
@@ -113,7 +113,7 @@
             overflow-x: hidden;
         }
 
-        /* Tech Dot Pattern Background */
+        /* Tech Grid Pattern Background */
         body::before {
             content: "";
             position: fixed;
@@ -121,11 +121,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(rgba(8, 145, 178, .03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(8, 145, 178, .03) 1px, transparent 1px);
+            background-size: 50px 50px;
             z-index: -1;
             pointer-events: none;
-            /* Fade out at the bottom */
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
         }
@@ -146,7 +147,7 @@
         }
 
         a:hover {
-            color: var(--accent-cyan);
+            color: var(--primary-color);
         }
 
         .container {
@@ -182,7 +183,7 @@
             left: -10%;
             width: 500px;
             height: 500px;
-            background: rgba(37, 99, 235, 0.2);
+            background: rgba(8, 145, 178, 0.15);
         }
 
         .blob-2 {
@@ -190,7 +191,7 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: rgba(6, 182, 212, 0.2);
+            background: rgba(6, 182, 212, 0.15);
             animation-delay: -5s;
         }
 
@@ -207,68 +208,75 @@
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(30px, 50px); }
         }
-		/* FAQ Section */
-        .faq-section {
-            max-width: 900px;
+		/* =========================================
+           FAQ SECTION
+           ========================================= */
+        #faq {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .faq-item {
             background: white;
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            border: 1px solid rgba(8, 145, 178, 0.15);
+            margin-bottom: 1rem;
+            border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        
-        .faq-item:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(93, 219, 255, 0.2);
+
+        .faq-item.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.15);
         }
-        
+
         .faq-question {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(6, 182, 212, 0.05));
             padding: 1.5rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
-            user-select: none;
         }
-        
-        .faq-question:hover {
-            background: rgba(93, 219, 255, 0.05);
+
+        .faq-item.active .faq-question {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(6, 182, 212, 0.1));
         }
-        
+
         .faq-question h3 {
-            color: var(--accent);
-            font-size: 1.1rem;
             margin: 0;
+            font-size: 1.1rem;
+            color: var(--heading-color);
         }
-        
+
         .faq-toggle {
-            color: var(--accent);
             font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            font-weight: 700;
         }
-        
+
         .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
+            transform: rotate(45deg);
         }
-        
+
         .faq-answer {
+            padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--muted-foreground);
-            line-height: 1.6;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            line-height: 1.8;
         }
-        
+
         .faq-item.active .faq-answer {
+            padding: 1.5rem;
             max-height: 500px;
-            padding: 0.5rem 1.5rem 1.5rem;
         }
         
         .reveal {
@@ -364,7 +372,23 @@
             max-width: 100%;
             margin: 0 auto;
         }
+		
+		
+		.hero-subtext {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
 
+        .hero-subtext p {
+            margin: 0;
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
         /* =========================================
            UPDATED LOGO STYLING - FIX FOR UNDERLINE
            ========================================= */
@@ -442,7 +466,7 @@
             content: "•";
             position: absolute;
             right: -8px;
-            color: var(--accent-cyan);
+            color: var(--primary-color);
             opacity: 0.6;
         }
 
@@ -725,6 +749,32 @@
             height: 32px;
         }
 
+        /* --- UPDATED CONSULTING CTA CARD STYLES --- */
+        .consulting-cta-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-left: 5px solid #7c3aed;
+			
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 4rem auto;
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+        }
+
+        .consulting-cta-card h3 {
+            color: #0891b2; /* Darker teal to match image */
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .consulting-cta-card p {
+            font-size: 1.1rem;
+            color: #334155;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
         .consulting-intro {
             text-align: center;
             max-width: 900px;
@@ -750,7 +800,7 @@
         }
 
         .service-icon {
-            color: var(--accent-purple);
+            color: var(--primary-blue);
             background: #f3e8ff;
             width: 40px;
             height: 40px;
@@ -779,7 +829,7 @@
 
         .contact-item:hover {
             transform: translateY(-10px);
-            border-color: var(--accent-cyan);
+            border-color: var(--primary-color);
             box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
         }
 
@@ -844,7 +894,7 @@
             display: block;
             width: 40px;
             height: 3px;
-            background: var(--accent-cyan);
+            background: var(--primary-color);
             margin-top: 8px;
             border-radius: 2px;
         }
@@ -866,7 +916,7 @@
         }
 
         .footer-links i {
-            color: var(--accent-cyan);
+            color: var(--primary-color);
             margin-right: 8px;
         }
 
@@ -979,7 +1029,7 @@
             padding: 1rem 2rem;
             border-radius: 12px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-left: 5px solid var(--accent-cyan);
+            border-left: 5px solid var(--primary-color);
             z-index: 9999;
             display: none;
             font-weight: 600;
@@ -1056,8 +1106,8 @@
 				<a href="#ai-solutions">AI Solutions</a>
                 <a href="#consulting">Consulting</a>
                 <a href="#services">Services</a>
-				<a href="https://presentation.intsphere.com/" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;" target="_blank">Presentation</a>
-                <a href="javascript:void(0)" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;" onclick="openModal()">Contact Us</a>
+				
+                <a href="#contact-us">Contact Us</a>
             </nav>
             
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
@@ -1072,8 +1122,8 @@
 				<a href="#ai-solutions" onclick="toggleMobileMenu()">AI Solutions</a>
                 <a href="#consulting" onclick="toggleMobileMenu()">Consulting</a>
                 <a href="#services" onclick="toggleMobileMenu()">Services</a>
-               <a href="https://presentation.intsphere.com/" class="btn btn-primary" target="_blank">Presentation</a>
-                <a href="javascript:void(0)" class="btn btn-primary" onclick="toggleMobileMenu(); openModal()">Contact Us</a>
+               <a href="https://presentation.intsphere.com/" onclick="toggleMobileMenu()" target="_blank">View Presentation</a>
+                <a href="#contact-us" onclick="toggleMobileMenu(); openModal()">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -1087,27 +1137,18 @@
                 </h1>
                 
                 <p>
-                    Your Unified Command Center for Oracle Integration Cloud. <br>We fuse powerful automation tools with expert advisory services to accelerate and streamline your integration journey.
+                    We fuse powerful automation tools with expert advisory services to accelerate and streamline your integration journey.
                 </p>
                 
-                <div class="stats">
-                    <div class="stat-card">
-                        <div class="stat-value">70%</div>
-                        <div class="stat-label">Deployment Time Reduced</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">80%</div>
-                        <div class="stat-label">Post Dev Tasks Automated</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">50%</div>
-                        <div class="stat-label">Faster Resolution</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                </div>
+                 
+                <p class="hero-subtext">Auto-generate technical designs, flow diagrams, Postman collections for OIC APIs, 
+test cases, and VBCS code analysis—while our expert consultants guide your strategy.</p>
+            
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="openModal()">Begin Your Transformation</button>
+                <a href="https://presentation.intsphere.com/" target="_blank" class="btn btn-outline">Explore Features</a>
+            </div>
             </div>
         </div>
     </section>
@@ -1168,8 +1209,7 @@
                     <p>Streamline team workflows with assignment, notification features.</p>
                 </div>
 				
-				<!-- Fusion User Role Comparison -->
-                <div class="card reveal">
+				<div class="card reveal">
                     <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                     </div>
@@ -1177,7 +1217,6 @@
                     <p>Compare user roles and access permissions across same and different environments seamlessly. Identify discrepancies and ensure role consistency</p>
                 </div>
 
-                <!-- ESS Job & BIP Reports Intelligence -->
                 <div class="card reveal">
                     <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>
@@ -1186,8 +1225,7 @@
                     <p>Track Enterprise Scheduling Service job execution history and Business Intelligence Publisher report runs with predictive insights and analytics</p>
                 </div>
 				
-				<!-- Historical Trends -->
-                <div class="card reveal">
+				<div class="card reveal">
                     <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
                     </div>
@@ -1203,7 +1241,6 @@
             </div>
     </section>
 
-    <!-- NEW SECTION: AI Powered Solutions -->
     <section id="ai-solutions">
         <div class="container">
             <div class="section-header reveal">
@@ -1212,7 +1249,6 @@
             </div>
 
             <div class="card-grid">
-                <!-- AI-Based TDD for VBCS -->
                 <div class="card reveal">
                     <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg>
@@ -1221,7 +1257,6 @@
                     <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service application using AI. Review VBCS application and get recommendations using AI.</p>
                 </div>
 
-                <!-- AI-Powered FBDI/HDL Analysis -->
                 <div class="card reveal">
                     <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" ndddheight="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="3"/><path d="m14.5 17.5-2.5-2.5"/></svg>
@@ -1230,7 +1265,6 @@
                     <p>Analyze failed File-Based Data Import/HCM Data Loader with intelligent assistance to identify root causes and recommendations</p>
                 </div>
 
-                <!-- Multi LLM-AI Analysis -->
                 <div class="card reveal">
                     <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M3 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M17 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M7 9h1"/><path d="M16 9h1"/></svg>
@@ -1241,7 +1275,6 @@
 
                 
 
-                <!-- Error Analysis & Insights -->
                 <div class="card reveal">
                     <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
@@ -1250,7 +1283,6 @@
                     <p>Automated error root cause identification and recommendations powered by multi LLM analysis</p>
                 </div>
 
-                <!-- Error Categorization -->
                 <div class="card reveal">
                     <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>
@@ -1267,37 +1299,28 @@
     <section id="consulting">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Oracle PaaS Consulting</h2>
-                <p>Expert consulting services to maximize your Oracle Platform as a Service investments</p>
+                <h2>Oracle PaaS Consulting Services</h2>
+               
             </div>
             
-            <div class="consulting-intro reveal">
-                <h3>Maximize Your Oracle Cloud Investment</h3>
-                <p>
-                    Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.
-                </p>
-                <p>
-                    We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.
-                </p>
-                <br>
-                <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal()">Schedule a Consultation</a>
-            </div>
+           
             
             <div class="card-grid reveal">
-			<div class="service-card">
-    <div class="service-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 22v-5"></path>
-  <path d="M9 8V2"></path>
-  <path d="M15 8V2"></path>
-  <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path>
-</svg>
-    </div>
-    <div>
-        <h4>Oracle Integration Cloud (OIC)</h4>
-        <p>Cloud-based integration platform for connecting applications, data, and services across on-premises and cloud environments. Enables rapid development of integrations, APIs, and automated business processes using a visual, low-code approach.</p>
-    </div>
-</div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22v-5"></path>
+                            <path d="M9 8V2"></path>
+                            <path d="M15 8V2"></path>
+                            <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Oracle Integration Cloud (OIC)</h4>
+                        <p>Cloud-based integration platform for connecting applications, data, and services across on-premises and cloud environments. Enables rapid development of integrations, APIs, and automated business processes using a visual, low-code approach.</p>
+                    </div>
+                </div>
+                
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
@@ -1338,17 +1361,17 @@
                     </div>
                 </div>
                 <div class="service-card">
-    <div class="service-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            <path d="m9 12 2 2 4-4"></path>
-        </svg>
-    </div>
-    <div>
-        <h4>Oracle Identity Cloud Service (IDCS)</h4>
-        <p>Cloud-native identity and access management platform. Provides Single Sign-On (SSO), multifactor authentication, and user lifecycle management to secure applications across hybrid cloud environments.</p>
-    </div>
-</div>
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Oracle Identity Cloud Service (IDCS)</h4>
+                        <p>Cloud-native identity and access management platform. Provides Single Sign-On (SSO), multifactor authentication, and user lifecycle management to secure applications across hybrid cloud environments.</p>
+                    </div>
+                </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
@@ -1434,7 +1457,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email Us</h3>
-                    <p><a href="mailto:kunal@intsphere.com" class="contact-link">kunal@intsphere.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#e289978c838ea28b8c9691928a879087cc818d8f" class="contact-link"><span class="__cf_email__" data-cfemail="345f415a5558745d5a4047445c5146511a575b59">[email&#160;protected]</span></a></p>
                 </div>
                 <div class="contact-item reveal">
                     <div class="contact-icon">
@@ -1469,52 +1492,88 @@ and intelligent automation—powered by our unified command center.</p>
         </div>
     </section>
 
+    <!-- FAQ SECTION -->
     <section id="faq">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about IntSphere and our services</p>
+                <p>Everything you need to know about IntSphere</p>
             </div>
-            
-            <div class="reveal" style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-section">
-                <div class="faq-item">
+
+            <div class="faq-container reveal">
+			
+				<div class="faq-item">
                     <div class="faq-question">
                         <h3>What is IntSphere?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        IntSphere is an all-in-one platform designed to transform your Oracle Integration Cloud experience. We provide comprehensive monitoring, deployment automation, and productivity tools to help you optimize your OIC operations and accelerate digital transformation.
+                         IntSphere is an all-in-one platform designed to transform your Oracle Integration Cloud experience. We provide comprehensive monitoring, deployment automation, and productivity tools to help you optimize your OIC operations and accelerate digital transformation.
                     </div>
                 </div>
-
-                <div class="faq-item">
+				
+				<div class="faq-item">
                     <div class="faq-question">
                         <h3>Who should use IntSphere?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        IntSphere is ideal for organizations using Oracle Integration Cloud (OIC) who want to streamline their integration operations, improve deployment efficiency, and reduce operational overhead. It's perfect for enterprises of any size managing complex integration landscapes.IntSphere can be customized as per your organization need.
+                          IntSphere is ideal for organizations using Oracle Integration Cloud (OIC) who want to streamline their integration operations, improve deployment efficiency, and reduce operational overhead. It's perfect for enterprises of any size managing complex integration landscapes.IntSphere can be customized as per your organization need.
                     </div>
                 </div>
-
-                <div class="faq-item">
+				
+				
+				<div class="faq-item">
                     <div class="faq-question">
                         <h3>What services does IntSphere offer?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        We offer OIC development, VBCS development, process automation, Fusion technical consulting,PaaS4SaaS extensions development, Oracle CPQ implementation, security & compliance services, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
+                       We offer OIC development, VBCS development, process automation, Fusion technical consulting,PaaS4SaaS extensions development, Oracle CPQ implementation, security & compliance services, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
+                    </div>
+                </div>
+				
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does your automation reduce manual effort by 80%?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Our platform automatically generates technical designs, flow diagrams, postman collections, test cases, and VBCS code analysis. This eliminates weeks of manual documentation and testing work, freeing your team to focus on strategy and optimization instead of repetitive tasks.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How can we get started with IntSphere?</h3>
+                        <h3>Do you handle legacy system migrations (SOA/OSB, PCS)?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Getting started is simple! Click the "Get Started Today" button or click "Get in touch" link to schedule a personalized demo with our team.<a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a>
+                        Yes! We specialize in zero-disruption migrations including SOA/OSB to OIC transitions, OIC Gen2 to Gen3 upgrades, and PCS to OPA modernization. Our expert team handles planning, execution, and modernization strategy throughout the journey.
+                    </div>
+                </div>
+
+                
+
+                
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can you customize the solution for our specific needs?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! Every organization has unique requirements. Our expert consulting team works with you to customize architecture, design patterns, and implementation strategies. Our platform adapts to your business processes and compliance requirements.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What experience does your team have?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Our team has deep expertise across the entire Oracle ecosystem with decades of combined experience in OIC, VBCS, OPA, Fusion, and enterprise integrations. We're trusted by Fortune 500 companies for mission-critical implementations.
                     </div>
                 </div>
 
@@ -1524,15 +1583,22 @@ and intelligent automation—powered by our unified command center.</p>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Yes! We provide comprehensive support & maintenance services including 24/7 monitoring, regular optimization, performance tuning, and technical support. Our team is committed to your long-term success.
+                        Yes! We provide comprehensive support & maintenance services including 24/7 monitoring, regular optimization, performance tuning, and technical support. Our commitment extends beyond go-live to ensure your long-term success and continuous improvement.
                     </div>
                 </div>
-            </div>
+				 <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can we get started with IntSphere?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                       Getting started is simple! Click the "Get Started Today" button or click "Get in touch" link to schedule a personalized demo wit                  </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer id="contact-us">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
