@@ -1057,8 +1057,10 @@
             header { top: 0; }
             .header-inner { border-radius: 0; border: none; border-bottom: 1px solid #e2e8f0; }
             .hero { margin-bottom: 0; clip-path: none; padding-top: 10rem;padding-bottom: 40px;background-size: 150% 150%;}
+			.hero::after { background-size: 30px 30px !important; } /* reduces repaint cost */
             .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
+            .hero p, .hero-subtext { font-size: .95rem; line-height: 1.55; }
+			.hero-subtext { padding: 1rem; }
             .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .stat-value { font-size: 2rem; }
             .card-grid { grid-template-columns: 1fr; }
