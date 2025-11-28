@@ -542,17 +542,18 @@
 
         /* Hero */
         .hero {
-            padding-top: 9rem;
-            padding-bottom: 100px;
-            background: linear-gradient(135deg, #2d4563, #23354a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: -50px;
-        }
+    padding-top: 9rem;
+    padding-bottom: 100px;
+    background: linear-gradient(135deg, #2d4563, #23354a);
+    background-size: 200% 200%; /* ↓ from 400% */
+    animation: gradientBG 20s ease infinite; /* slower = less jitter */
+    color: white;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: -50px;
+    will-change: background-position; /* improves mobile performance */
+}
         
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -1055,7 +1056,7 @@
             .container { padding: 0 1.5rem; }
             header { top: 0; }
             .header-inner { border-radius: 0; border: none; border-bottom: 1px solid #e2e8f0; }
-            .hero { margin-bottom: 0; clip-path: none; padding-top: 10rem;padding-bottom: 40px;}
+            .hero { margin-bottom: 0; clip-path: none; padding-top: 10rem;padding-bottom: 40px;background-size: 150% 150%;}
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
             .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -1191,8 +1192,7 @@
                 </p>
                 
                  
-                <p class="hero-subtext">Auto-generate technical designs, flow diagrams, Postman collections for OIC APIs, 
-test cases, and VBCS code analysis—while our expert consultants guide your strategy.</p>
+                <p class="hero-subtext">Speed up delivery with auto-generated technical designs documents, flow diagrams, Postman collections, test cases, and VBCS code analysis—paired with strategic guidance from expert consultants.</p>
             
 
             <div class="hero-buttons">
