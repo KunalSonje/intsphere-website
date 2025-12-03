@@ -83,10 +83,16 @@
             --dark-variant: #0c5460;        /* Dark Cyan */
             --primary-blue: #1e40af;        /* Deep Blue */
             
-            /* Gradients */
+            /* Gradients - Optimized */
             --grad-main: linear-gradient(-45deg, #1a2d42 0%, #2d4563 25%, #3b5998 60%, #0ea5e9 100%);
             --grad-bg: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
             --grad-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+            
+            /* Section Backgrounds */
+            --section-light: #f8fafc;      /* Default light */
+            --section-lighter: #f0f9ff;    /* Very light blue */
+            --section-white: #ffffff;      /* Pure white */
+            --section-dark: #0f1419;       /* Dark for contrast */
             
             /* Text & Layout */
             --heading-color: #0f172a;      /* Slate 900 */
@@ -115,7 +121,7 @@
             overflow-x: hidden;
         }
 
-        /* Tech Grid Pattern Background */
+        /* Tech Grid Pattern Background - Mobile Optimized */
         body::before {
             content: "";
             position: fixed;
@@ -129,8 +135,15 @@
             background-size: 50px 50px;
             z-index: -1;
             pointer-events: none;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 70%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                background-size: 60px 60px;
+                opacity: 0.8;
+            }
         }
 
         /* Modern Headings */
@@ -176,8 +189,8 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s infinite ease-in-out;
+            opacity: 0.35;
+            animation: float 25s infinite ease-in-out;
         }
 
         .blob-1 {
@@ -185,7 +198,7 @@
             left: -10%;
             width: 500px;
             height: 500px;
-            background: rgba(8, 145, 178, 0.15);
+            background: rgba(8, 145, 178, 0.12);
         }
 
         .blob-2 {
@@ -193,7 +206,7 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: rgba(6, 182, 212, 0.15);
+            background: rgba(6, 182, 212, 0.12);
             animation-delay: -5s;
         }
 
@@ -202,15 +215,25 @@
             left: 30%;
             width: 300px;
             height: 300px;
-            background: rgba(124, 58, 237, 0.15);
+            background: rgba(124, 58, 237, 0.08);
             animation-delay: -10s;
+        }
+
+        @media (max-width: 768px) {
+            .blob {
+                filter: blur(60px);
+                opacity: 0.2;
+            }
+            .blob-1 { width: 300px; height: 300px; }
+            .blob-2 { width: 250px; height: 250px; }
+            .blob-3 { width: 200px; height: 200px; }
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(30px, 50px); }
         }
-		/* =========================================
+       /* =========================================
            FAQ SECTION
            ========================================= */
         #faq {
@@ -233,12 +256,12 @@
 
         .faq-item.active {
             border-color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.15);
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.12);
         }
 
         .faq-question {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(6, 182, 212, 0.05));
-            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.03), rgba(6, 182, 212, 0.02));
+            padding: 1.75rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -247,7 +270,7 @@
         }
 
         .faq-item.active .faq-question {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(6, 182, 212, 0.1));
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.06), rgba(6, 182, 212, 0.04));
         }
 
         .faq-question h3 {
@@ -265,10 +288,11 @@
 
         .faq-item.active .faq-toggle {
             transform: rotate(45deg);
+            color: var(--primary-color);
         }
 
         .faq-answer {
-            padding: 0 1.5rem;
+            padding: 0 1.75rem;
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -277,8 +301,8 @@
         }
 
         .faq-item.active .faq-answer {
-            padding: 1.5rem;
-            max-height: 500px;
+            padding: 1.5rem 1.75rem;
+            max-height: 600px;
         }
         
         .reveal {
@@ -435,6 +459,37 @@
             text-align: left;
             position: relative;
         }
+		/* Founder section */
+        .founder-card {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+		.expertise-tag {
+            background: #f0f9ff;
+            color: #0891b2;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
         
         /* Underline effect */
         .intsphere-universal::after {
@@ -542,23 +597,14 @@
 
         /* Hero */
         .hero {
-    padding-top: 9rem;
-    padding-bottom: 100px;
-    background: linear-gradient(135deg, #2d4563, #23354a);
-    background-size: 200% 200%; /* ↓ from 400% */
-    animation: gradientBG 20s ease infinite; /* slower = less jitter */
-    color: white;
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    margin-bottom: -50px;
-    will-change: background-position; /* improves mobile performance */
-}
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding-top: 9rem;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #2d4563 0%, #23354a 50%, #1a2d42 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
         }
 
         .hero::after {
@@ -569,6 +615,19 @@
             background-size: 50px 50px;
             z-index: 1;
             pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 7rem;
+                padding-bottom: 50px;
+                clip-path: none;
+            }
+
+            .hero::after {
+                opacity: 0;
+            }
         }
         .hero-content {
             text-align: center;
@@ -669,6 +728,45 @@
 			padding-bottom: 1rem;
         }
 
+        /* =========================================
+           SECTION-SPECIFIC BACKGROUNDS
+           ========================================= */
+        #features {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #consulting {
+            background: var(--section-white);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #services {
+            background: var(--section-light);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #ai-solutions {
+            background: var(--section-light);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #faq {
+            background: var(--section-light);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* =========================================
+           ALTERNATIVE SECTION BACKGROUND (For future use)
+           ========================================= */
+        .section-accent {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(6, 182, 212, 0.03) 100%);
+        }
+
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -697,13 +795,13 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.6);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -721,10 +819,10 @@
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px -10px rgba(8, 145, 178, 0.25);
             background: #ffffff;
-            border-color: rgba(37, 99, 235, 0.2);
+            border-color: rgba(8, 145, 178, 0.3);
         }
 
         .card:hover::before {
@@ -738,13 +836,13 @@
             border-radius: 14px;
             background: #eff6ff;
             color: var(--primary-blue);
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card:hover .card-icon {
-            background: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), #2563eb);
             color: white;
-            transform: rotate(10deg) scale(1.1);
+            transform: rotate(8deg) scale(1.15);
         }
 
         .card-icon svg {
@@ -786,32 +884,39 @@
         
         .service-card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 1.75rem;
+            border-radius: 14px;
             display: flex;
-            gap: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            gap: 1.25rem;
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.08);
             border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: 0.3s;
+            transition: all 0.3s ease;
             height: 100%;
         }
 
         .service-card:hover {
-            border-color: var(--primary-blue);
-            transform: translateX(10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
+            transform: translateX(8px) translateY(-4px);
+            box-shadow: 0 12px 25px rgba(8, 145, 178, 0.15);
         }
 
         .service-icon {
             color: var(--primary-blue);
-            background: #f3e8ff;
-            width: 40px;
-            height: 40px;
+            background: linear-gradient(135deg, #f0f4ff, #eff6ff);
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 12px;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            transform: scale(1.1);
         }
 
         .contact-info {
@@ -869,11 +974,12 @@
         }
 
         footer {
-            background: #0f172a; /* Dark Slate */
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
             color: #94a3b8;
-            padding: 2rem 0 2rem;
+            padding: 3rem 0 2rem;
             position: relative;
             z-index: 2;
+            border-top: 1px solid rgba(8, 145, 178, 0.1);
         }
 
         .footer-content {
@@ -897,7 +1003,7 @@
             display: block;
             width: 40px;
             height: 3px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             margin-top: 8px;
             border-radius: 2px;
         }
@@ -910,7 +1016,7 @@
         .footer-links a {
             color: #94a3b8;
             font-size: 0.95rem;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
@@ -1067,6 +1173,8 @@
             .footer-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: left; }
             .section-header h2 { font-size: 2rem; }
             .service-card { padding: 1.2rem; align-items: flex-start; }
+			.founder-avatar {display:none;}
+			.founder-card { gap:0rem;}
         }
         
         @media (max-width: 480px) {
@@ -1075,6 +1183,8 @@
             .service-card { flex-direction: column; }
             .service-icon { margin-bottom: 1rem; }
             .modal-content { padding: 1.5rem; width: 95%; margin: 15% auto; }
+			.founder-avatar {display:none;}
+			.founder-card { gap:0rem;}
         }
         
         /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
@@ -1100,7 +1210,7 @@
                 animation-duration: 0.3s !important;
                 transition-duration: 0.2s !important;
             }
-            
+            .founder-avatar {display:none;}
             /* Disable scroll reveal animations on mobile */
             .reveal {
                 animation: none !important;
@@ -1109,6 +1219,37 @@
             }
         }
         
+        /* Enhanced Section Responsive Styles */
+        @media (max-width: 768px) {
+            #features, #consulting, #services, #ai-solutions {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card:hover {
+                transform: translateY(-6px);
+            }
+
+            .service-card:hover {
+                transform: translateX(4px) translateY(-2px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #features, #consulting, #services, #ai-solutions, #faq {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            .stats {
+                margin-top: 1.5rem;
+            }
+        }
+
         /* Accessibility: Respect user's motion preferences */
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -1159,7 +1300,7 @@
 				<a href="#ai-solutions">AI Solutions</a>
                 <a href="#consulting">Professional Services</a>
                 
-				
+				<a href="#founder">Our Team</a>
 				
                 <a href="#contact-us">Contact Us</a>
 				<a href="https://presentation.intsphere.com/"  target="_blank">Platform Overview</a>
@@ -1177,7 +1318,7 @@
 				<a href="#ai-solutions" onclick="toggleMobileMenu()">AI Solutions</a>
                 <a href="#consulting" onclick="toggleMobileMenu()">Professional Services</a>
                 
-				
+				<a href="#founder" onclick="toggleMobileMenu()">Our Team</a>
               
                 <a href="#contact-us" onclick="toggleMobileMenu(); openModal()">Contact Us</a>
 				 <a href="https://presentation.intsphere.com/" class="btn btn-primary" onclick="toggleMobileMenu()" target="_blank">Platform Overview</a>
@@ -1198,7 +1339,7 @@
                 </p>
                 
                  
-                <p class="hero-subtext">Speed up delivery with auto-generated technical designs documents, flow diagrams, Postman collections, test cases, and VBCS code analysis - paired with strategic consulting.</p>
+                <p class="hero-subtext">Speed up delivery with auto-generated technical design documents, flow diagrams, Postman collections, test cases, and VBCS code analysis - paired with strategic consulting.</p>
             
 
             <div class="hero-buttons">
@@ -1230,7 +1371,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
                     </div>
                     <h3>TDD Generation</h3>
-                    <p>Automatic Technical Design Document generation for your integrations, VBCS applications.</p>
+                    <p>Automatic Technical Design Document generation for your integrations and VBCS applications.</p>
                 </div>
                 
                 <div class="card reveal">
@@ -1246,7 +1387,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
                     </div>
                     <h3>Postman Collection Generation</h3>
-                    <p>Automated Postman collection and test cases generation for your integrations at your fingertips for comprehensive API testing.</p>
+                    <p>Automated Postman collection and test case generation for your integrations at your fingertips for comprehensive API testing.</p>
                 </div>
                 
                 <div class="card reveal">
@@ -1310,12 +1451,12 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg>
                     </div>
                     <h3>AI-Based TDD for VBCS</h3>
-                    <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service application using AI. Review VBCS application and get recommendations using AI.</p>
+                    <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service applications using AI. Review VBCS applications and get recommendations using AI.</p>
                 </div>
 
                 <div class="card reveal">
                     <div class="card-icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" ndddheight="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="3"/><path d="m14.5 17.5-2.5-2.5"/></svg>
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="3"/><path d="m14.5 17.5-2.5-2.5"/></svg>
                     </div>
                     <h3>AI-Powered FBDI/HDL Analysis</h3>
                     <p>Analyze failed File-Based Data Import/HCM Data Loader with intelligent assistance to identify root causes and recommendations</p>
@@ -1355,7 +1496,7 @@
     <section id="consulting">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Oracle PaaS Consulting Services</h2>
+                <h2>Oracle Consulting Services</h2>
                
             </div>
             
@@ -1444,7 +1585,7 @@
     <section id="services">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Our Oracle PaaS Implementation Services</h2>
+                <h2>Our Oracle Implementation Services</h2>
                 <p>End-to-end delivery and optimization expertise across the Oracle Cloud Platform ecosystem</p>
             </div>
             
@@ -1500,24 +1641,86 @@
         </div>
     </section>
 
-    
-
-    <section id="social-proof" style="background: #fff; padding-bottom: 2rem !important;">
+    <section id="founder">
         <div class="container">
-            <div class="section-header reveal" style="margin-bottom: 2rem;">
-                <h2>Trusted By Industry Leaders</h2>
-                <p>Begin your Oracle Integration transformation with expert guidance 
-and intelligent automation—powered by our unified command center.</p>
+            <div class="section-header reveal">
+                <h2>Led by Oracle Integration Experts</h2>
+                <p>Meet the minds behind IntSphere</p>
             </div>
             
-            <div class="reveal" style="background: var(--bg-body); padding: 1rem; border-radius: 16px; text-align: center; border: 1px dashed #cbd5e1;">
-               
-                <p style=" color: #64748b;">Ready to add your organization? <a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a></p>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="card reveal founder-card">
+                    <div>
+                        <div class="founder-avatar">KS</div>
+                    </div>
+                    <div>
+                        <h3>Kunal Sonje</h3>
+                        <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">Founder & Consultant</p>
+                        <p>
+                           An <strong>Integration Veteran</strong> with 15+ years in enterprise tech, Kunal has navigated the journey from SOA/OSB to OIC, specializing in the cloud platform since 2016.
+<br>
+                            Backed by a <strong>Master’s in Data Science</strong>, he applies analytical rigor to integration. This expertise powers IntSphere's standout capabilities-such as AI-based TDD, Smart Error Insights, and Multi-LLM analysis-transforming standard connectivity into intelligent, productivity-driven automation.
+                        </p>
+                        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                            <span class="expertise-tag">Oracle Integration Cloud</span>
+                            <span class="expertise-tag">VBCS Development</span>
+                            <span class="expertise-tag">Process Automation</span>
+                            <span class="expertise-tag">Fusion Technical</span>
+							<span class="expertise-tag">SOA/OSB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal" style="text-align: center; margin-top: 2rem;">
+                    <p style="color: var(--text-color);">"We founded IntSphere to bridge the gap between potential and productivity. Recognizing that valuable engineering talent is often lost to manual redundancy, our mission is to reclaim those hours for high-impact strategic work. We operate on a strict philosophy: <strong>if a process can be automated, it must be</strong>. By streamlining Oracle Integration Cloud operations, we ensure your team focuses on innovation while our platform handles the execution."</p>
+                    <p style="font-weight: 600; color: var(--heading-color); margin-top: 1rem;">- Kunal Sonje</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
+<section id="social-proof" style="background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%); padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Why Organizations Choose IntSphere</h2>
+                <p>While we're building our client portfolio, here's what sets us apart</p>
+            </div>
+            
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Founder-Led Expertise</h3>
+                    <p>With over a decade of hands-on experience implementing enterprise-scale Integration solutions, IntSphere delivers sophisticated integrations backed by proven expertise and real-world problem-solving.</p>
+                </div>
+                
+                <div class="card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    </div>
+                    <h3>Product + Services Bundle</h3>
+                    <p>Unique combination of automation tools and expert consulting. Get the platform and the expertise to use it effectively.</p>
+                </div>
+                
+                <div class="card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>Accelerated Success Program</h3>
+                    <p>Early adopters achieve faster time-to-value. Priority access to new features, direct collaboration with our product team to customize the roadmap for your environment, and founding customer pricing that ensures superior ROI on your integration platform investment.</p>
+                </div>
+            </div>
+            
+            <div class="reveal" style="text-align: center; margin-top: 3rem;">
+                <p style="color: #64748b; font-size: 1.1rem;">
+                    <strong>Become our next success story</strong> 
+                </p>
+                <button class="btn btn-primary" onclick="openModal()" style="margin-top: 1rem;">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" style="background: #f8fafc; padding-top: 2rem !important;">
         <div class="container">
             <div class="section-header reveal">
@@ -1543,7 +1746,7 @@ and intelligent automation—powered by our unified command center.</p>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                          IntSphere is ideal for organizations using Oracle Integration Cloud (OIC) who want to streamline their integration operations, improve deployment efficiency, and reduce operational overhead. It's perfect for enterprises of any size managing complex integration landscapes.IntSphere can be customized as per your organization need.
+                          IntSphere is ideal for organizations using Oracle Integration Cloud (OIC) who want to streamline their integration operations, improve deployment efficiency, and reduce operational overhead. It's perfect for enterprises of any size managing complex integration landscapes. IntSphere can be customized as per your organization's needs.
                     </div>
                 </div>
 				
@@ -1554,17 +1757,17 @@ and intelligent automation—powered by our unified command center.</p>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                       We offer OIC development, VBCS development, Process Automation,Oracle Fusion Consulting,PaaS4SaaS extensions development, Oracle CPQ implementation, IDCS, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
+                       We offer OIC development, VBCS development, Process Automation, Oracle Fusion Consulting, PaaS4SaaS extensions development, Oracle CPQ implementation, IDCS, and comprehensive support & maintenance. Each service is tailored to meet your specific business needs.
                     </div>
                 </div>
 				
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How does your automation reduce manual effort by 80%?</h3>
+                        <h3>How does your automation reduce manual effort?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Our platform automatically generates technical designs, flow diagrams, postman collections, test cases, and VBCS code analysis. This eliminates weeks of manual documentation and testing work, freeing your team to focus on strategy and optimization instead of repetitive tasks.
+                        Our platform automatically generates technical design documents, flow diagrams, Postman collections, test cases, and VBCS code analysis. This eliminates weeks of manual documentation and testing work, freeing your team to focus on strategy and optimization instead of repetitive tasks.
                     </div>
                 </div>
 
@@ -1577,10 +1780,6 @@ and intelligent automation—powered by our unified command center.</p>
                         Yes! We specialize in migrations including SOA/OSB to OIC transitions, OIC Gen2 to Gen3 upgrades, and PCS to OPA modernization. Our expert team handles planning, execution, and modernization strategy throughout the journey.
                     </div>
                 </div>
-
-                
-
-                
 
                 <div class="faq-item">
                     <div class="faq-question">
@@ -1617,12 +1816,13 @@ and intelligent automation—powered by our unified command center.</p>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                       Getting started is simple! Click the "Begin Your Transformation" button or "Get In Touch" link to schedule a call with our team. <a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a></p></div>
+                       Getting started is simple! Click the "Begin Your Transformation" button or "Get In Touch" link to schedule a call with our team. <a href="javascript:void(0)" onclick="openModal()" style="color: var(--primary-blue); font-weight: 600;">Get in touch</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-	<section id="contact" style="background: #fff; padding-bottom: 2rem !important;">
+	<section id="contact" style="padding-bottom: 2rem !important;">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Get In Touch</h2>
@@ -1692,7 +1892,7 @@ and intelligent automation—powered by our unified command center.</p>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                         <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
+                          <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
                         <li> <i class="fas fa-phone"></i><a href="tel:+918149434549">+91 8149434549</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
                     </ul>
@@ -1705,7 +1905,7 @@ and intelligent automation—powered by our unified command center.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
@@ -1832,31 +2032,29 @@ and intelligent automation—powered by our unified command center.</p>
             });
         }
 		
+        // UPDATED: Smooth FAQ Accordion Logic
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
                 const faqItem = this.parentElement;
-                const answer = faqItem.querySelector('.faq-answer');
-                const toggle = this.querySelector('.faq-toggle');
                 
+                // Close all other items first
                 document.querySelectorAll('.faq-item').forEach(item => {
                     if (item !== faqItem) {
                         item.classList.remove('active');
-                        item.querySelector('.faq-answer').style.display = 'none';
-                        item.querySelector('.faq-toggle').textContent = '+';
                     }
                 });
                 
+                // Toggle the clicked item
                 faqItem.classList.toggle('active');
-                if (answer.style.display === 'none' || !answer.style.display) {
-                    answer.style.display = 'block';
-                      toggle.textContent = '−';
-                } else {
-                    answer.style.display = 'none';
-                    toggle.textContent = '+';
-                }
+                
+                // Update the +/- indicator
+                const toggle = this.querySelector('.faq-toggle');
+                toggle.textContent = faqItem.classList.contains('active') ? '−' : '+';
+                
+                // Reset other toggles
+                document.querySelectorAll('.faq-item:not(.active) .faq-toggle').forEach(t => t.textContent = '+');
             });
         });
     </script>
-
 </body>
 </html>
