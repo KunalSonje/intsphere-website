@@ -603,8 +603,9 @@
             color: white;
             position: relative;
             overflow: hidden;
-            
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             margin-bottom: -50px;
+			z-index: 2;
         }
 
         .hero::after {
@@ -732,34 +733,34 @@
            SECTION-SPECIFIC BACKGROUNDS
            ========================================= */
         #features {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         #consulting {
-            background: var(--section-white);
+            background: var(--section-light);
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
 
         #services {
-            background: var(--section-light);
+            background: var(--section-white);
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
 
         #ai-solutions {
-            background: var(--section-light);
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            background: var(--section-white);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         #faq {
-            background: var(--section-light);
+           
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
-
+		
         /* =========================================
            ALTERNATIVE SECTION BACKGROUND (For future use)
            ========================================= */
@@ -1686,7 +1687,7 @@
         </div>
     </section>
 
-<section id="social-proof" style="background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%); padding: 4rem 0;">
+<section id="social-proof" style="background: var(--section-white); padding: 2rem 0;">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Why Organizations Choose IntSphere</h2>
@@ -1756,7 +1757,7 @@
         </div>
     </section>
 
-    <section id="faq" style="background: #f8fafc; padding-top: 2rem !important;">
+    <section id="faq" style="padding-top: 2rem !important;">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Frequently Asked Questions</h2>
@@ -1857,7 +1858,7 @@
             </div>
         </div>
     </section>
-	<section id="contact" style="padding-bottom: 2rem !important;">
+	<section id="contact" style="padding-bottom: 2rem !important;background: var(--section-white);">
         <div class="container">
             <div class="section-header reveal">
                 <h2>Get In Touch</h2>
