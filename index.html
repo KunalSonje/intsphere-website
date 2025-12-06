@@ -745,7 +745,7 @@
 
         #services {
             background: var(--section-white);
-            padding-top: 4rem;
+            padding-top: 2rem;
             padding-bottom: 4rem;
         }
 
@@ -798,9 +798,24 @@
         .card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
             border: 2px solid rgba(8, 145, 178, 0.3);
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+		
+		.founder-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.9);
             box-shadow: 0 4px 20px rgba(8, 145, 178, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -830,14 +845,21 @@
             opacity: 1;
         }
 
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
         .card-icon {
             display: inline-flex;
-            margin-bottom: 1.5rem;
-            padding: 15px;
-            border-radius: 14px;
+            padding: 12px;
+            border-radius: 12px;
             background: #eff6ff;
             color: var(--primary-blue);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
         }
 
         .card:hover .card-icon {
@@ -847,8 +869,85 @@
         }
 
         .card-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--heading-color);
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive - Ensure icon and header stay on one line */
+        @media (max-width: 768px) {
+            .card {
+                padding: 1.75rem;
+            }
+
+            .card-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-icon {
+                padding: 10px;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .card-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .card h3 {
+				margin:0.5rem;
+                font-size: 1rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+
+            .service-card {
+                padding: 1.75rem;
+            }
+
+            .service-card-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-icon {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                min-height: 40px;
+            }
+
+            .service-card h4 {
+                font-size: 1rem;
+            }
+
+            .service-card p {
+                font-size: 0.9rem;
+            }
         }
 
         /* --- UPDATED CONSULTING CTA CARD STYLES --- */
@@ -886,10 +985,10 @@
         
         .service-card {
             background: white;
-            padding: 1.75rem;
+            padding: 2rem;
             border-radius: 14px;
             display: flex;
-            gap: 1.25rem;
+            flex-direction: column;
             box-shadow: 0 4px 15px rgba(8, 145, 178, 0.08);
             border: 1.5px solid rgba(8, 145, 178, 0.25);
             transition: all 0.3s ease;
@@ -898,9 +997,16 @@
 
         .service-card:hover {
             border-color: var(--primary-color);
-            transform: translateX(8px) translateY(-4px);
+            transform: translateY(-8px);
             box-shadow: 0 12px 25px rgba(8, 145, 178, 0.15);
             background: white;
+        }
+
+        .service-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
         }
 
         .service-icon {
@@ -920,6 +1026,23 @@
             background: linear-gradient(135deg, #2563eb, #1e40af);
             color: white;
             transform: scale(1.1);
+        }
+
+        .service-card h4 {
+           
+            font-size: 1.1rem;
+            color: var(--heading-color);
+        }
+
+        .service-card-content {
+            flex: 1;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .contact-info {
@@ -1364,69 +1487,81 @@
            
             
             <div class="card-grid reveal">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22v-5"></path>
-                            <path d="M9 8V2"></path>
-                            <path d="M15 8V2"></path>
-                            <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path>
-                        </svg>
-                    </div>
-                    <div>
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22v-5"></path>
+                                <path d="M9 8V2"></path>
+                                <path d="M15 8V2"></path>
+                                <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path>
+                            </svg>
+                        </div>
                         <h4>Oracle Integration Cloud (OIC)</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>Cloud-based integration platform for connecting applications, data, and services across on-premises and cloud environments. Enables rapid development of integrations, APIs, and automated business processes using a visual, low-code approach.</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
-                    </div>
-                    <div>
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-6.88 2.77V2H2v7h7V6H5.67A7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 7.33 6H22a10 10 0 0 0-10-8.5Z"/><path d="M12 22a10 10 0 0 0 6.88-2.77V22h3.12v-7h-7v3h3.33A7.5 7.5 0 0 1 12 19.5a7.5 7.5 0 0 1-7.33-6H2a10 10 0 0 0 10 8.5Z"/></svg>
+                        </div>
                         <h4>Visual Builder Cloud Service (VBCS)</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation. Accelerate digital transformation with minimal coding required.</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
-                    </div>
-                    <div>
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
+                        </div>
                         <h4>Oracle Process Automation (OPA)</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>End-to-end business process automation solutions to streamline operations, reduce manual work, and improve efficiency across your organization.</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
-                    </div>
-                    <div>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
+                        </div>
                         <h4>Oracle Fusion Applications</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>Technical implementation, customization, and extension of Oracle Fusion Applications with custom developments (PaaS for SaaS) to meet your unique business requirements.</p>
                     </div>
                 </div>
                 
-                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                    </div>
-                    <div>
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        </div>
                         <h4>Oracle CPQ</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>Intelligent Configure-Price-Quote solutions that streamline quoting, accelerate sales cycles, and maximize revenue efficiency with dynamic pricing and product configuration.</p>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <path d="m9 12 2 2 4-4"></path>
-                        </svg>
-                    </div>
-                    <div>
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
                         <h4>Oracle Identity Cloud Service (IDCS)</h4>
+                    </div>
+                    <div class="service-card-content">
                         <p>Cloud-native identity and access management platform. Provides Single Sign-On (SSO), multifactor authentication, and user lifecycle management to secure applications across hybrid cloud environments.</p>
                     </div>
                 </div>
@@ -1443,52 +1578,76 @@
             </div>
             
             <div class="card-grid">
-                <div class="card reveal">
-                    <div class="card-icon">
+                 <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
                     </div>
-                    <h3>Architecture & Design</h3>
-                    <p>Enterprise-grade architecture design and solution blueprints for Oracle PaaS implementations aligned with your business and technical requirements.</p>
+                        <h3>Architecture & Design</h3>
+                    </div>
+                   <div class="card-content">
+                        <p>Enterprise-grade architecture design and solution blueprints for Oracle PaaS implementations aligned with your business and technical requirements.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="12" x="2" y="6" rx="1"/><path d="M13 8.32a7.43 7.43 0 0 1 0 7.36"/><path d="M16.46 6.21a11.76 11.76 0 0 1 0 11.58"/><path d="M19.91 4.1a15.91 15.91 0 0 1 .01 15.8"/></svg>
                     </div>
-                    <h3>Implementation & Deployment</h3>
-                    <p>Full-cycle implementation services including configuration, development, testing, and go-live support for all Oracle PaaS solutions.</p>
+                        <h3>Implementation & Deployment</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Full-cycle implementation services including configuration, development, testing, and go-live support for all Oracle PaaS solutions.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                     </div>
-                    <h3>Integration Services</h3>
-                    <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring, management, and best-practice patterns.</p>
+                        <h3>Integration Services</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring, management, and best-practice patterns.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.4-1.4l5.66 5.65a1 1 0 0 1 0 1.4l-5.66 5.66a1 1 0 0 1-1.4-1.41L13.69 13H2.05A10 10 0 1 0 12 2Z"/></svg>
                     </div>
-                    <h3>Migration & Modernization</h3>
-                     <p>Strategic migration of applications and data to Oracle Cloud with minimal downtime. We specialize in SOA/OSB to OIC, OIC Gen2 to Gen3, and PCS to OPA migrations with comprehensive modernization planning.</p>
+                        <h3>Migration & Modernization</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Strategic migration of applications and data to Oracle Cloud with minimal downtime. We specialize in SOA/OSB to OIC, OIC Gen2 to Gen3, and PCS to OPA migrations with comprehensive modernization planning.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
-                    <h3>Security, Compliance & Optimization</h3>
-                    <p>Comprehensive security hardening, compliance management, performance optimization, and ongoing operational excellence for your Oracle Cloud environment.</p>
+                        <h3>Security, Compliance & Optimization</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Comprehensive security hardening, compliance management, performance optimization, and ongoing operational excellence for your Oracle Cloud environment.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
                     </div>
-                    <h3>Support, Training & Managed Services</h3>
-                    <p>Ongoing technical support, knowledge transfer, training programs, and managed services to ensure continuous system health and user adoption.</p>
+                        <h3>Support, Training & Managed Services</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Ongoing technical support, knowledge transfer, training programs, and managed services to ensure continuous system health and user adoption.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1502,75 +1661,111 @@
             
             <div class="card-grid">
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
                     </div>
-                    <h3>One-Click Deployment</h3>
-                    <p>Deploy integrations instantly with automated processes and reduce manual deployment errors.</p>
+                        <h3>One-Click Deployment</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Deploy integrations instantly with automated processes and reduce manual deployment errors.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
                     </div>
-                    <h3>TDD Generation</h3>
-                    <p>Automatic Technical Design Document generation for your integrations and VBCS applications.</p>
+                        <h3>TDD Generation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Automatic Technical Design Document generation for your integrations and VBCS applications.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
                     </div>
-                    <h3>Flow Diagram Generation</h3>
-                    <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
+                        <h3>Flow Diagram Generation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>
                     </div>
-                    <h3>Postman Collection Generation</h3>
-                    <p>Automated Postman collection and test case generation for your integrations at your fingertips for comprehensive API testing.</p>
+                        <h3>Postman Collection Generation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Automated Postman collection and test case generation for your integrations at your fingertips for comprehensive API testing.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
                     </div>
-                    <h3>Real-Time Monitoring</h3>
-                    <p>Track environment health, integrations and BIP reports performance with comprehensive dashboards.</p>
+                        <h3>Real-Time Monitoring</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Track environment health, integrations and BIP reports performance with comprehensive dashboards.</p>
+                    </div>
                 </div>
                 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h3>Team Collaboration</h3>
-                    <p>Streamline team workflows with assignment, notification features.</p>
+                        <h3>Team Collaboration</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Streamline team workflows with assignment, notification features.</p>
+                    </div>
                 </div>
 				
 				<div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                     </div>
-                    <h3>Fusion User Role Comparison</h3>
-                    <p>Compare user roles and access permissions across same and different environments seamlessly. Identify discrepancies and ensure role consistency</p>
+                        <h3>Fusion User Role Comparison</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Compare user roles and access permissions across same and different environments seamlessly. Identify discrepancies and ensure role consistency</p>
+                    </div>
                 </div>
 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>
                     </div>
-                    <h3>ESS Job & BIP Reports Intelligence</h3>
-                    <p>Track Enterprise Scheduling Service job execution history and Business Intelligence Publisher report runs with predictive insights and analytics</p>
+                        <h3>ESS Job & BIP Reports Intelligence</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Track Enterprise Scheduling Service job execution history and Business Intelligence Publisher report runs with predictive insights and analytics</p>
+                    </div>
                 </div>
 				
 				<div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>
                     </div>
-                    <h3>Historical Trends</h3>
-                    <p>Track error patterns over time to identify recurring issues and optimize system performance</p>
+                        <h3>Historical Trends</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Track error patterns over time to identify recurring issues and optimize system performance</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1590,45 +1785,65 @@
 
             <div class="card-grid">
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8" y2="16" /><line x1="16" y1="16" x2="16" y2="16" /></svg>
                     </div>
-                    <h3>AI-Based TDD for VBCS</h3>
-                    <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service applications using AI. Review VBCS applications and get recommendations using AI.</p>
+                        <h3>AI-Based TDD for VBCS</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service applications using AI. Review VBCS applications and get recommendations using AI.</p>
+                    </div>
                 </div>
 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="3"/><path d="m14.5 17.5-2.5-2.5"/></svg>
                     </div>
-                    <h3>AI-Powered FBDI/HDL Analysis</h3>
-                    <p>Analyze failed File-Based Data Import/HCM Data Loader with intelligent assistance to identify root causes and recommendations</p>
+                        <h3>AI-Powered FBDI/HDL Analysis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Analyze failed File-Based Data Import/HCM Data Loader with intelligent assistance to identify root causes and recommendations</p>
+                    </div>
                 </div>
 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M3 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M17 9a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M7 9h1"/><path d="M16 9h1"/></svg>
                     </div>
-                    <h3>Multi LLM-AI Analysis</h3>
-                    <p>Compare error analysis responses from different LLM models side-by-side for deeper insights and more informed decision-making</p>
+                        <h3>Multi LLM-AI Analysis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Compare error analysis responses from different LLM models side-by-side for deeper insights and more informed decision-making</p>
+                    </div>
                 </div>
 
                 
 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
                     </div>
-                    <h3>Error Analysis & Insights</h3>
-                    <p>Automated error root cause identification and recommendations powered by multi LLM analysis</p>
+                        <h3>Error Analysis & Insights</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Automated error root cause identification and recommendations powered by multi LLM analysis</p>
+                    </div>
                 </div>
 
                 <div class="card reveal">
-                    <div class="card-icon">
+                    <div class="card-header">
+                        <div class="card-icon">
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>
                     </div>
-                    <h3>Error Categorization</h3>
-                    <p>Intelligent classification of errors by type and severity for better prioritization and management</p>
+                        <h3>Error Categorization</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Intelligent classification of errors by type and severity for better prioritization and management</p>
+                    </div>
                 </div>
 
                 
@@ -1646,7 +1861,7 @@
             </div>
             
             <div style="max-width: 800px; margin: 0 auto;">
-                <div class="card reveal founder-card">
+                <div class="founder-card reveal founder-card">
                     <div>
                         <div class="founder-avatar">KS</div>
                     </div>
@@ -1691,54 +1906,78 @@
             <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h3>Deep Expertise</h3>
                     </div>
-                    <h3>Deep Expertise</h3>
-                    <p>With over a decade of hands-on experience implementing enterprise-scale Integration solutions, IntSphere delivers sophisticated integrations backed by proven expertise.</p>
+                    <div class="card-content">
+                        <p>With over a decade of hands-on experience implementing enterprise-scale Integration solutions, IntSphere delivers sophisticated integrations backed by proven expertise.</p>
+                    </div>
                 </div>
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                        </div>
+                        <h3>Proprietary Platform</h3>
                     </div>
-                    <h3>Proprietary Platform</h3>
-                    <p>Unique combination of automation tools and expert consulting. Get the platform and the expertise to use it effectively.</p>
+                    <div class="card-content">
+                        <p>Unique combination of automation tools and expert consulting. Get the platform and the expertise to use it effectively.</p>
+                    </div>
                 </div>
 
                
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                        </div>
+                        <h3>Customized Solutions</h3>
                     </div>
-                    <h3>Customized Solutions</h3>
-                    <p>Solutions aligned with your unique business objectives and requirements.</p>
+                    <div class="card-content">
+                        <p>Solutions aligned with your unique business objectives and requirements.</p>
+                    </div>
                 </div>
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
+                        <h3>Proven Track Record</h3>
                     </div>
-                    <h3>Proven Track Record</h3>
-                    <p>History of successful Oracle Cloud transformations and satisfied clients.</p>
+                    <div class="card-content">
+                        <p>History of successful Oracle Cloud transformations and satisfied clients.</p>
+                    </div>
                 </div>
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <h3>Knowledge Transfer</h3>
                     </div>
-                    <h3>Knowledge Transfer</h3>
-                    <p>We believe in client empowerment ensuring your team is ready for long-term success.</p>
+                    <div class="card-content">
+                        <p>We believe in client empowerment ensuring your team is ready for long-term success.</p>
+                    </div>
                 </div>
 
-                <div class="card reveal" style="text-align: center;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Partnership Approach</h3>
                     </div>
-                    <h3>Partnership Approach</h3>
-                    <p>A strategic relationship focused on delivering long-term value, not just quick fixes.</p>
+                    <div class="card-content">
+                        <p>A strategic relationship focused on delivering long-term value, not just quick fixes.</p>
+                    </div>
                 </div>
             </div>
             
@@ -1950,91 +2189,79 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Ensure all DOM elements are loaded before running scripts
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM Content Loaded - Initializing scripts');
-            
-            // Mobile Menu Toggle
-            function toggleMobileMenu() {
-                console.log('Toggle mobile menu called');
-                const mobileMenu = document.getElementById('mobileMenu');
-                if (mobileMenu) {
-                    mobileMenu.classList.toggle('active');
+     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
-            }
-            
-            // Make toggleMobileMenu globally available
-            window.toggleMobileMenu = toggleMobileMenu;
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        // Close mobile menu if open
-                        const mobileMenu = document.getElementById('mobileMenu');
-                        if (mobileMenu) {
-                            mobileMenu.classList.remove('active');
-                        }
+            });
+        });
+        
+        
+        // Optimized Intersection Observer: Skip on mobile for better performance
+        const shouldObserve = window.innerWidth > 768 && 
+                            !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (shouldObserve) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
             });
-            
-            // Optimized Intersection Observer: Skip on mobile for better performance
-            const shouldObserve = window.innerWidth > 768 && 
-                                !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            if (shouldObserve) {
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '50px'
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('.reveal').forEach(el => {
-                    observer.observe(el);
-                });
-            } else {
-                // On mobile or with reduced motion: add active class immediately
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.classList.add('active');
-                });
-            }
-        });
+        } else {
+            // On mobile or with reduced motion: add active class immediately
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('active');
+            });
+        }
     </script>
-
+    
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Get In Touch</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="company" placeholder="Company Name">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
     <script>
-        // Modal functions - Global scope
         function openModal() {
-            console.log('Opening modal');
-            const modal = document.getElementById('contactModal');
-            if (modal) {
-                modal.style.display = 'block';
-            }
+            document.getElementById('contactModal').style.display = 'block';
         }
         
         function closeModal() {
-            console.log('Closing modal');
-            const modal = document.getElementById('contactModal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
+            document.getElementById('contactModal').style.display = 'none';
         }
         
-        // Modal close on outside click
         window.onclick = function(event) {
             const modal = document.getElementById('contactModal');
             if (event.target === modal) {
@@ -2046,74 +2273,70 @@
             const notification = document.getElementById('topNotification');
             const notificationText = document.getElementById('notificationText');
             
-            if (notification && notificationText) {
-                notificationText.textContent = message;
-                notification.style.display = 'block';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 4000);
-            }
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 4000);
         }
         
-        // Contact Form Handler
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.querySelector('#contactModal form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                    
-                    fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        body: new FormData(this)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            closeModal();
-                            showNotification('✓ Mail Sent Successfully');
-                            contactForm.reset();
-                        } else {
-                            showNotification('⚠ Error sending mail. Please try again.');
-                        }
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
+        const contactForm = document.querySelector('#contactModal form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: new FormData(this)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        closeModal();
+                        showNotification('✓ Mail Sent Successfully');
+                        contactForm.reset();
+                    } else {
                         showNotification('⚠ Error sending mail. Please try again.');
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    });
+                    }
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('⚠ Error sending mail. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 });
-            }
-            
-            // FAQ Accordion
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', function() {
-                    const faqItem = this.parentElement;
-                    
-                    // Close all other items first
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== faqItem) {
-                            item.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle the clicked item
-                    faqItem.classList.toggle('active');
-                    
-                    // Update the +/- indicator
-                    const indicator = faqItem.querySelector('.faq-toggle');
-                    if (indicator) {
-                        indicator.textContent = faqItem.classList.contains('active') ? '−' : '+';
+            });
+        }
+		
+        // UPDATED: Smooth FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                
+                // Close all other items first
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
                     }
                 });
+                
+                // Toggle the clicked item
+                faqItem.classList.toggle('active');
+                
+                // Update the +/- indicator
+                const toggle = this.querySelector('.faq-toggle');
+                toggle.textContent = faqItem.classList.contains('active') ? '−' : '+';
+                
+                // Reset other toggles
+                document.querySelectorAll('.faq-item:not(.active) .faq-toggle').forEach(t => t.textContent = '+');
             });
         });
     </script>
