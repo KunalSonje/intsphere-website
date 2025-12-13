@@ -621,13 +621,13 @@
         /* Hero */
         .hero {
             padding-top: 8rem;
-            padding-bottom: 120px;
+            
             background: linear-gradient(135deg, #2d4563 0%, #23354a 50%, #1a2d42 100%);
             color: white;
             position: relative;
             overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: -50px;
+            
+            
 			z-index: 2;
         }
 
@@ -723,6 +723,7 @@
             backdrop-filter: blur(10px);
             object-fit: cover; /* Crucial: Ensures image covers area without distortion */
             object-position: center;
+			padding: 10px;
         }
 
         /* Mobile adjustments for Hero */
@@ -868,14 +869,14 @@
 
         #consulting {
             background: var(--section-light);
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         #services {
             background: var(--section-white);
             padding-top: 2rem;
-            padding-bottom: 4rem;
+            padding-bottom: 2rem;
         }
 
         #ai-solutions {
@@ -927,7 +928,7 @@
         
         .features-img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             border-radius: 20px;
             filter: drop-shadow(0 20px 40px rgba(8, 145, 178, 0.2));
@@ -2111,7 +2112,7 @@
                 
                 <!-- Image Right -->
                 <div class="features-image-wrapper reveal">
-                    <img src="automation.png" alt="IntSphere Automation Features" class="features-img"
+                    <img src="automation.jpg" alt="IntSphere Automation Features" class="features-img"
                          onerror="this.src='https://via.placeholder.com/400x800.png?text=Platform+Features'; this.style.border='2px dashed #ccc'">
                 </div>
             </div>
