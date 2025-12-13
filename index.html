@@ -2569,7 +2569,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                           <li><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#bcd7c9d2ddd0fcd5d2c8cfccd4d9ced992dfd3d1"><span class="__cf_email__" data-cfemail="056e706b6469456c6b7176756d6077602b666a68">[email&#160;protected]</span></a></li>
+                          <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
                         <li> <i class="fas fa-phone"></i><a href="tel:+918149434549">+91 8149434549</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
                     </ul>
@@ -2741,4 +2741,12 @@
                 
                 // Update the +/- indicator
                 const toggle = this.querySelector('.faq-toggle');
-                toggle.textContent = faqItem.classList.contains('active') 
+                toggle.textContent = faqItem.classList.contains('active') ? '−' : '+';
+                
+                // Reset other toggles
+                document.querySelectorAll('.faq-item:not(.active) .faq-toggle').forEach(t => t.textContent = '+');
+            });
+        });
+    </script>
+</body>
+</html>
