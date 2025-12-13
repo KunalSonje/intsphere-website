@@ -506,6 +506,12 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
+            display: inline-block;
+            max-width: 120px;
+            text-align: center;
+            word-wrap: break-word;
+            word-break: break-word;
+            line-height: 1.3;
         }
         
         /* Underline effect */
@@ -882,7 +888,7 @@
         .ai-layout {
             display: flex;
             align-items: stretch; /* Changed from flex-start to stretch */
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 2rem;
         }
         
@@ -909,7 +915,7 @@
         .features-layout {
             display: flex;
             align-items: stretch;
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 2rem;
         }
         
@@ -1482,7 +1488,7 @@
             .container { padding: 0 1.5rem; }
             header { top: 0; }
             .header-inner { border-radius: 0; border: none; border-bottom: 1px solid #e2e8f0; }
-            .hero { margin-bottom: 0; clip-path: none; padding-top: 10rem;padding-bottom: 40px;background-size: 150% 150%;}
+            .hero { margin-bottom: 0; clip-path: none; padding-top: 8rem;padding-bottom: 40px;background-size: 150% 150%;}
 			.hero::after { background-size: 30px 30px !important; } /* reduces repaint cost */
             .hero h1 { font-size: 2.5rem; }
             .hero p, .hero-subtext { font-size: .95rem; line-height: 1.55; }
@@ -1752,8 +1758,8 @@
             <div class="hero-layout">
                 <div class="hero-content reveal">
                     <h1 style="text-align: center;">
-                        Transform Your
-                        <span>Oracle Integration Cloud</span>
+                        Transform Your<br>
+                        <span style="display: inline-block;">Oracle Integration Cloud</span><br>
                         Experience
                     </h1>
                     
@@ -2209,6 +2215,7 @@
             
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="founder-card reveal founder-card">
+                    <img src="kunalphoto.jpg" alt="Kunal Sonje - Founder" class="founder-img">
                     
                     <div style="text-align: left;">
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
@@ -2474,7 +2481,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                          <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
+                           <li><i class="fas fa-envelope"></i><a href="mailto:kunal@intsphere.com">kunal@intsphere.com</a></li>
                         <li> <i class="fas fa-phone"></i><a href="tel:+918149434549">+91 8149434549</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> <a>Global Services</a> </li>
                     </ul>
@@ -2502,7 +2509,7 @@
         </div>
     </div>
 
-     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
