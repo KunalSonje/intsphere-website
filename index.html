@@ -1076,6 +1076,163 @@
     border: 1px solid rgba(8, 145, 178, 0.1);
         }
 
+        /* ===== CAROUSEL STYLES ===== */
+        .carousel-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 25px auto 0;
+            position: relative;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(8, 145, 178, 0.3);
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.08);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            gap: 1rem;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.02);
+        }
+
+        .carousel-caption {
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(6, 182, 212, 0.05));
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid rgba(8, 145, 178, 0.15);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(8, 145, 178, 0.9);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-size: 20px;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.3);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-prev {
+            left: 15px;
+        }
+
+        .carousel-next {
+            right: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .carousel-prev {
+                left: 10px;
+            }
+
+            .carousel-next {
+                right: 10px;
+            }
+
+            .carousel-slide {
+                padding: 1rem;
+            }
+
+            .carousel-slide img {
+                max-height: 280px;
+            }
+
+            .carousel-caption {
+                font-size: 14px;
+            }
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(8, 145, 178, 0.3);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+            box-shadow: 0 2px 8px rgba(8, 145, 178, 0.4);
+        }
+
+        .carousel-indicator:hover {
+            background: rgba(8, 145, 178, 0.6);
+        }
+
         /* ===== LIGHTBOX STYLES ===== */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -2116,61 +2273,62 @@
                 <h2>See IntSphere in Action</h2>
                 <p>We don't just talk about automation - we've built the platform that makes it happen. Here's what IntSphere looks like when it's transforming your Oracle Integration Cloud operations.</p>
             </div>
-            <div class="image-gallery reveal">
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="dashboard.png" alt="Dashboard Overview">
+            <div class="carousel-container reveal">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <img src="dashboard.png" alt="Dashboard Overview">
+                            <div class="carousel-caption">Dashboard Desktop Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="DailyAnalysis.png" alt="Daily Analysis Overview">
+                            <div class="carousel-caption">Daily Analysis Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="MobileSidebar.png" alt="Mobile Sidebar">
+                            <div class="carousel-caption">Mobile Sidebar Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="MobileMainContainer.png" alt="Mobile Dashboard">
+                            <div class="carousel-caption">Mobile Dashboard View</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="IntegrationsOverView.png" alt="Integrations Overview">
+                            <div class="carousel-caption">Integrations Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="CertificationOverView.png" alt="Certificates Overview">
+                            <div class="carousel-caption">Certificates Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="ScheduledIntegrations.png" alt="Scheduled Integrations">
+                            <div class="carousel-caption">Scheduled Integrations Future Run</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="SchAnalysis.png" alt="Scheduled Integrations Analysis">
+                            <div class="carousel-caption">Scheduled Integrations Overview</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="Agents.png" alt="Agent Analysis">
+                            <div class="carousel-caption">Agents Overview</div>
+                        </div>
                     </div>
-                    <div class="gallery-item-caption">Dashboard Desktop Overview</div>
+                    
+                    <!-- Carousel Controls -->
+                    <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Next slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="DailyAnalysis.png" alt="Daily Analysis Overview">
-                    </div>
-                    <div class="gallery-item-caption">Daily Analysis Overview</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="MobileSidebar.png" alt="Mobile Sidebar">
-                    </div>
-                    <div class="gallery-item-caption">Mobile Sidebar Overview</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="MobileMainContainer.png" alt="Mobile Dashboard">
-                    </div>
-                    <div class="gallery-item-caption">Mobile Dashboard View</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="IntegrationsOverView.png" alt="Integrations Overview">
-                    </div>
-                    <div class="gallery-item-caption">Integrations Overview</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="CertificationOverView.png" alt="Certificates Overview">
-                    </div>
-                    <div class="gallery-item-caption">Certificates Overview</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="ScheduledIntegrations.png" alt="Scheduled Integrations">
-                    </div>
-                    <div class="gallery-item-caption">Scheduled Integrations Future Run</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="SchAnalysis.png" alt="Scheduled Integrations Analysis">
-                    </div>
-                    <div class="gallery-item-caption">Scheduled Integrations Overview</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-image">
-                        <img src="Agents.png" alt="Agent Analysis">
-                    </div>
-                    <div class="gallery-item-caption">Agents Overview</div>
-                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" id="carouselIndicators"></div>
             </div>
         </div>
     </section>
@@ -2894,7 +3052,72 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
         </div>
     </div>
 
-     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ===== CAROUSEL FUNCTIONALITY =====
+        let currentSlide = 0;
+        const carouselTrack = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Create indicators
+        function initIndicators() {
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('carousel-indicator');
+                if (i === 0) indicator.classList.add('active');
+                indicator.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // Update carousel position
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Go to specific slide
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Initialize carousel
+        if (carouselTrack) {
+            initIndicators();
+            updateCarousel();
+        }
+
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
@@ -3076,6 +3299,7 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
                 });
                 
                 // Toggle the clicked item
+                // Toggle the clicked item
                 faqItem.classList.toggle('active');
                 
                 // Update the +/- indicator
@@ -3086,3 +3310,5 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
     </script>
 </body>
 </html>
+                
+             
