@@ -447,6 +447,14 @@
             color: rgba(255,255,255,0.9);
             font-size: 1rem;
         }
+		/* ── NAV DEMO BUTTON ── */
+        nav .btn-nav-demo {
+            padding: 9px 20px !important;
+            font-size: 13.5px !important;
+            border-radius: 8px !important;
+            margin-left: 0.25rem;
+            line-height: 1;
+        }
         /* =========================================
            UPDATED LOGO STYLING - FIX FOR UNDERLINE
            ========================================= */
@@ -2167,6 +2175,119 @@
                 -webkit-align-items: center;
             }
         }
+		/* ── CTA BOOK A DEMO SECTION ── */
+        .section-cta {
+            background: linear-gradient(-45deg, #1a2d42 0%, #2d4563 40%, #0891b2 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none; opacity: 0.5;
+        }
+        .cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            position: relative; z-index: 2;
+        }
+        .cta-content { flex: 1; }
+        .cta-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: none;
+            -webkit-text-fill-color: #ffffff;
+        }
+        .cta-content p {
+            color: rgba(255,255,255,0.82);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+        .cta-points {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .cta-points li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: rgba(255,255,255,0.88);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .cta-points li svg { color: #67e8f9; flex-shrink: 0; }
+        .cta-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        .btn-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 32px;
+            background: #ffffff;
+            color: #1e40af !important;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+            color: #0891b2 !important;
+        }
+        .btn-cta-outline {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            background: transparent;
+            color: #ffffff !important;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-cta-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.7);
+            transform: translateY(-2px);
+        }
+        .cta-reassurance {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0 !important;
+        }
+        @media (max-width: 900px) {
+            .cta-inner { flex-direction: column; text-align: center; }
+            .cta-actions { align-items: center; width: 100%; }
+            .cta-points li { justify-content: center; }
+            .section-cta { padding: 3.5rem 0; }
+        }
     </style>
 </head>
 <body>
@@ -2207,7 +2328,7 @@
 				<a href="#founder">Team</a>
 				<a href="#faq">FAQ</a>
                 <a href="#contact-us">Contact Us</a>
-				
+				<a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary btn-nav-demo">Book a Demo</a>
             </nav>
             
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
@@ -2226,7 +2347,7 @@
 				<a href="#founder" onclick="toggleMobileMenu()">Team</a>
 				<a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
                 <a href="#contact-us" onclick="toggleMobileMenu(); openModal()">Contact Us</a>
-				 
+				 <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary btn-nav-demo">Book a Demo</a>
             </nav>
         </div>
     </header>
@@ -2247,7 +2368,7 @@
                     </p>
                     
                      
-                    
+                    <p class="hero-subtext">Speed up delivery with auto-generated technical design documents, flow diagrams, Postman collections, test cases, and VBCS code analysis - paired with strategic consulting.</p>
                 
     
                     <div class="hero-buttons">
@@ -2740,6 +2861,31 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
                     <strong>Become our next success story</strong> 
                 </p>
                 <button class="btn btn-primary" onclick="openModal()" style="margin-top: 1rem;">Get Started Today</button>
+            </div>
+        </div>
+    </section>
+	<!-- Book a Demo CTA Section -->
+    <section id="book-demo" class="section-cta">
+        <div class="container">
+            <div class="cta-inner reveal">
+                <div class="cta-content">
+                    <h2>See IntSphere in Action — Live</h2>
+                    <p>Book a 30-minute personalised demo and see exactly how IntSphere eliminates manual effort in your Oracle Integration Cloud environment.</p>
+                    <ul class="cta-points">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Live walkthrough of the full platform</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Tailored to your OIC environment</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> No commitment required</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Get answers from Oracle experts directly</li>
+                    </ul>
+                </div>
+                <div class="cta-actions">
+                    <button class="btn-cta-primary" onclick="openModal()">
+                        Book Your Free Demo
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:8px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                    <a href="https://presentation.intsphere.com/" target="_blank" class="btn-cta-outline">View Platform Deck</a>
+                    <p class="cta-reassurance">Typically responds within 24 hours &middot; No spam, ever</p>
+                </div>
             </div>
         </div>
     </section>
