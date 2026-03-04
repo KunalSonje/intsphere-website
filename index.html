@@ -192,7 +192,14 @@
             position: relative;
             z-index: 2;
         }
-
+		/* ── HERO PARTICLE CANVAS ── */
+        #heroCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
         /* Background Blob Animation */
         .bg-blobs {
             position: fixed;
@@ -2219,6 +2226,7 @@
     </header>
 
     <section id="home" class="hero">
+	<canvas id="heroCanvas"></canvas>
         <div class="container">
             <div class="hero-layout">
                 <div class="hero-content reveal">
@@ -3101,7 +3109,7 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
             </div>
             
             <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #64748b; font-size: 0.85rem;">
-                <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
+                <p>&copy; 2026 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
             </div>
         </div>
     </footer>
@@ -3376,6 +3384,88 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
                 toggle.textContent = faqItem.classList.contains('active') ? '−' : '+';
             });
         });
+    </script>
+	<!-- Particle animation for hero -->
+    <script>
+    (function() {
+        var canvas = document.getElementById('heroCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W, H, particles;
+        var COUNT = 88, MAX_D = 148, SPD = 0.42;
+        var mouse = { x: -9999, y: -9999 };
+
+        function rand(a, b) { return Math.random() * (b - a) + a; }
+
+        function resize() {
+            var hero = canvas.parentElement;
+            W = canvas.width  = hero.offsetWidth;
+            H = canvas.height = hero.offsetHeight;
+        }
+
+        function mkParticle() {
+            return { x: rand(0,W), y: rand(0,H),
+                     vx: rand(-SPD,SPD), vy: rand(-SPD,SPD),
+                     r: rand(1.8,3.2), op: rand(0.35,0.72) };
+        }
+
+        function init() { resize(); particles = []; for(var i=0;i<COUNT;i++) particles.push(mkParticle()); }
+
+        function loop() {
+            ctx.clearRect(0,0,W,H);
+
+            /* mouse attract */
+            for (var k=0;k<particles.length;k++){
+                var p=particles[k];
+                var mdx=mouse.x-p.x, mdy=mouse.y-p.y;
+                var md=Math.sqrt(mdx*mdx+mdy*mdy);
+                if(md<130&&md>0){ p.x+=mdx/md*0.28; p.y+=mdy/md*0.28; }
+                p.x+=p.vx; p.y+=p.vy;
+                if(p.x<-12) p.x=W+12; if(p.x>W+12) p.x=-12;
+                if(p.y<-12) p.y=H+12; if(p.y>H+12) p.y=-12;
+            }
+
+            /* lines */
+            for(var i=0;i<particles.length;i++){
+                for(var j=i+1;j<particles.length;j++){
+                    var a=particles[i], b=particles[j];
+                    var dx=a.x-b.x, dy=a.y-b.y;
+                    var dist=Math.sqrt(dx*dx+dy*dy);
+                    if(dist<MAX_D){
+                        var alpha=(1-dist/MAX_D)*0.2;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+                        ctx.strokeStyle='rgba(103,232,249,'+alpha+')';
+                        ctx.lineWidth=0.85; ctx.stroke();
+                    }
+                }
+            }
+
+            /* dots */
+            for(var k=0;k<particles.length;k++){
+                var p=particles[k];
+                ctx.beginPath();
+                ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                ctx.fillStyle='rgba(165,243,252,'+p.op+')';
+                ctx.fill();
+            }
+
+            requestAnimationFrame(loop);
+        }
+
+        var hero = canvas.parentElement;
+        hero.addEventListener('mousemove',function(e){
+            var rect=canvas.getBoundingClientRect();
+            mouse.x=e.clientX-rect.left; mouse.y=e.clientY-rect.top;
+        });
+        hero.addEventListener('mouseleave',function(){ mouse.x=-9999; mouse.y=-9999; });
+        window.addEventListener('resize',function(){
+            resize();
+            particles.forEach(function(p){ if(p.x>W) p.x=rand(0,W); if(p.y>H) p.y=rand(0,H); });
+        });
+
+        init(); loop();
+    })();
     </script>
 </body>
 </html>
