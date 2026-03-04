@@ -203,12 +203,9 @@
             z-index: 2;
         }
 		/* ── HERO PARTICLE CANVAS ── */
-        #heroCanvas {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 2;
-            pointer-events: none;
+         #heroCanvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; pointer-events: none;
         }
         /* Background Blob Animation */
         .bg-blobs {
@@ -655,12 +652,11 @@
 
         /* Hero */
         .hero {
-            padding-top: 8rem;
+            padding-top: 6rem;
             
-            background: linear-gradient(135deg, #2d4563 0%, #23354a 50%, #1a2d42 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
+            background: radial-gradient(circle at 20% 35%, #1e293b 0%, #0f172a 100%);
+            color: white; position: relative; overflow: hidden; min-height: 85vh;
+            display: flex; align-items: center;
             
             
 			z-index: 2;
@@ -739,7 +735,7 @@
         
         /* Image Container that matches content height */
         .hero-image-container {
-            flex: 1;
+            flex: 0.9;
             position: relative;
             z-index: 2;
             display: flex;
@@ -2251,26 +2247,17 @@
                     </p>
                     
                      
-                    <p class="hero-subtext">Speed up delivery with auto-generated technical design documents, flow diagrams, Postman collections, test cases, and VBCS code analysis - paired with strategic consulting.</p>
+                    
                 
     
                     <div class="hero-buttons">
-                       
+                        <a href="#contact-us" class="btn btn-primary">Get Started</a>
                         <a href="https://presentation.intsphere.com/" target="_blank" class="btn btn-outline">Explore Platform</a>
                     </div>
                 </div>
                 
                 <div class="hero-image-container reveal">
-                    <img 
-                        src="integration.jpg" 
-                        alt="IntSphere Oracle Integration Architecture - Systems Integration Hub" 
-                        class="hero-img"
-                        loading="lazy"
-                        decoding="async"
-                        width="600"
-                        height="400"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23f0f9ff%22 width=%22600%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%230891b2%22%3EIntegration Platform Preview%3C/text%3E%3C/svg%3E'; this.style.border='2px dashed rgba(8,145,178,0.5)'"
-                        srcset="integration.jpg 1x">
+                   <img src="integration.jpg" alt="IntSphere OIC Architecture" class="hero-img">
                 </div>
             </div>
         </div>
