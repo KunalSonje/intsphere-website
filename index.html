@@ -65,7 +65,25 @@
         .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; max-width: 1400px; margin: 0 auto; }
         .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
         .logo-img { height: 48px; width: auto; }
-        .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; background: var(--grad-main); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            /* Gradient Text */
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            letter-spacing: 0.5px;
+            line-height: 1;
+            width: max-content;
+            display: block;
+            margin-bottom: 2px;
+            text-transform: none; 
+            text-align: left;
+            position: relative;
+        }
 		.logo-tagline { 
             font-family: 'Inter', sans-serif; 
             font-size: 0.7rem; 
@@ -201,9 +219,9 @@
             <div class="logo-wrapper">
                 <span class="logo-text">IntSphere</span>
                 <div class="logo-tagline">
-                    <span>Integration</span>
-                    <span>Innovation</span>
-                    <span>Automation</span>
+                    <span>Integrate</span>
+                    <span>Innovate</span>
+                    <span>Automate</span>
                 </div>
             </div>
         </a>
