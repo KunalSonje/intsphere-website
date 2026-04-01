@@ -66,6 +66,27 @@
         .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
         .logo-img { height: 48px; width: auto; }
         .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; background: var(--grad-main); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+		.logo-tagline { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.7rem; 
+            letter-spacing: 0.5px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            margin-top: 2px;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .logo-tagline span { position: relative; }
+        .logo-tagline span:not(:last-child)::after {
+            content: "•";
+            margin-left: 0.5rem;
+            color: var(--primary);
+            opacity: 0.6;
+        }
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
         nav { display: flex; gap: 2rem; align-items: center; }
         nav a { color: var(--heading); font-weight: 500; text-decoration: none; transition: 0.2s; }
         nav a:hover { color: var(--primary); }
@@ -177,7 +198,14 @@
     <div class="header-inner">
         <a href="#" class="logo">
             <img src="Logo.png" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text">IntSphere</span>
+            <div class="logo-wrapper">
+                <span class="logo-text">IntSphere</span>
+                <div class="logo-tagline">
+                    <span>Integration</span>
+                    <span>Innovation</span>
+                    <span>Automation</span>
+                </div>
+            </div>
         </a>
         <nav>
             <a href="#home">Home</a>
