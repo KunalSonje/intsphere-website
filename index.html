@@ -38,33 +38,137 @@
     </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         @font-face { font-family: 'Outfit'; src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype'); font-display: swap; }
         @font-face { font-family: 'Inter'; src: url('fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype'); font-display: swap; }
+
         :root {
             --primary: #0891b2;
             --primary-dark: #0c5460;
+            --primary-light: #e0f7fa;
             --blue-deep: #1e40af;
             --grad-main: linear-gradient(135deg, #1a2d42 0%, #2d4563 40%, #0891b2 100%);
+            --grad-accent: linear-gradient(135deg, #0891b2, #06b6d4);
             --heading: #0f172a;
             --text: #334155;
+            --text-muted: #64748b;
             --bg-light: #f8fafc;
+            --bg-subtle: #f1f5f9;
             --white: #ffffff;
-            --border-light: rgba(8, 145, 178, 0.2);
+            --border-light: rgba(8, 145, 178, 0.15);
+            --border-subtle: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 48px rgba(0,0,0,0.08);
+            --shadow-blue: 0 12px 32px rgba(8,145,178,0.15);
         }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--heading); margin-bottom: 1rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
-        .btn { display: inline-flex; align-items: center; padding: 12px 28px; border-radius: 40px; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; font-family: 'Outfit', sans-serif; text-decoration: none; }
-        .btn-primary { background: var(--grad-main); color: white !important; box-shadow: 0 10px 20px -5px rgba(8,145,178,0.4); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 30px -8px rgba(8,145,178,0.6); }
-        .btn-outline { background: transparent; border: 2px solid rgba(8,145,178,0.4); color: var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* header */
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(8,145,178,0.15); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; max-width: 1400px; margin: 0 auto; }
-        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
-        .logo-img { height: 48px; width: auto; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--heading);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 13px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: var(--grad-main);
+            color: white !important;
+            box-shadow: 0 8px 20px -4px rgba(8,145,178,0.35);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -6px rgba(8,145,178,0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(8,145,178,0.35);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ─── NOISE TEXTURE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.018;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(226,232,240,0.8);
+            transition: box-shadow 0.3s;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+        }
+        .logo-img { height: 44px; width: auto; }
         .logo-text {
             font-family: 'Outfit', sans-serif;
             font-size: 1.6rem;
@@ -84,8 +188,8 @@
             text-align: left;
             position: relative;
         }
-		.logo-tagline { 
-            font-family: 'Inter', sans-serif; 
+        .logo-tagline {
+             font-family: 'Inter', sans-serif; 
             font-size: 0.7rem; 
             letter-spacing: 0.5px;
             color: var(--primary-dark);
@@ -94,125 +198,702 @@
             display: flex;
             gap: 0.5rem;
         }
-        .logo-tagline span { position: relative; }
         .logo-tagline span:not(:last-child)::after {
-            content: "•";
+            content: "·";
             margin-left: 0.5rem;
             color: var(--primary);
-            opacity: 0.6;
+            opacity: 0.5;
         }
-        .logo-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-        nav { display: flex; gap: 2rem; align-items: center; }
-        nav a { color: var(--heading); font-weight: 500; text-decoration: none; transition: 0.2s; }
-        nav a:hover { color: var(--primary); }
-        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--heading); }
-        .mobile-menu { display: none; position: fixed; top: 80px; left: 20px; right: 20px; background: white; border-radius: 24px; padding: 2rem; box-shadow: 0 20px 35px rgba(0,0,0,0.1); z-index: 999; }
-        .mobile-menu.active { display: block; }
-        .mobile-menu nav { display: flex; flex-direction: column; gap: 1rem; text-align: center; }
+        .logo-wrapper { display: flex; flex-direction: column; }
 
-        /* hero */
-        .hero { padding: 8rem 0 4rem; background: radial-gradient(circle at 10% 30%, #f0f9ff 0%, #ffffff 90%); position: relative; }
-        .hero-layout { display: flex; align-items: center; gap: 4rem; }
-        .hero-content { flex: 1; }
-        .hero-content h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.2; }
-        .hero-content h1 span { background: linear-gradient(135deg, #0891b2, #1e40af); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.1rem; color: #475569; margin: 1.5rem 0 2rem; }
-        .hero-image { flex: 1; }
-        .hero-img { width: 100%; border-radius: 28px; box-shadow: 0 25px 45px -12px rgba(0,0,0,0.2); }
-        .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; text-align: center; }
-        .stat-card { background: white; padding: 1.5rem; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-light); }
-        .stat-number { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
-        
-        /* sections */
-        section { padding: 5rem 0; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.2rem; background: var(--grad-main); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
-        .section-header p { max-width: 700px; margin: 0.5rem auto 0; color: #475569; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .card { background: white; padding: 2rem; border-radius: 24px; border: 1px solid var(--border-light); transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-        .card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 20px 30px -12px rgba(8,145,178,0.12); }
-        .card-icon { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
-        .expertise-tag { background: #e6f7fc; color: var(--primary-dark); padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; font-weight: 500; display: inline-block; margin: 0.25rem; }
-        .cta-section { background: var(--grad-main); color: white; text-align: center; border-radius: 32px; margin: 2rem auto; padding: 3rem; }
-        .cta-section h2 { color: white; margin-bottom: 1rem; }
-        .cta-section .btn-primary { background: white; color: var(--primary) !important; box-shadow: none; }
-        footer { background: #0f172a; color: #94a3b8; padding: 3rem 0 2rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .footer-section h3 { color: white; font-size: 1.2rem; margin-bottom: 1rem; }
+        nav { display: flex; gap: 0.25rem; align-items: center; }
+        nav a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.92rem;
+            text-decoration: none;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        nav a:hover { color: var(--primary); background: rgba(8,145,178,0.06); }
+        nav a.active { color: var(--primary); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--border-subtle);
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--heading);
+            padding: 0.5rem 0.7rem;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        .mobile-menu-btn:hover { background: var(--bg-subtle); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 16px;
+            right: 16px;
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
+            z-index: 999;
+        }
+        .mobile-menu.active { display: block; }
+        .mobile-menu nav { display: flex; flex-direction: column; gap: 0.25rem; text-align: center; }
+        .mobile-menu nav a { padding: 0.75rem 1rem; }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 9rem 0 6rem;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric grid background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(8,145,178,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(8,145,178,0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+        }
+
+        /* Radial glow */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(8,145,178,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Decorative accent circles */
+        .hero-blob-1 {
+            position: absolute;
+            top: 8%;
+            right: 5%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-blob-2 {
+            position: absolute;
+            bottom: 0;
+            left: -5%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(30,64,175,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .hero-content { flex: 1.1; }
+
+        /* Pill badge */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(8,145,178,0.07);
+            border: 1px solid rgba(8,145,178,0.18);
+            padding: 0.4rem 1rem 0.4rem 0.5rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.3px;
+        }
+        .hero-badge-dot {
+            width: 22px;
+            height: 22px;
+            background: var(--grad-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.65rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--heading);
+        }
+        .hero-content h1 span {
+            background: var(--grad-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 1.5rem 0 2.25rem;
+            line-height: 1.75;
+            max-width: 520px;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.4rem 1.2rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--grad-accent);
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-blue);
+        }
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* Hero image */
+        .hero-image { flex: 1; position: relative; }
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+        .hero-img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 29px;
+            background: linear-gradient(135deg, rgba(8,145,178,0.3), rgba(30,64,175,0.1));
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-img {
+            width: 100%;
+            border-radius: 28px;
+            display: block;
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,0,0,0.04);
+        }
+        /* Floating card on hero image */
+        .hero-float-card {
+            position: absolute;
+            bottom: -20px;
+            left: -24px;
+            background: white;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            z-index: 10;
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero-float-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--grad-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .hero-float-text strong { display: block; font-size: 0.88rem; color: var(--heading); font-family: 'Outfit', sans-serif; }
+        .hero-float-text span { font-size: 0.75rem; color: var(--text-muted); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ─── SECTION COMMONS ─── */
+        section { padding: 2rem; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-label {
+            display: none;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(8,145,178,0.08);
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            letter-spacing: -0.3px;
+            background: var(--grad-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .section-header p {
+            max-width: 600px;
+            margin: 0.75rem auto 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* ─── CARDS ─── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: linear-gradient(135deg, rgba(8,145,178,0.03) 0%, rgba(6,182,212,0.03) 100%);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(8,145,178,0.3);
+            box-shadow: var(--shadow-blue);
+        }
+        .card:hover::after { opacity: 1; }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(6,182,212,0.1));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(8,145,178,0.1);
+        }
+        .card:hover .card-icon {
+            background: var(--grad-accent);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: var(--heading);
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        .expertise-tag {
+            background: rgba(8,145,178,0.07);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.85rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0.2rem;
+            border: 1px solid rgba(8,145,178,0.12);
+        }
+
+        /* ─── DIVIDER ─── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: 0 2rem;
+        }
+
+        /* ─── CTA SECTION ─── */
+        .cta-section {
+            background: var(--grad-main);
+            color: white;
+            text-align: center;
+            border-radius: 28px;
+            margin: auto;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section h2 { color: white; margin-bottom: 0.75rem; font-size: 2rem; position: relative; z-index: 2; }
+        .cta-section p { color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2rem; position: relative; z-index: 2; }
+        .cta-section .btn-white {
+            background: white;
+            color: var(--primary) !important;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .cta-section .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #0a1628;
+            color: #94a3b8;
+            padding: 4rem 0 2.5rem;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(8,145,178,0.4), transparent);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h3 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Outfit', sans-serif;
+        }
+        .footer-section p { font-size: 0.88rem; line-height: 1.7; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 0.6rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.2s; }
-        .footer-links a:hover { color: white; padding-left: 4px; }
-        .faq-item { background: white; border: 1px solid var(--border-light); border-radius: 20px; margin-bottom: 1rem; overflow: hidden; }
-        .faq-question { padding: 1.2rem 1.8rem; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; color: var(--heading); background: rgba(8,145,178,0.02); }
-        .faq-answer { padding: 0 1.8rem; max-height: 0; overflow: hidden; transition: 0.3s; color: #475569; }
-        .faq-item.active .faq-answer { padding: 1rem 1.8rem 1.5rem; max-height: 300px; }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
-        .modal-content { background: white; max-width: 500px; margin: 10% auto; padding: 2rem; border-radius: 32px; }
-        .modal-content input, .modal-content textarea { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; border-radius: 12px; }
-        .close-modal { float: right; font-size: 1.5rem; cursor: pointer; }
-        @media (max-width: 900px) {
-            nav { display: none; }
-            .mobile-menu-btn { display: block; }
-            .hero-layout { flex-direction: column; text-align: center; }
-            .container { padding: 0 1.5rem; }
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
-        @media (max-width: 640px) {
-            .stats-grid { grid-template-columns: 1fr; }
-            .card-grid { grid-template-columns: 1fr; }
+        .footer-links a:hover { color: #e2e8f0; }
+        .footer-links li:not(:has(a)) { font-size: 0.88rem; }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 2rem;
+            font-size: 0.82rem;
         }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Who We Are Section Styles */
+
+        /* Footer logo */
+        .footer-logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* ─── FAQ ─── */
+        .faq-container { max-width: 780px; margin: 0 auto; }
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            margin-bottom: 0.85rem;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item:hover { box-shadow: var(--shadow-md); }
+        .faq-item.active {
+            border-color: rgba(8,145,178,0.3);
+            box-shadow: 0 4px 20px rgba(8,145,178,0.08);
+        }
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--heading);
+            transition: 0.2s;
+            gap: 1rem;
+        }
+        .faq-question:hover { color: var(--primary); }
+        .faq-toggle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(8,145,178,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: all 0.3s;
+            font-style: normal;
+        }
+        .faq-item.active .faq-toggle {
+            background: var(--primary);
+            color: white;
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.35s ease;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            line-height: 1.75;
+        }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1.5rem; max-height: 300px; }
+
+        /* ─── WHO WE ARE ─── */
         .who-we-are-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            max-width: 1000px;
+            gap: 2rem;
+            align-items: stretch;
+            max-width: 960px;
             margin: 0 auto;
         }
         .who-card {
             background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-            height: 100%;
+            padding: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.35s;
+            box-shadow: var(--shadow-sm);
         }
         .who-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 30px -12px rgba(8,145,178,0.12);
+            transform: translateY(-5px);
+            border-color: rgba(8,145,178,0.3);
+            box-shadow: var(--shadow-blue);
         }
+        .who-card h3 { color: var(--heading); margin-bottom: 0.85rem; font-size: 1.25rem; }
         .highlight-box {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(6, 182, 212, 0.05));
-            padding: 1.5rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--primary);
+            background: linear-gradient(135deg, rgba(8,145,178,0.04), rgba(6,182,212,0.04));
+            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            border-left: 3px solid var(--primary);
             margin-top: 1.5rem;
         }
+        .highlight-box p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+        /* ─── MODAL ─── */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(15,23,42,0.6);
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: white;
+            max-width: 480px;
+            margin: 8% auto;
+            padding: 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 32px 64px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .modal-content h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--heading);
+        }
+        .modal-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.75rem;
+        }
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 13px 16px;
+            margin-bottom: 0.85rem;
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.93rem;
+            color: var(--heading);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            background: #fafafa;
+        }
+        .modal-content input:focus,
+        .modal-content textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(8,145,178,0.1);
+            background: white;
+        }
+        .modal-content textarea { resize: vertical; min-height: 110px; }
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        .close-modal:hover { background: var(--bg-subtle); color: var(--heading); }
+
+        /* ─── REVEAL ANIMATION ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Staggered reveals */
+        .card:nth-child(1) { transition-delay: 0s; }
+        .card:nth-child(2) { transition-delay: 0.06s; }
+        .card:nth-child(3) { transition-delay: 0.12s; }
+        .card:nth-child(4) { transition-delay: 0.18s; }
+        .card:nth-child(5) { transition-delay: 0.24s; }
+        .card:nth-child(6) { transition-delay: 0.30s; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-layout { flex-direction: column; gap: 3rem; text-align: center; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero-float-card { left: 50%; transform: translateX(-50%); bottom: -16px; white-space: nowrap; }
+        }
         @media (max-width: 768px) {
-            .who-we-are-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .who-we-are-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 3rem 1.5rem; }
+            .modal-content { margin: 5% 1rem; padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="bg-blobs" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:0.3;">
-    <div style="position:absolute; top:-10%; left:-10%; width:400px; height:400px; background:#0891b2; border-radius:50%; filter:blur(80px);"></div>
-    <div style="position:absolute; bottom:-10%; right:-10%; width:350px; height:350px; background:#06b6d4; border-radius:50%; filter:blur(80px);"></div>
-</div>
-
-<header>
+<!-- HEADER -->
+<header id="mainHeader">
     <div class="header-inner">
         <a href="#" class="logo">
             <img src="Logo.png" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
@@ -231,7 +912,7 @@
             <a href="#consulting">Services</a>
             <a href="#who-we-are">About</a>
             <a href="#faq">FAQ</a>
-            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 8px 24px;">Contact Us</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="padding: 9px 22px; font-size: 0.88rem; margin-left: 0.5rem;">Contact Us</a>
         </nav>
         <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </div>
@@ -242,215 +923,408 @@
             <a href="#consulting" onclick="toggleMenu()">Services</a>
             <a href="#who-we-are" onclick="toggleMenu()">About</a>
             <a href="#faq" onclick="toggleMenu()">FAQ</a>
-            <a href="javascript:void(0)" onclick="openModal()">Contact Us</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;">Contact Us</a>
         </nav>
     </div>
 </header>
 
+<!-- HERO -->
 <section id="home" class="hero">
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
     <div class="container">
         <div class="hero-layout">
             <div class="hero-content reveal">
-                <h1>Oracle Cloud <span>Consulting</span> & Implementation Experts</h1>
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"><i class="fas fa-bolt"></i></span>
+                    Oracle Cloud Specialists
+                </div>
+                <h1>Oracle Cloud <span>Consulting</span> &amp; Implementation Experts</h1>
                 <p>We empower enterprises with deep Oracle PaaS expertise — from strategy to execution. Accelerate digital transformation with our certified architects and hands-on consultants.</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#consulting" class="btn btn-primary">Explore Services</a>
+                <div class="hero-actions">
+                    <a href="#consulting" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
                     <a href="javascript:void(0)" onclick="openModal()" class="btn btn-outline">Talk to an Expert</a>
                 </div>
                 <div class="stats-grid">
-                    <div class="stat-card"><div class="stat-number">15+</div><div>Years Combined Oracle Experience</div></div>
-                    <div class="stat-card"><div class="stat-number">9x</div><div>Oracle Certified Professionals</div></div>
-                    <div class="stat-card"><div class="stat-number">100+</div><div>Enterprise Integrations Delivered</div></div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Combined Oracle Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">9x</div>
+                        <div class="stat-label">Oracle Certified Professionals</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Enterprise Integrations Delivered</div>
+                    </div>
                 </div>
             </div>
             <div class="hero-image reveal">
-                <img src="integration.jpg" alt="Oracle Cloud Consulting" class="hero-img" onerror="this.src='https://placehold.co/600x400?text=Oracle+Experts'">
+                <div class="hero-img-wrapper">
+                    <img src="integration.jpg" alt="Oracle Cloud Consulting" class="hero-img" onerror="this.src='https://placehold.co/600x420/f1f5f9/0891b2?text=Oracle+Cloud+Experts'">
+                </div>
+               
             </div>
         </div>
     </div>
 </section>
 
-<section id="services" class="section-light" style="background: white;">
+<div class="section-divider"></div>
+
+<!-- EXPERTISE -->
+<section id="services" style="background: #ffffff;">
     <div class="container">
         <div class="section-header reveal">
+            <div class="section-label">Oracle PaaS Stack</div>
             <h2>Our Oracle Cloud Expertise</h2>
             <p>Specialized in the full Oracle PaaS stack — delivering modern, scalable solutions</p>
         </div>
         <div class="card-grid">
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Oracle Integration Cloud (OIC)</h3><p>End-to-end integration services connecting SaaS, on-premise, and custom applications. Real-time, batch, and event-driven patterns.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Visual Builder Cloud Service (VBCS)</h3><p>Low-code web & mobile app development. Extend Oracle SaaS or build standalone apps with modern UI and seamless APIs.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Oracle Process Automation (OPA)</h3><p>Intelligent process automation and workflow orchestration to streamline operations and reduce manual overhead.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-database"></i></div><h3>Oracle Fusion Technical</h3><p>Custom extensions, reports, and PaaS for SaaS developments. HCM, ERP, SCM technical implementations and support.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-tag"></i></div><h3>Oracle CPQ</h3><p>Configure-Price-Quote implementation and optimization. Complex pricing, guided selling, and quote-to-order automation.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-lock"></i></div><h3>Oracle IDCS & Security</h3><p>Identity and access management, SSO, MFA, and user lifecycle governance for hybrid cloud environments.</p></div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>Oracle Integration Cloud (OIC)</h3>
+                <p>End-to-end integration services connecting SaaS, on-premise, and custom applications. Real-time, batch, and event-driven patterns.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Visual Builder Cloud Service (VBCS)</h3>
+                <p>Low-code web &amp; mobile app development. Extend Oracle SaaS or build standalone apps with modern UI and seamless APIs.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Oracle Process Automation (OPA)</h3>
+                <p>Intelligent process automation and workflow orchestration to streamline operations and reduce manual overhead.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-database"></i></div>
+                <h3>Oracle Fusion Technical</h3>
+                <p>Custom extensions, reports, and PaaS for SaaS developments. HCM, ERP, SCM technical implementations and support.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-tag"></i></div>
+                <h3>Oracle CPQ</h3>
+                <p>Configure-Price-Quote implementation and optimization. Complex pricing, guided selling, and quote-to-order automation.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-lock"></i></div>
+                <h3>Oracle IDCS &amp; Security</h3>
+                <p>Identity and access management, SSO, MFA, and user lifecycle governance for hybrid cloud environments.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="consulting" style="background: #f8fafc;">
+<div class="section-divider"></div>
+
+<!-- CONSULTING SERVICES -->
+<section id="consulting" style="background: var(--bg-light);">
     <div class="container">
         <div class="section-header reveal">
+            <div class="section-label">End-to-End</div>
             <h2>End-to-End Consulting Services</h2>
             <p>We partner with you from discovery to go-live and beyond</p>
         </div>
         <div class="card-grid">
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-drafting-compass"></i></div><h3>Architecture & Strategy</h3><p>Enterprise architecture assessments, roadmap definition, and solution blueprinting tailored to your business goals.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-code-branch"></i></div><h3>Implementation & Development</h3><p>Full-cycle implementation: design, configuration, custom development, testing, and deployment with CI/CD best practices.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Migration & Modernization</h3><p>SOA/OSB to OIC migrations, OIC Gen2 to Gen3 upgrades, PCS to OPA modernization, and cloud adoption strategies.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Training & Knowledge Transfer</h3><p>Empower your internal teams with workshops, hand-on training, and comprehensive documentation for sustained success.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-headset"></i></div><h3>Managed Services & Support</h3><p>Ongoing monitoring, incident resolution, performance tuning, and proactive maintenance for your Oracle landscape.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-shield-alt"></i></div><h3>Security & Compliance</h3><p>Hardening, role design, audit readiness, and compliance with industry standards across Oracle Cloud.</p></div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h3>Architecture &amp; Strategy</h3>
+                <p>Enterprise architecture assessments, roadmap definition, and solution blueprinting tailored to your business goals.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-code-branch"></i></div>
+                <h3>Implementation &amp; Development</h3>
+                <p>Full-cycle implementation: design, configuration, custom development, testing, and deployment with CI/CD best practices.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                <h3>Migration &amp; Modernization</h3>
+                <p>SOA/OSB to OIC migrations, OIC Gen2 to Gen3 upgrades, PCS to OPA modernization, and cloud adoption strategies.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>Training &amp; Knowledge Transfer</h3>
+                <p>Empower your internal teams with workshops, hands-on training, and comprehensive documentation for sustained success.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-headset"></i></div>
+                <h3>Managed Services &amp; Support</h3>
+                <p>Ongoing monitoring, incident resolution, performance tuning, and proactive maintenance for your Oracle landscape.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Security &amp; Compliance</h3>
+                <p>Hardening, role design, audit readiness, and compliance with industry standards across Oracle Cloud.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="why-choose" style="background: white;">
+<div class="section-divider"></div>
+
+<!-- WHY CHOOSE US -->
+<section id="why-choose" style="background: #ffffff;">
     <div class="container">
         <div class="section-header reveal">
+            <div class="section-label">Why IntSphere</div>
             <h2>Why Organizations Trust IntSphere</h2>
             <p>Experience that delivers measurable results</p>
         </div>
-        <div class="card-grid">
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-user-tie"></i></div><h3>Deep Oracle Heritage</h3><p>Decades of collective experience with Oracle Fusion, Integration, and PaaS platforms — from v1 to latest Gen3.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-check-circle"></i></div><h3>Proven Methodology</h3><p>Structured delivery approach combining agile practices with Oracle's proven implementation frameworks.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>Partnership Mindset</h3><p>We act as an extension of your team, focused on long-term value, not just project completion.</p></div>
-            <div class="card reveal"><div class="card-icon"><i class="fas fa-chart-simple"></i></div><h3>Tangible Outcomes</h3><p>Reduced time-to-market, lower TCO, and scalable architectures that grow with your business.</p></div>
+        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+                <h3>Deep Expertise</h3>
+                <p>With over a decade of hands-on experience implementing enterprise-scale Integration solutions, IntSphere delivers sophisticated integrations backed by proven expertise.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Proven Methodology</h3>
+                <p>Structured delivery approach combining agile practices with Oracle's proven implementation frameworks.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Partnership Mindset</h3>
+                <p>We act as an extension of your team, focused on long-term value, not just project completion.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                <h3>Tangible Outcomes</h3>
+                <p>Reduced time-to-market, lower TCO, and scalable architectures that grow with your business.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="who-we-are" style="background: #f8fafc;">
+<div class="section-divider"></div>
+
+<!-- WHO WE ARE -->
+<section id="who-we-are" style="background: var(--bg-light);">
     <div class="container">
         <div class="section-header reveal">
+            <div class="section-label">About Us</div>
             <h2>Who We Are</h2>
             <p>Oracle Cloud specialists dedicated to your success</p>
         </div>
         <div class="who-we-are-grid">
             <div class="who-card reveal">
-                <h3 style="color: var(--heading); margin-bottom: 1rem;">IntSphere</h3>
-                <p style="color: var(--text); line-height: 1.7;">
+                <h3>IntSphere</h3>
+                <p style="color: var(--text); line-height: 1.75;">
                     <strong>IntSphere</strong> is a specialized <strong>Oracle Cloud consulting firm</strong> dedicated to helping enterprises maximize their Oracle investments. With decades of combined Oracle expertise, we deliver strategic advisory, implementation, and managed services across the entire Oracle PaaS ecosystem.
                 </p>
                 <div class="highlight-box">
-                    <p style="margin: 0; font-size: 0.95rem;">Our mission: Deliver exceptional Oracle solutions through deep technical expertise and unwavering client partnership.</p>
+                    <p>Our mission: Deliver exceptional Oracle solutions through deep technical expertise and unwavering client partnership.</p>
                 </div>
             </div>
             <div class="who-card reveal">
-                <h3 style="color: var(--heading); margin-bottom: 1rem;">Our Approach</h3>
-                <p style="color: var(--text); line-height: 1.7;">
+                <h3>Our Approach</h3>
+                <p style="color: var(--text); line-height: 1.75;">
                     We combine deep technical mastery with business acumen to deliver solutions that drive real value. From initial discovery through post-implementation support, our consultants work alongside your teams to ensure knowledge transfer, best practices, and sustainable success.
                 </p>
                 <div class="highlight-box">
-                    <p style="margin: 0; font-size: 0.95rem;">
-                        <strong>The result:</strong> Faster time-to-value, reduced operational costs, and empowered internal teams ready for the future.
-                    </p>
+                    <p><strong>The result:</strong> Faster time-to-value, reduced operational costs, and empowered internal teams ready for the future.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq" style="background: white;">
     <div class="container">
         <div class="section-header reveal">
+            <div class="section-label">FAQ</div>
             <h2>Frequently Asked Questions</h2>
             <p>Answers about our Oracle consulting services</p>
         </div>
-        <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
-            <div class="faq-item"><div class="faq-question">What Oracle Cloud services do you specialize in?<span class="faq-toggle">+</span></div><div class="faq-answer">We specialize in Oracle Integration Cloud (OIC), Visual Builder (VBCS), Process Automation (OPA), Fusion Applications technical extensions, Oracle CPQ, and Identity Cloud Service (IDCS). Our team also handles migrations from legacy SOA/OSB and PCS to modern PaaS.</div></div>
-            <div class="faq-item"><div class="faq-question">Do you provide end-to-end implementation?<span class="faq-toggle">+</span></div><div class="faq-answer">Yes, from architecture design to development, testing, deployment, and post-go-live support. We work with your internal teams to ensure knowledge transfer and smooth adoption.</div></div>
-            <div class="faq-item"><div class="faq-question">Can you help with Oracle Fusion SaaS extensions?<span class="faq-toggle">+</span></div><div class="faq-answer">Absolutely. We specialize in PaaS for SaaS — building custom extensions, integrations, and reports for Oracle Fusion HCM, ERP, and SCM using VBCS, OIC, and OTBI/BIP.</div></div>
-            <div class="faq-item"><div class="faq-question">What is your experience with SOA/OSB to OIC migration?<span class="faq-toggle">+</span></div><div class="faq-answer">We have executed multiple complex migrations from legacy Oracle SOA Suite and OSB to modern OIC, ensuring minimal downtime and reusability of patterns.</div></div>
-            <div class="faq-item"><div class="faq-question">How can we engage your consulting team?<span class="faq-toggle">+</span></div><div class="faq-answer">Simply click "Contact Us" or "Talk to an Expert" to schedule a discovery call. We'll understand your needs and propose a tailored engagement model.</div></div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">What Oracle Cloud services do you specialize in? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">We specialize in Oracle Integration Cloud (OIC), Visual Builder (VBCS), Process Automation (OPA), Fusion Applications technical extensions, Oracle CPQ, and Identity Cloud Service (IDCS). Our team also handles migrations from legacy SOA/OSB and PCS to modern PaaS.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you provide end-to-end implementation? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Yes, from architecture design to development, testing, deployment, and post-go-live support. We work with your internal teams to ensure knowledge transfer and smooth adoption.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can you help with Oracle Fusion SaaS extensions? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Absolutely. We specialize in PaaS for SaaS — building custom extensions, integrations, and reports for Oracle Fusion HCM, ERP, and SCM using VBCS, OIC, and OTBI/BIP.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is your experience with SOA/OSB to OIC migration? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">We have executed multiple complex migrations from legacy Oracle SOA Suite and OSB to modern OIC, ensuring minimal downtime and reusability of patterns.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can we engage your consulting team? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Simply click "Contact Us" or "Talk to an Expert" to schedule a discovery call. We'll understand your needs and propose a tailored engagement model.</div>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="container">
+<!-- CTA -->
+<div class="container" style="padding-bottom: 2rem;">
     <div class="cta-section reveal">
         <h2>Ready to accelerate your Oracle Cloud journey?</h2>
         <p>Let's discuss how our expertise can drive your digital transformation.</p>
-        <button onclick="openModal()" class="btn btn-primary" style="background: white; color: #0891b2; margin-top: 1rem;">Get in Touch</button>
+        <button onclick="openModal()" class="btn btn-white" style="background: white; color: #0891b2; font-weight: 700; padding: 14px 34px;">
+            <i class="fas fa-paper-plane"></i> Get in Touch
+        </button>
     </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-section"><h3>IntSphere</h3><p>Expert Oracle Cloud consulting & implementation services worldwide.</p></div>
-            <div class="footer-section"><h3>Quick Links</h3><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#services">Expertise</a></li><li><a href="#consulting">Services</a></li><li><a href="#who-we-are">About</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-            <div class="footer-section"><h3>Services</h3><ul class="footer-links"><li>OIC Implementation</li><li>VBCS Development</li><li>Process Automation</li><li>Fusion Extensions</li><li>Oracle CPQ</li><li>IDCS & Security</li></ul></div>
-            <div class="footer-section"><h3>Contact</h3><ul class="footer-links"><li><i class="fas fa-envelope"></i> <a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li><li><i class="fas fa-phone"></i> <a href="tel:+919403526864">+91 9403526864</a></li></ul></div>
+            <div class="footer-section">
+                <span class="footer-logo-text">IntSphere</span>
+                <p>Expert Oracle Cloud consulting &amp; implementation services worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Expertise</a></li>
+                    <li><a href="#consulting">Services</a></li>
+                    <li><a href="#who-we-are">About</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li>OIC Implementation</li>
+                    <li>VBCS Development</li>
+                    <li>Process Automation</li>
+                    <li>Fusion Extensions</li>
+                    <li>Oracle CPQ</li>
+                    <li>IDCS &amp; Security</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:connect@intsphere.com"><i class="fas fa-envelope"></i> connect@intsphere.com</a></li>
+                    <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
+                </ul>
+            </div>
         </div>
-        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.85rem;">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+        <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
     </div>
 </footer>
 
+<!-- CONTACT MODAL -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h2 style="text-align: center;">Let's Connect</h2>
+        <h2>Let's Connect</h2>
+        <p class="modal-subtitle">Tell us about your Oracle requirements</p>
         <form action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="text" name="company" placeholder="Company">
             <input type="email" name="email" placeholder="Email Address" required>
             <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message</button>
         </form>
     </div>
 </div>
 
 <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    function openModal() { document.getElementById('contactModal').style.display = 'block'; }
-    function closeModal() { document.getElementById('contactModal').style.display = 'none'; }
-    window.onclick = function(e) { let modal = document.getElementById('contactModal'); if (e.target === modal) modal.style.display = 'none'; }
+    // Header scroll effect
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('active');
+    }
+    function openModal() {
+        document.getElementById('contactModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        document.getElementById('contactModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    window.onclick = function(e) {
+        let modal = document.getElementById('contactModal');
+        if (e.target === modal) closeModal();
+    }
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', () => {
             let item = q.parentElement;
-            item.classList.toggle('active');
-            let toggle = q.querySelector('.faq-toggle');
-            toggle.textContent = item.classList.contains('active') ? '−' : '+';
-            if (item.classList.contains('active')) {
-                document.querySelectorAll('.faq-item').forEach(other => { if (other !== item) other.classList.remove('active'); });
-                document.querySelectorAll('.faq-toggle').forEach(t => { if (t !== toggle) t.textContent = '+'; });
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(other => {
+                other.classList.remove('active');
+                other.querySelector('.faq-toggle').textContent = '+';
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                q.querySelector('.faq-toggle').textContent = '+';
             }
         });
     });
 
-    // reveal observer
+    // Intersection Observer for reveals
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // form handler
+    // Form handler
     const form = document.querySelector('#contactModal form');
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = form.querySelector('button');
-            const orig = btn.textContent;
-            btn.textContent = 'Sending...';
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
             try {
                 const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
                 const data = await res.json();
-                if (data.success) { closeModal(); alert('Message sent successfully! We will get back to you soon.'); form.reset(); }
-                else alert('Error sending. Please try again.');
-            } catch(err) { alert('Network error. Please try again.'); }
-            btn.textContent = orig;
+                if (data.success) {
+                    closeModal();
+                    alert('Message sent successfully! We will get back to you soon.');
+                    form.reset();
+                } else {
+                    alert('Error sending. Please try again.');
+                }
+            } catch(err) {
+                alert('Network error. Please try again.');
+            }
+            btn.innerHTML = orig;
             btn.disabled = false;
         });
     }
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const offset = 80;
+                window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+        });
+        document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
         });
     });
 </script>
