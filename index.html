@@ -275,7 +275,12 @@
         }
         nav a:hover { color: var(--primary); background: rgba(8,145,178,0.06); }
         nav a.active { color: var(--primary); }
-
+		.card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -590,7 +595,7 @@
             justify-content: center;
             font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 1.25rem;
+            
             transition: all 0.3s;
             border: 1px solid rgba(8,145,178,0.1);
         }
@@ -609,6 +614,7 @@
             color: var(--text-muted);
             font-size: 0.93rem;
             line-height: 1.7;
+			margin-top:1.5rem;
         }
 
         .expertise-tag {
@@ -930,6 +936,12 @@
             .who-we-are-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 			section { padding: 1rem; }
+			.card-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+            }
         }
         @media (max-width: 640px) {
             .stats-grid { grid-template-columns: 1fr; }
@@ -1021,33 +1033,40 @@
         </div>
         <div class="card-grid">
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                 <h3>Oracle Integration Cloud (OIC)</h3>
+			</div>
                 <p>End-to-end integration services connecting SaaS, on-premise, and custom applications. Real-time, batch, and event-driven patterns.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Visual Builder Cloud Service (VBCS)</h3>
+                <h3>Visual Builder Cloud Service (VBCS)</h3> </div>
                 <p>Low-code web &amp; mobile app development. Extend Oracle SaaS or build standalone apps with modern UI and seamless APIs.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Oracle Process Automation (OPA)</h3>
+                <h3>Oracle Process Automation (OPA)</h3></div>
                 <p>Intelligent process automation and workflow orchestration to streamline operations and reduce manual overhead.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-database"></i></div>
-                <h3>Oracle Fusion Technical</h3>
+                <h3>Oracle Fusion Technical</h3> </div>
                 <p>Custom extensions, reports, and PaaS for SaaS developments. HCM, ERP, SCM technical implementations and support.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-tag"></i></div>
-                <h3>Oracle CPQ</h3>
+                <h3>Oracle CPQ</h3></div>
                 <p>Configure-Price-Quote implementation and optimization. Complex pricing, guided selling, and quote-to-order automation.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-lock"></i></div>
-                <h3>Oracle IDCS &amp; Security</h3>
+                <h3>Oracle IDCS &amp; Security</h3></div>
                 <p>Identity and access management, SSO, MFA, and user lifecycle governance for hybrid cloud environments.</p>
             </div>
         </div>
@@ -1060,39 +1079,46 @@
 <section id="consulting" style="background: var(--bg-light);">
     <div class="container">
         <div class="section-header reveal">
+		
             <div class="section-label">End-to-End</div>
             <h2>End-to-End Consulting Services</h2>
             <p>We partner with you from discovery to go-live and beyond</p>
         </div>
         <div class="card-grid">
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
-                <h3>Architecture &amp; Strategy</h3>
+                <h3>Architecture &amp; Strategy</h3> </div>
                 <p>Enterprise architecture assessments, roadmap definition, and solution blueprinting tailored to your business goals.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-code-branch"></i></div>
-                <h3>Implementation &amp; Development</h3>
+                <h3>Implementation &amp; Development</h3> </div>
                 <p>Full-cycle implementation: design, configuration, custom development, testing, and deployment with CI/CD best practices.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
-                <h3>Migration &amp; Modernization</h3>
+                <h3>Migration &amp; Modernization</h3> </div>
                 <p>SOA/OSB to OIC migrations, OIC Gen2 to Gen3 upgrades, PCS to OPA modernization, and cloud adoption strategies.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                <h3>Training &amp; Knowledge Transfer</h3>
+                <h3>Training &amp; Knowledge Transfer</h3> </div>
                 <p>Empower your internal teams with workshops, hands-on training, and comprehensive documentation for sustained success.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-headset"></i></div>
-                <h3>Managed Services &amp; Support</h3>
+                <h3>Managed Services &amp; Support</h3> </div>
                 <p>Ongoing monitoring, incident resolution, performance tuning, and proactive maintenance for your Oracle landscape.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Security &amp; Compliance</h3>
+                <h3>Security &amp; Compliance</h3> </div>
                 <p>Hardening, role design, audit readiness, and compliance with industry standards across Oracle Cloud.</p>
             </div>
         </div>
@@ -1111,23 +1137,27 @@
         </div>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-user-tie"></i></div>
-                <h3>Deep Oracle Heritage</h3>
+                <h3>Deep Oracle Heritage</h3></div>
                 <p>Decades of collective experience with Oracle Fusion, Integration, and PaaS platforms — from v1 to latest Gen3.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-                <h3>Proven Methodology</h3>
+                <h3>Proven Methodology</h3></div>
                 <p>Structured delivery approach combining agile practices with Oracle's proven implementation frameworks.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                <h3>Partnership Mindset</h3>
+                <h3>Partnership Mindset</h3></div>
                 <p>We act as an extension of your team, focused on long-term value, not just project completion.</p>
             </div>
             <div class="card reveal">
+			<div class="card-header">
                 <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
-                <h3>Tangible Outcomes</h3>
+                <h3>Tangible Outcomes</h3></div>
                 <p>Reduced time-to-market, lower TCO, and scalable architectures that grow with your business.</p>
             </div>
         </div>
