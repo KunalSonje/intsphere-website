@@ -188,6 +188,15 @@
             text-align: left;
             position: relative;
         }
+		.logo-text::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--grad-main);
+    margin-top: 4px;
+    border-radius: 2px;
+	}
         .logo-tagline {
              font-family: 'Inter', sans-serif; 
             font-size: 0.7rem; 
@@ -933,6 +942,7 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
+
     <div class="hero-blob-1"></div>
     <div class="hero-blob-2"></div>
     <div class="container">
