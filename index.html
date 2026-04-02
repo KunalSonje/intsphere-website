@@ -116,13 +116,13 @@
         }
         .btn-outline {
             background: transparent;
-            border: 1.5px solid rgba(8,145,178,0.35);
-            color: var(--primary);
+            border: 1.5px solid rgba(103,232,249,0.4);
+            color: #a5f3fc;
         }
         .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+            background: rgba(103,232,249,0.12);
+            color: #e0f7fa;
+            border-color: rgba(103,232,249,0.7);
             transform: translateY(-2px);
         }
 
@@ -197,7 +197,7 @@
     margin-top: 4px;
     border-radius: 2px;
 	}
-        .logo-tagline {
+         .logo-tagline {
              font-family: 'Inter', sans-serif; 
             font-size: 0.7rem; 
             letter-spacing: 0.5px;
@@ -259,58 +259,45 @@
 
         /* ─── HERO ─── */
         .hero {
-            padding: 9rem 0 6rem;
-            background: #ffffff;
+            padding-top: 6rem;
+            background: radial-gradient(circle at 20% 35%, #1e293b 0%, #0f172a 100%);
+            color: white;
             position: relative;
             overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            z-index: 2;
         }
 
-        /* Geometric grid background */
-        .hero::before {
+        /* Grid overlay */
+        .hero::after {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(8,145,178,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(8,145,178,0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.5;
         }
 
-        /* Radial glow */
-        .hero::after {
-            content: '';
+        /* Canvas particle layer */
+        #heroCanvas {
             position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 900px;
-            height: 600px;
-            background: radial-gradient(ellipse, rgba(8,145,178,0.07) 0%, transparent 70%);
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
             pointer-events: none;
         }
 
-        /* Decorative accent circles */
-        .hero-blob-1 {
-            position: absolute;
-            top: 8%;
-            right: 5%;
-            width: 360px;
-            height: 360px;
-            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .hero-blob-2 {
-            position: absolute;
-            bottom: 0;
-            left: -5%;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(30,64,175,0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
+        /* Blobs hidden — canvas replaces them */
+        .hero-blob-1, .hero-blob-2 { display: none; }
+
+        .hero .container { z-index: 10; }
 
         .hero-layout {
             display: flex;
@@ -325,13 +312,13 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(8,145,178,0.07);
-            border: 1px solid rgba(8,145,178,0.18);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(103,232,249,0.3);
             padding: 0.4rem 1rem 0.4rem 0.5rem;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--primary-dark);
+            color: #a5f3fc;
             margin-bottom: 1.75rem;
             letter-spacing: 0.3px;
         }
@@ -351,17 +338,17 @@
             font-size: clamp(2.4rem, 4.2vw, 3.6rem);
             line-height: 1.15;
             letter-spacing: -0.5px;
-            color: var(--heading);
+            color: #f1f5f9;
         }
         .hero-content h1 span {
-            background: var(--grad-accent);
+            background: linear-gradient(135deg, #67e8f9, #38bdf8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-content p {
             font-size: 1.1rem;
-            color: var(--text-muted);
+            color: rgba(203,213,225,0.85);
             margin: 1.5rem 0 2.25rem;
             line-height: 1.75;
             max-width: 520px;
@@ -376,15 +363,16 @@
             margin-top: 3.5rem;
         }
         .stat-card {
-            background: white;
+            background: rgba(255,255,255,0.06);
             padding: 1.4rem 1.2rem;
             border-radius: 18px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-subtle);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(103,232,249,0.15);
             text-align: center;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(6px);
         }
         .stat-card::before {
             content: '';
@@ -392,18 +380,18 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: var(--grad-accent);
+            height: 2px;
+            background: linear-gradient(90deg, #0891b2, #67e8f9);
         }
         .stat-card:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: 0 8px 28px rgba(103,232,249,0.15);
         }
         .stat-number {
             font-family: 'Outfit', sans-serif;
             font-size: 2rem;
             font-weight: 800;
-            background: var(--grad-main);
+            background: linear-gradient(135deg, #67e8f9, #38bdf8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -411,7 +399,7 @@
         }
         .stat-label {
             font-size: 0.78rem;
-            color: var(--text-muted);
+            color: rgba(148,163,184,0.9);
             margin-top: 0.3rem;
             font-weight: 500;
             letter-spacing: 0.2px;
@@ -476,7 +464,7 @@
         }
 
         /* ─── SECTION COMMONS ─── */
-        section { padding: 3rem; }
+        section { padding: 2rem; }
 
         .section-header {
             text-align: center;
@@ -599,7 +587,7 @@
             color: white;
             text-align: center;
             border-radius: 28px;
-            margin: auto;
+            margin: 2rem auto;
             padding: 4rem 3rem;
             position: relative;
             overflow: hidden;
@@ -659,7 +647,7 @@
             display: grid;
             grid-template-columns: 1.4fr repeat(3, 1fr);
             gap: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         .footer-section h3 {
             color: white;
@@ -876,6 +864,7 @@
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
+			section { padding: 1rem; }
         }
         @media (max-width: 900px) {
             nav { display: none; }
@@ -942,7 +931,7 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
-
+    <canvas id="heroCanvas"></canvas>
     <div class="hero-blob-1"></div>
     <div class="hero-blob-2"></div>
     <div class="container">
@@ -977,7 +966,7 @@
                 <div class="hero-img-wrapper">
                     <img src="integration.jpg" alt="Oracle Cloud Consulting" class="hero-img" onerror="this.src='https://placehold.co/600x420/f1f5f9/0891b2?text=Oracle+Cloud+Experts'">
                 </div>
-               
+              
             </div>
         </div>
     </div>
@@ -1086,8 +1075,8 @@
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
             <div class="card reveal">
                 <div class="card-icon"><i class="fas fa-user-tie"></i></div>
-                <h3>Deep Expertise</h3>
-                <p>With over a decade of hands-on experience implementing enterprise-scale Integration solutions, IntSphere delivers sophisticated integrations backed by proven expertise.</p>
+                <h3>Deep Oracle Heritage</h3>
+                <p>Decades of collective experience with Oracle Fusion, Integration, and PaaS platforms — from v1 to latest Gen3.</p>
             </div>
             <div class="card reveal">
                 <div class="card-icon"><i class="fas fa-check-circle"></i></div>
@@ -1175,7 +1164,7 @@
 </section>
 
 <!-- CTA -->
-<div class="container" style="padding-bottom: 2rem;">
+<div class="container" style="padding-bottom: 1rem;">
     <div class="cta-section reveal">
         <h2>Ready to accelerate your Oracle Cloud journey?</h2>
         <p>Let's discuss how our expertise can drive your digital transformation.</p>
@@ -1217,7 +1206,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <ul class="footer-links">
-                    <li><a href="mailto:connect@intsphere.com"><i class="fas fa-envelope"></i> connect@intsphere.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#75161a1b1b101601351c1b0106051d1007105b161a18"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="1e7d7170707b7d6a5e77706a6d6e767b6c7b307d7173">[email&#160;protected]</span></a></li>
                     <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
                 </ul>
             </div>
@@ -1243,7 +1232,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Header scroll effect
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
@@ -1341,5 +1330,74 @@
         });
     });
 </script>
+
+<script>
+    (function() {
+        var canvas = document.getElementById('heroCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var W, H, particles;
+        var COUNT = 88, MAX_D = 148, SPD = 0.42;
+        var mouse = { x: -9999, y: -9999 };
+        function rand(a, b) { return Math.random() * (b - a) + a; }
+        function resize() {
+            var hero = canvas.parentElement;
+            W = canvas.width  = hero.offsetWidth;
+            H = canvas.height = hero.offsetHeight;
+        }
+        function mkParticle() {
+            return { x: rand(0,W), y: rand(0,H),
+                     vx: rand(-SPD,SPD), vy: rand(-SPD,SPD),
+                     r: rand(1.8,3.2), op: rand(0.35,0.72) };
+        }
+        function init() { resize(); particles = []; for(var i=0;i<COUNT;i++) particles.push(mkParticle()); }
+        function loop() {
+            ctx.clearRect(0,0,W,H);
+            for (var k=0;k<particles.length;k++){
+                var p=particles[k];
+                var mdx=mouse.x-p.x, mdy=mouse.y-p.y;
+                var md=Math.sqrt(mdx*mdx+mdy*mdy);
+                if(md<130&&md>0){ p.x+=mdx/md*0.28; p.y+=mdy/md*0.28; }
+                p.x+=p.vx; p.y+=p.vy;
+                if(p.x<-12) p.x=W+12; if(p.x>W+12) p.x=-12;
+                if(p.y<-12) p.y=H+12; if(p.y>H+12) p.y=-12;
+            }
+            for(var i=0;i<particles.length;i++){
+                for(var j=i+1;j<particles.length;j++){
+                    var a=particles[i], b=particles[j];
+                    var dx=a.x-b.x, dy=a.y-b.y;
+                    var dist=Math.sqrt(dx*dx+dy*dy);
+                    if(dist<MAX_D){
+                        var alpha=(1-dist/MAX_D)*0.2;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+                        ctx.strokeStyle='rgba(103,232,249,'+alpha+')';
+                        ctx.lineWidth=0.85; ctx.stroke();
+                    }
+                }
+            }
+            for(var k=0;k<particles.length;k++){
+                var p=particles[k];
+                ctx.beginPath();
+                ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                ctx.fillStyle='rgba(165,243,252,'+p.op+')';
+                ctx.fill();
+            }
+            requestAnimationFrame(loop);
+        }
+        var hero = canvas.parentElement;
+        hero.addEventListener('mousemove',function(e){
+            var rect=canvas.getBoundingClientRect();
+            mouse.x=e.clientX-rect.left; mouse.y=e.clientY-rect.top;
+        });
+        hero.addEventListener('mouseleave',function(){ mouse.x=-9999; mouse.y=-9999; });
+        window.addEventListener('resize',function(){
+            resize();
+            particles.forEach(function(p){ if(p.x>W) p.x=rand(0,W); if(p.y>H) p.y=rand(0,H); });
+        });
+        init(); loop();
+    })();
+</script>
+
 </body>
 </html>
