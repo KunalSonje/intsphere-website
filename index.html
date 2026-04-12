@@ -938,7 +938,15 @@
             .stats-grid { grid-template-columns: repeat(3, 1fr); }
             .hero-float-card { left: 50%; transform: translateX(-50%); bottom: -16px; white-space: nowrap; }
 			section { padding: 2rem; }
-			.container {padding: 0rem;}
+			
+			.container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0rem;
+            position: relative;
+            z-index: 2;
+        }
+
         }
         @media (max-width: 768px) {
             .who-we-are-grid { grid-template-columns: 1fr; }
@@ -957,7 +965,7 @@
             .footer-grid { grid-template-columns: 1fr; }
             .cta-section { padding: 3rem 1.5rem; }
             .modal-content { margin: 5% 1rem; padding: 2rem 1.5rem; }
-			section { padding: 2rem; }
+			section { padding: 1rem; }
         }
     </style>
 </head>
