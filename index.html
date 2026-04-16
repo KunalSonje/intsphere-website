@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>IntSphere - Transform Your OIC Experience</title>
-    <meta name="description" content="Oracle PaaS Consulting Services">
+    <title>IntSphere - Transform Your Oracle Cloud Experience</title>
+    <meta name="description" content="Oracle Consulting Services">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://www.intsphere.com">
 	<meta name="application-name" content="IntSphere">
     <meta itemprop="name" content="IntSphere">
     <meta name="author" content="IntSphere">
     
-    <meta property="og:title" content="IntSphere - Transform Your OIC Experience">
-    <meta property="og:description" content="Oracle PaaS Consulting Services">
+    <meta property="og:title" content="IntSphere - Transform Your Oracle Cloud Experience">
+    <meta property="og:description" content="Oracle Consulting Services">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.intsphere.com">
     <meta property="og:image" content="https://www.intsphere.com/Logo.png">
@@ -24,7 +24,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="IntSphere - Oracle Integration Cloud Platform">
-    <meta name="twitter:description" content="Oracle PaaS Consulting Services">
+    <meta name="twitter:description" content="Oracle Consulting Services">
     <meta name="twitter:image" content="https://www.intsphere.com/Logo.png">
     
     <link rel="preload" as="font" href="fonts/Outfit-VariableFont_wght.ttf" type="font/ttf" crossorigin>
@@ -64,7 +64,7 @@
         "width": 512,
         "height": 512
       },
-      "description": "Oracle PaaS Consulting Services",
+      "description": "Oracle Consulting Services",
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Sales",
@@ -964,60 +964,67 @@
 			section { padding: 1rem; }
         }
 
-        /* ─── HCM MODULES ─── */
-        .hcm-modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .hcm-module {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 1.25rem 1.35rem;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: var(--shadow-sm);
-        }
-        .hcm-module:hover {
-            border-color: rgba(8,145,178,0.3);
-            box-shadow: var(--shadow-blue);
-            transform: translateY(-3px);
-        }
-        .hcm-module-icon {
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
-            background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(6,182,212,0.1));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: var(--primary);
-            border: 1px solid rgba(8,145,178,0.1);
-            transition: all 0.3s;
-        }
-        .hcm-module:hover .hcm-module-icon {
-            background: var(--grad-accent);
-            color: white;
-            border-color: transparent;
-        }
-        .hcm-module-title {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--heading);
-            margin-bottom: 0.35rem;
-            line-height: 1.3;
-        }
-        .hcm-module-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-        }
+        /* ─── UPDATED HCM MODULES ─── */
+.hcm-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.hcm-module {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: var(--shadow-sm);
+}
+
+.hcm-module:hover {
+    border-color: rgba(8,145,178,0.3);
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-3px);
+}
+
+.hcm-module-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.hcm-module-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(6,182,212,0.1));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--primary);
+    border: 1px solid rgba(8,145,178,0.1);
+    transition: all 0.3s;
+}
+
+.hcm-module:hover .hcm-module-icon {
+    background: var(--grad-accent);
+    color: white;
+}
+
+.hcm-module-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--heading);
+}
+
+.hcm-module-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
         @media (max-width: 640px) {
             .hcm-modules-grid { grid-template-columns: 1fr; }
         }
@@ -1074,7 +1081,7 @@
                     Oracle Cloud Specialists
                 </div>
                 <h1>Oracle Cloud <span>Consulting</span> &amp; Implementation Experts</h1>
-                <p>We empower enterprises with deep Oracle PaaS expertise — from strategy to execution. Accelerate digital transformation with our certified architects and hands-on consultants.</p>
+                <p>Empowering enterprises with deep Oracle PaaS and HCM expertise — from strategy to execution. Accelerate transformation with certified architects and hands-on experts who deliver real business outcomes.</p>
                 <div class="hero-actions">
                     <a href="#consulting" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
                     <a href="javascript:void(0)" onclick="openModal()" class="btn btn-outline">Talk to an Expert</a>
@@ -1099,7 +1106,7 @@
         <div class="section-header reveal">
             <div class="section-label">Oracle PaaS Stack</div>
             <h2>Our Oracle Cloud Expertise</h2>
-            <p>Specialized in the full Oracle PaaS stack — delivering modern, scalable solutions</p>
+            <p>Specialized in the Oracle HCM and PaaS stack — delivering modern, scalable solutions</p>
         </div>
         <div class="card-grid">
     
@@ -1203,87 +1210,107 @@
         <p style="margin-top:0; margin-bottom:1.5rem;">End-to-end Human Capital Management implementation and optimization — from core HR records to payroll, recruiting, talent management, and time &amp; labor. We deliver the full hire-to-retire lifecycle on Oracle Fusion HCM Cloud, including complex guided onboarding, GCC payroll compliance, and workforce automation.</p>
         <div class="hcm-modules-grid">
 
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-id-card"></i></div>
-                <div>
-                    <div class="hcm-module-title">Core HR</div>
-                    <div class="hcm-module-desc">Employee records, org structures, positions, workforce modelling, and HR self-service across global entities.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-user-plus"></i></div>
-                <div>
-                    <div class="hcm-module-title">Fusion Recruiting Cloud Service</div>
-                    <div class="hcm-module-desc">Requisition-to-offer management, candidate experience, job posting, interview scheduling, and offer letter automation.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-money-check-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Oracle Fusion Payroll Cloud Service (GCC)</div>
-                    <div class="hcm-module-desc">Gross-to-net payroll processing for GCC region — Saudi Arabia, UAE, Kuwait and beyond — with statutory compliance, WPS, and end-of-service calculations.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-chart-line"></i></div>
-                <div>
-                    <div class="hcm-module-title">Fusion HCM Talent Management Cloud Service</div>
-                    <div class="hcm-module-desc">Goal setting, performance reviews, succession planning, learning &amp; development, and workforce analytics to retain and grow your people.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-clock"></i></div>
-                <div>
-                    <div class="hcm-module-title">Oracle Fusion Time and Labor Cloud Service</div>
-                    <div class="hcm-module-desc">Time entry, absence management, shift scheduling, overtime rules, and labour cost allocation integrated with payroll and project costing.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-calendar-times"></i></div>
-                <div>
-                    <div class="hcm-module-title">Absence Management</div>
-                    <div class="hcm-module-desc">Configurable leave plans, accrual rules, and absence types with automated approvals, balance tracking, and seamless payroll integration for global compliance.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-dollar-sign"></i></div>
-                <div>
-                    <div class="hcm-module-title">Compensation</div>
-                    <div class="hcm-module-desc">Salary structures, merit cycles, bonus plans, and total compensation modelling — enabling equitable, data-driven pay decisions aligned to organisational budgets.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-shield-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Health and Safety</div>
-                    <div class="hcm-module-desc">Incident reporting, risk assessments, corrective actions, and regulatory compliance tracking to foster a safe, healthy, and audit-ready workplace.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-calendar-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Scheduling</div>
-                    <div class="hcm-module-desc">Demand-driven shift scheduling, coverage optimisation, and manager self-service tools that balance employee preferences with operational requirements.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-sliders-h"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Labor Optimization</div>
-                    <div class="hcm-module-desc">AI-powered labor forecasting, productivity analytics, and cost-efficiency insights to align headcount planning with business demand across teams and locations.</div>
-                </div>
-            </div>
-
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-id-card"></i></div>
+            <div class="hcm-module-title">Core HR</div>
         </div>
+        <div class="hcm-module-desc">
+            Employee records, org structures, positions, workforce modelling, and HR self-service across global entities.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="hcm-module-title">Fusion Recruiting Cloud Service</div>
+        </div>
+        <div class="hcm-module-desc">
+            Requisition-to-offer management, candidate experience, job posting, interview scheduling, and offer automation.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-money-check-alt"></i></div>
+            <div class="hcm-module-title">Payroll (GCC)</div>
+        </div>
+        <div class="hcm-module-desc">
+            Gross-to-net payroll processing with statutory compliance, WPS, and end-of-service benefits.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="hcm-module-title">Talent Management</div>
+        </div>
+        <div class="hcm-module-desc">
+            Goal setting, performance reviews, succession planning, and workforce development.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-clock"></i></div>
+            <div class="hcm-module-title">Time & Labor</div>
+        </div>
+        <div class="hcm-module-desc">
+            Time entry, shift scheduling, overtime rules, and payroll integration.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-calendar-times"></i></div>
+            <div class="hcm-module-title">Absence Management</div>
+        </div>
+        <div class="hcm-module-desc">
+            Leave plans, accruals, approvals, and payroll integration.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="hcm-module-title">Compensation</div>
+        </div>
+        <div class="hcm-module-desc">
+            Salary structures, bonuses, and compensation planning aligned to budgets.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="hcm-module-title">Workforce Health & Safety</div>
+        </div>
+        <div class="hcm-module-desc">
+            Incident tracking, risk management, and compliance monitoring.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="hcm-module-title">Workforce Scheduling</div>
+        </div>
+        <div class="hcm-module-desc">
+            Demand-based scheduling and shift optimization tools.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-sliders-h"></i></div>
+            <div class="hcm-module-title">Labor Optimization</div>
+        </div>
+        <div class="hcm-module-desc">
+            AI-driven forecasting, productivity insights, and cost optimization.
+        </div>
+    </div>
+
+</div>
     </div>
 
 </div>
@@ -1395,10 +1422,10 @@
             <div class="who-card reveal">
                 <h3>IntSphere</h3>
                 <p style="color: var(--text); line-height: 1.75;">
-                    <strong>IntSphere</strong> is a specialized <strong>Oracle Cloud consulting firm</strong> dedicated to helping enterprises maximize their Oracle investments. With decades of combined Oracle expertise, we deliver strategic advisory, implementation, and managed services across the entire Oracle PaaS ecosystem.
+                    <strong>IntSphere</strong> is a specialized <strong>Oracle Cloud consulting firm</strong> dedicated to helping enterprises maximize their Oracle investments. With decades of combined Oracle expertise, we deliver strategic advisory, implementation, and managed services across the Oracle ecosystem.
                 </p>
                 <div class="highlight-box">
-                    <p>Our mission: Deliver exceptional Oracle solutions through deep technical expertise and unwavering client partnership.</p>
+                    <p><strong>🎯 Our mission:</strong> Deliver exceptional Oracle solutions through deep expertise and unwavering client partnership.</p>
                 </div>
             </div>
             <div class="who-card reveal">
@@ -1407,7 +1434,7 @@
                     We combine deep technical mastery with business acumen to deliver solutions that drive real value. From initial discovery through post-implementation support, our consultants work alongside your teams to ensure knowledge transfer, best practices, and sustainable success.
                 </p>
                 <div class="highlight-box">
-                    <p><strong>The result:</strong> Faster time-to-value, reduced operational costs, and empowered internal teams ready for the future.</p>
+                    <p><strong>The result:</strong> ✅ Faster time-to-value, reduced operational costs, and empowered internal teams ready for the future.</p>
                 </div>
             </div>
         </div>
@@ -1425,7 +1452,7 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">What Oracle Cloud services do you specialize in? <span class="faq-toggle">+</span></div>
-                <div class="faq-answer">We specialize in Oracle Integration Cloud (OIC), Visual Builder (VBCS), Process Automation (OPA), Fusion Applications technical extensions, Oracle CPQ, and Identity Cloud Service (IDCS). Our team also handles migrations from legacy SOA/OSB and PCS to modern PaaS.</div>
+                <div class="faq-answer">We specialize in Oracle HCM Implementation,Oracle Integration Cloud (OIC), Visual Builder (VBCS), Process Automation (OPA), Fusion Applications technical extensions, Oracle CPQ, and Identity Cloud Service (IDCS). Our team also handles migrations from legacy SOA/OSB and PCS to modern PaaS.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Do you provide end-to-end implementation? <span class="faq-toggle">+</span></div>
