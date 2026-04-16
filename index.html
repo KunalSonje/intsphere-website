@@ -964,60 +964,67 @@
 			section { padding: 1rem; }
         }
 
-        /* ─── HCM MODULES ─── */
-        .hcm-modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .hcm-module {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 1.25rem 1.35rem;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: var(--shadow-sm);
-        }
-        .hcm-module:hover {
-            border-color: rgba(8,145,178,0.3);
-            box-shadow: var(--shadow-blue);
-            transform: translateY(-3px);
-        }
-        .hcm-module-icon {
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
-            background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(6,182,212,0.1));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: var(--primary);
-            border: 1px solid rgba(8,145,178,0.1);
-            transition: all 0.3s;
-        }
-        .hcm-module:hover .hcm-module-icon {
-            background: var(--grad-accent);
-            color: white;
-            border-color: transparent;
-        }
-        .hcm-module-title {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--heading);
-            margin-bottom: 0.35rem;
-            line-height: 1.3;
-        }
-        .hcm-module-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-        }
+        /* ─── UPDATED HCM MODULES ─── */
+.hcm-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.hcm-module {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: var(--shadow-sm);
+}
+
+.hcm-module:hover {
+    border-color: rgba(8,145,178,0.3);
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-3px);
+}
+
+.hcm-module-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.hcm-module-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(6,182,212,0.1));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--primary);
+    border: 1px solid rgba(8,145,178,0.1);
+    transition: all 0.3s;
+}
+
+.hcm-module:hover .hcm-module-icon {
+    background: var(--grad-accent);
+    color: white;
+}
+
+.hcm-module-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--heading);
+}
+
+.hcm-module-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
         @media (max-width: 640px) {
             .hcm-modules-grid { grid-template-columns: 1fr; }
         }
@@ -1203,87 +1210,107 @@
         <p style="margin-top:0; margin-bottom:1.5rem;">End-to-end Human Capital Management implementation and optimization — from core HR records to payroll, recruiting, talent management, and time &amp; labor. We deliver the full hire-to-retire lifecycle on Oracle Fusion HCM Cloud, including complex guided onboarding, GCC payroll compliance, and workforce automation.</p>
         <div class="hcm-modules-grid">
 
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-id-card"></i></div>
-                <div>
-                    <div class="hcm-module-title">Core HR</div>
-                    <div class="hcm-module-desc">Employee records, org structures, positions, workforce modelling, and HR self-service across global entities.</div>
-                </div>
-            </div>
-			
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-user-plus"></i></div>
-                <div>
-                    <div class="hcm-module-title">Fusion Recruiting Cloud Service</div>
-                    <div class="hcm-module-desc">Requisition-to-offer management, candidate experience, job posting, interview scheduling, and offer letter automation.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-money-check-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Oracle Fusion Payroll Cloud Service (GCC)</div>
-                    <div class="hcm-module-desc">Gross-to-net payroll processing for GCC region — Saudi Arabia, UAE, Kuwait and beyond — with statutory compliance, WPS, and end-of-service calculations.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-chart-line"></i></div>
-                <div>
-                    <div class="hcm-module-title">Fusion HCM Talent Management Cloud Service</div>
-                    <div class="hcm-module-desc">Goal setting, performance reviews, succession planning, learning &amp; development, and workforce analytics to retain and grow your people.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-clock"></i></div>
-                <div>
-                    <div class="hcm-module-title">Oracle Fusion Time and Labor Cloud Service</div>
-                    <div class="hcm-module-desc">Time entry, absence management, shift scheduling, overtime rules, and labour cost allocation integrated with payroll and project costing.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-calendar-times"></i></div>
-                <div>
-                    <div class="hcm-module-title">Absence Management</div>
-                    <div class="hcm-module-desc">Configurable leave plans, accrual rules, and absence types with automated approvals, balance tracking, and seamless payroll integration for global compliance.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-dollar-sign"></i></div>
-                <div>
-                    <div class="hcm-module-title">Compensation</div>
-                    <div class="hcm-module-desc">Salary structures, merit cycles, bonus plans, and total compensation modelling — enabling equitable, data-driven pay decisions aligned to organisational budgets.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-shield-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Health and Safety</div>
-                    <div class="hcm-module-desc">Incident reporting, risk assessments, corrective actions, and regulatory compliance tracking to foster a safe, healthy, and audit-ready workplace.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-calendar-alt"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Scheduling</div>
-                    <div class="hcm-module-desc">Demand-driven shift scheduling, coverage optimisation, and manager self-service tools that balance employee preferences with operational requirements.</div>
-                </div>
-            </div>
-
-            <div class="hcm-module">
-                <div class="hcm-module-icon"><i class="fas fa-sliders-h"></i></div>
-                <div>
-                    <div class="hcm-module-title">Workforce Labor Optimization</div>
-                    <div class="hcm-module-desc">AI-powered labor forecasting, productivity analytics, and cost-efficiency insights to align headcount planning with business demand across teams and locations.</div>
-                </div>
-            </div>
-
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-id-card"></i></div>
+            <div class="hcm-module-title">Core HR</div>
         </div>
+        <div class="hcm-module-desc">
+            Employee records, org structures, positions, workforce modelling, and HR self-service across global entities.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="hcm-module-title">Fusion Recruiting Cloud Service</div>
+        </div>
+        <div class="hcm-module-desc">
+            Requisition-to-offer management, candidate experience, job posting, interview scheduling, and offer automation.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-money-check-alt"></i></div>
+            <div class="hcm-module-title">Payroll (GCC)</div>
+        </div>
+        <div class="hcm-module-desc">
+            Gross-to-net payroll processing with statutory compliance, WPS, and end-of-service benefits.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="hcm-module-title">Talent Management</div>
+        </div>
+        <div class="hcm-module-desc">
+            Goal setting, performance reviews, succession planning, and workforce development.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-clock"></i></div>
+            <div class="hcm-module-title">Time & Labor</div>
+        </div>
+        <div class="hcm-module-desc">
+            Time entry, shift scheduling, overtime rules, and payroll integration.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-calendar-times"></i></div>
+            <div class="hcm-module-title">Absence Management</div>
+        </div>
+        <div class="hcm-module-desc">
+            Leave plans, accruals, approvals, and payroll integration.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="hcm-module-title">Compensation</div>
+        </div>
+        <div class="hcm-module-desc">
+            Salary structures, bonuses, and compensation planning aligned to budgets.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="hcm-module-title">Workforce Health & Safety</div>
+        </div>
+        <div class="hcm-module-desc">
+            Incident tracking, risk management, and compliance monitoring.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="hcm-module-title">Workforce Scheduling</div>
+        </div>
+        <div class="hcm-module-desc">
+            Demand-based scheduling and shift optimization tools.
+        </div>
+    </div>
+
+    <div class="hcm-module">
+        <div class="hcm-module-header">
+            <div class="hcm-module-icon"><i class="fas fa-sliders-h"></i></div>
+            <div class="hcm-module-title">Labor Optimization</div>
+        </div>
+        <div class="hcm-module-desc">
+            AI-driven forecasting, productivity insights, and cost optimization.
+        </div>
+    </div>
+
+</div>
     </div>
 
 </div>
