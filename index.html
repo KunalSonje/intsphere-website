@@ -132,7 +132,7 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             color: var(--heading);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0rem;
         }
 
         .container {
@@ -286,7 +286,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         .mobile-menu-btn {
             display: none;
@@ -320,7 +320,6 @@
         /* ─── HERO ─── */
         .hero {
             padding-top: 6rem;
-            min-height: 100vh;
             background: radial-gradient(circle at 20% 35%, #1e293b 0%, #0f172a 100%);
             color: white;
             position: relative;
@@ -364,8 +363,8 @@
             display: flex;
             
             gap: 5rem;
-			padding-top: 3rem;
-			padding-bottom: 3rem;
+			padding-top:1.5rem;
+			padding-bottom:1.5rem;
 			
         }
 
@@ -420,7 +419,54 @@
 
         .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.06);
+            padding: 1.4rem 1.2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(103,232,249,0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(6px);
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0891b2, #67e8f9);
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(103,232,249,0.15);
+        }
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #67e8f9, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: rgba(148,163,184,0.9);
+            margin-top: 0.3rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
 
         /* Hero image */
         .hero-image { flex: 1; position: relative; }
@@ -481,14 +527,14 @@
         }
 
         /* ─── SECTION COMMONS ─── */
-        section { padding: 5rem 2rem; }
+        section { padding: 2rem; }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         .section-label {
-            display: inline-block;
+            display: none;
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -513,7 +559,6 @@
             margin: 0.75rem auto 0;
             color: var(--text-muted);
             font-size: 1.05rem;
-            line-height: 1.7;
         }
 
         /* ─── CARDS ─── */
@@ -578,7 +623,7 @@
             color: var(--text-muted);
             font-size: 0.93rem;
             line-height: 1.7;
-			margin-top: 0;
+			margin-top:1rem;
         }
 
         .expertise-tag {
@@ -682,7 +727,7 @@
             text-decoration: none;
             font-size: 0.88rem;
             transition: 0.2s;
-            display: inline-flex;
+            
             align-items: center;
             gap: 0.4rem;
 			margin-right: 8px;
@@ -884,7 +929,7 @@
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
-			section { padding: 4rem 2rem; }
+			section { padding: 2rem; }
         }
         @media (max-width: 900px) {
             nav { display: none; }
@@ -894,15 +939,15 @@
             .hero-actions { justify-content: center; }
             .stats-grid { grid-template-columns: repeat(3, 1fr); }
             .hero-float-card { left: 50%; transform: translateX(-50%); bottom: -16px; white-space: nowrap; }
-			section { padding: 4rem 2rem; }
+			section { padding: 2rem; }
 			
-
+			
 
         }
         @media (max-width: 768px) {
             .who-we-are-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-			section { padding: 3rem 1.5rem; }
+			section { padding: 1rem; }
 			.card-header {
                 display: flex;
                 align-items: flex-start;
@@ -916,7 +961,7 @@
             .footer-grid { grid-template-columns: 1fr; }
             .cta-section { padding: 3rem 1.5rem; }
             .modal-content { margin: 5% 1rem; padding: 2rem 1.5rem; }
-			section { padding: 3rem 1.25rem; }
+			section { padding: 1rem; }
         }
 
         /* ─── UPDATED HCM MODULES ─── */
@@ -1041,13 +1086,13 @@
                     <a href="#consulting" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
                     <a href="javascript:void(0)" onclick="openModal()" class="btn btn-outline">Talk to an Expert</a>
                 </div>
-                
+               
             </div>
             <div class="hero-image reveal">
                 <div class="hero-img-wrapper">
                     <img src="integration.jpg" alt="Oracle Cloud Consulting" class="hero-img" onerror="this.src='https://placehold.co/600x420/f1f5f9/0891b2?text=Oracle+Cloud+Experts'">
                 </div>
-                
+              
             </div>
         </div>
     </div>
@@ -1188,7 +1233,7 @@
     <div class="hcm-module">
         <div class="hcm-module-header">
             <div class="hcm-module-icon"><i class="fas fa-money-check-alt"></i></div>
-            <div class="hcm-module-title">Fusion Payroll</div>
+            <div class="hcm-module-title">Payroll</div>
         </div>
         <div class="hcm-module-desc">
             Gross-to-net payroll processing with statutory compliance, WPS, and end-of-service benefits.
@@ -1468,7 +1513,7 @@
                     <li>Oracle CPQ</li>
                     <li>IDCS &amp; Security</li>
                     <li>Oracle Fusion HCM Cloud</li>
-                    
+                    <li>Fusion Payroll</li>
                 </ul>
             </div>
             <div class="footer-section">
