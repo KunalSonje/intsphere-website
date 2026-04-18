@@ -840,7 +840,54 @@
             margin-top: 1.5rem;
         }
         .highlight-box p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
-
+		/* ─── CLIENTS ─── */
+.logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.logo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.25rem;
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 40px;
+    box-shadow: var(--shadow-sm);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--heading);
+    letter-spacing: 0.2px;
+    transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+}
+.logo-pill:hover {
+    border-color: rgba(8,145,178,0.35);
+    box-shadow: var(--shadow-blue);
+    transform: translateY(-2px);
+}
+.logo-pill a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: inherit;
+}
+.logo-pill-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: white;
+    flex-shrink: 0;
+    font-weight: 800;
+}
         /* ─── MODAL ─── */
         .modal {
             display: none;
@@ -1506,9 +1553,37 @@
         </div>
     </div>
 </section>
+<!-- ─── SECTION ─── -->
 
+<div class="section-divider"></div>
+
+<section id="clients" style="background: #ffffff;">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Trusted By</div>
+            <h2>Who We're Working With</h2>
+            <p>Embedded within enterprise Oracle teams across industries, delivering real-world impact</p>
+        </div>
+        <div class="logo-strip reveal">
+            <span class="logo-pill">
+    <a href="https://www.digiedze.com/" target="_blank" style="text-decoration:none; color:inherit;">
+        <span class="logo-pill-dot" style="background: linear-gradient(135deg,#0891b2,#06b6d4);">DZ</span>
+        digi edZe
+    </a>
+</span>
+
+            <span class="logo-pill">
+			<a href="https://essprom.com/" target="_blank" style="text-decoration:none; color:inherit;">
+                <span class="logo-pill-dot" style="background: linear-gradient(135deg,#6366f1,#8b5cf6);">EP</span>
+                EssProM
+				</a>
+            </span>
+            
+        </div>
+    </div>
+</section>
 <!-- FAQ -->
-<section id="faq" style="background: white;">
+<section id="faq" style="background: var(--bg-light);">
     <div class="container">
         <div class="section-header reveal">
             <div class="section-label">FAQ</div>
@@ -1553,7 +1628,7 @@
 </section>
 
 <!-- CTA -->
-<div class="container" style="padding-bottom: 2rem;">
+<div class="container" style="padding-bottom: 2rem;    padding-top: 2rem;">
     <div class="cta-section reveal">
         <h2>Ready to accelerate your Oracle Cloud journey?</h2>
         <p>Let's discuss how our expertise can drive your digital transformation.</p>
