@@ -113,7 +113,7 @@ section { padding: 2rem; }
 .hero-badge-dot { width: 22px; height: 22px; background: var(--grad-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; }
 .hero-content h1 { font-size: clamp(2.4rem, 4.2vw, 3.6rem); line-height: 1.15; letter-spacing: -0.5px; color: #f1f5f9; }
 .hero-content h1 span { background: linear-gradient(135deg, #67e8f9, #38bdf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-content p { font-size: 1.1rem; color: rgba(203,213,225,0.85); margin: 1.5rem 0 2.25rem; line-height: 1.75; max-width: 520px; }
+.hero-content p { font-size: 1.1rem; color: rgba(203,213,225,0.85); margin: 1.5rem 0 2.25rem; line-height: 1.75; max-width: 100%; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-image { flex: 0.5; position: relative; }
 .hero-img-wrapper { position: relative; border-radius: 28px; overflow: hidden; }
@@ -184,7 +184,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
 .page-banner-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5; }
 .page-banner .container { position: relative; z-index: 2; }
 .page-banner h1 { color: #f1f5f9; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.75rem; }
-.page-banner p { color: rgba(203,213,225,0.8); font-size: 1.05rem; max-width: 560px; }
+.page-banner p { color: rgba(203,213,225,0.8); font-size: 1.05rem; max-width: 100%; }
 
 /* MODAL */
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.6); backdrop-filter: blur(8px); overflow-y: auto; }
@@ -258,12 +258,14 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
         </a>
         <nav id="mainNav">
             <a onclick="navigate('home')" id="nav-home">Home</a>
-           
-            <a onclick="navigate('services')" id="nav-services">Services</a>
-			 <a onclick="navigate('expertise')" id="nav-expertise">PaaS</a>
+			<a onclick="navigate('services')" id="nav-services">Services</a>
+            <a onclick="navigate('expertise')" id="nav-expertise">PaaS</a>
+            
             <a onclick="navigate('hcm')" id="nav-hcm">HCM</a>
-            <a onclick="navigate('about')" id="nav-about">About</a>
+            <a onclick="navigate('platform')" id="nav-platform">Platform</a>
+            
             <a onclick="navigate('accelerators')" id="nav-accelerators">Accelerators</a>
+			<a onclick="navigate('about')" id="nav-about">About</a>
             <a onclick="navigate('faq')" id="nav-faq">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
         </nav>
@@ -272,11 +274,14 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
     <div class="mobile-menu" id="mobileMenu">
         <nav>
             <a onclick="navigate('home');toggleMenu()">Home</a>
-            <a onclick="navigate('expertise');toggleMenu()">Expertise</a>
-            <a onclick="navigate('services');toggleMenu()">Services</a>
+			<a onclick="navigate('services');toggleMenu()">Services</a>
+            <a onclick="navigate('expertise');toggleMenu()">PaaS</a>
+            
             <a onclick="navigate('hcm');toggleMenu()">HCM</a>
-            <a onclick="navigate('about');toggleMenu()">About</a>
+            <a onclick="navigate('platform');toggleMenu()">Platform</a>
+            
             <a onclick="navigate('accelerators');toggleMenu()">Accelerators</a>
+			<a onclick="navigate('about');toggleMenu()">About</a>
             <a onclick="navigate('faq');toggleMenu()">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
         </nav>
@@ -284,9 +289,9 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
 </header>
 
 <!-- ═══════════════ PAGE: HOME ═══════════════ -->
-<div id="page-home" class="page active" style="padding-top:0.5rem;">
+<div id="page-home" class="page active" style="padding-top:72px">
 
-    <section class="hero" style="padding:6rem 0 1rem;">
+    <section class="hero" style="padding:2rem 0 1rem;">
         <div class="hero-grid-bg"></div>
         <canvas id="heroCanvas"></canvas>
         <div class="container">
@@ -355,7 +360,16 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     <p>Purpose-built tools — DataForge, PayForge, ValueForge — to fast-track your HCM journey.</p>
                     <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                 </div>
-                <div class="card reveal" onclick="navigate('about')" style="cursor:pointer;">
+                
+                <div class="card reveal" onclick="navigate('platform')" style="cursor:pointer;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>OIC / VBCS Platform</h3>
+                    </div>
+                    <p>One-click deployment, auto TDD, flow diagrams, Postman generation, AI error analysis and real-time monitoring.</p>
+                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">Explore Platform <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
+                </div>
+				<div class="card reveal" onclick="navigate('about')" style="cursor:pointer;">
                     <div class="card-header">
                         <div class="card-icon"><i class="fas fa-handshake"></i></div>
                         <h3>About IntSphere</h3>
@@ -820,6 +834,316 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
     <div id="footer-faq"></div>
 </div>
 
+<!-- ═══════════════ PAGE: PLATFORM (OIC/VBCS ACCELERATOR) ═══════════════ -->
+<div id="page-platform" class="page" style="padding-top:72px">
+
+    <!-- Banner -->
+    <div class="page-banner">
+        <div class="page-banner-grid"></div>
+        <div class="container">
+            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">OIC &amp; VBCS Accelerator</div>
+            <h1>IntSphere Platform</h1>
+            <p>A purpose-built accelerator that transforms how Oracle Integration Cloud and Visual Builder teams operate — from one-click deployment to AI-powered documentation, monitoring, and analytics.</p>
+        </div>
+    </div>
+
+    <!-- Why IntSphere Exists -->
+    <section style="background:var(--bg-light);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">The Problem We Solve</div>
+                <h2>Why IntSphere Exists</h2>
+                <p>Built from real Oracle Integration Cloud project pain — not a lab experiment.</p>
+            </div>
+            <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));">
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3>The Problem</h3>
+                    </div>
+                    <p>Teams spend hours manually creating technical design documentation and Postman collections. Integration migrations cause missing lookups or incomplete configs. Monitoring OIC health, analysing Fusion Reports, and checking user roles are scattered across different platforms. Unified analytics on OIC and Fusion is nearly impossible.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>The Reality</h3>
+                    </div>
+                    <p>Integration operations are fragmented. Teams manually create documentation. Monitoring is scattered across OIC, Fusion, and IDCS. Error analysis lacks context. Getting a single pane of glass across your Oracle landscape is a daily struggle.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>The IntSphere Approach</h3>
+                    </div>
+                    <p>IntSphere consolidates fragmented integration operations into one platform — automatically generating TDDs and Postman collections, standardising migrations, centralising OIC and Fusion monitoring, and delivering unified analytics on integration performance, health, and user roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Platform Features -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Platform Features</div>
+                <h2>IntSphere Platform Features</h2>
+                <p>A comprehensive suite of tools to enhance your Oracle Integration Cloud and VBCS operations</p>
+            </div>
+            <div class="card-grid reveal">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>One-Click Deployment</h3>
+                    </div>
+                    <p>Deploy integrations instantly with automated processes and reduce manual deployment errors. Promote across DEV → TEST → PROD with a single action, complete with pre-flight validation checks.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">CI/CD</span><span class="expertise-tag">Multi-env</span><span class="expertise-tag">Zero Errors</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>TDD Generation</h3>
+                    </div>
+                    <p>Automatic Technical Design Document generation for your OIC integrations and VBCS applications. Produce audit-ready documentation in minutes, not days — structured, consistent, and always up to date.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Auto Docs</span><span class="expertise-tag">OIC</span><span class="expertise-tag">VBCS</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Flow Diagram Generation</h3>
+                    </div>
+                    <p>Visual representation of integration flows auto-generated for better understanding and documentation. Share clear, professional integration maps with stakeholders without manual drawing.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Visual Flows</span><span class="expertise-tag">Stakeholder Ready</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-vial"></i></div>
+                        <h3>Postman Collection Generation</h3>
+                    </div>
+                    <p>Automated Postman collection and test case generation for your OIC integrations at your fingertips. Comprehensive API testing from day one — no manual collection building required.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">API Testing</span><span class="expertise-tag">Auto-generated</span><span class="expertise-tag">Test Cases</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Real-Time Monitoring</h3>
+                    </div>
+                    <p>Track environment health, integration performance, and BIP report execution with comprehensive dashboards. Get full visibility across your Oracle landscape in one screen.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Health Dashboards</span><span class="expertise-tag">BIP Reports</span><span class="expertise-tag">Live Status</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Fusion User Role Comparison</h3>
+                    </div>
+                    <p>Compare user roles and access permissions across the same and different Fusion environments seamlessly. Identify discrepancies and ensure role consistency across DEV, TEST, and PROD instantly.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Role Audit</span><span class="expertise-tag">Cross-env</span><span class="expertise-tag">IDCS</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-history"></i></div>
+                        <h3>ESS Job &amp; BIP Reports Intelligence</h3>
+                    </div>
+                    <p>Track Enterprise Scheduling Service job execution history and Business Intelligence Publisher report runs with predictive insights and analytics. Know what ran, when, and why it failed.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">ESS Jobs</span><span class="expertise-tag">BIP</span><span class="expertise-tag">Predictive</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-trending-up"></i></div>
+                        <h3>Historical Trends</h3>
+                    </div>
+                    <p>Track error patterns over time to identify recurring issues and optimise system performance. Spot systemic problems before they escalate and benchmark improvement over time.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Trend Analysis</span><span class="expertise-tag">Error Patterns</span><span class="expertise-tag">Benchmarking</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <h3>Team Collaboration</h3>
+                    </div>
+                    <p>Streamline team workflows with assignment, notification, and handover features. Keep everyone aligned on integration status, incident ownership, and deployment pipelines.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Assignments</span><span class="expertise-tag">Notifications</span><span class="expertise-tag">Workflows</span></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-plug"></i></div>
+                        <h3>Fusion API Tester</h3>
+                    </div>
+                    <p>Test Fusion APIs directly from within the platform — no external tools needed. Validate endpoints, inspect responses, and debug integration issues without leaving your workspace.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">In-platform</span><span class="expertise-tag">REST/SOAP</span><span class="expertise-tag">Fusion APIs</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- AI Powered Solutions -->
+    <section style="background:var(--bg-light);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Artificial Intelligence</div>
+                <h2>AI-Powered Solutions</h2>
+                <p>AI-driven insights and automation to boost productivity, reduce manual effort, and surface root causes faster than ever</p>
+            </div>
+            <div class="card-grid reveal">
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI-Based TDD for VBCS</h3>
+                    </div>
+                    <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service applications using AI. Review VBCS apps and receive code quality recommendations instantly — no manual analysis needed.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">VBCS Analysis</span><span class="expertise-tag">AI Review</span><span class="expertise-tag">Auto TDD</span></div>
+                </div>
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
+                        <h3>AI-Powered FBDI / HDL Analysis</h3>
+                    </div>
+                    <p>Analyse failed File-Based Data Import and HCM Data Loader files with intelligent AI assistance. Identify root causes, understand field-level errors, and get actionable fix recommendations in seconds.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">FBDI</span><span class="expertise-tag">HDL</span><span class="expertise-tag">Root Cause</span></div>
+                </div>
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Multi-LLM AI Analysis</h3>
+                    </div>
+                    <p>Compare error analysis responses from different LLM models side-by-side for deeper insights and more informed decision-making. Choose the model that best fits your context — GPT, Claude, or others.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">GPT</span><span class="expertise-tag">Multi-model</span><span class="expertise-tag">Side-by-side</span></div>
+                </div>
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Error Analysis &amp; Insights</h3>
+                    </div>
+                    <p>Automated error root-cause identification and resolution recommendations powered by multi-LLM analysis. Stop guessing — get precise, actionable guidance for every OIC integration failure.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Root Cause AI</span><span class="expertise-tag">Auto Insights</span><span class="expertise-tag">OIC Errors</span></div>
+                </div>
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-tags"></i></div>
+                        <h3>Error Categorisation</h3>
+                    </div>
+                    <p>Intelligent classification of OIC integration errors by type, severity, and frequency for better prioritisation and incident management. Triage faster and focus your team on what matters most.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Smart Triage</span><span class="expertise-tag">Severity</span><span class="expertise-tag">Classification</span></div>
+                </div>
+
+                <div class="card" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Fusion Security Intelligence</h3>
+                    </div>
+                    <p>AI-assisted role analysis and access anomaly detection across Fusion environments. Proactively surface over-privileged users, segregation-of-duties conflicts, and configuration drift before audits do.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Role Intelligence</span><span class="expertise-tag">SoD</span><span class="expertise-tag">Anomaly Detection</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Benefits / Why Use It -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Business Impact</div>
+                <h2>What the Platform Delivers</h2>
+                <p>Measurable outcomes for Oracle integration teams — from day one</p>
+            </div>
+            <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));" >
+                <div class="card reveal" style="text-align:center;padding:2.5rem 1.5rem;">
+                    <div style="font-size:2.8rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">70%</div>
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">Faster Deployments</h3>
+                    <p style="font-size:0.88rem;">One-click promotion eliminates manual deployment steps and rollback risk.</p>
+                </div>
+                <div class="card reveal" style="text-align:center;padding:2.5rem 1.5rem;">
+                    <div style="font-size:2.8rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">90%</div>
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">Less Documentation Time</h3>
+                    <p style="font-size:0.88rem;">AI-generated TDDs and flow diagrams replace days of manual effort.</p>
+                </div>
+                <div class="card reveal" style="text-align:center;padding:2.5rem 1.5rem;">
+                    <div style="font-size:2.8rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">1 Pane</div>
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">Unified Visibility</h3>
+                    <p style="font-size:0.88rem;">OIC, Fusion, IDCS, ESS, BIP — all monitored from a single dashboard.</p>
+                </div>
+                <div class="card reveal" style="text-align:center;padding:2.5rem 1.5rem;">
+                    <div style="font-size:2.8rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;">3×</div>
+                    <h3 style="font-size:1rem;margin-bottom:0.5rem;">Faster Error Resolution</h3>
+                    <p style="font-size:0.88rem;">Multi-LLM root cause analysis surfaces fixes before manual debugging starts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Who It's For -->
+    <section style="background:var(--bg-light);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Use Cases</div>
+                <h2>Built For Oracle Integration Teams</h2>
+                <p>Whether you're a global enterprise or a growing mid-market company — if you run Oracle Cloud integrations, IntSphere Platform is for you</p>
+            </div>
+            <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));">
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-code"></i></div><h3>OIC Developers &amp; Architects</h3></div>
+                    <p>Spend more time building integrations and less time on documentation, Postman setup, and deployment scripts. Auto-generate what used to take days.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>Integration Operations Teams</h3></div>
+                    <p>Monitor OIC environment health, track scheduled integrations, and resolve errors faster with AI-powered root cause analysis and historical trend data — all in one place.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-user-shield"></i></div><h3>Oracle Fusion Administrators</h3></div>
+                    <p>Audit user roles across environments, compare permissions, and detect security anomalies without logging into multiple systems. Stay audit-ready at all times.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-building"></i></div><h3>Enterprise IT &amp; PMOs</h3></div>
+                    <p>Get management-level visibility into Oracle Cloud operations — deployment cadence, error rates, scheduled job health, and team productivity in one executive dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA -->
+    <div class="container" style="padding-bottom:2rem;padding-top:2rem;">
+        <div class="cta-section reveal">
+            <h2>See IntSphere Platform in Action</h2>
+            <p>Book a demo and watch how teams reduce OIC deployment time by 70% and eliminate manual documentation overnight.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;">
+                <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+                    <i class="fas fa-calendar-check"></i> Book a Demo
+                </button>
+                <a href="https://presentation.intsphere.com/" target="_blank" class="btn" style="background:transparent;border:2px solid rgba(255,255,255,0.4);color:white;font-weight:600;padding:14px 34px;">
+                    <i class="fas fa-external-link-alt"></i> View Presentation
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-platform"></div>
+</div>
+
 <!-- ═══════════════ SHARED FOOTER (injected) ═══════════════ -->
 <template id="footerTemplate">
     <footer>
@@ -833,23 +1157,27 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a onclick="navigate('home')">Home</a></li>
-                        <li><a onclick="navigate('expertise')">Expertise</a></li>
-                        <li><a onclick="navigate('services')">Services</a></li>
+						<li><a onclick="navigate('services')">Services</a></li>
+                        <li><a onclick="navigate('expertise')">PaaS</a></li>
+                        
                         <li><a onclick="navigate('hcm')">Oracle Fusion HCM</a></li>
+                        <li><a onclick="navigate('platform')">OIC/VBCS Platform</a></li>
+						<li><a onclick="navigate('accelerators')">HCM Accelerators</a></li>
                         <li><a onclick="navigate('about')">About</a></li>
-                        <li><a onclick="navigate('accelerators')">HCM Accelerators</a></li>
+                        
                         <li><a onclick="navigate('faq')">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul class="footer-links">
+					<li><a onclick="navigate('hcm')">Oracle Fusion HCM Cloud</a></li>
                         <li><a onclick="navigate('expertise')">OIC Implementation</a></li>
                         <li><a onclick="navigate('expertise')">VBCS Development</a></li>
                         <li><a onclick="navigate('expertise')">Process Automation</a></li>
                         <li><a onclick="navigate('expertise')">Fusion Extensions</a></li>
                         <li><a onclick="navigate('expertise')">IDCS &amp; Security</a></li>
-                        <li><a onclick="navigate('hcm')">Oracle Fusion HCM Cloud</a></li>
+                        
                         <li><a onclick="navigate('expertise')">Oracle CPQ</a></li>
                     </ul>
                 </div>
@@ -899,7 +1227,7 @@ function injectFooters() {
 injectFooters();
 
 // ─── NAVIGATION ───
-const pages = ['home','expertise','services','hcm','about','accelerators','faq'];
+const pages = ['home','expertise','services','hcm','about','accelerators','faq','platform'];
 
 function navigate(page) {
     pages.forEach(p => {
