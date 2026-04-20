@@ -94,7 +94,7 @@ nav a.active { color: var(--primary); }
 /* SECTION COMMONS */
 section { padding: 2rem; }
 .section-header { text-align: center; margin-bottom: 2rem; }
-.section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); background: rgba(8,145,178,0.08); padding: 0.35rem 1rem; border-radius: 30px; margin-bottom: 1rem; }
+.section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); background: rgba(8,145,178,0.08); padding: 0.35rem 1rem; border-radius: 30px; margin-bottom: 1rem; display:none;}
 .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.3px; background: var(--grad-main); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
 .section-header p { max-width: 600px; margin: 0.75rem auto 0; color: var(--text-muted); font-size: 1.05rem; }
 .section-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-subtle), transparent); margin: 0 2rem; }
@@ -276,7 +276,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
             <a onclick="navigate('hcm')" id="nav-hcm">HCM</a>
             <a onclick="navigate('platform')" id="nav-platform">Platform</a>
             
-            <a onclick="navigate('accelerators')" id="nav-accelerators">Accelerators</a>
+            <a onclick="navigate('accelerators')" id="nav-accelerators">HCM Accelerators</a>
 			<a onclick="navigate('about')" id="nav-about">About</a>
             <a onclick="navigate('faq')" id="nav-faq">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
