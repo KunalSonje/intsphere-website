@@ -15,7 +15,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+@font-face {
+            font-family: 'Outfit';
+            src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+        }
 
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+        }
 :root {
     --primary: #0891b2;
     --primary-dark: #0c5460;
@@ -103,7 +115,7 @@ section { padding: 2rem; }
 .expertise-tag { background: rgba(8,145,178,0.07); color: var(--primary-dark); padding: 0.3rem 0.85rem; border-radius: 30px; font-size: 0.78rem; font-weight: 500; display: inline-block; margin: 0.2rem; border: 1px solid rgba(8,145,178,0.12); }
 
 /* HERO */
-.hero { background: var(--grad-main); padding: 6rem 0 4rem; position: relative; overflow: hidden; min-height: 90vh; display: flex; align-items: center; }
+.hero { background: var(--grad-main); padding: 6rem 0 4rem; position: relative; overflow: hidden;  display: flex; align-items: center; }
 .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 50px 50px; z-index: 1; pointer-events: none; opacity: 0.5; }
 #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
 .hero .container { z-index: 10; }
@@ -328,6 +340,14 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                 <p>Explore our Oracle Cloud consulting practice areas</p>
             </div>
             <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+			<div class="card reveal" onclick="navigate('services')" style="cursor:pointer;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3>Consulting Services</h3>
+                    </div>
+                    <p>End-to-end from architecture &amp; strategy through implementation, migration, managed services, and training.</p>
+                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Services <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
+                </div>
                 <div class="card reveal" onclick="navigate('expertise')" style="cursor:pointer;">
                     <div class="card-header">
                         <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -336,14 +356,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     <p>OIC, VBCS, OPA, APEX, ODI, IDCS, CPQ — deep Oracle platform skills.</p>
                     <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Expertise <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                 </div>
-                <div class="card reveal" onclick="navigate('services')" style="cursor:pointer;">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h3>Consulting Services</h3>
-                    </div>
-                    <p>End-to-end from architecture &amp; strategy through implementation, migration, managed services, and training.</p>
-                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Services <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
-                </div>
+                
                 <div class="card reveal" onclick="navigate('hcm')" style="cursor:pointer;">
                     <div class="card-header">
                         <div class="card-icon"><i class="fas fa-users-cog"></i></div>
@@ -352,14 +365,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     <p>Full hire-to-retire HCM Cloud — Core HR, Payroll, Recruiting, Talent, Absence, and more.</p>
                     <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View HCM <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                 </div>
-                <div class="card reveal" onclick="navigate('accelerators')" style="cursor:pointer;">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>HCM Accelerators</h3>
-                    </div>
-                    <p>Purpose-built tools — DataForge, PayForge, ValueForge — to fast-track your HCM journey.</p>
-                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
-                </div>
+               
                 
                 <div class="card reveal" onclick="navigate('platform')" style="cursor:pointer;">
                     <div class="card-header">
@@ -368,6 +374,14 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     </div>
                     <p>One-click deployment, auto TDD, flow diagrams, Postman generation, AI error analysis and real-time monitoring.</p>
                     <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">Explore Platform <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
+                </div>
+				 <div class="card reveal" onclick="navigate('accelerators')" style="cursor:pointer;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>HCM Accelerators</h3>
+                    </div>
+                    <p>Purpose-built tools — DataForge, PayForge, ValueForge — to fast-track your HCM journey.</p>
+                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                 </div>
 				<div class="card reveal" onclick="navigate('about')" style="cursor:pointer;">
                     <div class="card-header">
@@ -1303,7 +1317,7 @@ function initCanvas() {
     if (!canvas || !canvas.isConnected) return;
     const ctx = canvas.getContext('2d');
     let W, H, particles;
-    const COUNT = 88, MAX_D = 148, SPD = 0.42;
+    const COUNT = 88, MAX_D = 148, SPD = 0.15;
     const mouse = { x: -9999, y: -9999 };
     function rand(a, b) { return Math.random() * (b - a) + a; }
     function resize() { const hero = canvas.parentElement; W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
