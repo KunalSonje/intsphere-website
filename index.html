@@ -330,6 +330,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
             <a onclick="navigate('platform')" id="nav-platform">Platform</a>
             
             <a onclick="navigate('accelerators')" id="nav-accelerators">HCM Accelerators</a>
+            <a onclick="navigate('ai')" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
 			<a onclick="navigate('about')" id="nav-about">About</a>
             <a onclick="navigate('faq')" id="nav-faq">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
@@ -346,6 +347,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
             <a onclick="navigate('platform');toggleMenu()">OIC/VBCS Platform</a>
             
             <a onclick="navigate('accelerators');toggleMenu()">HCM Accelerators</a>
+            <a onclick="navigate('ai');toggleMenu()"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
 			<a onclick="navigate('about');toggleMenu()">About</a>
             <a onclick="navigate('faq');toggleMenu()">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
@@ -383,6 +385,41 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
     </section>
 
     <div class="section-divider"></div>
+
+    <!-- AI Highlight Banner -->
+    <section style="background:linear-gradient(135deg,#0a1628 0%,#1a2d42 50%,#0891b2 100%);padding:3rem 2rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;"></div>
+        <div style="position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(8,145,178,0.25) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div class="container" style="position:relative;z-index:2;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+                <div class="reveal">
+                    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(8,145,178,0.2);border:1px solid rgba(103,232,249,0.3);padding:0.35rem 1rem;border-radius:30px;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a5f3fc;margin-bottom:1rem;">
+                        <i class="fas fa-brain" style="font-size:0.65rem;"></i> INTISPHERE PLATFORM
+                    </div>
+                    <h2 style="color:#f1f5f9;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:0.75rem;line-height:1.2;">AI-Powered Solutions</h2>
+                    <p style="color:rgba(203,213,225,0.85);max-width:560px;font-size:1rem;line-height:1.7;margin:0;">AI-driven insights and automation to boost productivity, reduce manual effort, and surface root causes faster than ever — built directly into the IntSphere Platform for Oracle Cloud teams.</p>
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+                        <button onclick="navigate('ai')" class="btn btn-primary"><i class="fas fa-brain"></i> Explore AI Solutions</button>
+                        <button onclick="openModal()" class="btn btn-outline">Talk to an Expert</button>
+                    </div>
+                </div>
+                    <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:220px;">
+                    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(103,232,249,0.2);border-radius:16px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;">
+                        <div style="width:40px;height:40px;background:rgba(8,145,178,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#a5f3fc;font-size:1rem;flex-shrink:0;"><i class="fas fa-robot"></i></div>
+                        <div><div style="color:#f1f5f9;font-weight:600;font-size:0.9rem;">AI-Based TDD for VBCS</div><div style="color:rgba(165,243,252,0.7);font-size:0.78rem;">Auto-generate design documentation</div></div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(103,232,249,0.2);border-radius:16px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;">
+                        <div style="width:40px;height:40px;background:rgba(8,145,178,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#a5f3fc;font-size:1rem;flex-shrink:0;"><i class="fas fa-bolt"></i></div>
+                        <div><div style="color:#f1f5f9;font-weight:600;font-size:0.9rem;">Error Analysis &amp; Insights</div><div style="color:rgba(165,243,252,0.7);font-size:0.78rem;">Multi-LLM root cause analysis</div></div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(103,232,249,0.2);border-radius:16px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;">
+                        <div style="width:40px;height:40px;background:rgba(8,145,178,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#a5f3fc;font-size:1rem;flex-shrink:0;"><i class="fas fa-project-diagram"></i></div>
+                        <div><div style="color:#f1f5f9;font-weight:600;font-size:0.9rem;">Integration Flow Analysis</div><div style="color:rgba(165,243,252,0.7);font-size:0.78rem;">AI-powered OIC flow review</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Quick navigation cards -->
     <section style="background:#fff;padding:3rem 2rem;">
@@ -436,7 +473,15 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
                     <p>Purpose-built tools — DataForge, PayForge, ValueForge — to fast-track your HCM journey.</p>
                     <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                 </div>
-				<div class="card reveal" onclick="navigate('about')" style="cursor:pointer;">
+                <div class="card reveal" onclick="navigate('ai')" style="cursor:pointer;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>AI Solutions</h3>
+                    </div>
+                    <p>AI-driven insights and automation — AI-based TDD, FBDI/HDL analysis, multi-LLM error analysis, integration flow analysis, and Fusion security intelligence.</p>
+                    <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">Explore AI <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
+                </div>
+                <div class="card reveal" onclick="navigate('about')" style="cursor:pointer;">
                     <div class="card-header">
                         <div class="card-icon"><i class="fas fa-handshake"></i></div>
                         <h3>About IntSphere</h3>
@@ -711,7 +756,7 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
     <div class="page-banner">
         <div class="page-banner-grid"></div>
         <div class="container">
-            
+            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">About Us</div>
             <h1>Who We Are</h1>
             <p>Oracle Cloud specialists dedicated to your success — deep expertise, proven delivery, genuine partnership.</p>
         </div>
@@ -1254,6 +1299,114 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
     <div id="footer-platform"></div>
 </div>
 
+<!-- ═══════════════ PAGE: AI SOLUTIONS ═══════════════ -->
+<div id="page-ai" class="page" style="padding-top:72px">
+    <div class="page-banner" style="background:linear-gradient(135deg,#0a1628 0%,#1a2d42 50%,#0891b2 100%);">
+        <div class="page-banner-grid"></div>
+        <div class="container" style="position:relative;z-index:2;">
+            <div class="section-label" style="background:rgba(8,145,178,0.2);color:#a5f3fc;border:1px solid rgba(103,232,249,0.3);">IntSphere Platform</div>
+            <h1 style="color:#f1f5f9;">AI-Powered Solutions</h1>
+            <p style="color:rgba(203,213,225,0.85);">AI-driven insights and automation to boost productivity, reduce manual effort, and surface root causes faster than ever.</p>
+        </div>
+    </div>
+
+    <!-- AI Solutions Cards -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Intelligent Automation</div>
+                <h2>Built-in AI Across Your Oracle Workflows</h2>
+                <p>Every AI capability below is part of the IntSphere Platform — purpose-built for Oracle Integration Cloud, Fusion HCM, and VBCS teams.</p>
+            </div>
+            <div class="card-grid">
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI-Based TDD for VBCS</h3>
+                    </div>
+                    <p>Generate comprehensive Technical Design Documentation for Visual Builder Cloud Service applications using AI. Review VBCS apps and receive code quality recommendations instantly — no manual analysis needed.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">VBCS Analysis</span><span class="expertise-tag">AI Review</span><span class="expertise-tag">Auto TDD</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
+                        <h3>AI-Powered FBDI / HDL Analysis</h3>
+                    </div>
+                    <p>Analyse failed File-Based Data Import and HCM Data Loader files with intelligent AI assistance. Identify root causes, understand field-level errors, and get actionable fix recommendations in seconds.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">FBDI</span><span class="expertise-tag">HDL</span><span class="expertise-tag">Root Cause</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Multi-LLM AI Analysis</h3>
+                    </div>
+                    <p>Compare error analysis responses from different LLM models side-by-side for deeper insights and more informed decision-making. Choose the model that best fits your context — GPT, Claude, or others.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">GPT</span><span class="expertise-tag">Multi-model</span><span class="expertise-tag">Side-by-side</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Error Analysis &amp; Insights</h3>
+                    </div>
+                    <p>Automated error root-cause identification and resolution recommendations powered by multi-LLM analysis. Stop guessing — get precise, actionable guidance for every OIC integration failure.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Root Cause AI</span><span class="expertise-tag">Auto Insights</span><span class="expertise-tag">OIC Errors</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-tags"></i></div>
+                        <h3>Error Categorisation</h3>
+                    </div>
+                    <p>Intelligent classification of OIC integration errors by type, severity, and frequency for better prioritisation and incident management. Triage faster and focus your team on what matters most.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Smart Triage</span><span class="expertise-tag">Severity</span><span class="expertise-tag">Classification</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Fusion Security Intelligence</h3>
+                    </div>
+                    <p>AI-assisted role analysis and access anomaly detection across Fusion environments. Proactively surface over-privileged users, segregation-of-duties conflicts, and configuration drift before audits do.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Role Intelligence</span><span class="expertise-tag">SoD</span><span class="expertise-tag">Anomaly Detection</span></div>
+                </div>
+
+                <div class="card reveal" style="border-top:3px solid #0891b2;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>AI-Powered Integration Flow Analysis</h3>
+                    </div>
+                    <p>Automatically analyse OIC integration flows using AI — detect design inefficiencies, flag potential failure points, suggest optimisations, and generate plain-language summaries of complex flow logic for faster reviews and handovers.</p>
+                    <div style="margin-top:1rem;"><span class="expertise-tag">Flow Analysis</span><span class="expertise-tag">Design Review</span><span class="expertise-tag">AI Optimisation</span><span class="expertise-tag">OIC Flows</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA -->
+    <div class="container" style="padding-bottom:2rem;padding-top:2rem;">
+        <div class="cta-section reveal">
+            <h2>See the AI capabilities in action</h2>
+            <p>Book a demo of the IntSphere Platform and watch AI transform your Oracle integration and HCM operations.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;">
+                <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+                    <i class="fas fa-calendar-check"></i> Book a Demo
+                </button>
+                <button onclick="navigate('platform')" class="btn" style="background:transparent;border:2px solid rgba(255,255,255,0.4);color:white;font-weight:600;padding:14px 34px;">
+                    <i class="fas fa-layer-group"></i> View Full Platform
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="footer-ai"></div>
+</div>
+
 <!-- ═══════════════ SHARED FOOTER (injected) ═══════════════ -->
 <template id="footerTemplate">
     <footer>
@@ -1272,7 +1425,8 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
                         
                         <li><a onclick="navigate('hcm')">Oracle Fusion HCM</a></li>
                         <li><a onclick="navigate('platform')">OIC/VBCS Platform</a></li>
-						<li><a onclick="navigate('accelerators')">HCM Accelerators</a></li>
+                        <li><a onclick="navigate('accelerators')">HCM Accelerators</a></li>
+                        <li><a onclick="navigate('ai')">AI Solutions</a></li>
                         <li><a onclick="navigate('about')">About</a></li>
                         
                         <li><a onclick="navigate('faq')">FAQ</a></li>
@@ -1289,6 +1443,7 @@ By streamlining Oracle Integration Cloud operations, IntSphere ensures implement
                         <li><a onclick="navigate('expertise')">IDCS &amp; Security</a></li>
                         
                         <li><a onclick="navigate('expertise')">Oracle CPQ</a></li>
+                        <li><a onclick="navigate('ai')">AI Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1337,7 +1492,7 @@ function injectFooters() {
 injectFooters();
 
 // ─── NAVIGATION ───
-const pages = ['home','expertise','services','hcm','about','accelerators','faq','platform'];
+const pages = ['home','expertise','services','hcm','about','accelerators','faq','platform','ai'];
 
 function navigate(page) {
     pages.forEach(p => {
