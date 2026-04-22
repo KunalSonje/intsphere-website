@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Oracle PaaS Expertise | IntSphere</title>
+<meta name="description" content="IntSphere - Expert Oracle Cloud Consulting.">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a class="logo" onclick="navigate('home')" href="index.html">
+            <img src="Logo.webp" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-wrapper">
+                <span class="logo-text">IntSphere</span>
+                <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+            </div>
+        </a>
+        <nav id="mainNav">
+            <a href="index.html" id="nav-home">Home</a>
+            <a href="services.html" id="nav-services">Services</a>
+            <a href="pass.html" id="nav-expertise">PaaS</a>
+            <a href="hcm.html" id="nav-hcm">HCM</a>
+            <a href="intforge.html" id="nav-platform">IntForge</a>
+            <a href="hcmaccelerators.html" id="nav-accelerators">HCM Accelerators</a>
+            <a href="financeaccelerators.html" id="nav-financeacc">Finance Accelerator</a>
+            <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Consulting Services</a>
+            <a href="pass.html">PaaS Services</a>
+            <a href="hcm.html">HCM Services</a>
+            <a href="intforge.html">IntForge</a>
+            <a href="hcmaccelerators.html">HCM Accelerators</a>
+            <a href="financeaccelerators.html">Finance Accelerator</a>
+            <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+
+<div style="padding-top:72px">
+<div class="page-banner">
+        <div class="page-banner-grid"></div>
+        <div class="container">
+            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">Oracle PaaS Stack</div>
+            <h1>Our Oracle Cloud Expertise</h1>
+            <p>Specialized in the Oracle HCM and PaaS stack — delivering modern, scalable solutions across the full platform.</p>
+        </div>
+    </div>
+
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="card-grid">
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Oracle Integration Cloud (OIC)</h3></div>
+                    <p>End-to-end integration services connecting SaaS, on-premise, and custom applications. Real-time, batch, and event-driven patterns.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">OIC Gen3</span><span class="expertise-tag">REST / SOAP</span><span class="expertise-tag">Event-driven</span><span class="expertise-tag">Scheduled Batch</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Visual Builder Cloud Service (VBCS)</h3></div>
+                    <p>Low-code web &amp; mobile app development. Extend Oracle SaaS or build standalone apps with modern UI and seamless APIs.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Web &amp; Mobile</span><span class="expertise-tag">PWA</span><span class="expertise-tag">SaaS Extension</span><span class="expertise-tag">Custom UI</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-project-diagram"></i></div><h3>Oracle Process Automation (OPA)</h3></div>
+                    <p>Intelligent process automation and workflow orchestration to streamline operations and reduce manual overhead.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Workflow Design</span><span class="expertise-tag">Decision Models</span><span class="expertise-tag">PCS Migration</span><span class="expertise-tag">Human Tasks</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-laptop-code"></i></div><h3>Oracle APEX</h3></div>
+                    <p>Rapid development of scalable, secure web applications using low-code APEX. Expertise in building data-driven apps, dashboards, and custom solutions on Oracle Database.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Low-code</span><span class="expertise-tag">Dashboards</span><span class="expertise-tag">Oracle DB</span><span class="expertise-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>Oracle Fusion Technical</h3></div>
+                    <p>Expertise in Oracle Fusion technical components across HCM, ERP, and SCM. BI Publisher, OTBI, HDL/HSDL, Fast Formula, data migration, and technical support for enterprise implementations.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">BI Publisher</span><span class="expertise-tag">OTBI</span><span class="expertise-tag">HDL / HSDL</span><span class="expertise-tag">Fast Formula</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-code"></i></div><h3>Extensions</h3></div>
+                    <p>Custom-built add-ons and integrations that expand what your SaaS platform can do — tailored to fit your unique business needs.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Groovy Scripts</span><span class="expertise-tag">ADF Faces</span><span class="expertise-tag">SaaS Extension</span><span class="expertise-tag">Custom Objects</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-database"></i></div><h3>Oracle Data Integrator (ODI)</h3></div>
+                    <p>High-performance data integration and ELT solutions for large-scale data movement, transformation, and synchronization across enterprise systems.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">ELT Pipelines</span><span class="expertise-tag">CDC</span><span class="expertise-tag">Data Warehouse</span><span class="expertise-tag">Mappings</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-chart-pie"></i></div><h3>Fusion Analytics Warehouse (FAW)</h3></div>
+                    <p>Prebuilt analytics and dashboards delivering actionable insights across Finance, HCM, and SCM with KPI tracking and advanced reporting.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Prebuilt KPIs</span><span class="expertise-tag">Custom Pipelines</span><span class="expertise-tag">OAC</span><span class="expertise-tag">Finance / HCM</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-brain"></i></div><h3>Fusion Data Intelligence (FDI)</h3></div>
+                    <p>Next-gen analytics platform enabling unified data insights, advanced modeling, and AI-driven business intelligence across Oracle Fusion applications.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">AI Insights</span><span class="expertise-tag">Semantic Models</span><span class="expertise-tag">Augmented Analytics</span><span class="expertise-tag">Oracle Fusion</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-shield-alt"></i></div><h3>Oracle IDCS &amp; Security</h3></div>
+                    <p>Identity and access management, SSO, MFA, and user lifecycle governance for hybrid cloud environments.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">SSO / SAML</span><span class="expertise-tag">MFA</span><span class="expertise-tag">Role Design</span><span class="expertise-tag">User Lifecycle</span>
+                    </div>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-tags"></i></div><h3>Oracle CPQ</h3></div>
+                    <p>Configure-Price-Quote implementation and optimization. Complex pricing, guided selling, and quote-to-order automation.</p>
+                    <div style="margin-top:1rem;">
+                        <span class="expertise-tag">Guided Selling</span><span class="expertise-tag">Pricing Rules</span><span class="expertise-tag">Quote-to-Order</span><span class="expertise-tag">CRM Integration</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+    <div class="container" style="padding-bottom:2rem;padding-top:2rem;">
+        <div class="cta-section reveal">
+            <h2>Ready to accelerate your Oracle Cloud journey?</h2>
+            <p>Let's discuss how our expertise can drive your digital transformation.</p>
+            <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+                <i class="fas fa-paper-plane"></i> Get in Touch
+            </button>
+        </div>
+    </div>
+    <div id="footer-expertise"></div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Let's Connect</h2>
+        <p class="modal-subtitle">Tell us about your Oracle requirements</p>
+        <form id="contactForm" onsubmit="return false;">
+            <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <span class="footer-logo-text">IntSphere</span>
+                <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pass.html">PaaS</a></li>
+                    <li><a href="hcm.html">Oracle Fusion HCM</a></li>
+                    <li><a href="intforge.html">IntForge</a></li>
+                    <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+                    <li><a href="financeaccelerators.html">Finance Accelerator</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="hcm.html">Oracle Fusion HCM Cloud</a></li>
+                    <li><a href="pass.html">OIC Implementation</a></li>
+                    <li><a href="pass.html">VBCS Development</a></li>
+                    <li><a href="pass.html">Process Automation</a></li>
+                    <li><a href="pass.html">Fusion Extensions</a></li>
+                    <li><a href="pass.html">IDCS &amp; Security</a></li>
+                    <li><a href="pass.html">Oracle CPQ</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+                    <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
+                    <li><i class="fas fa-globe"></i> <span style="font-size:0.88rem;">Global Services</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span style="font-size:0.88rem;">704, Bhoomi Kshitij, Nakhate Wasti, Rahatani, Pune – 411017, Maharashtra, India</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
