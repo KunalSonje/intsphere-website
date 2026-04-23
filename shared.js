@@ -2,15 +2,15 @@
 // Maps page names to their HTML files
 const pageMap = {
     home: 'index.html',
-    expertise: 'expertise.html',
+    expertise: 'pass.html',
     services: 'services.html',
     hcm: 'hcm.html',
     about: 'about.html',
-    accelerators: 'accelerators.html',
+    accelerators: 'hcmaccelerators.html',
     faq: 'faq.html',
     platform: 'intforge.html',
-    ai: 'ai.html',
-    financeacc: 'financeacc.html'
+    payforge: 'payforge.html',
+    ai: 'ai.html'
 };
 
 function navigate(page) {
@@ -37,21 +37,26 @@ if (_header) {
     });
 }
 
-// ─── DESKTOP DROPDOWN (click to open, click outside to close) ───
+// ─── DESKTOP DROPDOWNS (hover to open/close) ───
 document.addEventListener('DOMContentLoaded', function() {
-    const trigger = document.querySelector('.nav-dropdown-trigger');
-    const dropdown = document.querySelector('.nav-dropdown');
-    if (trigger && dropdown) {
-        trigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdown.classList.toggle('open');
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(function(dropdown) {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+        if (!trigger) return;
+        let closeTimer = null;
+
+        dropdown.addEventListener('mouseenter', function() {
+            if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+            trigger.classList.add('hovered');
+            dropdown.classList.add('open');
         });
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
+        dropdown.addEventListener('mouseleave', function() {
+            closeTimer = setTimeout(function() {
+                trigger.classList.remove('hovered');
                 dropdown.classList.remove('open');
-            }
+            }, 100);
         });
-    }
+    });
 });
 
 // ─── MOBILE MENU ───
@@ -59,10 +64,28 @@ function toggleMenu() {
     const m = document.getElementById('mobileMenu');
     if (m) m.classList.toggle('active');
 }
+function toggleMobileProducts(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileProductSub');
+    const chevron = document.getElementById('prodChevron');
+    if (!sub) return;
+    const open = sub.style.display !== 'none';
+    sub.style.display = open ? 'none' : 'block';
+    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+}
 function toggleMobileAccelerators(e) {
     e.preventDefault();
     const sub = document.getElementById('mobileAccSub');
     const chevron = document.getElementById('accChevron');
+    if (!sub) return;
+    const open = sub.style.display !== 'none';
+    sub.style.display = open ? 'none' : 'block';
+    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+}
+function toggleMobileServices(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileAccSvc');
+    const chevron = document.getElementById('svcChevron');
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';

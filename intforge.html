@@ -23,15 +23,25 @@
         </a>
         <nav id="mainNav">
             <a href="index.html" id="nav-home">Home</a>
-            <a href="services.html" id="nav-services">Services</a>
-            <a href="pass.html" id="nav-expertise">PaaS</a>
-            <a href="hcm.html" id="nav-hcm">HCM</a>
-            <a href="intforge.html" id="nav-platform">IntForge</a>
+            <div class="nav-dropdown" id="nav-services-group">
+                <a class="nav-dropdown-trigger" id="nav-services">Services <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="services.html" id="nav-consulting" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
+                    <a href="pass.html" id="nav-expertise" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
+                    <a href="hcm.html" id="nav-hcm" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-products-group">
+                <a class="nav-dropdown-trigger" id="nav-products">Products <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="intforge.html" id="nav-platform" style="color:var(--text);"><i class="fas fa-bolt" style="width:16px;margin-right:8px;color:var(--primary);"></i>IntForge</a>
+                    <a href="payforge.html" id="nav-payforge" style="color:var(--text);"><i class="fas fa-file-invoice-dollar" style="width:16px;margin-right:8px;color:var(--primary);"></i>PayForge</a>
+                </div>
+            </div>
             <div class="nav-dropdown" id="nav-accelerators-group">
                 <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
                 <div class="nav-dropdown-menu">
                     <a href="hcmaccelerators.html" id="nav-hcmacc" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
-                    <a href="financeaccelerators.html" id="nav-financeacc" style="color:var(--text);"><i class="fas fa-coins" style="width:16px;margin-right:8px;color:var(--primary);"></i>Finance Accelerator</a>
                 </div>
             </div>
             <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
@@ -44,14 +54,20 @@
     <div class="mobile-menu" id="mobileMenu">
         <nav>
             <a href="index.html">Home</a>
-            <a href="services.html">Consulting Services</a>
-            <a href="pass.html">PaaS Services</a>
-            <a href="hcm.html">HCM Services</a>
-            <a href="intforge.html">IntForge</a>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSvc" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
+                <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
+                <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="intforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-bolt" style="width:14px;margin-right:6px;color:var(--primary);"></i>IntForge</a>
+                <a href="payforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-file-invoice-dollar" style="width:14px;margin-right:6px;color:var(--primary);"></i>PayForge</a>
+            </div>
             <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
             <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
                 <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
-                <a href="financeaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-coins" style="width:14px;margin-right:6px;color:var(--primary);"></i>Finance Accelerator</a>
             </div>
             <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
             <a href="about.html">About</a>
@@ -67,9 +83,9 @@
     <div class="page-banner">
         <div class="page-banner-grid"></div>
         <div class="container">
-            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">OIC &amp; VBCS Accelerator</div>
-            <h1>IntForge</h1>
-            <p>A purpose-built accelerator that transforms how Oracle Integration Cloud and Visual Builder teams operate — from one-click deployment to AI-powered documentation, monitoring, and analytics.</p>
+            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">OIC Product</div>
+            <h1>IntForge - OIC &amp; VBCS Platfrom </h1>
+            <p>A purpose-built product that transforms how Oracle Integration Cloud and Visual Builder teams operate — from one-click deployment to AI-powered documentation, monitoring, and analytics.</p>
         </div>
     </div>
 
@@ -400,12 +416,13 @@
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="pass.html">PaaS</a></li>
-                    <li><a href="hcm.html">Oracle Fusion HCM</a></li>
+                    <li><a href="services.html">Consulting Services</a></li>
+                    <li><a href="pass.html">PaaS Services</a></li>
+                    <li><a href="hcm.html">HCM Services</a></li>
                     <li><a href="intforge.html">IntForge</a></li>
-                    <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
-                    <li><a href="financeaccelerators.html">Finance Accelerator</a></li>
+                    
+                    <li><a href="payforge.html">PayForge</a></li>
+					<li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
                     <li><a href="ai.html">AI Solutions</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
