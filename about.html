@@ -27,8 +27,13 @@
             <a href="pass.html" id="nav-expertise">PaaS</a>
             <a href="hcm.html" id="nav-hcm">HCM</a>
             <a href="intforge.html" id="nav-platform">IntForge</a>
-            <a href="hcmaccelerators.html" id="nav-accelerators">HCM Accelerators</a>
-            <a href="financeaccelerators.html" id="nav-financeacc">Finance Accelerator</a>
+            <div class="nav-dropdown" id="nav-accelerators-group">
+                <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="hcmaccelerators.html" id="nav-hcmacc" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
+                    <a href="financeaccelerators.html" id="nav-financeacc" style="color:var(--text);"><i class="fas fa-coins" style="width:16px;margin-right:8px;color:var(--primary);"></i>Finance Accelerator</a>
+                </div>
+            </div>
             <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
             <a href="about.html" id="nav-about">About</a>
             <a href="faq.html" id="nav-faq">FAQ</a>
@@ -43,8 +48,11 @@
             <a href="pass.html">PaaS Services</a>
             <a href="hcm.html">HCM Services</a>
             <a href="intforge.html">IntForge</a>
-            <a href="hcmaccelerators.html">HCM Accelerators</a>
-            <a href="financeaccelerators.html">Finance Accelerator</a>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
+                <a href="financeaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-coins" style="width:14px;margin-right:6px;color:var(--primary);"></i>Finance Accelerator</a>
+            </div>
             <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
             <a href="about.html">About</a>
             <a href="faq.html">FAQ</a>
@@ -114,7 +122,7 @@
             
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="founder-card reveal founder-card">
-                    <img src="KunalPhoto.jpg" alt="Kunal Sonje - Founder" class="founder-img">
+                    <img src="KunalPhoto.webp" alt="Kunal Sonje - Founder" class="founder-img">
                     
                     <div style="text-align: left;">
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">

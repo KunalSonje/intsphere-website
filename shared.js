@@ -37,10 +37,36 @@ if (_header) {
     });
 }
 
+// ─── DESKTOP DROPDOWN (click to open, click outside to close) ───
+document.addEventListener('DOMContentLoaded', function() {
+    const trigger = document.querySelector('.nav-dropdown-trigger');
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (trigger && dropdown) {
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    }
+});
+
 // ─── MOBILE MENU ───
 function toggleMenu() {
     const m = document.getElementById('mobileMenu');
     if (m) m.classList.toggle('active');
+}
+function toggleMobileAccelerators(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileAccSub');
+    const chevron = document.getElementById('accChevron');
+    if (!sub) return;
+    const open = sub.style.display !== 'none';
+    sub.style.display = open ? 'none' : 'block';
+    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
 }
 
 // ─── MODAL ───
