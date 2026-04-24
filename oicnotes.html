@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>OIC Notes | IntSphere</title>
+<meta name="description" content="Oracle Integration Cloud reference notes — service limits, editions, roles, best practices, and anti-patterns.">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── TABS ── */
+.tabs-bar {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--border-subtle);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+    padding: 0.65rem 1.2rem;
+    border: none;
+    background: none;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    border-radius: 8px 8px 0 0;
+}
+.tab-btn:hover { color: var(--primary); }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: rgba(8,145,178,0.05); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── METRIC CARDS ── */
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.metric-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(248,250,252,0.97));
+    padding: 1.3rem 1.5rem;
+    border-radius: 16px;
+    border: 1.5px solid rgba(8,145,178,0.18);
+    box-shadow: 0 4px 12px rgba(8,145,178,0.07);
+    transition: all 0.3s ease;
+}
+.metric-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(8,145,178,0.13); border-color: rgba(8,145,178,0.35); }
+.metric-label { color: var(--text-muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.4rem; }
+.metric-value { color: var(--heading); font-size: 1.45rem; font-weight: 800; font-family: 'Outfit', 'Inter', sans-serif; line-height: 1.2; }
+
+/* ── DATA TABLES ── */
+.data-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border-subtle); margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+thead tr { background: linear-gradient(135deg, #1a2d42, #2d4563); color: white; }
+thead th { padding: 0.85rem 1rem; text-align: left; font-family: 'Outfit', 'Inter', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.3px; white-space: nowrap; }
+tbody tr { border-bottom: 1px solid var(--border-subtle); transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: rgba(8,145,178,0.04); }
+tbody td { padding: 0.8rem 1rem; color: var(--text); vertical-align: top; line-height: 1.55; }
+tbody td:first-child { font-weight: 600; color: var(--heading); }
+.badge-hard { background: rgba(239,68,68,0.1); color: #dc2626; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.badge-soft { background: rgba(245,158,11,0.1); color: #d97706; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.badge-mixed { background: rgba(99,102,241,0.1); color: #4f46e5; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.check-yes { color: #16a34a; font-size: 1.1rem; }
+.check-no { color: #dc2626; font-size: 1.1rem; }
+
+/* ── EXPANDER ── */
+.expander { border: 1px solid var(--border-subtle); border-radius: 14px; margin-bottom: 0.85rem; overflow: hidden; transition: box-shadow 0.25s; }
+.expander:hover { box-shadow: var(--shadow-md); }
+.expander.open { border-color: rgba(8,145,178,0.3); box-shadow: 0 4px 16px rgba(8,145,178,0.08); }
+.expander-header { padding: 1.1rem 1.4rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; color: var(--heading); background: white; transition: 0.2s; gap: 1rem; }
+.expander-header:hover { color: var(--primary); background: rgba(8,145,178,0.03); }
+.expander-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(8,145,178,0.08); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--primary); flex-shrink: 0; transition: all 0.3s; }
+.expander.open .expander-icon { background: var(--primary); color: white; transform: rotate(45deg); }
+.expander-body { max-height: 0; overflow: hidden; transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1); background: #fafcfe; }
+.expander.open .expander-body { max-height: 2000px; }
+.expander-content { padding: 1.2rem 1.4rem 1.4rem; }
+
+/* ── INNER TABS ── */
+.inner-tabs-bar { display: flex; gap: 0.35rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.inner-tab-btn { padding: 0.5rem 1rem; border: 1.5px solid var(--border-subtle); background: white; font-family: 'Outfit', 'Inter', sans-serif; font-weight: 600; font-size: 0.83rem; color: var(--text-muted); cursor: pointer; border-radius: 30px; transition: all 0.2s; }
+.inner-tab-btn:hover { border-color: rgba(8,145,178,0.4); color: var(--primary); }
+.inner-tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+.inner-tab-panel { display: none; }
+.inner-tab-panel.active { display: block; }
+
+/* ── INFO BLOCKS ── */
+.info-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+.info-block { background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.4rem 1.5rem; box-shadow: var(--shadow-sm); }
+.info-block h4 { font-size: 0.95rem; color: var(--heading); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.info-block ul { list-style: none; padding: 0; }
+.info-block ul li { padding: 0.3rem 0; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; display: flex; gap: 0.5rem; }
+.info-block ul li::before { content: '›'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+/* ── QUICK REF ── */
+.quick-ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.quick-ref-card { background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.3rem 1.4rem; box-shadow: var(--shadow-sm); }
+.quick-ref-card h4 { font-size: 0.88rem; color: var(--heading); margin-bottom: 0.75rem; font-family: 'Outfit', 'Inter', sans-serif; }
+.quick-ref-card ul { list-style: none; padding: 0; }
+.quick-ref-card ul li { font-size: 0.83rem; color: var(--text-muted); padding: 0.22rem 0; display: flex; gap: 0.4rem; line-height: 1.5; }
+.quick-ref-card ul li::before { content: '•'; color: var(--primary); flex-shrink: 0; }
+
+/* ── CHECKLIST ── */
+.checklist-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+.checklist-block { background: white; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 1.3rem 1.5rem; }
+.checklist-block h4 { font-size: 0.92rem; margin-bottom: 0.85rem; color: var(--heading); }
+.check-item { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.35rem 0; font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; }
+.check-box { width: 17px; height: 17px; border: 1.5px solid rgba(8,145,178,0.4); border-radius: 4px; flex-shrink: 0; margin-top: 1px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+.check-box.checked { background: var(--primary); border-color: var(--primary); }
+.check-box.checked::after { content: '✓'; color: white; font-size: 0.7rem; font-weight: 700; }
+
+/* ── HEALTH SCORING ── */
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+.score-block { background: white; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.5rem; }
+.score-block h4 { font-size: 0.92rem; color: var(--heading); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
+.score-block h4 span { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.score-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.45rem 0; font-size: 0.87rem; color: var(--text-muted); }
+.score-checkbox { width: 18px; height: 18px; border: 1.5px solid rgba(8,145,178,0.35); border-radius: 4px; flex-shrink: 0; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+.score-checkbox.scored { background: var(--primary); border-color: var(--primary); }
+.score-checkbox.scored::after { content: '✓'; color: white; font-size: 0.72rem; font-weight: 700; }
+.score-display { background: var(--grad-main); color: white; border-radius: 20px; padding: 1.75rem 2rem; text-align: center; margin-top: 1.5rem; }
+.score-display .score-num { font-size: 3rem; font-weight: 800; font-family: 'Outfit', 'Inter', sans-serif; line-height: 1; }
+.score-display .score-label { font-size: 1rem; margin-top: 0.4rem; opacity: 0.85; }
+.score-display .score-sub { font-size: 0.85rem; margin-top: 0.35rem; opacity: 0.65; }
+
+/* ANTI-PATTERN CARD */
+.antipattern-card { background: white; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.5rem 1.6rem; margin-bottom: 1rem; box-shadow: var(--shadow-sm); transition: all 0.3s; }
+.antipattern-card:hover { border-color: rgba(239,68,68,0.25); box-shadow: 0 6px 20px rgba(239,68,68,0.07); }
+.antipattern-card h4 { display: flex; align-items: center; gap: 0.6rem; font-size: 0.97rem; color: var(--heading); margin-bottom: 0.65rem; }
+.antipattern-card .problem { background: rgba(239,68,68,0.05); border-left: 3px solid #ef4444; border-radius: 0 10px 10px 0; padding: 0.65rem 1rem; margin: 0.75rem 0; font-size: 0.86rem; color: var(--text); line-height: 1.6; }
+.antipattern-card .solution { background: rgba(16,185,129,0.05); border-left: 3px solid #10b981; border-radius: 0 10px 10px 0; padding: 0.65rem 1rem; font-size: 0.86rem; color: var(--text); line-height: 1.6; }
+.antipattern-card .block-label { font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+.antipattern-card .problem .block-label { color: #ef4444; }
+.antipattern-card .solution .block-label { color: #10b981; }
+.symptom-list { margin: 0.6rem 0; padding-left: 1rem; }
+.symptom-list li { font-size: 0.86rem; color: var(--text-muted); padding: 0.15rem 0; line-height: 1.55; }
+
+@media(max-width:640px){
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    thead th, tbody td { padding: 0.65rem 0.75rem; font-size: 0.82rem; }
+    .tabs-bar { gap: 0.2rem; }
+    .tab-btn { padding: 0.55rem 0.85rem; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a class="logo" onclick="navigate('home')" href="index.html">
+            <img src="Logo.webp" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-wrapper">
+                <span class="logo-text">IntSphere</span>
+                <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+            </div>
+        </a>
+        <nav id="mainNav">
+            <a href="index.html" id="nav-home">Home</a>
+            <div class="nav-dropdown" id="nav-services-group">
+                <a class="nav-dropdown-trigger" id="nav-services">Services <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="services.html" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
+                    <a href="pass.html" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
+                    <a href="hcm.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-products-group">
+                <a class="nav-dropdown-trigger" id="nav-products">Products <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="intforge.html" style="color:var(--text);"><i class="fas fa-bolt" style="width:16px;margin-right:8px;color:var(--primary);"></i>IntForge</a>
+                    <a href="payforge.html" style="color:var(--text);"><i class="fas fa-file-invoice-dollar" style="width:16px;margin-right:8px;color:var(--primary);"></i>PayForge</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-accelerators-group">
+                <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="hcmaccelerators.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-insights-group">
+                <a class="nav-dropdown-trigger" id="nav-insights">Insights <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="oicinsights.html" style="color:var(--text);"><i class="fas fa-plug" style="width:16px;margin-right:8px;color:var(--primary);"></i>OIC</a>
+                </div>
+            </div>
+            <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSvc" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
+                <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
+                <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="intforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-bolt" style="width:14px;margin-right:6px;color:var(--primary);"></i>IntForge</a>
+                <a href="payforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-file-invoice-dollar" style="width:14px;margin-right:6px;color:var(--primary);"></i>PayForge</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileInsights(event)">Insights <i class="fas fa-chevron-down" id="insChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileInsSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="oicinsights.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-plug" style="width:14px;margin-right:6px;color:var(--primary);"></i>OIC</a>
+            </div>
+            <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+<div style="padding-top:72px">
+
+    <!-- BANNER -->
+    <div class="page-banner">
+        <div class="page-banner-grid"></div>
+        <div class="container">
+            <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">Oracle Integration Cloud</div>
+            <h1>OIC Reference Notes</h1>
+            <p>Service limits, editions, roles, configurations, best practices, anti-patterns and integration health assessment — all in one place.</p>
+        </div>
+    </div>
+
+    <section style="background:#fff;">
+        <div class="container">
+
+            <!-- MAIN TABS -->
+            <div class="tabs-bar" id="mainTabs">
+                <button class="tab-btn active" onclick="switchTab('overview','mainTabs','mainPanels')"><i class="fas fa-chart-bar" style="margin-right:5px;"></i>Overview</button>
+                <button class="tab-btn" onclick="switchTab('config','mainTabs','mainPanels')"><i class="fas fa-cog" style="margin-right:5px;"></i>Configurations</button>
+                <button class="tab-btn" onclick="switchTab('bestpractices','mainTabs','mainPanels')"><i class="fas fa-star" style="margin-right:5px;"></i>Best Practices</button>
+                <button class="tab-btn" onclick="switchTab('antipatterns','mainTabs','mainPanels')"><i class="fas fa-ban" style="margin-right:5px;"></i>Anti-Patterns</button>
+                <button class="tab-btn" onclick="switchTab('health','mainTabs','mainPanels')"><i class="fas fa-heartbeat" style="margin-right:5px;"></i>Health Assessment</button>
+            </div>
+
+            <div id="mainPanels">
+
+                <!-- ═══════════ OVERVIEW ═══════════ -->
+                <div class="tab-panel active" data-tab="overview">
+                    <div class="inner-tabs-bar" id="overviewTabs">
+                        <button class="inner-tab-btn active" onclick="switchTab('limits','overviewTabs','overviewPanels')"><i class="fas fa-chart-line" style="margin-right:4px;"></i>Service Limits</button>
+                        <button class="inner-tab-btn" onclick="switchTab('editions','overviewTabs','overviewPanels')"><i class="fas fa-gem" style="margin-right:4px;"></i>Editions</button>
+                        <button class="inner-tab-btn" onclick="switchTab('roles','overviewTabs','overviewPanels')"><i class="fas fa-users" style="margin-right:4px;"></i>Roles</button>
+                    </div>
+                    <div id="overviewPanels">
+
+                        <!-- SERVICE LIMITS -->
+                        <div class="tab-panel active" data-tab="limits">
+                            <div class="metric-grid">
+                                <div class="metric-card"><div class="metric-label">⏰ Max Duration (Scheduled)</div><div class="metric-value">6 hours</div></div>
+                                <div class="metric-card"><div class="metric-label">📁 Max File Size</div><div class="metric-value">1 GB</div></div>
+                                <div class="metric-card"><div class="metric-label">⚡ Max Synchronous</div><div class="metric-value">2,000</div></div>
+                                <div class="metric-card"><div class="metric-label">💾 Data Retention</div><div class="metric-value">184 days</div></div>
+                            </div>
+
+                            <!-- Integrations -->
+                            <div class="expander open" id="exp-integrations">
+                                <div class="expander-header" onclick="toggleExpander('exp-integrations')">
+                                    <span><i class="fas fa-link" style="color:var(--primary);margin-right:8px;"></i>Integrations <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(17 limits)</span></span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body">
+                                    <div class="expander-content">
+                                        <div class="data-table-wrap">
+                                            <table>
+                                                <thead><tr><th>Limit</th><th>Value</th><th>Type</th><th>Impact</th></tr></thead>
+                                                <tbody>
+                                                    <tr><td>Invocation Depth</td><td>16 invocations</td><td><span class="badge-hard">Hard</span></td><td>Error returned</td></tr>
+                                                    <tr><td>String Size</td><td>10,000 characters</td><td><span class="badge-hard">Hard</span></td><td>All variables/functions</td></tr>
+                                                    <tr><td>Concurrent Requests</td><td>Sync: 100 per pack (max 2,000)<br>Async: 50 per pack (max 1,000)</td><td><span class="badge-soft">Soft</span></td><td>Requests queued</td></tr>
+                                                    <tr><td>Event Integrations</td><td>50 per instance</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>Tracking Events</td><td>Non-error: 20,000<br>Error: 30,000 (max 2,000 errors)</td><td><span class="badge-soft">Soft</span></td><td>Events stop recording</td></tr>
+                                                    <tr><td>Flow Duration</td><td>Sync: 5 min<br>Async/Scheduled: 6 hours</td><td><span class="badge-hard">Hard</span></td><td>Sync: HTTP 502; Async: Aborted</td></tr>
+                                                    <tr><td>Stage File Action</td><td>Read Entire File: 100 MB<br>Encrypt/Decrypt: 1 GB</td><td><span class="badge-hard">Hard</span></td><td>Use segments for &gt;100 MB</td></tr>
+                                                    <tr><td>Sync Timeout</td><td>300 seconds</td><td><span class="badge-hard">Hard</span></td><td>Timeout error</td></tr>
+                                                    <tr><td>OIM Message Size</td><td>10 MB</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>Encode/Decode Attachments</td><td>10 MB (base64)</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>JavaScript Timeout</td><td>15 seconds</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>JavaScript Parameters</td><td>20 parameters</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>XSLT Duration</td><td>120 seconds</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>Scheduled Concurrent</td><td>Scheduled: 1 / Ad-hoc: 1</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                    <tr><td>Loop Iterations</td><td>While: 5,000<br>For-each: Unlimited<br>Tracked: 1,000</td><td><span class="badge-mixed">Mixed</span></td><td>N/A for untracked</td></tr>
+                                                    <tr><td>Activity Stream Payloads</td><td>32 KB per payload<br>25 MB total per instance</td><td><span class="badge-soft">Soft</span></td><td>&gt;32 KB stored in Object Storage</td></tr>
+                                                    <tr><td>Resubmissions</td><td>10 per instance</td><td><span class="badge-hard">Hard</span></td><td>N/A</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Adapters -->
+                            <div class="expander" id="exp-adapters">
+                                <div class="expander-header" onclick="toggleExpander('exp-adapters')">
+                                    <span><i class="fas fa-plug" style="color:var(--primary);margin-right:8px;"></i>Adapters &amp; Connections <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(12 limits)</span></span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body">
+                                    <div class="expander-content">
+                                        <div class="data-table-wrap">
+                                            <table>
+                                                <thead><tr><th>Category</th><th>Limit</th><th>Value</th><th>Notes</th></tr></thead>
+                                                <tbody>
+                                                    <tr><td>Connectivity Agent</td><td>Memory</td><td>8 GB total (4 GB JVM heap)</td><td>Increase host memory if needed</td></tr>
+                                                    <tr><td>Connectivity Agent</td><td>Message Payloads</td><td>10 MB (compressed)<br>50 MB (uncompressed)</td><td>Agent-enabled adapters</td></tr>
+                                                    <tr><td>Structured Payloads</td><td>SOAP/REST</td><td>50 MB</td><td>JSON/XML documents</td></tr>
+                                                    <tr><td>Structured Payloads</td><td>File/FTP Invoke</td><td>50 MB</td><td>With schema transformation</td></tr>
+                                                    <tr><td>Structured Payloads</td><td>Other Protocols</td><td>10 MB</td><td>Database, JMS, MQ, Kafka</td></tr>
+                                                    <tr><td>Cloud Endpoints</td><td>Structured Payloads</td><td>100 MB</td><td>Not using connectivity agent</td></tr>
+                                                    <tr><td>Binary Payloads</td><td>Attachments/MTOM</td><td>1 GB</td><td>Trigger connections &amp; invoke responses</td></tr>
+                                                    <tr><td>Apache Kafka</td><td>Message Size</td><td>10 MB</td><td>With schema transformation</td></tr>
+                                                    <tr><td>AS2 Adapter</td><td>Message Size</td><td>100 MB</td><td>N/A</td></tr>
+                                                    <tr><td>Database Adapters</td><td>Trigger Operations</td><td>50 MB (agent)<br>100 MB (private)</td><td>With schema transformation</td></tr>
+                                                    <tr><td>Database Adapters</td><td>Select Operations</td><td>100 MB (cloud/private)<br>50 MB (agent)</td><td>N/A</td></tr>
+                                                    <tr><td>File/FTP Adapters</td><td>Read Operations</td><td>1 GB (no schema)<br>50–100 MB (with schema)</td><td>Varies by endpoint type</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other small categories -->
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:1rem;">
+                                <!-- Library Artifacts -->
+                                <div class="expander" id="exp-artifacts">
+                                    <div class="expander-header" onclick="toggleExpander('exp-artifacts')">
+                                        <span><i class="fas fa-book" style="color:var(--primary);margin-right:8px;"></i>Library Artifacts <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(3 limits)</span></span>
+                                        <span class="expander-icon">+</span>
+                                    </div>
+                                    <div class="expander-body"><div class="expander-content">
+                                        <div class="data-table-wrap"><table><thead><tr><th>Limit</th><th>Value</th><th>Notes</th></tr></thead><tbody>
+                                            <tr><td>Total Upload Size</td><td>100 MB per instance</td><td>XSD, WSDL, CSV, etc.</td></tr>
+                                            <tr><td>Individual Artifact</td><td>10 MB</td><td>N/A</td></tr>
+                                            <tr><td>Number of Artifacts</td><td>500 per instance</td><td>N/A</td></tr>
+                                        </tbody></table></div>
+                                    </div></div>
+                                </div>
+                                <!-- Lookups -->
+                                <div class="expander" id="exp-lookups">
+                                    <div class="expander-header" onclick="toggleExpander('exp-lookups')">
+                                        <span><i class="fas fa-search" style="color:var(--primary);margin-right:8px;"></i>Lookups <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(3 limits)</span></span>
+                                        <span class="expander-icon">+</span>
+                                    </div>
+                                    <div class="expander-body"><div class="expander-content">
+                                        <div class="data-table-wrap"><table><thead><tr><th>Limit</th><th>Value</th><th>Notes</th></tr></thead><tbody>
+                                            <tr><td>Lookup Tables</td><td>100 per instance</td><td>N/A</td></tr>
+                                            <tr><td>Entries per Table</td><td>10,000</td><td>N/A</td></tr>
+                                            <tr><td>Key/Value Length</td><td>1,000 characters</td><td>N/A</td></tr>
+                                        </tbody></table></div>
+                                    </div></div>
+                                </div>
+                                <!-- Schedules -->
+                                <div class="expander" id="exp-schedules">
+                                    <div class="expander-header" onclick="toggleExpander('exp-schedules')">
+                                        <span><i class="fas fa-clock" style="color:var(--primary);margin-right:8px;"></i>Schedules <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(2 limits)</span></span>
+                                        <span class="expander-icon">+</span>
+                                    </div>
+                                    <div class="expander-body"><div class="expander-content">
+                                        <div class="data-table-wrap"><table><thead><tr><th>Limit</th><th>Value</th><th>Notes</th></tr></thead><tbody>
+                                            <tr><td>Concurrent Scheduled</td><td>1 per integration</td><td>N/A</td></tr>
+                                            <tr><td>Schedule Frequency</td><td>Min 1 minute</td><td>Recurring schedules</td></tr>
+                                        </tbody></table></div>
+                                    </div></div>
+                                </div>
+                                <!-- File Server -->
+                                <div class="expander" id="exp-fileserver">
+                                    <div class="expander-header" onclick="toggleExpander('exp-fileserver')">
+                                        <span><i class="fas fa-server" style="color:var(--primary);margin-right:8px;"></i>File Server <span style="font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-left:6px;">(2 limits)</span></span>
+                                        <span class="expander-icon">+</span>
+                                    </div>
+                                    <div class="expander-body"><div class="expander-content">
+                                        <div class="data-table-wrap"><table><thead><tr><th>Limit</th><th>Value</th><th>Notes</th></tr></thead><tbody>
+                                            <tr><td>Storage</td><td>500 GB</td><td>N/A</td></tr>
+                                            <tr><td>Concurrent Connections</td><td>50 per instance</td><td>N/A</td></tr>
+                                        </tbody></table></div>
+                                    </div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EDITIONS -->
+                        <div class="tab-panel" data-tab="editions">
+                            <div class="expander open" id="exp-editions">
+                                <div class="expander-header" onclick="toggleExpander('exp-editions')">
+                                    <span><i class="fas fa-gem" style="color:var(--primary);margin-right:8px;"></i>Editions Feature Matrix</span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body"><div class="expander-content">
+                                    <div class="data-table-wrap">
+                                        <table>
+                                            <thead><tr><th>Feature</th><th>Standard</th><th>Enterprise</th><th>Healthcare</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>Basic Integrations</td><td class="check-yes">✅</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Standard Adapters</td><td class="check-yes">✅</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Enterprise Adapters*</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>B2B Capabilities</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Process Automation</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Robotic Process Automation</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Decisions</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Data Retention</td><td>32 days</td><td>32 days</td><td>184 days</td></tr>
+                                                <tr><td>Disaster Recovery</td><td class="check-no">❌</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Healthcare Actions</td><td class="check-no">❌</td><td class="check-no">❌</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Healthcare Adapters</td><td class="check-no">❌</td><td class="check-no">❌</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Visual Builder</td><td class="check-yes">✅</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>Prebuilt Recipes</td><td class="check-yes">✅</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                                <tr><td>File Server</td><td class="check-yes">✅</td><td class="check-yes">✅</td><td class="check-yes">✅</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;">*Enterprise adapters: Oracle E-Business Suite, JD Edwards, Siebel, SAP</p>
+                                </div></div>
+                            </div>
+                            <div class="info-cols">
+                                <div class="info-block">
+                                    <h4><i class="fas fa-cloud" style="color:var(--primary);"></i> SaaS Edition Features</h4>
+                                    <ul>
+                                        <li>Purpose-built for Oracle SaaS integrations</li>
+                                        <li>Monthly message packs (1M messages per pack)</li>
+                                        <li>Flexible bursting capabilities</li>
+                                        <li>Region/Account constraints apply</li>
+                                        <li>No BYOL (Bring Your Own License)</li>
+                                    </ul>
+                                </div>
+                                <div class="info-block">
+                                    <h4><i class="fas fa-landmark" style="color:var(--primary);"></i> Government Regions</h4>
+                                    <ul>
+                                        <li>US Government Regions</li>
+                                        <li>UK Government Regions</li>
+                                        <li>Australia Government Regions</li>
+                                        <li>Oracle Integration 3 compliant</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROLES -->
+                        <div class="tab-panel" data-tab="roles">
+                            <div class="data-table-wrap">
+                                <table>
+                                    <thead><tr><th>Role</th><th>Description</th><th>Key Permissions</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Service Administrator</td><td>Full administrative access to all OIC features and instance management</td><td>Instance management, User administration, Feature configuration</td></tr>
+                                        <tr><td>Service Developer</td><td>Develop and design integration artifacts and process applications</td><td>Create integrations, Develop processes, Configure connections</td></tr>
+                                        <tr><td>Service Monitor</td><td>Monitor integration performance and track metrics without modification rights</td><td>View metrics, Monitor instances, Track performance</td></tr>
+                                        <tr><td>Service Deployer</td><td>Publish and deploy artifacts (excluding integrations, file server, B2B, Visual Builder)</td><td>Publish artifacts, Deploy applications</td></tr>
+                                        <tr><td>Service User</td><td>Basic access to view and run staged/published applications</td><td>View applications, Run integrations, Access published content</td></tr>
+                                        <tr><td>Service Invoker</td><td>Invoke integration flows via APIs or schedules without UI access</td><td>API invocation, Schedule triggers, External calling</td></tr>
+                                        <tr><td>Service Viewer</td><td>Read-only access to integration resources and monitoring pages</td><td>View integrations, Read monitoring data, Access reports</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div><!-- /overviewPanels -->
+                </div>
+
+                <!-- ═══════════ CONFIGURATIONS ═══════════ -->
+                <div class="tab-panel" data-tab="config">
+                    <div class="info-cols">
+                        <div>
+                            <div class="expander open" id="exp-conn-agent">
+                                <div class="expander-header" onclick="toggleExpander('exp-conn-agent')">
+                                    <span><i class="fas fa-tools" style="color:var(--primary);margin-right:8px;"></i>Connectivity Agent</span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body"><div class="expander-content">
+                                    <div class="info-block" style="border:none;padding:0;box-shadow:none;">
+                                        <h4 style="margin-top:0;">Requirements</h4>
+                                        <ul><li>Minimum 8 GB memory</li><li>4 GB JVM heap size</li><li>Additional memory needed for other processes</li></ul>
+                                        <h4 style="margin-top:1rem;">Supported Protocols</h4>
+                                        <ul><li>Database, JMS, MQ, Kafka adapters</li><li>File, FTP with agent</li><li>Growing list of private endpoint adapters</li></ul>
+                                    </div>
+                                </div></div>
+                            </div>
+                            <div class="expander" id="exp-fileops">
+                                <div class="expander-header" onclick="toggleExpander('exp-fileops')">
+                                    <span><i class="fas fa-folder-open" style="color:var(--primary);margin-right:8px;"></i>File Operations</span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body"><div class="expander-content">
+                                    <div class="info-block" style="border:none;padding:0;box-shadow:none;">
+                                        <h4 style="margin-top:0;">Size Limits</h4>
+                                        <ul><li>Read without schema: 1 GB</li><li>Read with schema: 50–100 MB</li><li>Write operations: No limit</li></ul>
+                                        <h4 style="margin-top:1rem;">Considerations</h4>
+                                        <ul><li>CSV files expand when translated to messages</li><li>Keep under 50 MB for schema transformations</li></ul>
+                                    </div>
+                                </div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="expander open" id="exp-perf">
+                                <div class="expander-header" onclick="toggleExpander('exp-perf')">
+                                    <span><i class="fas fa-tachometer-alt" style="color:var(--primary);margin-right:8px;"></i>Performance</span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body"><div class="expander-content">
+                                    <div class="info-block" style="border:none;padding:0;box-shadow:none;">
+                                        <h4 style="margin-top:0;">Critical Limits</h4>
+                                        <ul><li>JavaScript timeout: 15 seconds</li><li>XSLT duration: 120 seconds</li><li>Sync timeout: 300 seconds</li><li>Loop iterations: 5,000 (while)</li></ul>
+                                        <h4 style="margin-top:1rem;">Best Practices</h4>
+                                        <ul><li>Use pagination for large datasets</li><li>Implement error handling</li><li>Monitor activity stream usage</li></ul>
+                                    </div>
+                                </div></div>
+                            </div>
+                            <div class="expander" id="exp-sec">
+                                <div class="expander-header" onclick="toggleExpander('exp-sec')">
+                                    <span><i class="fas fa-lock" style="color:var(--primary);margin-right:8px;"></i>Security</span>
+                                    <span class="expander-icon">+</span>
+                                </div>
+                                <div class="expander-body"><div class="expander-content">
+                                    <div class="info-block" style="border:none;padding:0;box-shadow:none;">
+                                        <ul><li>OAuth 2.0, Bearer Token, API Key support</li><li>Private endpoint connectivity</li><li>Credential management</li><li>Secure communication protocols</li></ul>
+                                    </div>
+                                </div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════ BEST PRACTICES ═══════════ -->
+                <div class="tab-panel" data-tab="bestpractices">
+                    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem;">Based on Oracle official documentation: Common Integration Style Pitfalls and Design Best Practices.</p>
+                    <div class="inner-tabs-bar" id="bpTabs">
+                        <button class="inner-tab-btn active" onclick="switchTab('bp-design','bpTabs','bpPanels')">🏗️ Design Principles</button>
+                        <button class="inner-tab-btn" onclick="switchTab('bp-perf','bpTabs','bpPanels')">⚡ Performance</button>
+                        <button class="inner-tab-btn" onclick="switchTab('bp-dev','bpTabs','bpPanels')">🔧 Development</button>
+                        <button class="inner-tab-btn" onclick="switchTab('bp-checklist','bpTabs','bpPanels')">✅ Checklist</button>
+                    </div>
+                    <div id="bpPanels">
+
+                        <div class="tab-panel active" data-tab="bp-design">
+                            <div class="expander open" id="bp-naming"><div class="expander-header" onclick="toggleExpander('bp-naming')"><span><i class="fas fa-tag" style="color:var(--primary);margin-right:8px;"></i>Use Descriptive Names</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;"><strong>Problem:</strong> Poor naming conventions make integrations hard to understand and maintain.</p>
+                                <div class="info-block"><h4>Best Practice</h4><ul><li>Use descriptive names for integrations, connections, and lookups</li><li>Follow consistent naming conventions across all artifacts</li><li>Include version information in names where applicable</li></ul></div>
+                                <div style="background:var(--bg-light);border-radius:10px;padding:1rem;margin-top:0.75rem;font-family:monospace;font-size:0.85rem;">
+                                    <div style="color:#ef4444;margin-bottom:4px;">❌ Integration_1, Conn_ERP</div>
+                                    <div style="color:#16a34a;">✅ CustomerSync_SAP_to_SFDC_v1, SAP_ECC_Connection</div>
+                                </div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-reuse"><div class="expander-header" onclick="toggleExpander('bp-reuse')"><span><i class="fas fa-recycle" style="color:var(--primary);margin-right:8px;"></i>Create Reusable Assets</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;"><strong>Problem:</strong> Duplicate configurations and logic across multiple integrations.</p>
+                                <div class="info-block"><ul><li>Create reusable connections for common endpoints</li><li>Use lookup tables for configuration data</li><li>Build template integrations for common patterns</li><li>Create shared XSDs for common data structures</li></ul></div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-srp"><div class="expander-header" onclick="toggleExpander('bp-srp')"><span><i class="fas fa-bullseye" style="color:var(--primary);margin-right:8px;"></i>Single Responsibility Principle</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;"><strong>Problem:</strong> Complex integrations that try to do too much.</p>
+                                <div class="info-block"><ul><li>Each integration should have a single, well-defined purpose</li><li>Break complex processes into smaller, focused integrations</li><li>Use orchestration patterns to coordinate multiple integrations</li></ul></div>
+                            </div></div></div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="bp-perf">
+                            <div class="expander open" id="bp-payload"><div class="expander-header" onclick="toggleExpander('bp-payload')"><span><i class="fas fa-box" style="color:var(--primary);margin-right:8px;"></i>Efficient Payload Handling</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Use pagination for large data sets</li><li>Implement filtering to reduce data volume</li><li>Process data in chunks rather than all at once</li><li>Use file-based processing for very large datasets</li></ul></div>
+                                <div class="quick-ref-grid" style="margin-top:0.75rem;">
+                                    <div class="quick-ref-card"><h4>⚠️ OIC Limits</h4><ul><li>10MB string size limit</li><li>1GB file attachment limit</li><li>6-hour max integration duration</li></ul></div>
+                                </div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-timeout"><div class="expander-header" onclick="toggleExpander('bp-timeout')"><span><i class="fas fa-hourglass-half" style="color:var(--primary);margin-right:8px;"></i>Timeout Management</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Use asynchronous patterns for long-running processes</li><li>Implement proper timeout configurations</li><li>Use polling patterns for external system availability</li><li>Set appropriate retry intervals</li></ul></div>
+                                <div class="quick-ref-grid" style="margin-top:0.75rem;">
+                                    <div class="quick-ref-card"><h4>⏱️ Critical Timeouts</h4><ul><li>JavaScript: 15 seconds</li><li>XSLT: 120 seconds</li><li>Sync integrations: 300 seconds</li><li>Async integrations: 6 hours</li></ul></div>
+                                </div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-loops"><div class="expander-header" onclick="toggleExpander('bp-loops')"><span><i class="fas fa-redo" style="color:var(--primary);margin-right:8px;"></i>Loop Optimization</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Use 'for-each' instead of 'while' loops when possible</li><li>Implement loop counters to prevent infinite loops</li><li>Use batch processing for multiple records</li><li>Avoid nested loops with large datasets</li></ul></div>
+                                <div class="quick-ref-grid" style="margin-top:0.75rem;">
+                                    <div class="quick-ref-card"><h4>🔢 Loop Limits</h4><ul><li>While loops: 5,000 max iterations</li><li>For-each loops: Unlimited</li><li>Tracked iterations: 1,000 max</li></ul></div>
+                                </div>
+                            </div></div></div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="bp-dev">
+                            <div class="expander open" id="bp-errors"><div class="expander-header" onclick="toggleExpander('bp-errors')"><span><i class="fas fa-shield-alt" style="color:var(--primary);margin-right:8px;"></i>Comprehensive Error Handling</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Implement error handling in every scope</li><li>Use custom error messages for better troubleshooting</li><li>Configure proper retry mechanisms</li><li>Set up notifications for critical failures</li><li>Use error hierarchies for different error types</li></ul></div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-monitor"><div class="expander-header" onclick="toggleExpander('bp-monitor')"><span><i class="fas fa-chart-line" style="color:var(--primary);margin-right:8px;"></i>Monitoring and Logging</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Use OIC activity stream for monitoring</li><li>Implement custom logging for business events</li><li>Track key performance metrics</li><li>Set up dashboards for integration health</li><li>Use correlation IDs for tracking across systems</li></ul></div>
+                                <div class="quick-ref-grid" style="margin-top:0.75rem;">
+                                    <div class="quick-ref-card"><h4>📊 Monitoring Limits</h4><ul><li>20,000 non-error tracking events</li><li>30,000 error tracking events</li><li>2,000 maximum errors</li></ul></div>
+                                </div>
+                            </div></div></div>
+
+                            <div class="expander" id="bp-security"><div class="expander-header" onclick="toggleExpander('bp-security')"><span><i class="fas fa-lock" style="color:var(--primary);margin-right:8px;"></i>Security Implementation</span><span class="expander-icon">+</span></div><div class="expander-body"><div class="expander-content">
+                                <div class="info-block"><ul><li>Use OIC credential management for sensitive data</li><li>Implement proper authentication for all connections</li><li>Use secure protocols (HTTPS, SFTP)</li><li>Validate all input data</li><li>Follow principle of least privilege for roles</li></ul></div>
+                            </div></div></div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="bp-checklist">
+                            <div class="quick-ref-grid" style="margin-bottom:1.5rem;">
+                                <div class="quick-ref-card"><h4>⏱️ Time Limits</h4><ul><li>Sync Integration: 5 minutes</li><li>Async Integration: 6 hours</li><li>JavaScript: 15 seconds</li><li>XSLT: 120 seconds</li></ul></div>
+                                <div class="quick-ref-card"><h4>📊 Size Limits</h4><ul><li>String Variables: 10,000 chars</li><li>File Attachments: 1 GB</li><li>Structured Payloads: 100 MB</li><li>Activity Stream: 32 KB/payload</li></ul></div>
+                                <div class="quick-ref-card"><h4>🔢 Quantity Limits</h4><ul><li>Concurrent Sync: 2,000</li><li>While Loops: 5,000</li><li>Lookup Entries: 10,000</li><li>Tracking Events: 20,000</li></ul></div>
+                            </div>
+                            <div class="checklist-cols" id="checklistContainer">
+                                <div class="checklist-block">
+                                    <h4><i class="fas fa-pencil-ruler" style="color:var(--primary);margin-right:6px;"></i>Design Phase</h4>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Single, well-defined purpose</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Descriptive naming conventions</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Error handling strategy</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Performance considerations</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Security requirements</div>
+                                </div>
+                                <div class="checklist-block">
+                                    <h4><i class="fas fa-code" style="color:var(--primary);margin-right:6px;"></i>Development Phase</h4>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Comprehensive error handling</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Proper logging and monitoring</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Efficient data processing</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Configuration management</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Testing strategy</div>
+                                </div>
+                                <div class="checklist-block">
+                                    <h4><i class="fas fa-rocket" style="color:var(--primary);margin-right:6px;"></i>Deployment Phase</h4>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Performance testing completed</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Error scenarios tested</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Monitoring configured</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Documentation updated</div>
+                                    <div class="check-item"><span class="check-box" onclick="toggleCheck(this)"></span>Support procedures defined</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /bpPanels -->
+                </div>
+
+                <!-- ═══════════ ANTI-PATTERNS ═══════════ -->
+                <div class="tab-panel" data-tab="antipatterns">
+                    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem;">Based on Oracle official documentation: Avoid Common Integration Style Pitfalls.</p>
+
+                    <div class="inner-tabs-bar" id="apTabs">
+                        <button class="inner-tab-btn active" onclick="switchTab('ap-design','apTabs','apPanels')">🏗️ Design</button>
+                        <button class="inner-tab-btn" onclick="switchTab('ap-dev','apTabs','apPanels')">🔧 Development</button>
+                        <button class="inner-tab-btn" onclick="switchTab('ap-perf','apTabs','apPanels')">⚡ Performance</button>
+                        <button class="inner-tab-btn" onclick="switchTab('ap-data','apTabs','apPanels')">🔍 Data Handling</button>
+                    </div>
+                    <div id="apPanels">
+
+                        <div class="tab-panel active" data-tab="ap-design">
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> The Monolithic Integration</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Creating a single, overly complex integration that handles multiple business processes. Symptoms include one integration performing multiple unrelated operations, extremely complex mapping, and mixing multiple message exchange patterns in one flow.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Create separate integrations for distinct business processes. Use orchestration to coordinate between smaller integrations. Implement service composition patterns and design around single responsibility principle.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Tight Coupling</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Designing integrations tightly bound to specific source or target system implementations, with direct dependencies on data structures and hardcoded field mappings. Integration breaks when source/target systems change.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Implement canonical data models. Use abstraction layers between systems, create reusable transformation maps, and design for loose coupling and flexibility.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Poor Error Handling Design</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Inadequate error handling strategy leading to unpredictable integration behavior. Errors not properly caught, no clear error notification or escalation, and inconsistent error handling across integrations.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Design error handling strategy upfront. Implement error handling at global and local scopes, use consistent error notification patterns, and create an error classification system.</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="ap-dev">
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Poor Naming Conventions</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Using non-descriptive names like "Integration_1" or "Connection_1" with no consistent naming pattern. Names don't indicate purpose or function, making it difficult to identify integration relationships.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Establish naming conventions early. Include system names and purpose in artifact names, use consistent patterns, and include version information where applicable.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Not Creating Reusable Assets</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Duplicating configurations and logic instead of creating reusable components. Multiple connections to the same endpoint with different names, copy-paste integration patterns, and higher maintenance overhead.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Create shared connections for common endpoints, use lookup tables for configuration data, build template integrations for common patterns, and establish asset reuse guidelines.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Overly Complex Transformations</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Creating extremely complex data mappings that are hard to maintain. Single transformation handling multiple business rules, deeply nested conditional logic, and business logic embedded in data transformations.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Break complex maps into smaller, focused maps. Separate business logic from data transformation, use multiple simple maps, and document mapping rules clearly.</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="ap-perf">
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Ignoring OIC Service Limits</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Designing without considering OIC platform constraints. Large payloads causing memory issues, long-running processes hitting timeout limits, and excessive logging overwhelming activity streams.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Design within OIC constraints from the start. Implement pagination for large datasets, use asynchronous patterns for long operations, and monitor and optimize resource usage.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Inefficient Loop Patterns</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Using 'while' loops where 'for-each' is appropriate, nested loops with large datasets, no loop termination conditions, and processing all data in memory.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Prefer 'for-each' over 'while' loops. Implement batch processing for large datasets, use pagination to process in chunks, and set reasonable loop counters and limits.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Poor Connection Management</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Creating new connections for each invocation, not reusing established connections, inappropriate connection pool sizes, and long connection establishment times.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Reuse connections where possible, configure appropriate connection pooling, monitor connection usage and performance, and implement connection retry strategies.</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-panel" data-tab="ap-data">
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Inefficient File Processing</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Loading large files entirely into memory, not using segmentation for large files, and ignoring file size limits. Read Entire File: 100MB max; Read with segments: 1GB max.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Use 'Read File in Segments' for files over 100MB, process files in chunks, and choose appropriate file operations for each use case.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Poor Large Data Handling</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Fetching all records without pagination, processing large datasets in single transactions, no batching for bulk operations, and memory-intensive data transformations.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Implement pagination for large result sets, use batch processing for bulk operations, process data in manageable chunks, and monitor memory usage during large operations.</div>
+                            </div>
+                            <div class="antipattern-card">
+                                <h4><i class="fas fa-times-circle" style="color:#ef4444;"></i> Insecure Data Handling</h4>
+                                <div class="problem"><div class="block-label">Problem</div>Hardcoded credentials in integrations, unencrypted sensitive data transmission, lack of input validation, and inadequate access controls.</div>
+                                <div class="solution"><div class="block-label">Solution</div>Use OIC credential management for sensitive data, implement proper authentication for all connections, validate all input data, and use secure protocols (HTTPS, SFTP).</div>
+                            </div>
+                        </div>
+
+                    </div><!-- /apPanels -->
+
+                    <!-- Quick Reference -->
+                    <div style="margin-top:1.5rem;border-top:1px solid var(--border-subtle);padding-top:1.5rem;">
+                        <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--heading);">📋 Anti-Patterns Quick Reference</h3>
+                        <div class="info-cols">
+                            <div class="info-block"><h4>🚫 Common Design Pitfalls</h4><ul><li>Monolithic integrations</li><li>Tight coupling to systems</li><li>Poor error handling design</li><li>Inconsistent naming</li><li>No reusable assets</li></ul></div>
+                            <div class="info-block"><h4>⚡ Performance Pitfalls</h4><ul><li>Ignoring OIC limits</li><li>Inefficient loops</li><li>Poor connection management</li><li>Large file processing issues</li><li>No pagination for large data</li></ul></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════ HEALTH ASSESSMENT ═══════════ -->
+                <div class="tab-panel" data-tab="health">
+                    <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">Rate your integration by checking applicable items. Score updates live.</p>
+                    <div class="score-grid" id="scoreGrid">
+                        <div class="score-block">
+                            <h4>🏗️ Design Quality <span>25 Points</span></h4>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Single, well-defined purpose</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Descriptive naming conventions</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Loose coupling between systems</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Robust reprocessing mechanism</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Comprehensive error handling</div>
+                        </div>
+                        <div class="score-block">
+                            <h4>⚡ Performance <span>20 Points</span></h4>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Respects OIC service limits</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Efficient data processing</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Appropriate connection usage</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Optimized transformations</div>
+                        </div>
+                        <div class="score-block">
+                            <h4>🔧 Maintainability <span>25 Points</span></h4>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Consistent patterns</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Clear documentation</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Reusable components</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Easy to test and debug</div>
+                            <div class="score-item"><span class="score-checkbox" onclick="scoreToggle(this,5)" data-points="5"></span>Appropriate logging</div>
+                        </div>
+                    </div>
+
+                    <div class="score-display" id="scoreDisplay">
+                        <div class="score-num" id="scoreNum">0</div>
+                        <div class="score-label" id="scoreLabel">/ 70 Points</div>
+                        <div class="score-sub" id="scoreRating">Start checking items above</div>
+                    </div>
+                </div>
+
+            </div><!-- /mainPanels -->
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+    <div class="container" style="padding-bottom:2rem;padding-top:2rem;">
+        <div class="cta-section reveal">
+            <h2>Need help with your OIC implementation?</h2>
+            <p>Our Oracle Integration Cloud specialists are ready to review your architecture and guide you to best-practice patterns.</p>
+            <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+                <i class="fas fa-paper-plane"></i> Talk to an Expert
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Let's Connect</h2>
+        <p class="modal-subtitle">Tell us about your Oracle requirements</p>
+        <form id="contactForm" onsubmit="return false;">
+            <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <span class="footer-logo-text">IntSphere</span>
+                <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pass.html">PaaS</a></li>
+                    <li><a href="hcm.html">Oracle Fusion HCM</a></li>
+                    <li><a href="intforge.html">IntForge</a></li>
+                    <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+                    <li><a href="payforge.html">Finance Accelerator</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="hcm.html">Oracle Fusion HCM Cloud</a></li>
+                    <li><a href="pass.html">OIC Implementation</a></li>
+                    <li><a href="pass.html">VBCS Development</a></li>
+                    <li><a href="pass.html">Process Automation</a></li>
+                    <li><a href="pass.html">Fusion Extensions</a></li>
+                    <li><a href="pass.html">IDCS &amp; Security</a></li>
+                    <li><a href="pass.html">Oracle CPQ</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+                    <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
+                    <li><i class="fas fa-globe"></i> <span style="font-size:0.88rem;">Global Services</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span style="font-size:0.88rem;">704, Bhoomi Kshitij, Nakhate Wasti, Rahatani, Pune – 411017, Maharashtra, India</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// ── TAB SWITCHER ──
+function switchTab(tabId, tabsBarId, panelsId) {
+    const bar = document.getElementById(tabsBarId);
+    const panelsContainer = document.getElementById(panelsId);
+    if (!bar || !panelsContainer) return;
+    bar.querySelectorAll('[class*="tab-btn"]').forEach(b => b.classList.remove('active'));
+    panelsContainer.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    const clickedBtn = [...bar.querySelectorAll('[class*="tab-btn"]')].find(b => {
+        const onclick = b.getAttribute('onclick') || '';
+        return onclick.includes("'" + tabId + "'");
+    });
+    if (clickedBtn) clickedBtn.classList.add('active');
+    const targetPanel = panelsContainer.querySelector('[data-tab="' + tabId + '"]');
+    if (targetPanel) targetPanel.classList.add('active');
+}
+
+// ── EXPANDER ──
+function toggleExpander(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('open');
+}
+
+// ── CHECKLIST ──
+function toggleCheck(el) {
+    el.classList.toggle('checked');
+}
+
+// ── HEALTH SCORE ──
+let currentScore = 0;
+function scoreToggle(el, points) {
+    if (el.classList.contains('scored')) {
+        el.classList.remove('scored');
+        currentScore -= points;
+    } else {
+        el.classList.add('scored');
+        currentScore += points;
+    }
+    const num = document.getElementById('scoreNum');
+    const rating = document.getElementById('scoreRating');
+    if (num) num.textContent = currentScore;
+    if (rating) {
+        if (currentScore === 0) { rating.textContent = 'Start checking items above'; }
+        else if (currentScore >= 65) { rating.textContent = '⭐ Excellent — production ready'; }
+        else if (currentScore >= 55) { rating.textContent = '👍 Good — minor improvements needed'; }
+        else if (currentScore >= 45) { rating.textContent = '⚠️ Fair — significant refactoring recommended'; }
+        else { rating.textContent = '🚨 Poor — consider redesign'; }
+    }
+}
+</script>
+</body>
+</html>

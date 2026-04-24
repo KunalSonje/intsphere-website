@@ -10,7 +10,9 @@ const pageMap = {
     faq: 'faq.html',
     platform: 'intforge.html',
     payforge: 'payforge.html',
-    ai: 'ai.html'
+    ai: 'ai.html',
+    oicinsights: 'oicinsights.html',
+    oicnotes: 'oicnotes.html'
 };
 
 function navigate(page) {
@@ -37,25 +39,33 @@ if (_header) {
     });
 }
 
-// ─── DESKTOP DROPDOWNS (hover to open/close) ───
+// ─── DESKTOP DROPDOWNS (click to open, click outside to close, hover to highlight) ───
 document.addEventListener('DOMContentLoaded', function() {
     const dropdowns = document.querySelectorAll('.nav-dropdown');
     dropdowns.forEach(function(dropdown) {
         const trigger = dropdown.querySelector('.nav-dropdown-trigger');
         if (!trigger) return;
-        let closeTimer = null;
 
+        // Hover — highlight trigger only, do NOT open menu
         dropdown.addEventListener('mouseenter', function() {
-            if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
             trigger.classList.add('hovered');
-            dropdown.classList.add('open');
         });
         dropdown.addEventListener('mouseleave', function() {
-            closeTimer = setTimeout(function() {
-                trigger.classList.remove('hovered');
-                dropdown.classList.remove('open');
-            }, 100);
+            trigger.classList.remove('hovered');
         });
+
+        // Click — toggle open/close
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.contains('open');
+            dropdowns.forEach(d => d.classList.remove('open'));
+            if (!isOpen) dropdown.classList.add('open');
+        });
+    });
+
+    // Click outside — close all
+    document.addEventListener('click', function() {
+        dropdowns.forEach(d => d.classList.remove('open'));
     });
 });
 
@@ -77,6 +87,15 @@ function toggleMobileAccelerators(e) {
     e.preventDefault();
     const sub = document.getElementById('mobileAccSub');
     const chevron = document.getElementById('accChevron');
+    if (!sub) return;
+    const open = sub.style.display !== 'none';
+    sub.style.display = open ? 'none' : 'block';
+    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+}
+function toggleMobileInsights(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileInsSub');
+    const chevron = document.getElementById('insChevron');
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';
