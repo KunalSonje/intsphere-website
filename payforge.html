@@ -9,12 +9,28 @@
 <meta name="description" content="IntSphere - Expert Oracle Cloud Consulting.">
 <link rel="stylesheet" href="shared.css">
 <style>
-@media(max-width:768px){
-    .ps-section, [style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-    [style*="repeat(4,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
+/* ── PROBLEM/SOLUTION MOBILE ── */
+.ps-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0.5rem; }
+.ps-panel-box { background: rgba(239,68,68,0.03); border: 1.5px solid rgba(239,68,68,0.15); border-radius: 20px; padding: 2rem 2.25rem; }
+.ps-panel-box.solution { background: rgba(8,145,178,0.03); border-color: rgba(8,145,178,0.2); }
+.ps-stats-four { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 2rem; }
+.ps-flow-tags { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.ps-flow-tag { display: flex; align-items: center; gap: 0.4rem; border-radius: 10px; padding: 0.35rem 0.75rem; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
+.ps-flow-tag.blue { background: rgba(8,145,178,0.07); border: 1px solid rgba(8,145,178,0.15); color: var(--primary); }
+.ps-flow-tag.indigo { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #6366f1; }
+.ps-flow-tag.green { background: rgba(22,163,74,0.07); border: 1px solid rgba(22,163,74,0.2); color: #16a34a; }
+
+@media(max-width: 768px) {
+    .ps-two-col { grid-template-columns: 1fr; }
+    .ps-stats-four { grid-template-columns: 1fr 1fr; }
+    .ps-panel-box { padding: 1.25rem 1.1rem; }
+    .ps-flow-tags { gap: 0.3rem; }
+    .ps-flow-tag { font-size: 0.68rem; padding: 0.28rem 0.6rem; }
+    .ps-flow-tag span { display: none; }
 }
-@media(max-width:480px){
-    [style*="repeat(4,1fr)"] { grid-template-columns:1fr 1fr !important; }
+@media(max-width: 480px) {
+    .ps-stats-four { grid-template-columns: 1fr 1fr; }
+    .ps-panel-box { padding: 1rem; }
 }
 </style>
 
@@ -94,16 +110,13 @@
         <div class="container">
             <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;">Finance AR Product</div>
             <h1>PayForge - Customer Invoice &amp; Payment Portal</h1>
-            <p>A production-grade self-service portal for invoice management, online payments, and account administration — every interaction between the Customer Portal, Oracle EBS/Fusion, and JPMC payment gateway is orchestrated through <strong style="color:#67e8f9;">Oracle Integration Cloud (OIC)</strong>.</p>
+            <p>A production-grade self-service portal for invoice management, online payments, and account administration — every interaction between the Customer Portal, Oracle EBS/Fusion, and payment gateway is orchestrated through <strong style="color:#67e8f9;">Oracle Integration Cloud (OIC)</strong>.</p>
             <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-top:2rem;">
                 <div style="text-align:center;">
                     <div style="font-size:1.6rem;font-weight:800;color:#67e8f9;">360°</div>
                     <div style="font-size:0.78rem;color:rgba(203,213,225,0.75);letter-spacing:0.5px;">ERP Integration</div>
                 </div>
-                <div style="text-align:center;">
-                    <div style="font-size:1.6rem;font-weight:800;color:#67e8f9;">5+</div>
-                    <div style="font-size:0.78rem;color:rgba(203,213,225,0.75);letter-spacing:0.5px;">Payment Gateways</div>
-                </div>
+                
                 <div style="text-align:center;">
                     <div style="font-size:1.6rem;font-weight:800;color:#67e8f9;">PCI-DSS</div>
                     <div style="font-size:0.78rem;color:rgba(203,213,225,0.75);letter-spacing:0.5px;">Payment Compliant</div>
@@ -125,10 +138,10 @@
                 <p>Oracle EBS and Fusion AR are powerful — but they leave a critical gap: your customers have no self-service way to view invoices or pay online. PayForge fills that gap.</p>
             </div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0.5rem;" class="reveal">
+            <div class="ps-two-col reveal">
 
                 <!-- BUSINESS PROBLEM -->
-                <div style="background:rgba(239,68,68,0.03);border:1.5px solid rgba(239,68,68,0.15);border-radius:20px;padding:2rem 2.25rem;">
+                <div class="ps-panel-box">
                     <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(239,68,68,0.1);">
                         <div style="width:40px;height:40px;background:rgba(239,68,68,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                             <i class="fas fa-exclamation-triangle" style="color:#ef4444;font-size:1rem;"></i>
@@ -188,7 +201,7 @@
                 </div>
 
                 <!-- OUR SOLUTION -->
-                <div style="background:rgba(8,145,178,0.03);border:1.5px solid rgba(8,145,178,0.2);border-radius:20px;padding:2rem 2.25rem;">
+                <div class="ps-panel-box solution">
                     <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid rgba(8,145,178,0.12);">
                         <div style="width:40px;height:40px;background:rgba(8,145,178,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                             <i class="fas fa-check-circle" style="color:#0891b2;font-size:1rem;"></i>
@@ -214,7 +227,7 @@
                             </div>
                             <div>
                                 <div style="font-weight:600;font-size:0.88rem;color:#0f172a;margin-bottom:2px;">Instant Payments via JPMC, Stripe, Braintree &amp; Adyen</div>
-                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Customers pay single or multiple invoices in one checkout. The portal triggers a payment request <strong>via OIC to JPMC</strong>, which processes the transaction securely. The <strong style="color:#0891b2;">gateway confirmation number is returned through OIC back to the portal UI</strong> and displayed on-screen instantly — full proof of payment, no waiting.</div>
+                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Customers pay single or multiple invoices in one checkout. The portal triggers a payment request <strong>via OIC to Payment Gateway</strong>, which processes the transaction securely. The <strong style="color:#0891b2;">gateway confirmation number is returned through OIC back to the portal UI</strong> and displayed on-screen instantly — full proof of payment, no waiting.</div>
                             </div>
                         </div>
                         <div style="display:flex;gap:0.85rem;align-items:flex-start;">
@@ -223,7 +236,7 @@
                             </div>
                             <div>
                                 <div style="font-weight:600;font-size:0.88rem;color:#0f172a;margin-bottom:2px;">Automatic ERP Write-Back via Oracle OIC</div>
-                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Once JPMC confirms the transaction, <strong>OIC automatically posts the confirmation number and payment record back to Oracle EBS/Fusion AR</strong> — triggering GL posting, cash application, and invoice status update in a single orchestrated flow. Zero manual reconciliation, zero double data entry.</div>
+                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Once Payment Gateway confirms the transaction, <strong>OIC automatically posts the confirmation number and payment record back to Oracle EBS/Fusion AR</strong> — triggering GL posting, cash application, and invoice status update in a single orchestrated flow. Zero manual reconciliation, zero double data entry.</div>
                             </div>
                         </div>
                         <div style="display:flex;gap:0.85rem;align-items:flex-start;">
@@ -232,7 +245,7 @@
                             </div>
                             <div>
                                 <div style="font-weight:600;font-size:0.88rem;color:#0f172a;margin-bottom:2px;">Scheduled Autopay — Weekly, Monthly &amp; Custom Cycles</div>
-                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Customers configure autopay on a <strong style="color:#0891b2;">weekly or monthly schedule</strong> — or a custom billing cycle. On each scheduled run, <strong>OIC orchestrates the full cycle</strong>: fetches open invoices from EBS, triggers payment to JPMC, receives the confirmation number, writes the payment back to EBS/Fusion AR, and emails the receipt — completely automated, end to end.</div>
+                                <div style="font-size:0.82rem;color:#64748b;line-height:1.6;">Customers configure autopay on a <strong style="color:#0891b2;">weekly or monthly schedule</strong> — or a custom billing cycle. On each scheduled run, <strong>OIC orchestrates the full cycle</strong>: fetches open invoices from EBS, triggers payment to Payment Gateway, receives the confirmation number, writes the payment back to EBS/Fusion AR, and emails the receipt — completely automated, end to end.</div>
                                 <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.6rem;">
                                     <span style="display:inline-flex;align-items:center;gap:4px;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:20px;padding:0.2rem 0.65rem;font-size:0.72rem;font-weight:600;color:#0891b2;"><i class="fas fa-calendar-week"></i> Weekly</span>
                                     <span style="display:inline-flex;align-items:center;gap:4px;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:20px;padding:0.2rem 0.65rem;font-size:0.72rem;font-weight:600;color:#0891b2;"><i class="fas fa-calendar-alt"></i> Monthly</span>
@@ -258,25 +271,25 @@
                         <div style="display:flex;flex-direction:column;gap:0.6rem;">
                             <!-- Row 1: Data flow -->
                             <div style="font-size:0.7rem;color:#94a3b8;font-weight:600;letter-spacing:0.3px;">Invoice &amp; Account Data</div>
-                            <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:var(--primary);font-weight:600;white-space:nowrap;"><i class="fas fa-database"></i> Oracle EBS/Fusion</div>
+                            <div class="ps-flow-tags">
+                                <div class="ps-flow-tag blue"><i class="fas fa-database"></i> Oracle EBS/Fusion</div>
                                 <i class="fas fa-exchange-alt" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:#6366f1;font-weight:700;white-space:nowrap;"><i class="fas fa-exchange-alt"></i> OIC</div>
+                                <div class="ps-flow-tag indigo"><i class="fas fa-exchange-alt"></i> OIC</div>
                                 <i class="fas fa-exchange-alt" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:var(--primary);font-weight:600;white-space:nowrap;"><i class="fas fa-user"></i> Customer Portal UI</div>
+                                <div class="ps-flow-tag blue"><i class="fas fa-user"></i> Customer Portal UI</div>
                             </div>
                             <!-- Row 2: Payment flow -->
                             <div style="font-size:0.7rem;color:#94a3b8;font-weight:600;letter-spacing:0.3px;margin-top:0.2rem;">Payment &amp; Confirmation</div>
-                            <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:var(--primary);font-weight:600;white-space:nowrap;"><i class="fas fa-user"></i> Customer Portal UI</div>
+                            <div class="ps-flow-tags">
+                                <div class="ps-flow-tag blue"><i class="fas fa-user"></i> Customer Portal UI</div>
                                 <i class="fas fa-arrow-right" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:#6366f1;font-weight:700;white-space:nowrap;"><i class="fas fa-exchange-alt"></i> OIC</div>
+                                <div class="ps-flow-tag indigo"><i class="fas fa-exchange-alt"></i> OIC</div>
                                 <i class="fas fa-arrow-right" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:var(--primary);font-weight:600;white-space:nowrap;"><i class="fas fa-credit-card"></i> JPMC</div>
+                                <div class="ps-flow-tag blue"><i class="fas fa-credit-card"></i> Payment Gateway</div>
                                 <i class="fas fa-arrow-right" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.2);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:#16a34a;font-weight:600;white-space:nowrap;"><i class="fas fa-check-circle"></i> Confirmation #</div>
+                                <div class="ps-flow-tag green"><i class="fas fa-check-circle"></i> Confirmation #</div>
                                 <i class="fas fa-arrow-right" style="color:rgba(8,145,178,0.35);font-size:0.6rem;"></i>
-                                <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:#6366f1;font-weight:700;white-space:nowrap;"><i class="fas fa-exchange-alt"></i> OIC</div>
+                                <div class="ps-flow-tag indigo"><i class="fas fa-exchange-alt"></i> OIC</div>
                             </div>
                             <!-- OIC fans out to both Portal UI and EBS -->
                             <div style="display:flex;align-items:flex-start;gap:0.5rem;margin-top:0.4rem;padding-left:1.5rem;">
@@ -288,11 +301,11 @@
                                 <div style="display:flex;flex-direction:column;gap:0.4rem;">
                                     <div style="display:flex;align-items:center;gap:0.4rem;">
                                         <i class="fas fa-arrow-right" style="color:rgba(99,102,241,0.5);font-size:0.6rem;"></i>
-                                        <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.2);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:#16a34a;font-weight:600;white-space:nowrap;"><i class="fas fa-user"></i> Customer Portal UI <span style="font-size:0.68rem;opacity:0.75;">(confirmation # displayed)</span></div>
+                                        <div class="ps-flow-tag green"><i class="fas fa-user"></i> Customer Portal UI <span style="font-size:0.68rem;opacity:0.75;">(confirmation # displayed)</span></div>
                                     </div>
                                     <div style="display:flex;align-items:center;gap:0.4rem;">
                                         <i class="fas fa-arrow-right" style="color:rgba(99,102,241,0.5);font-size:0.6rem;"></i>
-                                        <div style="display:flex;align-items:center;gap:0.4rem;background:rgba(8,145,178,0.07);border:1px solid rgba(8,145,178,0.15);border-radius:10px;padding:0.35rem 0.75rem;font-size:0.72rem;color:var(--primary);font-weight:600;white-space:nowrap;"><i class="fas fa-database"></i> Oracle EBS/Fusion <span style="font-size:0.68rem;opacity:0.75;">(GL posting &amp; cash application)</span></div>
+                                        <div class="ps-flow-tag blue"><i class="fas fa-database"></i> Oracle EBS/Fusion <span style="font-size:0.68rem;opacity:0.75;">(GL posting &amp; cash application)</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +315,7 @@
             </div>
 
             <!-- IMPACT STATS -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;" class="reveal">
+            <div class="ps-stats-four reveal">
                 <div style="text-align:center;padding:1.5rem 1rem;background:var(--bg-light);border-radius:16px;border:1px solid var(--border-subtle);">
                     <div style="font-size:2rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">70%</div>
                     <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem;line-height:1.5;">Reduction in AR overhead from self-service payments</div>
@@ -331,7 +344,7 @@
             <div class="section-header reveal">
                 <div class="section-label">Self-Service Finance</div>
                 <h2>One Portal. Every Invoice. Any ERP.</h2>
-                <p>Customers self-serve — view, download, and pay invoices, manage accounts, and control user access without calling your finance team. Every interaction between the portal, Oracle EBS/Fusion, and JPMC is orchestrated through <strong>Oracle Integration Cloud (OIC)</strong>.</p>
+                <p>Customers self-serve — view, download, and pay invoices, manage accounts, and control user access without calling your finance team. Every interaction between the portal, Oracle EBS/Fusion, and Payment Gateway like JPMC/Stripe is orchestrated through <strong>Oracle Integration Cloud (OIC)</strong>.</p>
             </div>
             <div class="card-grid">
                 <div class="card reveal">
@@ -341,7 +354,7 @@
                 </div>
                 <div class="card reveal">
                     <div class="card-header"><div class="card-icon"><i class="fas fa-credit-card"></i></div><h3>Online Payments</h3></div>
-                    <p>Pay single or multiple invoices in one checkout. <strong>OIC orchestrates the full payment flow</strong> — portal triggers OIC, OIC calls JPMC, confirmation number returned via OIC to the portal UI, and payment written back to EBS cash application automatically. Tokenised methods — no card data on your servers.</p>
+                    <p>Pay single or multiple invoices in one checkout. <strong>OIC orchestrates the full payment flow</strong> — portal triggers OIC, OIC calls payment gateway, confirmation number returned via OIC to the portal UI, and payment written back to EBS cash application automatically. Tokenised methods — no card data on your servers.</p>
                     <div style="margin-top:1rem;"><span class="expertise-tag">JPMC</span><span class="expertise-tag">Stripe</span><span class="expertise-tag">Braintree</span><span class="expertise-tag">Adyen</span></div>
                 </div>
                 <div class="card reveal">
