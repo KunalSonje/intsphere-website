@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<title>Oracle Agentic AI in Integration 3 | IntSphere</title>
+<meta name="description" content="Interactive guide to Oracle Agentic AI in Integration 3 — concepts, tutorials, MCP server, and advanced features.">
+<style>
+/* ── TOKENS (matches shared.css) ── */
+:root {
+    --primary:       #0891b2;
+    --primary-dark:  #0c5460;
+    --grad-main:     linear-gradient(135deg, #1a2d42 0%, #2d4563 40%, #0891b2 100%);
+    --grad-accent:   linear-gradient(135deg, #0891b2, #06b6d4);
+    --heading:       #0f172a;
+    --text:          #334155;
+    --text-muted:    #64748b;
+    --bg-light:      #f8fafc;
+    --bg-subtle:     #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --shadow-sm:     0 2px 8px rgba(0,0,0,0.04);
+    --shadow-md:     0 8px 24px rgba(0,0,0,0.06);
+    --shadow-blue:   0 12px 32px rgba(8,145,178,0.15);
+    --mono:          'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ── TAB NAV ── */
+.guide-tabs-wrap {
+    background: var(--grad-main);
+    position: sticky; top: 0; z-index: 200;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.guide-tabs-wrap::after {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px; pointer-events:none;
+}
+.guide-tabs {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; overflow-x: auto; scrollbar-width: none;
+    padding: 0 2rem; position: relative; z-index: 1;
+    -webkit-overflow-scrolling: touch;
+}
+.guide-tabs::-webkit-scrollbar { display:none; }
+.guide-tab {
+    padding: 1rem 1.1rem; border: none; background: none; cursor: pointer;
+    font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600;
+    color: rgba(165,243,252,0.6); white-space: nowrap;
+    border-bottom: 2.5px solid transparent; margin-bottom: -1px;
+    transition: all 0.2s; letter-spacing: 0.2px;
+    -webkit-tap-highlight-color: transparent;
+}
+.guide-tab:hover { color: #a5f3fc; }
+.guide-tab.active { color: #67e8f9; border-bottom-color: #67e8f9; }
+
+/* ── MAIN LAYOUT ── */
+.guide-main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+.guide-panel { display: none; animation: panelIn 0.3s cubic-bezier(0.4,0,0.2,1); }
+.guide-panel.active { display: block; }
+@keyframes panelIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+/* ── PANEL HEADER ── */
+.panel-header { margin-bottom: 2rem; }
+.panel-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.4rem,2.5vw,1.9rem); font-weight: 700;
+    background: var(--grad-main); -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; margin-bottom: 0.5rem; display:inline-block;
+}
+.panel-intro {
+    color: var(--text-muted); font-size: 0.95rem; line-height: 1.75;
+    max-width: 720px; margin: 0;
+}
+
+/* ── SECTION LABEL ── */
+.guide-section-label {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--primary); background: rgba(8,145,178,0.08);
+    padding: 0.3rem 0.85rem; border-radius: 30px;
+    margin: 1.75rem 0 1rem;
+}
+.guide-section-label:first-of-type { margin-top: 0; }
+
+/* ── CARDS ── */
+.g-card {
+    background: white; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 1.3rem 1.5rem; box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    position: relative; overflow: hidden;
+}
+.g-card:hover { border-color: rgba(8,145,178,0.25); box-shadow: var(--shadow-blue); transform: translateY(-2px); }
+.g-card h3 { font-family:'Outfit',sans-serif; font-size:0.95rem; font-weight:700; color:var(--heading); margin-bottom:0.5rem; }
+.g-card p, .g-card li { font-size:0.87rem; color:var(--text-muted); line-height:1.75; }
+.g-card ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+
+/* accent borders */
+.g-card.orange { border-left: 3px solid #f97316; }
+.g-card.blue   { border-left: 3px solid var(--primary); }
+.g-card.green  { border-left: 3px solid #16a34a; }
+.g-card.purple { border-left: 3px solid #7c3aed; }
+
+/* ── GRIDS ── */
+.g-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem; }
+.g-grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.25rem; }
+.g-grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.25rem; }
+
+/* ── STEP CARDS ── */
+.step-card {
+    background: white; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 1.1rem 1.2rem; box-shadow: var(--shadow-sm);
+    transition: all 0.3s; position: relative; overflow: hidden;
+}
+.step-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: var(--grad-accent); opacity:0; transition:opacity 0.3s;
+}
+.step-card:hover { border-color:rgba(8,145,178,0.25); box-shadow:var(--shadow-blue); transform:translateY(-2px); }
+.step-card:hover::before { opacity:1; }
+.step-num {
+    font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;
+    color:var(--primary); margin-bottom:0.4rem; font-family:'Outfit',sans-serif;
+}
+.step-title { font-size:0.88rem; font-weight:700; color:var(--heading); margin-bottom:0.3rem; font-family:'Outfit',sans-serif; }
+.step-desc { font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+
+/* ── VS CARDS (Compare) ── */
+.vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+.vs-card { border-radius: 16px; padding: 1.3rem 1.5rem; }
+.vs-int  { background:rgba(8,145,178,0.04); border:1.5px solid rgba(8,145,178,0.2); }
+.vs-agent{ background:rgba(22,163,74,0.04); border:1.5px solid rgba(22,163,74,0.2); }
+.vs-int-header  { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.85rem; }
+.vs-agent-header{ display:flex; align-items:center; gap:0.6rem; margin-bottom:0.85rem; }
+.vs-icon { width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:0.85rem; flex-shrink:0; }
+.vs-icon.blue  { background:rgba(8,145,178,0.12); color:var(--primary); }
+.vs-icon.green { background:rgba(22,163,74,0.12); color:#16a34a; }
+.vs-int h3  { font-family:'Outfit',sans-serif; font-size:0.95rem; font-weight:700; color:var(--primary); margin:0; }
+.vs-agent h3{ font-family:'Outfit',sans-serif; font-size:0.95rem; font-weight:700; color:#16a34a; margin:0; }
+.vs-int ul, .vs-agent ul { padding-left: 1rem; }
+.vs-int li  { font-size:0.85rem; color:#0c5460; line-height:1.75; }
+.vs-agent li{ font-size:0.85rem; color:#14532d; line-height:1.75; }
+
+/* ── BADGES ── */
+.badge-row { display:flex; flex-wrap:wrap; gap:6px; margin:0.6rem 0; }
+.badge {
+    font-size:0.71rem; font-weight:700; padding:3px 10px; border-radius:20px;
+    letter-spacing:0.04em; display:inline-flex; align-items:center; gap:4px;
+}
+.b-blue   { background:rgba(8,145,178,0.08); color:var(--primary); border:1px solid rgba(8,145,178,0.2); }
+.b-orange { background:rgba(249,115,22,0.08); color:#ea580c; border:1px solid rgba(249,115,22,0.2); }
+.b-green  { background:rgba(22,163,74,0.08);  color:#16a34a; border:1px solid rgba(22,163,74,0.2); }
+.b-purple { background:rgba(124,58,237,0.08); color:#7c3aed; border:1px solid rgba(124,58,237,0.2); }
+.b-amber  { background:rgba(245,158,11,0.08); color:#d97706; border:1px solid rgba(245,158,11,0.2); }
+.b-gray   { background:var(--bg-subtle); color:var(--text-muted); border:1px solid var(--border-subtle); }
+
+/* ── CODE BLOCK ── */
+.g-code {
+    background: #0f172a; border-radius: 14px; padding: 1.1rem 1.4rem;
+    font-family: var(--mono); font-size: 0.8rem; line-height: 1.85;
+    margin: 0.75rem 0; overflow-x: auto; border: 1px solid rgba(255,255,255,0.06);
+    color: #94a3b8;
+}
+.g-code .cm  { color: #475569; font-style:italic; }
+.g-code .ky  { color: #67e8f9; font-weight:600; }
+.g-code .vl  { color: #86efac; }
+.g-code .st  { color: #fde68a; }
+.g-code code { background:none; padding:0; font-size:inherit; color:inherit; font-family:inherit; }
+
+/* ── TABLE ── */
+.g-tbl-wrap {
+    border-radius: 14px; border: 1px solid var(--border-subtle);
+    overflow: hidden; margin-bottom: 1.25rem; box-shadow: var(--shadow-sm);
+}
+.g-tbl-wrap table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+.g-tbl-wrap thead tr { background: var(--grad-main); }
+.g-tbl-wrap th { padding:0.8rem 1rem; text-align:left; color:white; font-family:'Outfit',sans-serif; font-weight:600; font-size:0.8rem; letter-spacing:0.3px; white-space:nowrap; }
+.g-tbl-wrap tbody tr { border-bottom:1px solid var(--border-subtle); transition:background 0.15s; }
+.g-tbl-wrap tbody tr:last-child { border-bottom:none; }
+.g-tbl-wrap tbody tr:hover { background:rgba(8,145,178,0.03); }
+.g-tbl-wrap td { padding:0.75rem 1rem; color:var(--text-muted); vertical-align:top; line-height:1.65; }
+.g-tbl-wrap td:first-child { color:var(--heading); font-weight:500; }
+.g-tbl-wrap code { font-family:var(--mono); font-size:0.75rem; background:var(--bg-subtle); padding:2px 6px; border-radius:5px; color:var(--heading); }
+
+/* ── CALLOUTS ── */
+.callout {
+    border-radius: 0 14px 14px 0; padding: 0.9rem 1.2rem;
+    margin: 1.25rem 0; font-size: 0.86rem; line-height: 1.7;
+    display:flex; gap:0.75rem; align-items:flex-start;
+}
+.callout-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+.callout-tip     { background:#fffbeb; border-left:3px solid #f59e0b; color:#92400e; }
+.callout-tip .callout-icon { color:#f59e0b; }
+.callout-info    { background:rgba(8,145,178,0.05); border-left:3px solid var(--primary); color:#0c4a6e; }
+.callout-info .callout-icon { color:var(--primary); }
+.callout-success { background:rgba(22,163,74,0.05); border-left:3px solid #16a34a; color:#14532d; }
+.callout-success .callout-icon { color:#16a34a; }
+
+/* ── FLOW ── */
+.g-flow { display:flex; align-items:center; flex-wrap:wrap; gap:0.5rem; margin:1rem 0; }
+.flow-node {
+    background:white; border:1px solid var(--border-subtle); border-radius:10px;
+    padding:0.45rem 0.9rem; font-size:0.8rem; font-weight:500; color:var(--heading);
+    box-shadow:var(--shadow-sm); transition:all 0.2s; white-space:nowrap;
+}
+.flow-node:hover { border-color:rgba(8,145,178,0.3); color:var(--primary); }
+.flow-arrow { color:var(--text-muted); font-size:0.7rem; }
+
+/* ── DIVIDER ── */
+.g-hr { border:none; border-top:1px solid var(--border-subtle); margin:1.75rem 0; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+    .guide-main { padding:2rem 1.5rem 4rem; }
+    .g-grid4 { grid-template-columns:1fr 1fr; }
+    .g-grid3 { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+    .guide-main { padding:1.5rem 1rem 4rem; }
+    .g-grid2,.g-grid3,.g-grid4 { grid-template-columns:1fr; }
+    .vs-grid { grid-template-columns:1fr; }
+    .guide-tab { padding:0.85rem 0.85rem; font-size:0.76rem; }
+    .g-code { font-size:0.74rem; padding:0.9rem 1rem; }
+    .g-tbl-wrap { overflow-x:auto; }
+    .g-tbl-wrap table { min-width:480px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SITE HEADER ═══ -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a class="logo" href="index.html">
+            <img src="Logo.webp" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-wrapper">
+                <span class="logo-text">IntSphere</span>
+                <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+            </div>
+        </a>
+        <nav id="mainNav">
+            <a href="index.html" id="nav-home">Home</a>
+            <div class="nav-dropdown" id="nav-services-group">
+                <a class="nav-dropdown-trigger" id="nav-services">Services <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="services.html" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
+                    <a href="pass.html" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
+                    <a href="hcm.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-products-group">
+                <a class="nav-dropdown-trigger" id="nav-products">Products <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="intforge.html" style="color:var(--text);"><i class="fas fa-bolt" style="width:16px;margin-right:8px;color:var(--primary);"></i>IntForge</a>
+                    <a href="payforge.html" style="color:var(--text);"><i class="fas fa-file-invoice-dollar" style="width:16px;margin-right:8px;color:var(--primary);"></i>PayForge</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-accelerators-group">
+                <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="hcmaccelerators.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-insights-group">
+                <a class="nav-dropdown-trigger" id="nav-insights">Insights <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="oicinsights.html" style="color:var(--text);"><i class="fas fa-plug" style="width:16px;margin-right:8px;color:var(--primary);"></i>OIC</a>
+                </div>
+            </div>
+            <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron"></i></a>
+            <div id="mobileAccSvc" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
+                <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
+                <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron"></i></a>
+            <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="intforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-bolt" style="width:14px;margin-right:6px;color:var(--primary);"></i>IntForge</a>
+                <a href="payforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-file-invoice-dollar" style="width:14px;margin-right:6px;color:var(--primary);"></i>PayForge</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron"></i></a>
+            <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileInsights(event)">Insights <i class="fas fa-chevron-down" id="insChevron"></i></a>
+            <div id="mobileInsSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="oicinsights.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-plug" style="width:14px;margin-right:6px;color:var(--primary);"></i>OIC</a>
+            </div>
+            <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══ PAGE BANNER ═══ -->
+<div style="padding-top:72px">
+<div class="page-banner">
+    <div class="page-banner-grid"></div>
+    <div class="container">
+        <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;"><i class="fas fa-brain" style="margin-right:5px;"></i>Insights · OIC · AI</div>
+        <h1>Using Agentic AI in Oracle Integration 3</h1>
+        <p>G41284-05 &nbsp;·&nbsp; January 2026 &nbsp;·&nbsp; Interactive reading guide — concepts, tutorials, MCP server, and advanced features.</p>
+    </div>
+</div>
+
+<!-- ═══ GUIDE TAB NAV ═══ -->
+<div class="guide-tabs-wrap">
+    <div class="guide-tabs">
+        <button class="guide-tab active" onclick="showPanel('overview',this)"><i class="fas fa-home" style="margin-right:5px;font-size:0.7rem;"></i>Overview</button>
+        <button class="guide-tab" onclick="showPanel('concepts',this)"><i class="fas fa-lightbulb" style="margin-right:5px;font-size:0.7rem;"></i>Key Concepts</button>
+        <button class="guide-tab" onclick="showPanel('tutorial1',this)"><i class="fas fa-rocket" style="margin-right:5px;font-size:0.7rem;"></i>Tutorial 1 — First Agent</button>
+        <button class="guide-tab" onclick="showPanel('tutorial2',this)"><i class="fas fa-user-check" style="margin-right:5px;font-size:0.7rem;"></i>Tutorial 2 — Human Approval</button>
+        <button class="guide-tab" onclick="showPanel('mcp',this)"><i class="fas fa-plug" style="margin-right:5px;font-size:0.7rem;"></i>MCP Server</button>
+        <button class="guide-tab" onclick="showPanel('advanced',this)"><i class="fas fa-sliders-h" style="margin-right:5px;font-size:0.7rem;"></i>Advanced Features</button>
+    </div>
+</div>
+
+<!-- ═══ GUIDE MAIN ═══ -->
+<div class="guide-main">
+
+<!-- ── OVERVIEW ── -->
+<div id="overview" class="guide-panel active">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-home"></i> Overview</div>
+        <h2>Oracle Agentic AI in Integration 3</h2>
+        <p class="panel-intro">Automate complex workflows using AI agents that intelligently orchestrate your Oracle integrations as tools — adapting in real time to achieve a defined business goal.</p>
+    </div>
+
+    <div class="vs-grid">
+        <div class="vs-card vs-int">
+            <div class="vs-int-header">
+                <div class="vs-icon blue"><i class="fas fa-link"></i></div>
+                <h3>Traditional Integrations</h3>
+            </div>
+            <ul>
+                <li>Fixed, predefined sequence of steps</li>
+                <li>Runs exactly the same way every time</li>
+                <li>Best when you need full control over order</li>
+                <li>Ideal for enterprise connectivity</li>
+                <li>Complex when too many conditional paths</li>
+            </ul>
+        </div>
+        <div class="vs-card vs-agent">
+            <div class="vs-agent-header">
+                <div class="vs-icon green"><i class="fas fa-brain"></i></div>
+                <h3>AI Agents</h3>
+            </div>
+            <ul>
+                <li>Adaptable — decides steps dynamically via LLM</li>
+                <li>Achieves a goal even when the path isn't predefined</li>
+                <li>Best when possibilities are too many to hard-code</li>
+                <li>Uses integrations as tools</li>
+                <li>Reasons, acts, observes and iterates</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-list"></i> What's in this guide</div>
+    <div class="g-grid4">
+        <div class="step-card"><div class="step-num">Chapter 1</div><div class="step-title">Welcome to Agentic AI</div><div class="step-desc">Introduction to AI agents and how they fit with Oracle Integration</div></div>
+        <div class="step-card"><div class="step-num">Chapter 2</div><div class="step-title">Get Started</div><div class="step-desc">Two full tutorials — build your first agent and add human approval</div></div>
+        <div class="step-card"><div class="step-num">Chapter 3</div><div class="step-title">MCP Server</div><div class="step-desc">Expose integrations as tools for third-party agent frameworks via MCP</div></div>
+        <div class="step-card"><div class="step-num">Chapter 4</div><div class="step-title">Design &amp; Run Agents</div><div class="step-desc">Dynamic prompting, persistent run context, knowledge bases</div></div>
+    </div>
+
+    <div class="callout callout-info">
+        <i class="fas fa-info-circle callout-icon"></i>
+        <div><strong>Audience:</strong> Users who want to automate workflows with AI agents and agentic AI tools in Oracle Integration 3.</div>
+    </div>
+</div>
+
+<!-- ── CONCEPTS ── -->
+<div id="concepts" class="guide-panel">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-lightbulb"></i> Key Concepts</div>
+        <h2>Key Concepts</h2>
+        <p class="panel-intro">Understand the building blocks before you start building agents.</p>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-cube"></i> Core building blocks</div>
+    <div class="g-card orange" style="margin-bottom:1rem;">
+        <h3><i class="fas fa-robot" style="color:#f97316;margin-right:6px;"></i>AI Agent</h3>
+        <p>A software program that uses a Large Language Model (LLM) to reason and act — without human intervention — to achieve a specific goal. The agent decides which tools to call and in what order, based on what it learns from each step.</p>
+    </div>
+    <div class="g-card blue" style="margin-bottom:1rem;">
+        <h3><i class="fas fa-tools" style="color:var(--primary);margin-right:6px;"></i>Agentic AI Tool</h3>
+        <p>An integration that has been registered as a tool for AI agents. The agent invokes tools to interact with external systems. An integration must meet these requirements to become a tool:</p>
+        <div class="badge-row" style="margin-top:0.75rem;">
+            <span class="badge b-blue"><i class="fas fa-folder"></i> Part of a project</span>
+            <span class="badge b-blue"><i class="fas fa-check-circle"></i> Status: Active</span>
+            <span class="badge b-blue"><i class="fas fa-plug"></i> REST Adapter trigger</span>
+            <span class="badge b-blue"><i class="fas fa-arrow-up"></i> POST verb</span>
+            <span class="badge b-blue"><i class="fas fa-file-code"></i> JSON request payload</span>
+            <span class="badge b-blue"><i class="fas fa-file-code"></i> JSON response payload</span>
+        </div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-brain"></i> Thinking patterns</div>
+    <div class="g-grid2">
+        <div class="g-card purple">
+            <h3><i class="fas fa-sync-alt" style="color:#7c3aed;margin-right:6px;"></i>ReAct (Reasoning + Action)</h3>
+            <p>The agent alternates between reasoning and acting. It updates its plan based on new information at each step.</p>
+            <div class="g-flow" style="margin-top:0.75rem;">
+                <div class="flow-node">Think</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">Act</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">Observe</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">Repeat</div>
+            </div>
+        </div>
+        <div class="g-card green">
+            <h3><i class="fas fa-list-ol" style="color:#16a34a;margin-right:6px;"></i>Plan and Execute</h3>
+            <p>The agent asks the LLM to generate a complete plan first, then executes each step sequentially.</p>
+            <div class="g-flow" style="margin-top:0.75rem;">
+                <div class="flow-node">Plan</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">Step 1</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">Step 2</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-node">…</div>
+            </div>
+        </div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">You can also customise existing patterns or create entirely new ones for your agents.</p>
+
+    <div class="guide-section-label"><i class="fas fa-puzzle-piece"></i> Other key concepts</div>
+    <div class="g-grid2">
+        <div class="g-card">
+            <h3><i class="fas fa-user-check" style="color:var(--primary);margin-right:6px;"></i>Human in the Loop</h3>
+            <p>Enables human intervention at critical decision points. Use it when:</p>
+            <ul>
+                <li>Approval is needed before executing a tool</li>
+                <li>The agent needs confirmation before proceeding</li>
+                <li>The agent doesn't know what to do next</li>
+                <li>A tool call results in an error needing human guidance</li>
+            </ul>
+        </div>
+        <div class="g-card">
+            <h3><i class="fas fa-file-alt" style="color:var(--primary);margin-right:6px;"></i>Prompt Templates</h3>
+            <p>Ready-to-use system prompts with <code style="font-family:var(--mono);font-size:0.78rem;background:var(--bg-subtle);padding:2px 6px;border-radius:5px;">&#123;&#123; payload.variable &#125;&#125;</code> placeholders. Resolved from the request payload at runtime before being sent to the LLM. One agent can have multiple templates.</p>
+            <div class="g-code" style="margin-top:0.75rem;"><span class="cm">// Example</span>
+Get the weather for <span class="vl">{{ payload.city }}</span> in USA
+Get the weather for <span class="vl">{{ payload.city }}</span> in FRANCE</div>
+        </div>
+        <div class="g-card">
+            <h3><i class="fas fa-database" style="color:var(--primary);margin-right:6px;"></i>Knowledge Bases (RAG)</h3>
+            <p>Add corporate documents to a Retrieval-Augmented Generation knowledge base inside Oracle Integration. Agents and integrations can query these documents — turning static files into live, queryable knowledge.</p>
+        </div>
+        <div class="g-card">
+            <h3><i class="fas fa-folder-open" style="color:var(--primary);margin-right:6px;"></i>Projects</h3>
+            <p>All AI agents, integrations, and tools are created inside projects. Each project also acts as an MCP server, exposing its integrations as discoverable tools for third-party agent frameworks.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── TUTORIAL 1 ── -->
+<div id="tutorial1" class="guide-panel">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-rocket"></i> Tutorial 1</div>
+        <h2>Build and Run Your First AI Agent</h2>
+        <p class="panel-intro">Build a simple expense approval agent. Expenses ≤ $50 are automatically approved; expenses &gt; $50 are rejected. One integration, one tool, one agent.</p>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-check-square"></i> What you need</div>
+    <div class="g-card" style="margin-bottom:1.25rem;">
+        <ul>
+            <li>Access to Oracle Integration (free trial available)</li>
+            <li>LLM base URL — e.g. <code style="font-family:var(--mono);font-size:0.78rem;background:var(--bg-subtle);padding:2px 6px;border-radius:5px;">https://api.openai.com</code></li>
+            <li>LLM model name — e.g. <code style="font-family:var(--mono);font-size:0.78rem;background:var(--bg-subtle);padding:2px 6px;border-radius:5px;">gpt-4o-mini</code></li>
+            <li>LLM API key</li>
+        </ul>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-list-ol"></i> Steps at a glance</div>
+    <div class="g-grid4">
+        <div class="step-card"><div class="step-num">Step 1</div><div class="step-title">Plan your agent</div><div class="step-desc">Define purpose, required tools, input/output parameters</div></div>
+        <div class="step-card"><div class="step-num">Step 2</div><div class="step-title">Create the project</div><div class="step-desc">Projects → Add → Create → name: "Simple Expense Approval Project"</div></div>
+        <div class="step-card"><div class="step-num">Step 3</div><div class="step-title">Create integration</div><div class="step-desc">Build "Auto Approve Expense Report" with REST trigger + POST + JSON</div></div>
+        <div class="step-card"><div class="step-num">Step 4</div><div class="step-title">Register as tool</div><div class="step-desc">Actions → Create agentic AI tool — write a clear description</div></div>
+        <div class="step-card"><div class="step-num">Step 5</div><div class="step-title">Configure thinking pattern</div><div class="step-desc">Create ReAct pattern; connect LLM (URL, model, API key)</div></div>
+        <div class="step-card"><div class="step-num">Step 6</div><div class="step-title">Build the agent</div><div class="step-desc">Set role + guidelines, attach tools, activate</div></div>
+        <div class="step-card"><div class="step-num">Step 7</div><div class="step-title">Run and test</div><div class="step-desc">Test Agent page → enter a natural language expense prompt</div></div>
+        <div class="step-card"><div class="step-num">Step 8</div><div class="step-title">Monitor runs</div><div class="step-desc">Observe tab → check all integration instances; review errors</div></div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-tools"></i> Tool design</div>
+    <div class="g-tbl-wrap">
+        <table>
+            <thead><tr><th>Tool name</th><th>Purpose</th><th>Input JSON</th><th>Output JSON</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>Auto Approve Expense Report</strong></td>
+                    <td>Automatically approves submitted expenses</td>
+                    <td><code>{ "AmountClaimed": "" }</code></td>
+                    <td><code>{ "AutoApproveResponse": "" }</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-certificate"></i> Integration requirements for tool use</div>
+    <div class="badge-row" style="margin-bottom:1.25rem;">
+        <span class="badge b-purple"><i class="fas fa-folder"></i> Part of a project</span>
+        <span class="badge b-purple"><i class="fas fa-check-circle"></i> Status: Active</span>
+        <span class="badge b-purple"><i class="fas fa-plug"></i> REST Adapter trigger</span>
+        <span class="badge b-purple"><i class="fas fa-arrow-up"></i> POST verb</span>
+        <span class="badge b-purple"><i class="fas fa-file-code"></i> JSON request payload</span>
+        <span class="badge b-purple"><i class="fas fa-file-code"></i> JSON response payload</span>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-code"></i> Mapper expression</div>
+    <div class="g-code"><span class="cm">// In the map action, wire AmountClaimed → AutoApproveResponse</span>
+concat(<span class="st">"Expense Report claimed for"</span>,
+  /nstrgmpr:execute/ns21:requestwrapper/ns21:AmountClaimed,
+  <span class="st">" is automatically approved"</span>)</div>
+
+    <div class="guide-section-label"><i class="fas fa-user-tie"></i> Agent role &amp; guidelines</div>
+    <div class="g-code"><span class="ky">Role:</span>
+<span class="st">"You are an expense approval agent. Your role is to approve or
+reject expense claims."</span>
+
+<span class="ky">Guidelines:</span>
+1. The user submits a request for approval of expense claims.
+2. If the expense is equal to or less than $50 USD, automatically
+   approve the expense using the Auto Approve tool.
+3. If the expense is more than $50 USD, reject the expense.</div>
+
+    <div class="guide-section-label"><i class="fas fa-sync-alt"></i> ReAct pattern guidelines</div>
+    <div class="g-code">You should follow the ReAct agent pattern (Reason + Act).
+
+<span class="ky">Think</span>   — internal reasoning
+<span class="ky">Action</span>  — invoke tools to get information
+<span class="ky">Observe</span> — process tool response
+<span class="ky">Repeat</span>  — until finished
+
+Do not guess or infer tool arguments except when:
+  - Given specific guidance by the tool
+  - You have previous context for a reasonable assumption</div>
+
+    <div class="callout callout-tip">
+        <i class="fas fa-exclamation-triangle callout-icon"></i>
+        <div><strong>System integrations:</strong> When you configure a ReAct pattern, Oracle Integration auto-generates <em>ReAct Pattern Intg</em> and <em>Get Tool Data Intg</em> in your project. These are required — do not edit or delete them.</div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-chart-bar"></i> Monitoring a run</div>
+    <div class="g-card">
+        <p>After running the agent: go to <strong>Observe</strong> to see all integration instances. Look for <em>Auto Approve Expense Report</em>, <em>ReAct Pattern Intg</em>, and <em>Get Tool Data Intg</em>. If any show errors, click the number in the Errored column → Instances tab → View Details.</p>
+    </div>
+</div>
+
+<!-- ── TUTORIAL 2 ── -->
+<div id="tutorial2" class="guide-panel">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-user-check"></i> Tutorial 2</div>
+        <h2>Add Human Approval to Your Agent</h2>
+        <p class="panel-intro">Extends Tutorial 1: instead of rejecting expenses over $50, the agent routes them to a manager for human approval via a web form and workflow.</p>
+    </div>
+
+    <div class="g-card" style="margin-bottom:1.25rem;">
+        <h3><i class="fas fa-tools" style="color:var(--primary);margin-right:6px;"></i>Two tools in this agent</h3>
+        <div class="badge-row" style="margin-top:0.5rem;">
+            <span class="badge b-green"><i class="fas fa-check"></i> Auto Approve Expense Report</span>
+            <span class="badge b-orange"><i class="fas fa-user"></i> Request Human Approval</span>
+        </div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-check-square"></i> Prerequisites</div>
+    <div class="g-card" style="margin-bottom:1.25rem;">
+        <ul>
+            <li>Process Automation must be enabled on your Oracle Integration instance</li>
+            <li>Assign role <strong>ServiceDeveloper</strong> or <strong>ServiceAdministrator</strong> to users who need Human in the Loop access</li>
+            <li>Completed Tutorial 1 (or have an existing AI agent)</li>
+        </ul>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-list-ol"></i> Build steps</div>
+    <div class="g-grid3">
+        <div class="step-card"><div class="step-num">Step 1</div><div class="step-title">Create approval form</div><div class="step-desc">Human in the loop → Forms → Add. Name: "Simple Approval Form". Fields: Claim Amount, Approver Comments.</div></div>
+        <div class="step-card"><div class="step-num">Step 2</div><div class="step-title">Create approval workflow</div><div class="step-desc">Build a workflow with a start event, a user task (linked to the form), and an end event. Activate it.</div></div>
+        <div class="step-card"><div class="step-num">Step 3</div><div class="step-title">Create trigger connection</div><div class="step-desc">Create a REST trigger connection (OAuth 2.0 or Basic Auth) for the human approval integration.</div></div>
+        <div class="step-card"><div class="step-num">Step 4</div><div class="step-title">Create &amp; activate integration</div><div class="step-desc">Build "Request Human Approval" integration: REST trigger + POST + JSON payload. Activate it.</div></div>
+        <div class="step-card"><div class="step-num">Step 5</div><div class="step-title">Register as tool</div><div class="step-desc">Actions → Create agentic AI tool. Write a clear description of when the agent should use this tool.</div></div>
+        <div class="step-card"><div class="step-num">Step 6</div><div class="step-title">Add tool + update agent</div><div class="step-desc">Add the human approval tool to the existing agent and update the agent guidelines to reference both tools.</div></div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-route"></i> Human approval flow</div>
+    <div class="g-flow">
+        <div class="flow-node">Agent receives expense</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Is expense &gt; $50?</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Calls Human Approval tool</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Manager sees web form</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Approves or rejects</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Agent receives response</div>
+        <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="flow-node">Agent concludes</div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-edit"></i> Updated agent guidelines</div>
+    <div class="g-code">1. The user submits a request for approval of expense claims.
+2. If the expense is equal to or less than $50 USD, automatically
+   approve using the Auto Approve Expense Report tool.
+3. If the expense is more than $50 USD, use the Request Human
+   Approval tool to route to a manager for review.</div>
+
+    <div class="callout callout-info">
+        <i class="fas fa-info-circle callout-icon"></i>
+        <div>After adding a new tool, always update the agent guidelines so the LLM understands when to invoke each tool. Clear, specific guidelines reduce LLM errors and improve accuracy.</div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-table"></i> Form fields</div>
+    <div class="g-tbl-wrap">
+        <table>
+            <thead><tr><th>Field</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>Claim Amount</td><td>The dollar amount the employee is claiming</td></tr>
+                <tr><td>Approver Comments</td><td>Free-text field for the manager to add notes on their decision</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ── MCP ── -->
+<div id="mcp" class="guide-panel">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-plug"></i> MCP Server</div>
+        <h2>Use Integrations as Tools in an MCP Server</h2>
+        <p class="panel-intro">Each Oracle Integration project can act as an MCP (Model Context Protocol) server, allowing any third-party agent framework that supports MCP to discover and invoke your integrations as tools.</p>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-layer-group"></i> Supported frameworks</div>
+    <div class="badge-row" style="margin-bottom:1.25rem;">
+        <span class="badge b-blue"><i class="fas fa-cube"></i> AI Agent Studio for Fusion Applications</span>
+        <span class="badge b-blue"><i class="fas fa-stream"></i> Langflow</span>
+        <span class="badge b-blue"><i class="fas fa-check"></i> Any MCP-compatible framework</span>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-list-ol"></i> Workflow to use an integration via MCP</div>
+    <div class="g-grid3" style="margin-bottom:1.5rem;">
+        <div class="step-card"><div class="step-num">Step 1</div><div class="step-title">Create client application</div><div class="step-desc">Create and activate the OAuth client application for authentication</div></div>
+        <div class="step-card"><div class="step-num">Step 2</div><div class="step-title">Register integration as tool</div><div class="step-desc">In your project, register the integration as an agentic AI tool with a clear, LLM-readable description</div></div>
+        <div class="step-card"><div class="step-num">Step 3</div><div class="step-title">Enable MCP for project</div><div class="step-desc">In project settings, switch on MCP server mode to expose registered tools</div></div>
+        <div class="step-card"><div class="step-num">Step 4</div><div class="step-title">Get MCP server URL</div><div class="step-desc">Copy the MCP server URL from the project — this is what MCP clients will connect to</div></div>
+        <div class="step-card"><div class="step-num">Step 5</div><div class="step-title">Discover tools from client</div><div class="step-desc">Configure your MCP client with the URL; it will auto-discover all registered integrations as callable tools</div></div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-info-circle"></i> Key facts</div>
+    <div class="g-grid2">
+        <div class="g-card blue">
+            <h3><i class="fas fa-server" style="color:var(--primary);margin-right:6px;"></i>Project = MCP server</h3>
+            <p>Each project becomes its own MCP server with a dedicated URL. You choose which integrations within the project to expose.</p>
+        </div>
+        <div class="g-card green">
+            <h3><i class="fas fa-exchange-alt" style="color:#16a34a;margin-right:6px;"></i>Any integration, any framework</h3>
+            <p>Any integration can be used as a tool regardless of which agent framework invokes it — Oracle Integration or third-party.</p>
+        </div>
+    </div>
+
+    <div class="callout callout-tip">
+        <i class="fas fa-exclamation-triangle callout-icon"></i>
+        <div>Tool descriptions are sent directly to the LLM. Write them precisely — the LLM uses the description to decide <em>when</em> and <em>how</em> to invoke each tool. Vague descriptions cause incorrect tool calls.</div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-question-circle"></i> FAQ highlights</div>
+    <div class="g-tbl-wrap">
+        <table>
+            <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+            <tbody>
+                <tr><td>Can I use a tool in both an Oracle agent and a third-party framework?</td><td>Yes. Once registered as an agentic AI tool, it's available via the MCP server URL to any client.</td></tr>
+                <tr><td>How many integrations can a project expose?</td><td>You selectively register which integrations to expose — you don't have to expose all of them.</td></tr>
+                <tr><td>Is the MCP URL stable?</td><td>Yes. The URL persists and can be shared with multiple clients.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ── ADVANCED ── -->
+<div id="advanced" class="guide-panel">
+    <div class="panel-header">
+        <div class="section-label" style="margin-top:0;"><i class="fas fa-sliders-h"></i> Advanced Features</div>
+        <h2>Advanced Features</h2>
+        <p class="panel-intro">Go beyond the basics — dynamic prompting, persistent run memory, knowledge bases, and fine-tuned thinking pattern configuration.</p>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-magic"></i> Dynamic prompting</div>
+    <div class="g-card blue" style="margin-bottom:1.25rem;">
+        <h3><i class="fas fa-file-alt" style="color:var(--primary);margin-right:6px;"></i>Prompt templates</h3>
+        <p>Instead of a static system prompt, associate one or more prompt templates with your agent. Each template has placeholders that resolve from the incoming request payload at runtime.</p>
+        <div class="g-code" style="margin-top:0.85rem;"><span class="cm">// Template 1</span>
+Get the weather for <span class="vl">{{ payload.city }}</span> in USA
+
+<span class="cm">// Template 2</span>
+Get the weather for <span class="vl">{{ payload.city }}</span> in FRANCE
+
+<span class="cm">// Template 3</span>
+Get the weather for <span class="vl">{{ payload.city }}</span> in BRAZIL</div>
+        <p style="margin-top:0.5rem;">The correct template is selected based on the payload context and sent to the LLM as the system prompt.</p>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-memory"></i> Persistent run context</div>
+    <div class="g-card green" style="margin-bottom:1.25rem;">
+        <h3><i class="fas fa-history" style="color:#16a34a;margin-right:6px;"></i>Run agent with knowledge of previous runs</h3>
+        <p>By default each agent run is stateless. You can configure the agent to carry context from previous runs — enabling it to build on past interactions, avoid repeated mistakes, and support multi-turn workflows.</p>
+        <ul style="margin-top:0.5rem;">
+            <li>Pass previous run context in the prompt payload</li>
+            <li>Useful for iterative approvals and multi-step workflows</li>
+            <li>Allows the agent to remember earlier decisions in a conversation</li>
+        </ul>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-database"></i> Knowledge bases</div>
+    <div class="g-card orange" style="margin-bottom:1.25rem;">
+        <h3><i class="fas fa-book" style="color:#f97316;margin-right:6px;"></i>RAG knowledge bases</h3>
+        <p>Upload corporate documents to a Retrieval-Augmented Generation knowledge base inside Oracle Integration. Agents can query these documents as a tool, and integrations can also query them directly.</p>
+        <div class="badge-row" style="margin-top:0.65rem;">
+            <span class="badge b-orange"><i class="fas fa-search"></i> Query from an integration</span>
+            <span class="badge b-orange"><i class="fas fa-robot"></i> Use as an agent tool</span>
+            <span class="badge b-orange"><i class="fas fa-user"></i> Human-accessible reference</span>
+        </div>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-cogs"></i> Thinking pattern configuration</div>
+    <div class="g-tbl-wrap" style="margin-bottom:1.25rem;">
+        <table>
+            <thead><tr><th>Setting</th><th>Description</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Max iterations</strong></td><td>Limits the number of reasoning + action cycles before the agent provides a final answer</td><td>Prevents infinite loops</td></tr>
+                <tr><td><strong>Temperature</strong></td><td>Controls LLM creativity in reasoning</td><td>Higher = more creative; lower = more deterministic</td></tr>
+                <tr><td><strong>Guidelines</strong></td><td>Sent as the system prompt — defines how the agent reasons step by step</td><td>Be specific and structured</td></tr>
+                <tr><td><strong>LLM connection</strong></td><td>Base URL, model name, and API key for the LLM</td><td>Test connection before activating</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="guide-section-label"><i class="fas fa-eye"></i> Tool parameter visibility</div>
+    <div class="g-card" style="margin-bottom:1.25rem;">
+        <h3><i class="fas fa-sliders-h" style="color:var(--primary);margin-right:6px;"></i>Control what the LLM sees</h3>
+        <p>When registering a tool, you control which parameters are visible to the LLM. For integrations with many fields, only mark as <strong>Visible</strong> the parameters that are relevant to the tool's stated purpose. This reduces noise and improves the LLM's ability to use the tool correctly.</p>
+        <div class="badge-row" style="margin-top:0.65rem;">
+            <span class="badge b-green"><i class="fas fa-eye"></i> Visible — sent to LLM as tool metadata</span>
+            <span class="badge b-amber"><i class="fas fa-eye-slash"></i> Hidden — not sent to LLM</span>
+        </div>
+    </div>
+
+    <div class="callout callout-success">
+        <i class="fas fa-check-circle callout-icon"></i>
+        <div><strong>System-generated artifacts:</strong> Oracle Integration automatically creates <em>ReAct Pattern Intg</em>, <em>Get Tool Data Intg</em>, and an <em>LLM Connection</em> when you save a thinking pattern. These are required for agent operation — do not edit or delete them.</div>
+    </div>
+</div>
+
+</div><!-- /guide-main -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <span class="footer-logo-text">IntSphere</span>
+                <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pass.html">PaaS</a></li>
+                    <li><a href="hcm.html">Oracle Fusion HCM</a></li>
+                    <li><a href="intforge.html">IntForge</a></li>
+                    <li><a href="payforge.html">PayForge</a></li>
+                    <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Insights</h3>
+                <ul class="footer-links">
+                    <li><a href="oicinsights.html">OIC Insights</a></li>
+                    <li><a href="oicnotes.html">OIC Reference Notes</a></li>
+                    <li><a href="oracle-agentic-ai-guide.html">Oracle Agentic AI Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+                    <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
+                    <li><i class="fas fa-globe"></i> <span style="font-size:0.88rem;">Global Services</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span style="font-size:0.88rem;">704, Bhoomi Kshitij, Nakhate Wasti, Rahatani, Pune – 411017, Maharashtra, India</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+    </div>
+</footer>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Let's Connect</h2>
+        <p class="modal-subtitle">Tell us about your Oracle requirements</p>
+        <form id="contactForm" onsubmit="return false;">
+            <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+function showPanel(id, btn) {
+    document.querySelectorAll('.guide-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.guide-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.guide-tabs-wrap').offsetTop - 72, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
