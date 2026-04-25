@@ -42,7 +42,7 @@
 }
 .guide-tabs {
     max-width: 1100px; margin: 0 auto;
-     overflow-x: auto; scrollbar-width: none;
+    display: flex; overflow-x: auto; scrollbar-width: none;
     padding: 0 2rem; position: relative; z-index: 1;
     -webkit-overflow-scrolling: touch;
 }
@@ -124,6 +124,7 @@
 }
 .step-card:hover { border-color:rgba(8,145,178,0.25); box-shadow:var(--shadow-blue); transform:translateY(-2px); }
 .step-card:hover::before { opacity:1; }
+.step-card[onclick]:hover .step-num i { opacity: 1; transform: translateX(3px); transition: all 0.2s; }
 .step-num {
     font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;
     color:var(--primary); margin-bottom:0.4rem; font-family:'Outfit',sans-serif;
@@ -375,10 +376,31 @@
 
     <div class="guide-section-label"><i class="fas fa-list"></i> What's in this guide</div>
     <div class="g-grid4">
-        <div class="step-card"><div class="step-num">Chapter 1</div><div class="step-title">Welcome to Agentic AI</div><div class="step-desc">Introduction to AI agents and how they fit with Oracle Integration</div></div>
-        <div class="step-card"><div class="step-num">Chapter 2</div><div class="step-title">Get Started</div><div class="step-desc">Two full tutorials — build your first agent and add human approval</div></div>
-        <div class="step-card"><div class="step-num">Chapter 3</div><div class="step-title">MCP Server</div><div class="step-desc">Expose integrations as tools for third-party agent frameworks via MCP</div></div>
-        <div class="step-card"><div class="step-num">Chapter 4</div><div class="step-title">Design &amp; Run Agents</div><div class="step-desc">Dynamic prompting, persistent run context, knowledge bases</div></div>
+        <div class="step-card" onclick="showPanel('concepts', document.querySelector('[onclick*=concepts]'))" style="cursor:pointer;">
+            <div class="step-num" style="display:flex;align-items:center;justify-content:space-between;">Chapter 1 <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--primary);opacity:0.7;"></i></div>
+            <div class="step-title">Key Concepts</div>
+            <div class="step-desc">Introduction to AI agents and how they fit with Oracle Integration</div>
+        </div>
+        <div class="step-card" onclick="showPanel('tutorial1', document.querySelector('[onclick*=tutorial1]'))" style="cursor:pointer;">
+            <div class="step-num" style="display:flex;align-items:center;justify-content:space-between;">Chapter 2 — Tutorial 1 <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--primary);opacity:0.7;"></i></div>
+            <div class="step-title">Build Your First Agent</div>
+            <div class="step-desc">Step-by-step: build an expense approval agent from scratch</div>
+        </div>
+        <div class="step-card" onclick="showPanel('tutorial2', document.querySelector('[onclick*=tutorial2]'))" style="cursor:pointer;">
+            <div class="step-num" style="display:flex;align-items:center;justify-content:space-between;">Chapter 2 — Tutorial 2 <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--primary);opacity:0.7;"></i></div>
+            <div class="step-title">Add Human Approval</div>
+            <div class="step-desc">Extend your agent to route decisions through a manager workflow</div>
+        </div>
+        <div class="step-card" onclick="showPanel('mcp', document.querySelector('[onclick*=\'mcp\']'))" style="cursor:pointer;">
+            <div class="step-num" style="display:flex;align-items:center;justify-content:space-between;">Chapter 3 <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--primary);opacity:0.7;"></i></div>
+            <div class="step-title">MCP Server</div>
+            <div class="step-desc">Expose integrations as tools for third-party agent frameworks via MCP</div>
+        </div>
+        <div class="step-card" onclick="showPanel('advanced', document.querySelector('[onclick*=advanced]'))" style="cursor:pointer;">
+            <div class="step-num" style="display:flex;align-items:center;justify-content:space-between;">Chapter 4 <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--primary);opacity:0.7;"></i></div>
+            <div class="step-title">Design &amp; Run Agents</div>
+            <div class="step-desc">Dynamic prompting, persistent run context, knowledge bases</div>
+        </div>
     </div>
 
     <div class="callout callout-info">
