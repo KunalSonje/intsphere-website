@@ -30,8 +30,9 @@
 /* ── TAB NAV ── */
 .guide-tabs-wrap {
     background: var(--grad-main);
-    position: sticky; top: 0; z-index: 200;
+    position: sticky; top: 72px; z-index: 200;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .guide-tabs-wrap::after {
     content:''; position:absolute; inset:0;
@@ -41,21 +42,23 @@
 }
 .guide-tabs {
     max-width: 1100px; margin: 0 auto;
-    display: flex; overflow-x: auto; scrollbar-width: none;
+     overflow-x: auto; scrollbar-width: none;
     padding: 0 2rem; position: relative; z-index: 1;
     -webkit-overflow-scrolling: touch;
 }
 .guide-tabs::-webkit-scrollbar { display:none; }
 .guide-tab {
-    padding: 1rem 1.1rem; border: none; background: none; cursor: pointer;
+    padding: 0.9rem 1.1rem 0.85rem; border: none; background: none; cursor: pointer;
     font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600;
     color: rgba(165,243,252,0.6); white-space: nowrap;
-    border-bottom: 2.5px solid transparent; margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
     transition: all 0.2s; letter-spacing: 0.2px;
     -webkit-tap-highlight-color: transparent;
+    position: relative; z-index: 1;
+    flex-shrink: 0;
 }
-.guide-tab:hover { color: #a5f3fc; }
-.guide-tab.active { color: #67e8f9; border-bottom-color: #67e8f9; }
+.guide-tab:hover { color: #a5f3fc; background: rgba(255,255,255,0.04); }
+.guide-tab.active { color: #67e8f9; border-bottom-color: #67e8f9; background: rgba(103,232,249,0.06); }
 
 /* ── MAIN LAYOUT ── */
 .guide-main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
@@ -314,7 +317,7 @@
     <div class="container">
         <div class="section-label" style="background:rgba(255,255,255,0.12);color:#a5f3fc;"><i class="fas fa-brain" style="margin-right:5px;"></i>Insights · OIC · AI</div>
         <h1>Using Agentic AI in Oracle Integration 3</h1>
-        <p>G41284-05 &nbsp;·&nbsp; January 2026 &nbsp;·&nbsp; Interactive reading guide — concepts, tutorials, MCP server, and advanced features.</p>
+        <p>Interactive reading guide — concepts, tutorials, MCP server, and advanced features.</p>
     </div>
 </div>
 
