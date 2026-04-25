@@ -11,30 +11,26 @@
 <link rel="stylesheet" href="shared.css">
 <style>
 
-/* ── HERO IMAGE SECTION ── */
-.harbor-hero {
-    position: relative;
-    min-height: 520px;
-    overflow: hidden;
-    display: flex; align-items: flex-end;
-    background: var(--grad-main);
+/* ── HERO (image only) ── */
+.harbor-hero-img-only {
+    width: 100%;
+    line-height: 0;
 }
-.harbor-hero-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    opacity: 0.35;
-    transition: opacity 0.5s;
+.harbor-hero-img-only img {
+    width: 100%;
+    height: 520px;
+    display: block;
 }
-.harbor-hero-img.loaded { opacity: 0.38; }
-.harbor-hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(15,23,42,0.15) 0%,
-        rgba(26,45,66,0.55) 50%,
-        rgba(15,23,42,0.92) 100%
-    );
+
+/* ── HARBOR DIAGRAM (inline SVG) ── */
+.harbor-diagram-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.harbor-diagram-wrap svg {
+    min-width: 640px;
+    display: block;
 }
 .harbor-hero-grid {
     position: absolute; inset: 0;
@@ -247,16 +243,79 @@
     .phase-marker { width: 52px; }
     .phase-circle { width: 40px; height: 40px; font-size: 1rem; }
 }
+
+/* ── TABLET ── */
+@media(max-width:768px){
+    .harbor-hero { min-height: 480px; }
+    .harbor-hero-content { padding: 4.5rem 0 2.5rem; }
+    .harbor-hero-tags { gap: 0.4rem; }
+    .harbor-tag { font-size: 0.7rem; padding: 0.24rem 0.7rem; }
+
+    /* Stats row: 3-col → 1-row scroll or stack */
+    div[style*="grid-template-columns:1fr 1fr 1fr"] {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+    }
+}
+
+/* ── MOBILE ── */
 @media(max-width:640px){
-    .harbor-hero-content { padding: 4rem 0 2.5rem; }
-    .harbor-hero-title { font-size: clamp(1.8rem,6vw,2.5rem); }
+    .harbor-hero { min-height: 100svh; min-height: 100vh; align-items: flex-end; }
+    .harbor-hero-img { object-position: center center; }
+    .harbor-hero-content { padding: 5rem 0 2.5rem; width: 100%; }
+    .harbor-hero-title {
+        font-size: clamp(1.65rem, 7vw, 2.2rem);
+        word-break: break-word;
+    }
+    .harbor-hero-subtitle {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+    .harbor-hero-tags {
+        gap: 0.35rem;
+        flex-wrap: wrap;
+    }
+    .harbor-tag {
+        font-size: 0.68rem;
+        padding: 0.22rem 0.6rem;
+        gap: 4px;
+    }
+    .harbor-hero-eyebrow {
+        font-size: 0.66rem;
+        padding: 0.28rem 0.8rem;
+    }
+	.harbor-hero-img-only img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+    /* Stats grid: stack to single column */
+    div[style*="grid-template-columns:1fr 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
+    }
+
     .why-grid { grid-template-columns: 1fr; }
-    .phase { gap: 1rem; }
-    .phase-card { padding: 1.2rem 1.25rem; }
+
+    .phase { gap: 0.85rem; }
+    .phase-card { padding: 1.1rem 1.1rem; }
     .phase-card-header { flex-direction: column; gap: 0.5rem; }
+    .phase-heading { font-size: 1rem; }
     .phases-spine { display: none; }
     .phase-marker { width: 44px; }
     .phase-step-label { display: none; }
+    .phase-circle { width: 38px; height: 38px; font-size: 0.9rem; }
+
+    .harbor-quote { padding: 1.6rem 1.25rem; margin: 1.5rem 0; }
+    .harbor-quote-text { font-size: 0.98rem; }
+
+    .compare-row { grid-template-columns: 1fr; }
+    .compare-col { padding: 1.1rem 1.2rem; }
+
+    /* Prevent horizontal scroll */
+    body { overflow-x: hidden; }
+    .container { padding-left: 1rem !important; padding-right: 1rem !important; }
 }
 </style>
 </head>
@@ -341,32 +400,8 @@
 <div style="padding-top:72px">
 
     <!-- ═══ HARBOR HERO ═══ -->
-    <div class="harbor-hero">
-        <img src="harbor.webp" alt="Harbor" class="harbor-hero-img" id="harborImg"
-             onload="this.classList.add('loaded')"
-             onerror="this.style.display='none'">
-        <div class="harbor-hero-overlay"></div>
-        <div class="harbor-hero-grid"></div>
-        <div class="harbor-hero-content">
-        <div class="container">
-            <div class="harbor-hero-eyebrow">
-                <i class="fas fa-anchor"></i> IntSphere Methodology
-            </div>
-            <h1 class="harbor-hero-title">
-                The <em>Harbor</em> Approach<br>to ERP Implementation
-            </h1>
-            <p class="harbor-hero-subtitle">
-                A structured, narrative-driven ERP implementation methodology that blends phased rigour with adaptability — guiding every enterprise safely from vision to go-live, and beyond.
-            </p>
-            <div class="harbor-hero-tags">
-                <span class="harbor-tag"><i class="fas fa-ship"></i> Oracle ERP Cloud</span>
-                <span class="harbor-tag"><i class="fas fa-map"></i> 5-Phase Framework</span>
-                <span class="harbor-tag"><i class="fas fa-users"></i> Change Management</span>
-                <span class="harbor-tag"><i class="fas fa-chart-line"></i> Continuous Improvement</span>
-                <span class="harbor-tag"><i class="fas fa-shield-alt"></i> Risk-Controlled</span>
-            </div>
-        </div>
-        </div>
+    <div class="harbor-hero-img-only">
+        <img src="harbor.webp" alt="The Harbor Approach to ERP Implementation — IntSphere Methodology">
     </div>
 
     <!-- ═══ INTRO ═══ -->
@@ -395,8 +430,7 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
+    
     <!-- ═══ 5 PHASES ═══ -->
     <section style="background:var(--bg-light);">
         <div class="container">
