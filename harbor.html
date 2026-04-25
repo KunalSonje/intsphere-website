@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Fonts loaded via shared.css -->
+<title>The Harbor Approach | IntSphere ERP Methodology</title>
+<meta name="description" content="IntSphere's Harbor Approach — a structured, narrative-driven ERP implementation methodology that blends rigor with adaptability.">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+/* ── HERO IMAGE SECTION ── */
+.harbor-hero {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+    background: var(--grad-main);
+}
+.harbor-hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    opacity: 0.35;
+    transition: opacity 0.5s;
+}
+.harbor-hero-img.loaded { opacity: 0.38; }
+.harbor-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.15) 0%,
+        rgba(26,45,66,0.55) 50%,
+        rgba(15,23,42,0.92) 100%
+    );
+}
+.harbor-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+}
+.harbor-hero-content {
+    position: relative; z-index: 2;
+    padding: 5rem 0 3rem;
+}
+.harbor-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #a5f3fc; background: rgba(8,145,178,0.2);
+    border: 1px solid rgba(103,232,249,0.25);
+    padding: 0.35rem 1rem; border-radius: 30px;
+    margin-bottom: 1.25rem;
+}
+.harbor-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800; color: #f1f5f9;
+    line-height: 1.12; margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+.harbor-hero-title em {
+    font-style: normal; color: #67e8f9;
+}
+.harbor-hero-subtitle {
+    color: rgba(203,213,225,0.82);
+    font-size: 1rem; line-height: 1.75;
+    max-width: 640px; margin-bottom: 1.75rem;
+}
+.harbor-hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.harbor-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 30px; padding: 0.28rem 0.85rem;
+    font-size: 0.75rem; font-weight: 500; color: #a5f3fc;
+}
+
+/* ── PHASE TIMELINE ── */
+.phases-wrap { position: relative; padding: 0; }
+
+/* vertical spine */
+.phases-spine {
+    position: absolute; left: 36px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, rgba(8,145,178,0.12), rgba(8,145,178,0.35) 30%, rgba(8,145,178,0.35) 70%, rgba(8,145,178,0.08));
+    border-radius: 2px;
+}
+
+.phase {
+    display: flex; gap: 1.75rem; align-items: flex-start;
+    margin-bottom: 2.25rem; position: relative;
+}
+.phase:last-child { margin-bottom: 0; }
+
+/* circle marker */
+.phase-marker {
+    flex-shrink: 0; width: 74px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+    position: relative; z-index: 1;
+}
+.phase-circle {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem; border: 2.5px solid;
+    background: white; transition: all 0.3s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+}
+.phase-step-label {
+    font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* colour variants */
+.phase-c1 .phase-circle { color:#0891b2; border-color:rgba(8,145,178,0.3); }
+.phase-c2 .phase-circle { color:#0284c7; border-color:rgba(2,132,199,0.3); }
+.phase-c3 .phase-circle { color:#0369a1; border-color:rgba(3,105,161,0.3); }
+.phase-c4 .phase-circle { color:#7c3aed; border-color:rgba(124,58,237,0.3); }
+.phase-c5 .phase-circle { color:#16a34a; border-color:rgba(22,163,74,0.3); }
+
+.phase:hover .phase-c1 .phase-circle { background:rgba(8,145,178,0.08); }
+.phase:hover .phase-c2 .phase-circle { background:rgba(2,132,199,0.08); }
+.phase:hover .phase-c3 .phase-circle { background:rgba(3,105,161,0.08); }
+.phase:hover .phase-c4 .phase-circle { background:rgba(124,58,237,0.08); }
+.phase:hover .phase-c5 .phase-circle { background:rgba(22,163,74,0.08); }
+
+/* phase card */
+.phase-card {
+    flex: 1; background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px; padding: 1.6rem 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    position: relative; overflow: hidden;
+}
+.phase-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    opacity: 0; transition: opacity 0.3s;
+}
+.phase:hover .phase-card { transform: translateY(-3px); box-shadow: var(--shadow-blue); border-color: rgba(8,145,178,0.2); }
+.phase:hover .phase-card::before { opacity: 1; }
+.phase-c1 .phase-card::before { background: linear-gradient(90deg,#0891b2,#06b6d4); }
+.phase-c2 .phase-card::before { background: linear-gradient(90deg,#0284c7,#0891b2); }
+.phase-c3 .phase-card::before { background: linear-gradient(90deg,#0369a1,#0284c7); }
+.phase-c4 .phase-card::before { background: linear-gradient(90deg,#7c3aed,#0891b2); }
+.phase-c5 .phase-card::before { background: linear-gradient(90deg,#16a34a,#0891b2); }
+
+.phase-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.phase-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--heading); line-height: 1.25;
+}
+.phase-heading span { display: block; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 3px; }
+.phase-harbor-badge {
+    flex-shrink: 0; font-size: 0.7rem; font-weight: 700;
+    padding: 0.28rem 0.8rem; border-radius: 20px;
+    background: var(--bg-light); color: var(--text-muted);
+    border: 1px solid var(--border-subtle); white-space: nowrap;
+}
+
+.phase-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.phase-points li {
+    display: flex; gap: 0.65rem; align-items: flex-start;
+    font-size: 0.87rem; color: var(--text); line-height: 1.65;
+}
+.phase-points li i { margin-top: 4px; flex-shrink: 0; font-size: 0.62rem; }
+.phase-c1 .phase-points li i { color: #0891b2; }
+.phase-c2 .phase-points li i { color: #0284c7; }
+.phase-c3 .phase-points li i { color: #0369a1; }
+.phase-c4 .phase-points li i { color: #7c3aed; }
+.phase-c5 .phase-points li i { color: #16a34a; }
+
+/* ── WHY IT WORKS ── */
+.why-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem;
+}
+.why-card {
+    background: white; border: 1px solid var(--border-subtle);
+    border-radius: 18px; padding: 1.4rem 1.5rem;
+    box-shadow: var(--shadow-sm); transition: all 0.3s;
+    position: relative; overflow: hidden;
+}
+.why-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--grad-accent); opacity: 0; transition: opacity 0.3s;
+}
+.why-card:hover { transform: translateY(-3px); border-color: rgba(8,145,178,0.25); box-shadow: var(--shadow-blue); }
+.why-card:hover::after { opacity: 1; }
+.why-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg,rgba(8,145,178,0.1),rgba(6,182,212,0.1));
+    border: 1px solid rgba(8,145,178,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; color: var(--primary); margin-bottom: 0.85rem;
+    transition: all 0.3s;
+}
+.why-card:hover .why-icon { background: var(--grad-accent); color: white; border-color: transparent; }
+.why-card h3 { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.35rem; }
+.why-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ── METHODOLOGY COMPARISON ── */
+.compare-row {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+    background: var(--border-subtle); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);
+}
+.compare-col { background: white; padding: 1.5rem 1.6rem; }
+.compare-col.highlight { background: linear-gradient(135deg,rgba(8,145,178,0.04),rgba(6,182,212,0.04)); }
+.compare-col h4 { font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--heading); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+.compare-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.compare-col ul li { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 0.5rem; line-height: 1.55; }
+.compare-col ul li::before { font-size: 0.65rem; margin-top: 4px; flex-shrink: 0; }
+.compare-col.waterfall ul li::before { content: '—'; color: #ef4444; }
+.compare-col.agile ul li::before    { content: '—'; color: #f59e0b; }
+.compare-col.harbor ul li::before   { content: '✓'; color: #16a34a; font-weight: 700; }
+
+/* ── QUOTE BLOCK ── */
+.harbor-quote {
+    background: var(--grad-main); border-radius: 24px;
+    padding: 3rem 3.5rem; position: relative; overflow: hidden;
+    text-align: center; margin: 2.5rem 0;
+}
+.harbor-quote::before {
+    content: '"';
+    position: absolute; top: -20px; left: 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12rem; color: rgba(103,232,249,0.08);
+    line-height: 1; pointer-events: none;
+}
+.harbor-quote-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.1rem,2.5vw,1.35rem); font-weight: 600;
+    color: #f1f5f9; line-height: 1.7; position: relative; z-index: 1;
+    max-width: 680px; margin: 0 auto 1.25rem;
+}
+.harbor-quote-attr { font-size: 0.82rem; color: rgba(165,243,252,0.7); position: relative; z-index: 1; font-weight: 500; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+    .why-grid { grid-template-columns:1fr 1fr; }
+    .compare-row { grid-template-columns:1fr; }
+    .harbor-quote { padding: 2rem 1.75rem; }
+    .phases-spine { left: 24px; }
+    .phase-marker { width: 52px; }
+    .phase-circle { width: 40px; height: 40px; font-size: 1rem; }
+}
+@media(max-width:640px){
+    .harbor-hero-content { padding: 4rem 0 2.5rem; }
+    .harbor-hero-title { font-size: clamp(1.8rem,6vw,2.5rem); }
+    .why-grid { grid-template-columns: 1fr; }
+    .phase { gap: 1rem; }
+    .phase-card { padding: 1.2rem 1.25rem; }
+    .phase-card-header { flex-direction: column; gap: 0.5rem; }
+    .phases-spine { display: none; }
+    .phase-marker { width: 44px; }
+    .phase-step-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a class="logo" onclick="navigate('home')" href="index.html">
+            <img src="Logo.webp" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-wrapper">
+                <span class="logo-text">IntSphere</span>
+                <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+            </div>
+        </a>
+        <nav id="mainNav">
+            <a href="index.html" id="nav-home">Home</a>
+            <div class="nav-dropdown" id="nav-services-group">
+                <a class="nav-dropdown-trigger" id="nav-services">Services <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="services.html" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
+                    <a href="pass.html" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
+                    <a href="hcm.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-products-group">
+                <a class="nav-dropdown-trigger" id="nav-products">Products <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="intforge.html" style="color:var(--text);"><i class="fas fa-bolt" style="width:16px;margin-right:8px;color:var(--primary);"></i>IntForge</a>
+                    <a href="payforge.html" style="color:var(--text);"><i class="fas fa-file-invoice-dollar" style="width:16px;margin-right:8px;color:var(--primary);"></i>PayForge</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-accelerators-group">
+                <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="hcmaccelerators.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" id="nav-insights-group">
+                <a class="nav-dropdown-trigger" id="nav-insights">Insights <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="oicinsights.html" style="color:var(--text);"><i class="fas fa-plug" style="width:16px;margin-right:8px;color:var(--primary);"></i>OIC</a>
+                </div>
+            </div>
+            <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html" id="nav-about">About</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSvc" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
+                <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
+                <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="intforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-bolt" style="width:14px;margin-right:6px;color:var(--primary);"></i>IntForge</a>
+                <a href="payforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-file-invoice-dollar" style="width:14px;margin-right:6px;color:var(--primary);"></i>PayForge</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
+            </div>
+            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileInsights(event)">Insights <i class="fas fa-chevron-down" id="insChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
+            <div id="mobileInsSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+                <a href="oicinsights.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-plug" style="width:14px;margin-right:6px;color:var(--primary);"></i>OIC</a>
+            </div>
+            <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+<div style="padding-top:72px">
+
+    <!-- ═══ HARBOR HERO ═══ -->
+    <div class="harbor-hero">
+        <img src="harbor.webp" alt="Harbor" class="harbor-hero-img" id="harborImg"
+             onload="this.classList.add('loaded')"
+             onerror="this.style.display='none'">
+        <div class="harbor-hero-overlay"></div>
+        <div class="harbor-hero-grid"></div>
+        <div class="harbor-hero-content">
+        <div class="container">
+            <div class="harbor-hero-eyebrow">
+                <i class="fas fa-anchor"></i> IntSphere Methodology
+            </div>
+            <h1 class="harbor-hero-title">
+                The <em>Harbor</em> Approach<br>to ERP Implementation
+            </h1>
+            <p class="harbor-hero-subtitle">
+                A structured, narrative-driven ERP implementation methodology that blends phased rigour with adaptability — guiding every enterprise safely from vision to go-live, and beyond.
+            </p>
+            <div class="harbor-hero-tags">
+                <span class="harbor-tag"><i class="fas fa-ship"></i> Oracle ERP Cloud</span>
+                <span class="harbor-tag"><i class="fas fa-map"></i> 5-Phase Framework</span>
+                <span class="harbor-tag"><i class="fas fa-users"></i> Change Management</span>
+                <span class="harbor-tag"><i class="fas fa-chart-line"></i> Continuous Improvement</span>
+                <span class="harbor-tag"><i class="fas fa-shield-alt"></i> Risk-Controlled</span>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- ═══ INTRO ═══ -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-anchor"></i> About the Methodology</div>
+                <h2>Navigating ERP Transformation</h2>
+                <p>Unlike traditional waterfall or purely agile ERP methodologies, IntSphere's Harbor Approach blends structure with adaptability. It ensures organisations don't rush into go-live without stabilising each stage — while still allowing iterative improvements at every checkpoint.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;" class="reveal">
+                <div style="background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:16px;padding:1.5rem;text-align:center;">
+                    <div style="font-family:'Outfit',sans-serif;font-size:2.4rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">5</div>
+                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.35rem;line-height:1.5;">Phased Harbor<br>Checkpoints</div>
+                </div>
+                <div style="background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:16px;padding:1.5rem;text-align:center;">
+                    <div style="font-family:'Outfit',sans-serif;font-size:2.4rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">360°</div>
+                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.35rem;line-height:1.5;">Stakeholder &amp;<br>Governance Coverage</div>
+                </div>
+                <div style="background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:16px;padding:1.5rem;text-align:center;">
+                    <div style="font-family:'Outfit',sans-serif;font-size:2.4rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">∞</div>
+                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.35rem;line-height:1.5;">Continuous Improvement<br>Beyond Go-Live</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 5 PHASES ═══ -->
+    <section style="background:var(--bg-light);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-route"></i> The Five Phases</div>
+                <h2>The Voyage, Stage by Stage</h2>
+                <p>Each phase is a harbor checkpoint — a deliberate pause to validate, stabilise, and prepare before the next leg of the journey.</p>
+            </div>
+
+            <div class="phases-wrap reveal">
+                <div class="phases-spine"></div>
+
+                <!-- PHASE 1 -->
+                <div class="phase phase-c1">
+                    <div class="phase-marker">
+                        <div class="phase-circle"><i class="fas fa-map"></i></div>
+                        <span class="phase-step-label">Phase 1</span>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card-header">
+                            <div class="phase-heading">
+                                <span>Chart the Course</span>
+                                Vision &amp; Planning
+                            </div>
+                            <div class="phase-harbor-badge"><i class="fas fa-anchor" style="margin-right:4px;"></i>Discovery Harbor</div>
+                        </div>
+                        <ul class="phase-points">
+                            <li><i class="fas fa-circle"></i>Define the destination harbor: strategic business outcomes such as finance automation, supply chain resilience, and compliance.</li>
+                            <li><i class="fas fa-circle"></i>Establish KPIs and transformation goals as navigational charts.</li>
+                            <li><i class="fas fa-circle"></i>Assemble the crew — project team, stakeholders — and set governance structures.</li>
+                            <li><i class="fas fa-circle"></i>Ensures full clarity of purpose and direction before setting sail.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PHASE 2 -->
+                <div class="phase phase-c2">
+                    <div class="phase-marker">
+                        <div class="phase-circle"><i class="fas fa-drafting-compass"></i></div>
+                        <span class="phase-step-label">Phase 2</span>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card-header">
+                            <div class="phase-heading">
+                                <span>Set Sail</span>
+                                Design &amp; Configuration
+                            </div>
+                            <div class="phase-harbor-badge"><i class="fas fa-anchor" style="margin-right:4px;"></i>Design Harbor</div>
+                        </div>
+                        <ul class="phase-points">
+                            <li><i class="fas fa-circle"></i>Configure ERP modules — Oracle ERP Cloud — aligned to the planned business route.</li>
+                            <li><i class="fas fa-circle"></i>Conduct fit-gap analysis to ensure the solution matches the journey ahead.</li>
+                            <li><i class="fas fa-circle"></i>Begin integrations and reporting setup — the sails that catch the wind and drive momentum.</li>
+                            <li><i class="fas fa-circle"></i>The ERP blueprint is finalised and agreed before build begins.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PHASE 3 -->
+                <div class="phase phase-c3">
+                    <div class="phase-marker">
+                        <div class="phase-circle"><i class="fas fa-search"></i></div>
+                        <span class="phase-step-label">Phase 3</span>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card-header">
+                            <div class="phase-heading">
+                                <span>Dock for Inspection</span>
+                                Pilots &amp; Testing
+                            </div>
+                            <div class="phase-harbor-badge"><i class="fas fa-anchor" style="margin-right:4px;"></i>Build Harbor</div>
+                        </div>
+                        <ul class="phase-points">
+                            <li><i class="fas fa-circle"></i>Conference Room Pilots (CRPs) act as docking points to validate alignment with business processes.</li>
+                            <li><i class="fas fa-circle"></i>Playback sessions serve as inspections — ensuring every process is seaworthy before departure.</li>
+                            <li><i class="fas fa-circle"></i>Gaps and risks are identified and addressed before the ship leaves the dock.</li>
+                            <li><i class="fas fa-circle"></i>Testing and validation stabilise the voyage and reduce go-live risk.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PHASE 4 -->
+                <div class="phase phase-c4">
+                    <div class="phase-marker">
+                        <div class="phase-circle"><i class="fas fa-anchor"></i></div>
+                        <span class="phase-step-label">Phase 4</span>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card-header">
+                            <div class="phase-heading">
+                                <span>Anchor &amp; Stabilise</span>
+                                Go-Live
+                            </div>
+                            <div class="phase-harbor-badge"><i class="fas fa-anchor" style="margin-right:4px;"></i>Migration &amp; Launch Harbor</div>
+                        </div>
+                        <ul class="phase-points">
+                            <li><i class="fas fa-circle"></i>Deploy ERP Cloud and drop anchor — stabilising operations in the new system harbor.</li>
+                            <li><i class="fas fa-circle"></i>Intensive focus on adoption, training, and post-go-live stabilisation.</li>
+                            <li><i class="fas fa-circle"></i>Ensure systems are secure and processes reliable before exploring new capabilities.</li>
+                            <li><i class="fas fa-circle"></i>Data migration and cutover are carefully managed to avoid disruption.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PHASE 5 -->
+                <div class="phase phase-c5">
+                    <div class="phase-marker">
+                        <div class="phase-circle"><i class="fas fa-compass"></i></div>
+                        <span class="phase-step-label">Phase 5</span>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card-header">
+                            <div class="phase-heading">
+                                <span>Expand Beyond the Harbor</span>
+                                Continuous Improvement
+                            </div>
+                            <div class="phase-harbor-badge"><i class="fas fa-anchor" style="margin-right:4px;"></i>Sustain Harbor</div>
+                        </div>
+                        <ul class="phase-points">
+                            <li><i class="fas fa-circle"></i>Once anchored, prepare for new voyages — innovation, automation, and AI integration.</li>
+                            <li><i class="fas fa-circle"></i>Adapt to Oracle's quarterly updates as changing tides — proactively, not reactively.</li>
+                            <li><i class="fas fa-circle"></i>Scale ERP capabilities across regions, business units, or new modules.</li>
+                            <li><i class="fas fa-circle"></i>Continuous improvement prepares the enterprise for new horizons and competitive advantage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ QUOTE ═══ -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="harbor-quote reveal">
+                <div class="page-banner-grid" style="border-radius:24px;"></div>
+                <p class="harbor-quote-text">
+                    The Harbor Approach is both structured and narrative-driven: it provides the rigour of phased ERP implementation while engaging stakeholders with a metaphor that keeps everyone aligned on the journey.
+                </p>
+                <div class="harbor-quote-attr">— IntSphere · Harbor Approach Methodology</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY IT WORKS ═══ -->
+    <section style="background:var(--bg-light);">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-check-circle"></i> Why It Works</div>
+                <h2>Built for Real ERP Journeys</h2>
+                <p>The Harbor metaphor isn't just storytelling — each element maps to a proven implementation principle that reduces risk and drives adoption.</p>
+            </div>
+            <div class="why-grid reveal">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Memorable Storytelling</h3>
+                    <p>The harbor metaphor makes complex ERP phases easy to grasp — for executives, project teams, and end users alike. Everyone understands the journey.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Strategic Clarity</h3>
+                    <p>Each harbor checkpoint ensures safe transitions and minimises risk. No phase begins before the previous one is fully validated and stabilised.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-users"></i></div>
+                    <h3>Adoption Focus</h3>
+                    <p>Training and change management are embedded throughout the voyage — not bolted on at the end. User adoption is treated as a first-class deliverable.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Future Readiness</h3>
+                    <p>Continuous improvement prepares the enterprise for new horizons — AI, automation, and scale — without disrupting the stable core.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Strong Governance</h3>
+                    <p>Executive oversight is built into every phase, keeping the project aligned with business goals and enabling rapid course corrections when needed.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Structure Meets Agility</h3>
+                    <p>Rigorous phase gates prevent premature go-live, while iterative pilots and playbacks allow continuous refinement — the best of both worlds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ COMPARISON ═══ -->
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-exchange-alt"></i> Methodology Comparison</div>
+                <h2>Harbor vs. Waterfall vs. Agile</h2>
+                <p>The Harbor Approach is not a rebrand of existing methodologies — it synthesises the best elements of both while addressing their key weaknesses in ERP contexts.</p>
+            </div>
+            <div class="compare-row reveal">
+                <div class="compare-col waterfall">
+                    <h4><i class="fas fa-stream" style="color:#ef4444;"></i> Traditional Waterfall</h4>
+                    <ul>
+                        <li>Linear — hard to course-correct mid-journey</li>
+                        <li>Late testing increases go-live risk</li>
+                        <li>Change management often an afterthought</li>
+                        <li>Governance is front-loaded, not sustained</li>
+                        <li>Post go-live improvements are slow</li>
+                    </ul>
+                </div>
+                <div class="compare-col agile">
+                    <h4><i class="fas fa-sync-alt" style="color:#f59e0b;"></i> Purely Agile</h4>
+                    <ul>
+                        <li>Can lack the rigour required for enterprise ERP</li>
+                        <li>Sprint cycles can defer critical integration work</li>
+                        <li>Stakeholder alignment harder to sustain</li>
+                        <li>Data migration often underestimated</li>
+                        <li>Scope creep risk in complex ERP landscapes</li>
+                    </ul>
+                </div>
+                <div class="compare-col harbor highlight">
+                    <h4><i class="fas fa-anchor" style="color:#0891b2;"></i> Harbor Approach</h4>
+                    <ul>
+                        <li>Phased checkpoints — validate before progressing</li>
+                        <li>CRPs &amp; playbacks catch gaps early</li>
+                        <li>Change management woven into every phase</li>
+                        <li>Governance sustained throughout the voyage</li>
+                        <li>Continuous improvement built into Phase 5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ CTA ═══ -->
+    <div class="container" style="padding-bottom:2.5rem;padding-top:2rem;">
+        <div class="cta-section reveal">
+            <h2>Ready to Chart Your Course?</h2>
+            <p>Talk to our team about applying the Harbor Approach to your Oracle ERP implementation.</p>
+            <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+                <i class="fas fa-paper-plane"></i> Talk to an Expert
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Let's Connect</h2>
+        <p class="modal-subtitle">Tell us about your Oracle ERP requirements</p>
+        <form id="contactForm" onsubmit="return false;">
+            <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle ERP requirements"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <span class="footer-logo-text">IntSphere</span>
+                <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pass.html">PaaS</a></li>
+                    <li><a href="hcm.html">Oracle Fusion HCM</a></li>
+                    <li><a href="intforge.html">IntForge</a></li>
+                    <li><a href="payforge.html">PayForge</a></li>
+                    <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+                    <li><a href="ai.html">AI Solutions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Methodology</h3>
+                <ul class="footer-links">
+                    <li><a href="harbor.html"><i class="fas fa-anchor" style="margin-right:5px;font-size:0.75rem;"></i>Harbor Approach</a></li>
+                    <li><a href="oicinsights.html">OIC Insights</a></li>
+                    <li><a href="oicnotes.html">OIC Reference Notes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+                    <li><a href="tel:+919403526864"><i class="fas fa-phone"></i> +91 9403526864</a></li>
+                    <li><i class="fas fa-globe"></i> <span style="font-size:0.88rem;">Global Services</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span style="font-size:0.88rem;">704, Bhoomi Kshitij, Nakhate Wasti, Rahatani, Pune – 411017, Maharashtra, India</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
