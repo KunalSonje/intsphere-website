@@ -12,7 +12,8 @@ const pageMap = {
     payforge: 'payforge.html',
     ai: 'ai.html',
     oicinsights: 'oicinsights.html',
-    oicnotes: 'oicnotes.html'
+    oicnotes: 'oicnotes.html',
+    harbor: 'harbor.html'
 };
 
 function navigate(page) {
@@ -87,15 +88,6 @@ function toggleMobileAccelerators(e) {
     e.preventDefault();
     const sub = document.getElementById('mobileAccSub');
     const chevron = document.getElementById('accChevron');
-    if (!sub) return;
-    const open = sub.style.display !== 'none';
-    sub.style.display = open ? 'none' : 'block';
-    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
-}
-function toggleMobileInsights(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileInsSub');
-    const chevron = document.getElementById('insChevron');
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';
