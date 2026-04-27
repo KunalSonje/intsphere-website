@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="shared.css">
 <style>
 
+/* ── MOBILE MENU OPEN STATE (fallback if shared.css missing) ── */
+@media(max-width:768px){
+    .mobile-menu.open { display: block !important; }
+}
+
 /* ── SEARCH & FILTER BAR ── */
 .filter-bar {
     display: flex;
@@ -261,7 +266,6 @@
                     <a href="services.html" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
                     <a href="pass.html" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
                     <a href="hcm.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
-					<a href="harbor.html" id="nav-method" style="color:var(--text);"><i class="fas fa-anchor" style="width:16px;margin-right:8px;color:var(--primary);"></i>Harbor Approach</a>
                 </div>
             </div>
             <div class="nav-dropdown" id="nav-products-group">
@@ -294,11 +298,10 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
-            <div id="mobileAccSvc" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
+            <div id="mobileSvcSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
                 <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
                 <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
                 <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
-				<a href="harbor.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-anchor" style="width:14px;margin-right:6px;color:var(--primary);"></i>Harbor Approach</a>
             </div>
             <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
             <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
@@ -497,16 +500,29 @@
 
 <script src="shared.js"></script>
 <script>
-// ── MOBILE INSIGHTS TOGGLE ──
-function toggleMobileInsights(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileInsSub');
-    const chevron = document.getElementById('insChevron');
+// ── MOBILE NAV HELPERS (page-level overrides / fallbacks) ──
+function _mobileToggle(subId, chevronId, e) {
+    if (e) e.preventDefault();
+    const sub = document.getElementById(subId);
+    const chevron = document.getElementById(chevronId);
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';
     if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
 }
+
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn   = document.querySelector('.mobile-menu-btn i');
+    if (!menu) return;
+    const open = menu.classList.toggle('open');
+    if (btn) { btn.className = open ? 'fas fa-times' : 'fas fa-bars'; }
+}
+
+function toggleMobileServices(e)     { _mobileToggle('mobileSvcSub',     'svcChevron',  e); }
+function toggleMobileProducts(e)     { _mobileToggle('mobileProductSub', 'prodChevron', e); }
+function toggleMobileAccelerators(e) { _mobileToggle('mobileAccSub',     'accChevron',  e); }
+function toggleMobileInsights(e)     { _mobileToggle('mobileInsSub',     'insChevron',  e); }
 
 // ── FILTER & SEARCH ──
 let activeTag = 'all';
