@@ -95,7 +95,7 @@ function toggleMobileAccelerators(e) {
 }
 function toggleMobileServices(e) {
     e.preventDefault();
-    const sub = document.getElementById('mobileAccSvc');
+    const sub = document.getElementById('mobileSvcSub');
     const chevron = document.getElementById('svcChevron');
     if (!sub) return;
     const open = sub.style.display !== 'none';

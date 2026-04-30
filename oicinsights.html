@@ -10,11 +10,6 @@
 <link rel="stylesheet" href="shared.css">
 <style>
 
-/* ── MOBILE MENU OPEN STATE (fallback if shared.css missing) ── */
-@media(max-width:768px){
-    .mobile-menu.open { display: block !important; }
-}
-
 /* ── SEARCH & FILTER BAR ── */
 .filter-bar {
     display: flex;
@@ -500,29 +495,16 @@
 
 <script src="shared.js"></script>
 <script>
-// ── MOBILE NAV HELPERS (page-level overrides / fallbacks) ──
-function _mobileToggle(subId, chevronId, e) {
-    if (e) e.preventDefault();
-    const sub = document.getElementById(subId);
-    const chevron = document.getElementById(chevronId);
+// ── MOBILE INSIGHTS TOGGLE ──
+function toggleMobileInsights(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileInsSub');
+    const chevron = document.getElementById('insChevron');
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';
     if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
 }
-
-function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn   = document.querySelector('.mobile-menu-btn i');
-    if (!menu) return;
-    const open = menu.classList.toggle('open');
-    if (btn) { btn.className = open ? 'fas fa-times' : 'fas fa-bars'; }
-}
-
-function toggleMobileServices(e)     { _mobileToggle('mobileSvcSub',     'svcChevron',  e); }
-function toggleMobileProducts(e)     { _mobileToggle('mobileProductSub', 'prodChevron', e); }
-function toggleMobileAccelerators(e) { _mobileToggle('mobileAccSub',     'accChevron',  e); }
-function toggleMobileInsights(e)     { _mobileToggle('mobileInsSub',     'insChevron',  e); }
 
 // ── FILTER & SEARCH ──
 let activeTag = 'all';
