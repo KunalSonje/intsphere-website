@@ -495,17 +495,6 @@
 
 <script src="shared.js"></script>
 <script>
-// ── MOBILE INSIGHTS TOGGLE ──
-function toggleMobileInsights(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileInsSub');
-    const chevron = document.getElementById('insChevron');
-    if (!sub) return;
-    const open = sub.style.display !== 'none';
-    sub.style.display = open ? 'none' : 'block';
-    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
-}
-
 // ── FILTER & SEARCH ──
 let activeTag = 'all';
 

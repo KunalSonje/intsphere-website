@@ -102,6 +102,15 @@ function toggleMobileServices(e) {
     sub.style.display = open ? 'none' : 'block';
     if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
 }
+function toggleMobileInsights(e) {
+    e.preventDefault();
+    const sub = document.getElementById('mobileInsSub');
+    const chevron = document.getElementById('insChevron');
+    if (!sub) return;
+    const open = sub.style.display !== 'none';
+    sub.style.display = open ? 'none' : 'block';
+    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+}
 
 // ─── MODAL ───
 function openModal() {
