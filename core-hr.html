@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Fusion Core HR - Complete Interview Q&A (All Modules)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f2f5;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            padding: 1.8rem 2rem 2.5rem 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            border-left: 6px solid #2c6e9e;
+            padding-left: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #1a4b6e;
+        }
+        .subhead {
+            color: #2c5a74;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #cbdde6;
+            padding-bottom: 0.6rem;
+            font-weight: 500;
+        }
+        .section {
+            margin-bottom: 2.2rem;
+            page-break-inside: avoid;
+        }
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            background: #1e4663;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 0.9rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2edf2;
+            overflow: hidden;
+            transition: 0.1s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .card:hover {
+            border-color: #9bc2db;
+            background: #fdfdfd;
+        }
+        .question {
+            background: #f4f9ff;
+            padding: 0.7rem 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0f5b8c;
+            border-bottom: 1px solid #e3eff7;
+        }
+        .answer {
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+            color: #2c3e50;
+            background: white;
+        }
+        .answer ul, .answer ol {
+            padding-left: 1.2rem;
+            margin: 0.3rem 0;
+        }
+        .badge-core {
+            background: #e0ecf3;
+            color: #1e6a8c;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            font-weight: normal;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbdde6;
+            font-size: 0.75rem;
+            color: #5d7f9e;
+        }
+        @media (max-width: 780px) {
+            body { padding: 0.75rem; }
+            .container { padding: 1rem; }
+            .qa-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🏢 Oracle Fusion Core HR (Global HR) · Complete Interview Q&A</h1>
+    <div class="subhead">✔️ Covers: Workforce Structures | Person Management | Employment | Position Management | Workforce Lifecycle | Absence | Security | Extracts | Integration | Scenarios</div>
+
+    <!-- ============================================= -->
+    <!-- SECTION 1: Core HR Architecture & Basics       -->
+    <!-- ============================================= -->
+    <div class="section">
+        <div class="section-title">1️⃣ Core HR Architecture & Key Concepts</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Oracle Fusion Core HR?</div><div class="answer">Foundation module of Oracle HCM Cloud that manages employee life cycle: workforce structures, person records, employment, assignments, positions, and global HR data.</div></div>
+            <div class="card"><div class="question">What are the key features of Oracle Core HR?</div><div class="answer">Centralized employee repository, position management, workforce structures (BU, Division, Department), legislative data groups, person profiles, flexible security, self-service, HR extracts, and automated workflows.</div></div>
+            <div class="card"><div class="question">Explain the concept of Enterprise Structures in Oracle HCM.</div><div class="answer">Legal entities, business units, divisions, and departments that represent the corporate hierarchy. Used for costing, security, and approval routing.</div></div>
+            <div class="card"><div class="question">What is a Legislative Data Group (LDG) in Core HR?</div><div class="answer">Grouping of legal entities under common legislation, determines statutory rules (holidays, employment laws, payroll statutory units).</div></div>
+            <div class="card"><div class="question">Difference between Legal Entity, Business Unit, and Department?</div><div class="answer">Legal Entity: legally registered company; Business Unit: operational unit for transactions; Department: functional unit (HR, Finance).</div></div>
+            <div class="card"><div class="question">What is a GRE / PSU in HR context?</div><div class="answer">Legal Reporting Unit / Payroll Statutory Unit – responsible for statutory reporting and payroll compliance.</div></div>
+            <div class="card"><div class="question">Explain Division vs Department.</div><div class="answer">Division: high-level organizational segment (e.g., North America Sales); Department: lower level unit within division (e.g., Retail Sales).</div></div>
+            <div class="card"><div class="question">What is the difference between Person and Contact?</div><div class="answer">Person: Employee/Applicant/Contingent Worker; Contact: dependent, emergency contact, beneficiary (no employment relationship).</div></div>
+            <div class="card"><div class="question">What is a Person Type in Core HR?</div><div class="answer">Classification: Employee, Contingent Worker, Pending Worker, Person of Interest, Former Employee. Determines available actions.</div></div>
+            <div class="card"><div class="question">Explain Person Number generation.</div><div class="answer">Auto-generated unique identifier per person (via sequence / custom logic). Can be manual or system-assigned.</div></div>
+            <div class="card"><div class="question">What is an Assignment?</div><div class="answer">Link between a person and a job/position with specific dates, department, manager, location, and working hours.</div></div>
+            <div class="card"><div class="question">Difference between Worker Assignment and Non-Worker Record?</div><div class="answer">Worker Assignment: employment contract with salary, manager, payroll; Non-worker: dependents, contacts without payments.</div></div>
+            <div class="card"><div class="question">Explain Employment Model in Oracle HR.</div><div class="answer">Person → Employment Terms (Work Relationship) → One or multiple assignments. Supports multiple assignments per person.</div></div>
+            <div class="card"><div class="question">What is a Work Relationship?</div><div class="answer">Legal employment contract between person and legal employer, can have multiple assignments.</div></div>
+            <div class="card"><div class="question">What are common Person Security Profiles?</div><div class="answer">Defines data access: by department, position hierarchy, location, or person type. Used in roles (HR Specialist, Manager).</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Workforce Structures (Jobs, Positions, etc.) -->
+    <div class="section">
+        <div class="section-title">2️⃣ Workforce Structures: Jobs, Positions, Grades, Locations</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is a Job in Core HR?</div><div class="answer">Generic role (e.g., Software Engineer, HR Manager) independent of department; defines required competencies, responsibilities.</div></div>
+            <div class="card"><div class="question">What is a Position?</div><div class="answer">Instance of a job within a specific department (e.g., 'HRBP - Finance Dept'). Can be budgeted and have headcount limits.</div></div>
+            <div class="card"><div class="question">Difference between Job and Position?</div><div class="answer">Job: generic, reusable across org. Position: specific, may be one-to-one with employee. Positions support succession planning.</div></div>
+            <div class="card"><div class="question">What is a Position Hierarchy?</div><div class="answer">Reporting relationship among positions (e.g., CEO → VP → Director). Used in approvals and security.</div></div>
+            <div class="card"><div class="question">Explain Job Grade / Pay Grade.</div><div class="answer">Grade defines salary range, pay scale, and eligibility for benefits. Linked to jobs/positions for compensation benchmarking.</div></div>
+            <div class="card"><div class="question">What is a Location in Core HR?</div><div class="answer">Physical address (office, site) associated with assignments for tax, reporting, and work location rules.</div></div>
+            <div class="card"><div class="question">What are Organization Trees?</div><div class="answer">Hierarchical views of departments or positions (Manager, Matrix) used for reporting and security.</div></div>
+            <div class="card"><div class="question">What is a Set ID and Business Unit relationship?</div><div class="answer">Set ID groups reference data (jobs, grades) across business units; shares common HR data.</div></div>
+            <div class="card"><div class="question">How do you create a Job in Fusion?</div><div class="answer">Manage Jobs → Define job code, name, effective date, and optionally Job Family, Grade, Competencies.</div></div>
+            <div class="card"><div class="question">How to configure Position management?</div><div class="answer">Enable Position Sync feature, define position status (Filled, Vacant), assign job & department, control headcount.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Person Management & Worker Data -->
+    <div class="section">
+        <div class="section-title">3️⃣ Person Management & Worker Lifecycle</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Steps to hire an employee in Oracle Core HR.</div><div class="answer">Create Person → Specify person type (Employee) → Add employment terms → Add assignment (job, department, manager, grade) → Add salary → Submit approval.</div></div>
+            <div class="card"><div class="question">What is a Pending Worker?</div><div class="answer">Pre-hire record before official start date; captures candidate information, documents, future assignment details.</div></div>
+            <div class="card"><div class="question">Explain the difference between Hire, Rehire, and Transfer.</div><div class="answer">Hire: new employee with new work relationship; Rehire: former employee re-joined; Transfer: assignment change within same legal employer.</div></div>
+            <div class="card"><div class="question">What is a Global Transfer?</div><div class="answer">Transfer that changes legal employer (to different country/legal entity). Triggers new assignment and termination of previous.</div></div>
+            <div class="card"><div class="question">How do you process a Promotion?</div><div class="answer">Update assignment with new job / grade / salary, effective date. Can trigger approval workflow.</div></div>
+            <div class="card"><div class="question">What is a Concurrent Assignment?</div><div class="answer">Employee holds multiple assignments simultaneously (primary and secondary) with different roles, departments, or legal employers.</div></div>
+            <div class="card"><div class="question">Explain Termination process in Core HR.</div><div class="answer">Enter termination date, reason (Resignation, Retirement, Dismissal), final processing date, and final settlement. System ends assignments.</div></div>
+            <div class="card"><div class="question">What happens to person record after termination?</div><div class="answer">Person type changes to Former Employee; assignments end; benefits might end; data remains for reporting.</div></div>
+            <div class="card"><div class="question">How to manage Return from Leave?</div><div class="answer">End absence record, reactivate assignment if required, update work schedule.</div></div>
+            <div class="card"><div class="question">What is an Assignment Status?</div><div class="answer">Indicates current state: Active, Suspended, Terminated, Leave of Absence. Controls payroll and benefits eligibility.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: Salary, Grades & Compensation Basics -->
+    <div class="section">
+        <div class="section-title">4️⃣ Salary Basis, Grades, Compensation Inputs</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Salary Basis in HR?</div><div class="answer">Defines how salary is calculated: Annual, Monthly, Hourly, Daily. Linked to grade and payroll element.</div></div>
+            <div class="card"><div class="question">How to create Salary record for an employee?</div><div class="answer">On assignment → Salary → Add salary basis, amount, currency, frequency and effective date.</div></div>
+            <div class="card"><div class="question">What is Salary Range and Grade Ladder?</div><div class="answer">Minimum, mid, maximum for each grade. Ladder defines progression from one grade to next.</div></div>
+            <div class="card"><div class="question">What is a Salary Matrix?</div><div class="answer">Grid of grades and steps for standardized pay determination.</div></div>
+            <div class="card"><div class="question">How do you handle mass salary updates?</div><div class="answer">Use HCM Data Loader (HDL) or salary worksheet (Spreadsheet) to update multiple employees.</div></div>
+            <div class="card"><div class="question">Explain Salary Freeze functionality.</div><div class="answer">Temporarily block salary changes for certain assignments via eligibility profile or administrative hold.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Absence Management (Core Integration) -->
+    <div class="section">
+        <div class="section-title">5️⃣ Absence Management fundamentals (Core HR perspective)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Absence Management in Core HR?</div><div class="answer">Module to define leave types (vacation, sick, unpaid), accrue entitlements, process absence requests, and integrate with payroll.</div></div>
+            <div class="card"><div class="question">What is an Absence Plan?</div><div class="answer">Defines leave type, accrual policy (calendar or service-based), carryover rules, and payment percentage.</div></div>
+            <div class="card"><div class="question">Explain Accrual formula in Absence.</div><div class="answer">Fast formula determines accrual amount per period based on length of service, grade, and hours worked.</div></div>
+            <div class="card"><div class="question">Difference between Enrolled and Assigned to Absence Plan?</div><div class="answer">Assigned: employee eligible based on plan assignment; Enrolled: actively participating after enrollment record created.</div></div>
+            <div class="card"><div class="question">How does Absence integrate with Payroll?</div><div class="answer">Absence entries generate payroll elements (paid leave or unpaid deduction) during payroll run.</div></div>
+            <div class="card"><div class="question">What is Leave Encashment?</div><div class="answer">Payment for unused leave balance upon termination or annual buyback, processed via compensation element.</div></div>
+            <div class="card"><div class="question">What is a Validation Formula for Absence?</div><div class="answer">Fast formula checking if absence request qualifies based on minimum notice, available balance, etc.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: Security & Roles in Core HR -->
+    <div class="section">
+        <div class="section-title">6️⃣ HR Security (Roles, Profiles, Data Access)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What are Role Mappings in Core HR?</div><div class="answer">Assigns enterprise/duty roles to users or LDAP groups (HR Specialist, Line Manager, Employee).</div></div>
+            <div class="card"><div class="question">What is Person Security Profile?</div><div class="answer">Filters person records based on department, position hierarchy, location, or person type for role access.</div></div>
+            <div class="card"><div class="question">Difference between Data Role and Job Role.</div><div class="answer">Job Role: functional duties (HR Manager); Data Role: role with specific data security context (e.g., HR for North America).</div></div>
+            <div class="card"><div class="question">How do you restrict manager visibility?</div><div class="answer">Manager security profile limits to direct and indirect reports using position hierarchy.</div></div>
+            <div class="card"><div class="question">What is the HR Specialist role responsible for?</div><div class="answer">Employee data management, hiring, terminations, transfers, salary changes, and absence administration.</div></div>
+            <div class="card"><div class="question">Explain Sensitive Person Data protection.</div><div class="answer">Person records can be marked sensitive; access is restricted; users need data role to view national ID, salary, etc.</div></div>
+            <div class="card"><div class="question">What are Custom Roles in Core HR?</div><div class="answer">Tailored roles combining specific duties (e.g., Recruiter + HR Analyst).</div></div>
+            <div class="card"><div class="question">How to test security assignments?</div><div class="answer">Use "Run Person Security Profile" or test roles as another user (Proxy access).</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: Integration, HDL, HCM Extracts, REST -->
+    <div class="section">
+        <div class="section-title">7️⃣ Integrations: HDL, HCM Extracts, REST, BI Publisher</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is HDL (HCM Data Loader) in Core HR?</div><div class="answer">Bulk loading tool for worker data: Hire, assignment, salary, address, phone, contact information via CSV/zip files.</div></div>
+            <div class="card"><div class="question">Common HDL business objects for Core HR?</div><div class="answer">Worker, EmploymentTerms, Assignment, Salary, PersonName, PersonAddress, Phone, ContactRelationship.</div></div>
+            <div class="card"><div class="question">What is an HCM Extract?</div><div class="answer">Configurable extract to produce files for external systems (third-party benefits, reporting, government).</div></div>
+            <div class="card"><div class="question">Difference between HDL and Spreadsheet Data Loader?</div><div class="answer">HDL uses dataloader templates (for complex objects). Spreadsheet loader for simpler data (e.g., department, jobs).</div></div>
+            <div class="card"><div class="question">What are HR REST APIs?</div><div class="answer">Oracle REST endpoints for workers, assignments, contacts, allowing real-time integration with third-party apps.</div></div>
+            <div class="card"><div class="question">How to schedule an HCM Extract?</div><div class="question">Define extract definition → Schedule via ESS job → Deliver via FTP/Email/BI Publisher.</div></div>
+            <div class="card"><div class="question">What is the use of Fast Formula in Core HR?</div><div class="answer">Used for validation rules, default values (e.g., approver derivation), absence accrual, and custom logic.</div></div>
+            <div class="card"><div class="question">What is a Workflow in Core HR?</div><div class="answer">Approval process for transactions (hire, promotion, termination) using BPM tasks or approval rules.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 8: Reporting & Analytics (OTBI / BI) -->
+    <div class="section">
+        <div class="section-title">8️⃣ Core HR Reporting: OTBI, BI Publisher, Dashboards</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is OTBI in HR?</div><div class="answer">Oracle Transactional Business Intelligence – real-time reporting using subject areas (Worker, Workforce Management).</div></div>
+            <div class="card"><div class="question">Common HR subject areas in OTBI?</div><div class="answer">Worker Assignment Real Time, Person Real Time, Workforce Headcount, Absence Real Time, Employment Terms.</div></div>
+            <div class="card"><div class="question">What is a BI Publisher report in HR?</div><div class="answer">Pixel-perfect reports (payslips, contracts, employee letters) using RTF/PDF/Excel templates.</div></div>
+            <div class="card"><div class="question">What is the SFTP delivery for extracts?</div><div class="answer">Option to deliver HCM extract via secure FTP to external vendors.</div></div>
+            <div class="card"><div class="question">How to create an employee headcount report?</div><div class="answer">OTBI report using Worker Assignment subject area, filter active assignments, group by department.</div></div>
+            <div class="card"><div class="question">What is a Dashboard in HCM?</div><div class="answer">Infolets, charts, and analytics cards: Headcount summary, New Hires, Turnover by period.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 9: Functional Scenarios (Real world) -->
+    <div class="section">
+        <div class="section-title">9️⃣ Functional Scenarios & Problem Solving</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Employee transfers to another department mid-month. How is data affected?</div><div class="answer">Assignment updated with new department, manager, location. Security reflects new team. Salary remains unless grade changes.</div></div>
+            <div class="card"><div class="question">Manager left the company – how to reassign direct reports?</div><div class="answer">Mass transfer of direct reports using "Manage Direct Reports" or update each assignment’s manager hierarchy.</div></div>
+            <div class="card"><div class="question">How to correct an employee's hire date?</div><div class="answer">Use "Manage Person" → Corrective action → Change start date (needs approval). If payroll impacted, coordinate retro.</div></div>
+            <div class="card"><div class="question">Employee was terminated in error. How to reinstate?</div><div class="answer">Rehire the person with same assignment details, backdated start date, and adjust seniority if needed.</div></div>
+            <div class="card"><div class="question">An employee has two concurrent assignments. How are deductions handled?</div><div class="answer">Primary assignment used for main deductions, secondary for earnings with allocation percentages.</div></div>
+            <div class="card"><div class="question">How to handle retroactive promotion (promotion effective prior date)?</div><div class="answer">Backdate assignment change effective date, system recalculates salary and triggers payroll retro if integrated.</div></div>
+            <div class="card"><div class="question">Employee moved from hourly to monthly salary basis.</div><div class="answer">Update salary basis on assignment, end-date hourly salary, create new monthly salary record from effective date.</div></div>
+            <div class="card"><div class="question">National ID was entered incorrectly – how to correct?</div><div class="answer">Use "Manage Person" → Legislative Information → Edit national identifier with effective date.</div></div>
+            <div class="card"><div class="question">How to resolve "Assignment Missing Manager" error?</div><div class="answer">Update manager on assignment via Manage Employment -> Reporting Manager. Ensure manager has active assignment.</div></div>
+            <div class="card"><div class="question">Employee not appearing in OTBI report.</div><div class="answer">Check effective date filters, assignment status = Active, person type, security profile access, and data refresh status.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 10: Core HR Advanced Topics -->
+    <div class="section">
+        <div class="section-title">🔟 Advanced topics: Workforce Lifecycle, Batch Processing, Localization</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Workforce Lifecycle Management?</div><div class="answer">End-to-end process from onboarding to retirement, includes events: hire, promotion, transfer, termination, leave, data changes.</div></div>
+            <div class="card"><div class="question">What is the use of HCM Spreadsheet Data Loader?</div><div class="answer">Enable mass creation/update of jobs, positions, grades, departments, cost centers via Excel.</div></div>
+            <div class="card"><div class="question">What are Person Keywords?</div><div class="answer">User-defined tags on person records for search and reporting (e.g., "High Potential", "Remote Worker").</div></div>
+            <div class="card"><div class="question">Explain Legislative Data Group (LDG) role in localization?</div><div class="answer">Defines country-specific fields (passport, national ID formats, address styles) and employment contract templates.</div></div>
+            <div class="card"><div class="question">What are Person Extra Info types?</div><div class="answer">Flexible custom fields to capture country/industry-specific data (emergency contacts, work permit details).</div></div>
+            <div class="card"><div class="question">What is Employment Equity reporting (EEO/OFCCP)?</div><div class="answer">Legislative requirement; Oracle provides extracts for EEOC, VETS reporting using person diversity attributes.</div></div>
+            <div class="card"><div class="question">How to manage mass termination of 50+ employees?</div><div class="answer">Use "Terminate Workers" flow with spreadsheet upload, specify date and reason, submit for processing.</div></div>
+            <div class="card"><div class="question">What is the Person Profile?</div><div class="answer">360° view of employee data: assignments, salary, absence, competencies, performance, documents.</div></div>
+            <div class="card"><div class="question">Difference between Person Real Time vs Assignment Real Time subject areas.</div><div class="answer">Person: name, contacts, personal details; Assignment: role, department, manager, salary, work location.</div></div>
+            <div class="card"><div class="question">How to audit Core HR transactions?</div><div class="answer">Enable Audit for person and assignment objects; use "View Audit History" or HCM Extract for changes.</div></div>
+            <div class="card"><div class="question">What are Approval Rules in Core HR?</div><div class="answer">Conditions based on transaction type, amount threshold, or org hierarchy that route requests for approval.</div></div>
+            <div class="card"><div class="question">Explain Position Budget and Headcount Control.</div><div class="answer">When position management on, each position has budgeted headcount. Hire fails if position is over budget.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 11: Core HR Best Practices & Troubleshooting -->
+    <div class="section">
+        <div class="section-title">🛠️ Core HR Best Practices & Common Troubleshooting</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Best practice for effective dated changes?</div><div class="answer">Always use future-effective or past-effective with correction scope. Use update mode rather than delete/recreate.</div></div>
+            <div class="card"><div class="question">How to avoid duplication in HDL loads?</div><div class="answer">Use merge option, unique person number, or use start date validation to avoid duplicate person records.</div></div>
+            <div class="card"><div class="question">Security best practice for HR data?</div><div class="answer">Least privilege principle: assign person security profiles, separate transactional vs report roles, encrypt sensitive data.</div></div>
+            <div class="card"><div class="question">Performance issues when loading large data?</div><div class="answer">Use HDL batch split, avoid peak hours, review parallel processing settings for ESS jobs.</div></div>
+            <div class="card"><div class="question">How to debug failing HCM Extract?</div><div class="answer">Run extract in trace mode, check log files, validate parameters and date ranges.</div></div>
+            <div class="card"><div class="question">Error: "Person number already exists" – resolution.</div><div class="answer">Check existing record, update person number sequence, or use manual unique identifier.</div></div>
+        </div>
+    </div>
+
+    <!-- SUMMARY FOOTER -->
+    <footer>
+        ✅ **Oracle Fusion Core HR Interview Preparation** – covers roles, positions, assignments, security, lifecycle, HDL, reporting, and real scenarios.<br>
+        📌 For more details: always refer to Oracle HCM Cloud documentation and release updates.
+    </footer>
+</div>
+</body>
+</html>
