@@ -3,226 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oracle HCM Payroll — Functional Consultant Interview Questions</title>
+<title>Oracle HCM Interview Guide — Intsphere</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #F5F2EB;
-    --surface: #FDFAF4;
-    --surface2: #EDE9DE;
-    --ink: #1A1714;
-    --ink2: #5A5550;
-    --ink3: #8A857E;
-    --accent: #C4441A;
-    --accent-light: #F5E0D8;
-    --gold: #B8860B;
-    --gold-light: #F5EDD0;
-    --teal: #1A6B5C;
-    --teal-light: #D5EDE8;
-    --blue: #1A4F8C;
-    --blue-light: #D5E3F2;
-    --violet: #5C3A8C;
-    --violet-light: #E8D8F5;
-    --green: #2E6B2E;
-    --green-light: #D5EDD5;
-    --border: rgba(26,23,20,0.12);
-    --shadow: 0 2px 12px rgba(26,23,20,0.08);
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Instrument Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .header {
-    background: var(--ink);
-    color: #F5F2EB;
-    padding: 3rem 2rem 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute; top: -60px; right: -60px;
-    width: 220px; height: 220px; border-radius: 50%;
-    border: 1px solid rgba(245,242,235,0.08);
-  }
-  .header::after {
-    content: '';
-    position: absolute; bottom: -80px; left: 40px;
-    width: 160px; height: 160px; border-radius: 50%;
-    border: 1px solid rgba(245,242,235,0.06);
-  }
-  .header-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
-  .header-eyebrow {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(245,242,235,0.5); margin-bottom: 1rem;
-  }
-  .header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 400; line-height: 1.1; margin-bottom: 1rem; color: #F5F2EB;
-  }
-  .header h1 em { font-style: italic; color: #E8A87A; }
-  .header-meta {
-    display: flex; gap: 1.5rem; flex-wrap: wrap;
-    font-size: 13px; color: rgba(245,242,235,0.55);
-    font-family: 'DM Mono', monospace;
-  }
-  .header-meta span { display: flex; align-items: center; gap: 6px; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: #E8A87A; display: inline-block; }
-
-  /* Tab nav */
-  .tab-nav-wrap { background: var(--ink); border-bottom: 1px solid rgba(245,242,235,0.1); }
-  .tab-nav { max-width: 960px; margin: 0 auto; padding: 0 2rem; display: flex; }
-  .tab-btn {
-    font-family: 'Instrument Sans', sans-serif; font-size: 13px; font-weight: 500;
-    padding: 14px 22px; border: none; background: transparent;
-    color: rgba(245,242,235,0.45); cursor: pointer;
-    border-bottom: 2px solid transparent; transition: all 0.18s; white-space: nowrap;
-  }
-  .tab-btn:hover { color: rgba(245,242,235,0.8); }
-  .tab-btn.active { color: #E8A87A; border-bottom-color: #E8A87A; }
-
-  .main { max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* Filter bar */
-  .filter-wrap { margin-bottom: 2rem; }
-  .filter-label {
-    font-family: 'DM Mono', monospace; font-size: 11px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink3); margin-bottom: 0.75rem;
-  }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .filter-btn {
-    font-family: 'Instrument Sans', sans-serif; font-size: 13px;
-    padding: 6px 16px; border-radius: 999px;
-    border: 1px solid var(--border); background: var(--surface);
-    color: var(--ink2); cursor: pointer; transition: all 0.18s; font-weight: 500;
-  }
-  .filter-btn:hover { border-color: var(--ink3); color: var(--ink); }
-  .filter-btn.active { background: var(--ink); color: #F5F2EB; border-color: var(--ink); }
-
-  /* Stats */
-  .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2.5rem; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; text-align: center; }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--ink); line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 11px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'DM Mono', monospace; }
-
-  /* GCC banner */
-  .gcc-banner {
-    background: #0F2518; border-radius: 12px;
-    padding: 1.5rem 1.75rem; margin-bottom: 2rem;
-    display: flex; gap: 1.25rem; align-items: flex-start;
-  }
-  .gcc-flag { font-size: 1.8rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-  .gcc-banner h2 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; color: #E8F5E0; margin-bottom: 4px; }
-  .gcc-banner p { font-size: 13px; color: rgba(232,245,224,0.6); line-height: 1.6; }
-  .gcc-countries { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-  .gcc-country-pill {
-    font-family: 'DM Mono', monospace; font-size: 11px; padding: 3px 10px;
-    border-radius: 999px; background: rgba(255,255,255,0.08);
-    color: rgba(232,245,224,0.7); border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .count-label { font-size: 13px; color: var(--ink3); font-family: 'DM Mono', monospace; }
-  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
-  .expand-btn {
-    font-family: 'DM Mono', monospace; font-size: 12px; padding: 5px 14px;
-    border: 1px solid var(--border); border-radius: 6px; background: transparent;
-    color: var(--ink2); cursor: pointer; transition: all 0.15s;
-  }
-  .expand-btn:hover { background: var(--surface2); color: var(--ink); }
-
-  /* Q cards */
-  .q-list { display: flex; flex-direction: column; gap: 8px; }
-  .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow 0.18s; }
-  .q-card:hover { box-shadow: var(--shadow); }
-  .q-header { display: grid; grid-template-columns: 40px 1fr auto auto; align-items: start; gap: 12px; padding: 16px 18px; cursor: pointer; user-select: none; }
-  .q-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink3); padding-top: 3px; text-align: right; }
-  .q-text { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.5; padding-top: 1px; }
-  .q-tag { font-size: 11px; font-family: 'DM Mono', monospace; padding: 3px 10px; border-radius: 999px; white-space: nowrap; font-weight: 500; }
-  .q-chevron { color: var(--ink3); font-size: 18px; transition: transform 0.22s; padding-top: 1px; line-height: 1; }
-  .q-chevron.open { transform: rotate(180deg); }
-  .q-answer { display: none; padding: 12px 18px 16px 70px; font-size: 13.5px; color: var(--ink2); line-height: 1.75; border-top: 1px solid var(--border); }
-  .q-answer.show { display: block; }
-  .q-answer ol { padding-left: 1.2rem; }
-  .q-answer ol li { margin-bottom: 4px; }
-
-  /* Tag colours */
-  .tag-core        { background: #D5E3F2; color: #1A4F8C; }
-  .tag-config      { background: #D5EDD5; color: #2E6B2E; }
-  .tag-process     { background: #F5EDD0; color: #B8860B; }
-  .tag-integration { background: #E8D8F5; color: #5C3A8C; }
-  .tag-trouble     { background: #F5E0D8; color: #C4441A; }
-  .tag-compliance  { background: #D5EDE8; color: #1A6B5C; }
-  .tag-wps         { background: #D5EDE8; color: #1A6B5C; }
-  .tag-gratuity    { background: #F5EDD0; color: #8C6B1A; }
-  .tag-leave       { background: #D5E3F2; color: #1A4F8C; }
-  .tag-expat       { background: #E8D8F5; color: #5C3A8C; }
-  .tag-localization{ background: #F5E0D8; color: #C4441A; }
-  .tag-setup       { background: #D5EDD5; color: #2E6B2E; }
-  .tag-reporting   { background: #EDE9DE; color: #5A5550; }
-
-  .footer { text-align: center; padding: 2rem; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink3); border-top: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
-
-  @media print {
-    body { background: white; }
-    .header, .tab-nav-wrap { background: #1A1714 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .filter-wrap, .toolbar, .stats-bar, .tab-nav-wrap { display: none; }
-    .tab-panel { display: block !important; }
-    .q-answer { display: block !important; }
-    .q-chevron { display: none; }
-    .q-card { break-inside: avoid; }
-  }
-  @media (max-width: 620px) {
-    .q-header { grid-template-columns: 32px 1fr auto; }
-    .q-chevron { display: none; }
-    .q-answer { padding-left: 44px; }
-    .header, .main { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .tab-nav { padding: 0 0.75rem; }
-    .tab-btn { padding: 12px 14px; font-size: 12px; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F5F2EB; --surface: #FDFAF4; --surface2: #EDE9DE;
+  --ink: #1A1714; --ink2: #5A5550; --ink3: #8A857E;
+  --accent: #C4441A; --accent-light: #F5E0D8;
+  --gold: #B8860B; --gold-light: #F5EDD0;
+  --teal: #1A6B5C; --teal-light: #D5EDE8;
+  --blue: #1A4F8C; --blue-light: #D5E3F2;
+  --violet: #5C3A8C; --violet-light: #E8D8F5;
+  --green: #2E6B2E; --green-light: #D5EDD5;
+  --border: rgba(26,23,20,0.12); --shadow: 0 2px 12px rgba(26,23,20,0.08);
+  --brand: #0057B8; --brand-light: #D6E8FF;
+}
+body { background:var(--bg); color:var(--ink); font-family:'Instrument Sans',sans-serif; font-size:15px; line-height:1.6; min-height:100vh; }
+.header { background:var(--ink); color:#F5F2EB; padding:2.5rem 2rem 0; position:relative; overflow:hidden; }
+.header::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; border:1px solid rgba(245,242,235,0.08); }
+.header::after  { content:''; position:absolute; bottom:-80px; left:40px; width:160px; height:160px; border-radius:50%; border:1px solid rgba(245,242,235,0.06); }
+.header-inner { max-width:980px; margin:0 auto; position:relative; z-index:1; }
+.brand-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:12px; }
+.brand-logo { display:flex; align-items:center; gap:10px; }
+.brand-icon { width:36px; height:36px; border-radius:8px; background:var(--brand); display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:16px; color:#fff; flex-shrink:0; }
+.brand-name { font-family:'Instrument Sans',sans-serif; font-size:15px; font-weight:600; color:#F5F2EB; letter-spacing:0.01em; }
+.brand-tagline { font-family:'DM Mono',monospace; font-size:10px; color:rgba(245,242,235,0.4); letter-spacing:0.1em; text-transform:uppercase; }
+.brand-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,242,235,0.4); border:1px solid rgba(245,242,235,0.15); padding:4px 12px; border-radius:999px; }
+.header-eyebrow { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,242,235,0.45); margin-bottom:.75rem; }
+.header h1 { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:400; line-height:1.1; margin-bottom:1rem; color:#F5F2EB; }
+.header h1 em { font-style:italic; color:#E8A87A; }
+.header-meta { display:flex; gap:1.5rem; flex-wrap:wrap; font-size:13px; color:rgba(245,242,235,0.5); font-family:'DM Mono',monospace; padding-bottom:1.5rem; }
+.header-meta span { display:flex; align-items:center; gap:6px; }
+.dot { width:6px; height:6px; border-radius:50%; background:#E8A87A; display:inline-block; }
+.tab-nav-wrap { background:var(--ink); border-bottom:1px solid rgba(245,242,235,0.1); }
+.tab-nav { max-width:980px; margin:0 auto; padding:0 2rem; display:flex; overflow-x:auto; }
+.tab-btn { font-family:'Instrument Sans',sans-serif; font-size:13px; font-weight:500; padding:13px 20px; border:none; background:transparent; color:rgba(245,242,235,0.4); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.18s; white-space:nowrap; flex-shrink:0; }
+.tab-btn:hover { color:rgba(245,242,235,0.8); }
+.tab-btn.active { color:#E8A87A; border-bottom-color:#E8A87A; }
+.main { max-width:980px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.filter-wrap { margin-bottom:2rem; }
+.filter-label { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink3); margin-bottom:.75rem; }
+.filters { display:flex; flex-wrap:wrap; gap:8px; }
+.filter-btn { font-family:'Instrument Sans',sans-serif; font-size:13px; padding:6px 16px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--ink2); cursor:pointer; transition:all 0.18s; font-weight:500; }
+.filter-btn:hover { border-color:var(--ink3); color:var(--ink); }
+.filter-btn.active { background:var(--ink); color:#F5F2EB; border-color:var(--ink); }
+.stats-bar { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:2.5rem; }
+.stat-card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px; text-align:center; }
+.stat-num { font-family:'DM Serif Display',serif; font-size:2rem; color:var(--ink); line-height:1; margin-bottom:4px; }
+.stat-label { font-size:11px; color:var(--ink3); text-transform:uppercase; letter-spacing:0.1em; font-family:'DM Mono',monospace; }
+.section-banner { border-radius:12px; padding:1.5rem 1.75rem; margin-bottom:2rem; display:flex; gap:1.25rem; align-items:flex-start; }
+.gcc-banner { background:#0F2518; }
+.corehr-banner { background:#0D1F3C; }
+.payroll-banner { background:#1A1714; }
+.banner-icon { font-size:1.8rem; line-height:1; flex-shrink:0; margin-top:2px; }
+.gcc-banner h2, .corehr-banner h2, .payroll-banner h2 { font-family:'DM Serif Display',serif; font-size:1.3rem; font-weight:400; margin-bottom:4px; }
+.gcc-banner h2 { color:#E8F5E0; }
+.corehr-banner h2 { color:#D6E8FF; }
+.payroll-banner h2 { color:#F5EDD0; }
+.gcc-banner p { font-size:13px; color:rgba(232,245,224,0.6); line-height:1.6; }
+.corehr-banner p { font-size:13px; color:rgba(214,232,255,0.6); line-height:1.6; }
+.payroll-banner p { font-size:13px; color:rgba(245,237,208,0.6); line-height:1.6; }
+.pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.pill { font-family:'DM Mono',monospace; font-size:11px; padding:3px 10px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); }
+.gcc-banner .pill { color:rgba(232,245,224,0.7); }
+.corehr-banner .pill { color:rgba(214,232,255,0.7); }
+.payroll-banner .pill { color:rgba(245,237,208,0.7); }
+.count-label { font-size:13px; color:var(--ink3); font-family:'DM Mono',monospace; }
+.toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:8px; }
+.expand-btn { font-family:'DM Mono',monospace; font-size:12px; padding:5px 14px; border:1px solid var(--border); border-radius:6px; background:transparent; color:var(--ink2); cursor:pointer; transition:all 0.15s; }
+.expand-btn:hover { background:var(--surface2); color:var(--ink); }
+.q-list { display:flex; flex-direction:column; gap:8px; }
+.q-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:box-shadow 0.18s; }
+.q-card:hover { box-shadow:var(--shadow); }
+.q-header { display:grid; grid-template-columns:40px 1fr auto auto; align-items:start; gap:12px; padding:16px 18px; cursor:pointer; user-select:none; }
+.q-num { font-family:'DM Mono',monospace; font-size:11px; color:var(--ink3); padding-top:3px; text-align:right; }
+.q-text { font-size:14px; font-weight:500; color:var(--ink); line-height:1.5; padding-top:1px; }
+.q-tag { font-size:11px; font-family:'DM Mono',monospace; padding:3px 10px; border-radius:999px; white-space:nowrap; font-weight:500; }
+.q-chevron { color:var(--ink3); font-size:18px; transition:transform 0.22s; padding-top:1px; line-height:1; }
+.q-chevron.open { transform:rotate(180deg); }
+.q-answer { display:none; padding:12px 18px 16px 70px; font-size:13.5px; color:var(--ink2); line-height:1.75; border-top:1px solid var(--border); }
+.q-answer.show { display:block; }
+.q-answer ol { padding-left:1.2rem; }
+.q-answer ol li { margin-bottom:4px; }
+/* tag colours */
+.tag-core{background:#D5E3F2;color:#1A4F8C}.tag-config{background:#D5EDD5;color:#2E6B2E}
+.tag-process{background:#F5EDD0;color:#B8860B}.tag-integration{background:#E8D8F5;color:#5C3A8C}
+.tag-trouble{background:#F5E0D8;color:#C4441A}.tag-compliance{background:#D5EDE8;color:#1A6B5C}
+.tag-wps{background:#D5EDE8;color:#1A6B5C}.tag-gratuity{background:#F5EDD0;color:#8C6B1A}
+.tag-leave{background:#D5E3F2;color:#1A4F8C}.tag-expat{background:#E8D8F5;color:#5C3A8C}
+.tag-localization{background:#F5E0D8;color:#C4441A}.tag-setup{background:#D5EDD5;color:#2E6B2E}
+.tag-reporting{background:#EDE9DE;color:#5A5550}
+.tag-hr-foundation{background:#D6E8FF;color:#0D3B7A}.tag-hr-security{background:#E8D8F5;color:#5C3A8C}
+.tag-hr-hdl{background:#D5EDD5;color:#2E6B2E}.tag-hr-formula{background:#F5EDD0;color:#8C6B1A}
+.tag-hr-workflow{background:#F5E0D8;color:#C4441A}.tag-hr-reporting{background:#EDE9DE;color:#5A5550}
+.tag-hr-integration{background:#D5EDE8;color:#1A6B5C}.tag-hr-trouble{background:#F5E0D8;color:#C4441A}
+.tag-hr-technical{background:#E8D8F5;color:#5C3A8C}.tag-hr-process{background:#D5EDD5;color:#2E6B2E}
+.tag-hr-project{background:#D6E8FF;color:#0D3B7A}
+.footer { text-align:center; padding:2rem; font-family:'DM Mono',monospace; font-size:11px; color:var(--ink3); border-top:1px solid var(--border); max-width:980px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+.footer-brand { display:flex; align-items:center; gap:6px; font-weight:500; color:var(--ink2); }
+.footer-brand-icon { width:18px; height:18px; border-radius:4px; background:var(--brand); display:inline-flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:9px; color:#fff; }
+@media print {
+  body{background:white}
+  .header,.tab-nav-wrap{background:#1A1714!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .filter-wrap,.toolbar,.stats-bar,.tab-nav-wrap{display:none}
+  .tab-panel{display:block!important}
+  .q-answer{display:block!important}
+  .q-chevron{display:none}
+  .q-card{break-inside:avoid}
+}
+@media(max-width:620px){
+  .q-header{grid-template-columns:32px 1fr auto}
+  .q-chevron{display:none}
+  .q-answer{padding-left:44px}
+  .header,.main{padding-left:1.25rem;padding-right:1.25rem}
+  .tab-nav{padding:0 .75rem}
+  .tab-btn{padding:12px 12px;font-size:12px}
+}
 </style>
 </head>
 <body>
 
 <header class="header">
   <div class="header-inner">
-    <p class="header-eyebrow">Interview Preparation Guide</p>
-    <h1>Oracle HCM Payroll<br><em>Functional Consultant</em></h1>
+    <div class="brand-bar">
+      <div class="brand-logo">
+        <div class="brand-icon">In</div>
+        <div>
+          <div class="brand-name">Intsphere</div>
+          <div class="brand-tagline">Oracle HCM Practice</div>
+        </div>
+      </div>
+      <div class="brand-badge">Interview Prep Guide</div>
+    </div>
+    <p class="header-eyebrow">Oracle HCM Cloud &mdash; Functional Consultant</p>
+    <h1>Interview <em>Question Bank</em></h1>
     <div class="header-meta">
-      <span><span class="dot"></span>50 Questions</span>
-      <span><span class="dot"></span>2 Tracks</span>
-      <span><span class="dot"></span>With Model Answers</span>
+      <span><span class="dot"></span>125 Questions</span>
+      <span><span class="dot"></span>3 Tracks</span>
+      <span><span class="dot"></span>Model Answers Included</span>
     </div>
   </div>
 </header>
 
 <div class="tab-nav-wrap">
   <nav class="tab-nav" role="tablist">
-    <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('general',this)">&#9679; General Payroll</button>
-    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('gcc',this)">&#9679; GCC / Middle East</button>
+    <button class="tab-btn active" role="tab" onclick="switchTab('corehr',this)">&#9679; Core HR</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('general',this)">&#9679; Payroll &mdash; General</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('gcc',this)">&#9679; Payroll &mdash; GCC</button>
   </nav>
 </div>
 
 <main class="main">
 
-  <div class="tab-panel active" id="panel-general">
-    <div class="stats-bar" id="statsBar-general"></div>
-    <div class="filter-wrap">
-      <div class="filter-label">Filter by category</div>
-      <div class="filters" id="filterBar-general"></div>
+  <div class="tab-panel active" id="panel-corehr">
+    <div class="section-banner corehr-banner">
+      <div class="banner-icon">&#128101;</div>
+      <div>
+        <h2>Oracle HCM Core HR</h2>
+        <p>100 questions covering enterprise structures, workforce lifecycle, security, HDL, fast formulas, approvals, reporting, integrations, and troubleshooting.</p>
+        <div class="pills">
+          <span class="pill">Foundation &amp; Structures</span><span class="pill">Security &amp; RBAC</span>
+          <span class="pill">HDL / Data Loading</span><span class="pill">Fast Formula</span>
+          <span class="pill">Approvals &amp; BPM</span><span class="pill">Reporting &amp; OTBI</span>
+          <span class="pill">Integration</span><span class="pill">Troubleshooting</span>
+        </div>
+      </div>
     </div>
+    <div class="stats-bar" id="statsBar-corehr"></div>
+    <div class="filter-wrap"><div class="filter-label">Filter by category</div><div class="filters" id="filterBar-corehr"></div></div>
+    <div class="toolbar">
+      <div class="count-label" id="count-corehr"></div>
+      <button class="expand-btn" id="expandBtn-corehr" onclick="toggleAll('corehr')">Expand all</button>
+    </div>
+    <div class="q-list" id="qList-corehr"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-general">
+    <div class="section-banner payroll-banner">
+      <div class="banner-icon">&#128181;</div>
+      <div>
+        <h2>Oracle HCM Payroll &mdash; General</h2>
+        <p>25 questions covering payroll elements, costing, processing cycles, retroactive pay, integrations, and compliance fundamentals.</p>
+        <div class="pills">
+          <span class="pill">Core Concepts</span><span class="pill">Configuration</span>
+          <span class="pill">Processing</span><span class="pill">Integration</span>
+          <span class="pill">Troubleshooting</span><span class="pill">Compliance</span>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar" id="statsBar-general"></div>
+    <div class="filter-wrap"><div class="filter-label">Filter by category</div><div class="filters" id="filterBar-general"></div></div>
     <div class="toolbar">
       <div class="count-label" id="count-general"></div>
       <button class="expand-btn" id="expandBtn-general" onclick="toggleAll('general')">Expand all</button>
@@ -231,26 +204,20 @@
   </div>
 
   <div class="tab-panel" id="panel-gcc">
-    <div class="gcc-banner">
-      <div class="gcc-flag">&#x1F319;</div>
+    <div class="section-banner gcc-banner">
+      <div class="banner-icon">&#x1F319;</div>
       <div>
         <h2>GCC / Middle East Payroll</h2>
         <p>Country-specific questions covering WPS, gratuity, GOSI, leave encashment, expat rules, and Oracle HCM localization for the Gulf Cooperation Council region.</p>
-        <div class="gcc-countries">
-          <span class="gcc-country-pill">&#x1F1F8;&#x1F1E6; Saudi Arabia</span>
-          <span class="gcc-country-pill">&#x1F1E6;&#x1F1EA; UAE</span>
-          <span class="gcc-country-pill">&#x1F1F6;&#x1F1E6; Qatar</span>
-          <span class="gcc-country-pill">&#x1F1F0;&#x1F1FC; Kuwait</span>
-          <span class="gcc-country-pill">&#x1F1E7;&#x1F1ED; Bahrain</span>
-          <span class="gcc-country-pill">&#x1F1F4;&#x1F1F2; Oman</span>
+        <div class="pills">
+          <span class="pill">&#x1F1F8;&#x1F1E6; Saudi Arabia</span><span class="pill">&#x1F1E6;&#x1F1EA; UAE</span>
+          <span class="pill">&#x1F1F6;&#x1F1E6; Qatar</span><span class="pill">&#x1F1F0;&#x1F1FC; Kuwait</span>
+          <span class="pill">&#x1F1E7;&#x1F1ED; Bahrain</span><span class="pill">&#x1F1F4;&#x1F1F2; Oman</span>
         </div>
       </div>
     </div>
     <div class="stats-bar" id="statsBar-gcc"></div>
-    <div class="filter-wrap">
-      <div class="filter-label">Filter by category</div>
-      <div class="filters" id="filterBar-gcc"></div>
-    </div>
+    <div class="filter-wrap"><div class="filter-label">Filter by category</div><div class="filters" id="filterBar-gcc"></div></div>
     <div class="toolbar">
       <div class="count-label" id="count-gcc"></div>
       <button class="expand-btn" id="expandBtn-gcc" onclick="toggleAll('gcc')">Expand all</button>
@@ -260,139 +227,266 @@
 
 </main>
 
-<footer class="footer">Oracle HCM Payroll Functional Consultant &middot; General + GCC Interview Questions &middot; 50 Q&amp;A</footer>
+<footer class="footer">
+  <div class="footer-brand"><span class="footer-brand-icon">In</span>Intsphere</div>
+  <span style="color:var(--border)">|</span>
+  Oracle HCM Functional Consultant &middot; Interview Question Bank &middot; 125 Q&amp;A
+</footer>
 
 <script>
-const generalQuestions = [
-  { cat:"core", q:"What are the key components of the Oracle HCM Payroll module and how do they interact?", a:"Oracle HCM Payroll consists of payroll definitions, elements, fast formulas, payroll relationships, costing, and the payroll run process. Elements define earnings, deductions, and taxes. Fast Formulas drive calculations. Payroll relationships link workers to payroll, and costing maps results to GL accounts. All components work together in a sequential run process." },
-  { cat:"core", q:"Explain the difference between a Payroll Element and an Element Entry.", a:"An Element is a template defining the type of pay or deduction (e.g., Basic Salary, PF, Tax). An Element Entry is the instance of that element attached to a specific employee with actual values. Elements are setup-level; Element Entries are employee-level data." },
-  { cat:"core", q:"What is a Payroll Relationship and how does it differ from an Employment record?", a:"A Payroll Relationship groups assignments for payroll processing under a legal employer. It can span multiple assignments. Employment records capture HR data (job, grade, position), while payroll relationships handle processing frequency, tax details, and payroll associations." },
-  { cat:"core", q:"What are Element Classifications and why are they important?", a:"Element Classifications categorize elements as Earnings, Voluntary Deductions, Involuntary Deductions, Employer Charges, etc. They control processing priority, costing, retroactive processing behavior, and how elements interact with tax calculations." },
-  { cat:"core", q:"Explain Input Values in Oracle Payroll elements.", a:"Input Values are the fields attached to an element that accept data such as Amount, Hours, Rate, or Date. They can be of types Number, Money, Character, Date, etc. Input Values drive formula calculations and are the data points stored in Element Entries." },
-  { cat:"config", q:"How do you configure a new Payroll Definition in Oracle HCM Cloud?", a:"Navigate to Payroll > Payroll Definitions. Define the legislative data group, payroll name, payment frequency (weekly/biweekly/monthly), first period end date, number of years, and default payment method. Period dates are auto-generated. You also associate the payroll to an organization payment method." },
-  { cat:"config", q:"What is a Fast Formula and when would you write a custom one?", a:"Fast Formulas are Oracle's proprietary scripting language for payroll calculations. You write custom formulas when standard element processing is insufficient — for example, calculating a custom bonus based on multiple input values, deriving a percentage-based deduction, or building complex eligibility logic." },
-  { cat:"config", q:"Explain Payroll Costing configuration and its key components.", a:"Costing maps payroll results to the GL. Components include: Costing of Elements (element-level default accounts), Costing of Payroll Relationships (employee/assignment overrides), Costing of a Payroll (payroll-level defaults), and Distributed Costing. The hierarchy is: Element Entry > Assignment > Payroll > Element." },
-  { cat:"config", q:"What are Balance Dimensions and Balance Feeds in Oracle Payroll?", a:"Balances accumulate payroll results over time. Balance Dimensions define the time scope and context (e.g., Year-to-Date, Period-to-Date, Assignment-level, Relationship-level). Balance Feeds define which element results feed into a balance — either by input value or by element classification." },
-  { cat:"config", q:"How do you set up Absence Elements and integrate them with Payroll?", a:"Create an Absence plan in Absence Management, link it to an absence element. The absence element must have 'Absence' as the primary classification. When an absence is recorded, it creates element entries for the employee. Payroll picks these up during the run to apply the correct deduction or pay adjustment." },
-  { cat:"config", q:"What is Retroactive Pay in Oracle HCM and how is it configured?", a:"Retropay recalculates historical payroll periods when data changes after processing (e.g., a salary backdated change). Configure it by enabling the Recalculate Paycheck event, setting up retroactive element definitions (with a linked retro element), and then running the Recalculate Payroll for Retroactive Changes process." },
-  { cat:"process", q:"Walk me through the end-to-end payroll processing cycle in Oracle HCM Cloud.", a:"1) Load/verify employee data  2) Enter element entries (earnings, deductions)  3) Calculate payroll (payroll run)  4) Review and correct exceptions  5) Run payroll again if corrections needed  6) Calculate QuickPay for exceptions  7) Prepayments (net pay & payment method allocation)  8) Payment (EFT/check)  9) Costing  10) GL transfer  11) Archive and lock." },
-  { cat:"process", q:"What is the difference between a Payroll Run, QuickPay, and a Supplemental Run?", a:"A Payroll Run processes all employees in a payroll in bulk. QuickPay processes a single employee outside the normal cycle — useful for terminations or corrections. A Supplemental Run is an additional run within the same period for bonus or off-cycle payments, often with different tax handling." },
-  { cat:"process", q:"What is the Prepayments process and what does it do?", a:"Prepayments calculates the net pay and distributes it across the employee's payment methods (bank accounts, check). It determines how much goes to each payment source. Without a successful Prepayments run, the system cannot generate payments. It must follow a successful payroll run." },
-  { cat:"process", q:"Explain the purpose of Payroll Archiving and when it is run.", a:"Archiving locks processed payroll data for reporting and compliance. It stores final results in archive tables used by payslip generation and statutory reports. It is typically run after payments are confirmed. Once archived, data should not be changed without reversals." },
-  { cat:"process", q:"How do you handle a payroll reversal vs. a payroll correction?", a:"A Reversal undoes a payroll run for an employee — it creates negative entries to cancel the original. Used when payment was made incorrectly. A Correction (Mark for Retry) marks an employee for reprocessing before the run is finalized. Reversals are post-payment; Corrections are pre-finalization." },
-  { cat:"integration", q:"How does Oracle Payroll integrate with Oracle General Ledger?", a:"Costing results are posted to GL via the Transfer to Subledger Accounting (SLA) process. The payroll costing results create journal entries in SLA. From SLA, they are posted to the GL. The integration requires account code combination mapping and correct ledger/business unit setup." },
-  { cat:"integration", q:"How does Benefits integration work with Payroll in Oracle HCM?", a:"When an employee enrolls in a benefit plan (medical, dental, 401k), the enrollment creates element entries automatically in Payroll via the Benefits-Payroll integration. Deduction amounts are passed from Benefits to Payroll elements. Employer contribution elements are also created for employer charges." },
-  { cat:"integration", q:"What role does HCM Data Loader (HDL) play in Payroll implementations?", a:"HDL is used for bulk loading of payroll data — element entries, personal payment methods, salary data, and costing overrides. It uses a .dat file format with object files. For payroll go-lives and migrations, HDL is the primary tool for loading historical balances and YTD opening balances." },
-  { cat:"integration", q:"Explain how Time & Labor data flows into Oracle Payroll.", a:"Time cards entered or imported in Oracle Time & Labor are transferred to Payroll via the Transfer Time Cards to Payroll process. This creates element entries for hours worked, overtime, etc. The payroll run then picks up these entries to calculate earnings based on rates defined in the elements." },
-  { cat:"trouble", q:"An employee's payslip shows incorrect tax deductions. How would you troubleshoot this?", a:"1) Check employee tax card (filing status, withholding elections)  2) Verify tax code/element configuration  3) Review balance values (YTD earnings, prior deductions)  4) Check Fast Formula logic for the tax element  5) Use Statement of Earnings to review individual results  6) Run a QuickPay in audit mode to trace formula execution  7) Check for any manual element entry overrides." },
-  { cat:"trouble", q:"A payroll run completed with exceptions for some employees. What are your next steps?", a:"1) Review the Payroll Run Results — go to Person Process Results to see which employees have errors  2) Check the Message tab for each exception  3) Common causes: missing element entries, invalid costing segments, missing tax setup, formula errors  4) Fix the underlying data issue  5) Mark the affected employees for retry  6) Re-run the payroll  7) Verify results." },
-  { cat:"trouble", q:"How do you verify payroll balance integrity, and what do you do if balances are incorrect?", a:"Use the Balance View report and Statement of Earnings to verify individual balances. For discrepancies: check balance feed configuration, look for manual balance adjustments, review retropay history, and check for reversed runs that may not have recalculated. Balance adjustments can be made using the Adjust Individual Balances task with proper documentation." },
-  { cat:"compliance", q:"How do you configure and manage statutory deductions (e.g., PF, ESI in India or FICA in the US)?", a:"Statutory deductions are delivered as seed elements in the localization layer. Configuration involves: setting up employer/employee rates in the Tax Reporting Unit (TRU), verifying the Calculation Card for each employee, and ensuring the legislative data group is correctly tied to the payroll. Many statutory rules are driven by delivered Fast Formulas that reference legislative rates." },
-  { cat:"compliance", q:"What is a Tax Reporting Unit (TRU) and why is it important?", a:"A TRU is a legal entity subdivision used for tax reporting purposes. It is associated with a payroll statutory unit and defines which tax authority the payroll reports to. In the US, it maps to the Federal EIN. Employees must be associated with a TRU for proper tax filing (W-2, 941). Incorrect TRU setup leads to incorrect tax reporting." },
+const coreHRQuestions=[
+{cat:"hr-foundation",q:"What is Oracle HCM Cloud Core HR?",a:"Oracle HCM Cloud Core HR is the base module used to manage workforce information, employee records, and organizational structures."},
+{cat:"hr-foundation",q:"What are the key modules in Oracle HCM Cloud?",a:"Core HR, Payroll, Absence Management, Talent Management, Recruitment, Learning, Compensation, and Workforce Management."},
+{cat:"hr-foundation",q:"Explain the difference between Person, Worker, and Employee.",a:"Person is any individual in the system, Worker has a work relationship, and Employee is a worker hired by the company."},
+{cat:"hr-foundation",q:"What is a Legal Employer?",a:"A Legal Employer is a legal entity responsible for employing workers and statutory compliance."},
+{cat:"hr-foundation",q:"What is a Business Unit in Oracle HCM?",a:"A Business Unit is an operational division used for transaction processing and reporting."},
+{cat:"hr-foundation",q:"What is an Enterprise structure in Oracle HCM?",a:"Enterprise structure defines the organizational hierarchy including legal entities, business units, and departments."},
+{cat:"hr-foundation",q:"Difference between Department and Organization?",a:"Department is a functional unit, while Organization is a broader term including departments, legal entities, and divisions."},
+{cat:"hr-foundation",q:"What are Legislative Data Groups (LDG)?",a:"LDGs separate payroll and HR data based on country-specific legislation."},
+{cat:"hr-foundation",q:"What is a Reference Data Set?",a:"Reference Data Sets allow sharing of common setup data across business units."},
+{cat:"hr-foundation",q:"Explain the Worker Lifecycle in Oracle HCM.",a:"Hire, manage employment changes, transfer, promote, terminate, and rehire."},
+{cat:"hr-foundation",q:"What are the steps to implement Core HR?",a:"Define enterprise structure, configure workforce structures, security, roles, approvals, and data migration."},
+{cat:"hr-foundation",q:"Explain Enterprise, Legal Entity, and Business Unit relationship.",a:"Enterprise contains legal entities, and legal entities can have one or more business units."},
+{cat:"hr-foundation",q:"What are Locations and how are they used?",a:"Locations represent physical work addresses used in departments, jobs, and assignments."},
+{cat:"hr-foundation",q:"What is Job vs Position hierarchy?",a:"Job is a generic role while Position is a specific occurrence of a job within an organization."},
+{cat:"hr-foundation",q:"Difference between Position Synchronization enabled and disabled?",a:"Enabled syncs assignment changes from position changes automatically; disabled requires manual updates to assignments."},
+{cat:"hr-foundation",q:"What are Grade and Grade Ladder?",a:"Grade defines compensation level, while Grade Ladder groups grades for progression purposes."},
+{cat:"hr-foundation",q:"What are Action and Action Reasons?",a:"Actions define HR events (Hire, Transfer, Terminate) and reasons provide additional explanation for the action."},
+{cat:"hr-foundation",q:"What are Person Types?",a:"Categories like Employee, Contingent Worker, Pending Worker, and Nonworker that classify individuals in the system."},
+{cat:"hr-foundation",q:"What are Employment Models in Oracle HCM?",a:"Two-tier (work relationship and assignment) and three-tier (adds employment terms between the two) models based on work relationship setup."},
+{cat:"hr-foundation",q:"Explain Work Relationship.",a:"A work relationship links a worker to a legal employer and is the top-level record for employment."},
+{cat:"hr-security",q:"What is Role-Based Access Control (RBAC)?",a:"RBAC controls access to functions and data using predefined roles and privileges assigned to users."},
+{cat:"hr-security",q:"Difference between Job Role, Abstract Role, and Duty Role?",a:"Job roles are functional roles for specific job titles, abstract roles are generic roles (Employee Self-Service), and duty roles provide specific task-level privileges."},
+{cat:"hr-security",q:"What is Data Security in Oracle HCM?",a:"Data security restricts access to specific records using security profiles — controlling which persons, organizations, or payrolls a user can see."},
+{cat:"hr-security",q:"Explain Security Profiles.",a:"Security profiles define the set of accessible persons, organizations, or payroll data for a given user or role."},
+{cat:"hr-security",q:"What are HCM Data Roles?",a:"Data roles combine a job role with a security profile to grant access to both functions and data."},
+{cat:"hr-security",q:"How do you restrict employee visibility?",a:"Using person security profiles scoped to specific legal employers, departments, or manager hierarchies, and attaching them via data roles."},
+{cat:"hr-security",q:"What is Person Security Profile?",a:"It controls which employee and person records a user can view or manage."},
+{cat:"hr-security",q:"What is the difference between Custom Role and Seeded Role?",a:"Seeded roles are Oracle delivered and should not be modified. Custom roles are user-created, typically copied from seeded roles and adjusted."},
+{cat:"hr-hdl",q:"What is HDL?",a:"HCM Data Loader — Oracle's bulk data loading tool used to create and update workforce and setup data via .dat files."},
+{cat:"hr-hdl",q:"Difference between HDL and HSDL?",a:"HDL uses flat .dat files and supports all business objects. HSDL (HCM Spreadsheet Data Loader) uses Excel spreadsheets and is easier for smaller data volumes."},
+{cat:"hr-hdl",q:"What business objects are commonly used in Core HR HDL?",a:"Worker, WorkRelationship, Assignment, Job, Department, Position, Location, and PersonName."},
+{cat:"hr-hdl",q:"Explain Worker.dat structure.",a:"Each file begins with a METADATA line declaring the columns, followed by MERGE (or DELETE) lines with actual data values for each worker record."},
+{cat:"hr-hdl",q:"How do you load employee data using HDL?",a:"Prepare the .dat file per the business object template, zip it, navigate to Data Exchange > Import and Load Data, upload the zip, and run the Load process."},
+{cat:"hr-hdl",q:"What are METADATA, MERGE, and DELETE operations in HDL?",a:"METADATA declares the column structure for the file. MERGE inserts new records or updates existing ones by matching on key fields. DELETE removes records."},
+{cat:"hr-hdl",q:"How do you troubleshoot HDL errors?",a:"Navigate to Data Exchange > View Business Object Data. Review the Status, check business object error details, and read the error message for each failed row to identify missing or invalid data."},
+{cat:"hr-hdl",q:"What is SourceSystemOwner and SourceSystemId?",a:"SourceSystemOwner identifies the originating external system. SourceSystemId is the unique record identifier in that system. Together they enable cross-system tracking and prevent duplicate record creation."},
+{cat:"hr-hdl",q:"Explain incremental load vs full load.",a:"Incremental load uses MERGE to update only changed records. Full load replaces the complete dataset. Incremental is standard in production; full loads are used for initial migration."},
+{cat:"hr-formula",q:"What is Fast Formula?",a:"Oracle's proprietary rules engine for calculations and validations, used across payroll, absence, compensation, and HR modules using a BASIC-like syntax."},
+{cat:"hr-formula",q:"Where is Fast Formula used in Core HR?",a:"In Autocomplete Rules (field validation and defaulting), payroll element calculations, absence accrual rules, and eligibility profiles."},
+{cat:"hr-formula",q:"What are Formula Types?",a:"Each formula is linked to a type that scopes its use — e.g., Payroll, Absence, Compensation, Validation, Autocomplete. The type determines available database items."},
+{cat:"hr-formula",q:"How do you debug Fast Formula?",a:"Check compilation logs for syntax errors. Add RETURN or LOG statements to trace intermediate values. Test via QuickPay for payroll formulas or diagnostic runs for other types."},
+{cat:"hr-workflow",q:"Difference between Global Transfer and Local Transfer?",a:"Global Transfer changes the worker's legal employer (cross-entity move, creates a new work relationship). Local Transfer changes department, job, or location within the same legal employer."},
+{cat:"hr-workflow",q:"How do approvals work in Oracle HCM?",a:"Transactions are routed through BPM (Business Process Management) approval workflows. Approvers are determined by routing rules configured in the Manage Approval Rules task."},
+{cat:"hr-workflow",q:"What is BPM?",a:"Business Process Management — Oracle's workflow engine used for routing HCM transactions to approvers based on configured rules."},
+{cat:"hr-workflow",q:"How do you configure approval rules?",a:"Navigate to BPM Worklist > Task Configuration (or Manage Approval Rules in HCM). Set up routing using supervisory hierarchy, role, or position-based rules with conditions."},
+{cat:"hr-workflow",q:"What is Autocomplete Rule?",a:"A Fast Formula-based rule that fires on HCM pages to auto-populate, validate, or hide fields based on user input — reducing manual data entry and enforcing business rules."},
+{cat:"hr-workflow",q:"Explain Transaction Console usage.",a:"The Transaction Console lets administrators monitor HCM approval transactions, view routing history, see current status, and take actions like withdrawing or reassigning stuck transactions."},
+{cat:"hr-workflow",q:"How do you troubleshoot stuck approvals?",a:"Check the BPM Worklist for pending tasks assigned to the approver. Use the Transaction Console to trace routing. Verify approver setup, check if the user account is active, and confirm provisioning rules."},
+{cat:"hr-reporting",q:"What is OTBI?",a:"Oracle Transactional Business Intelligence — the real-time, self-service reporting and analytics tool built into Oracle Cloud, using subject areas mapped to HCM data."},
+{cat:"hr-reporting",q:"Difference between OTBI and BI Publisher?",a:"OTBI provides real-time ad-hoc analysis, dashboards, and pivots. BI Publisher is used for formatted, pixel-perfect reports (PDF, Excel) for statutory, payslip, or compliance output."},
+{cat:"hr-reporting",q:"What is HCM Extract?",a:"A framework for extracting HCM data for outbound interfaces, regulatory reporting, and third-party system feeds. Outputs are configurable XML or flat file formats."},
+{cat:"hr-reporting",q:"Explain use cases of HCM Extract.",a:"Payroll bureau interfaces, benefits carrier feeds, government workforce reporting, GL journal extraction, and HR data feeds to downstream HCM or ERP systems."},
+{cat:"hr-reporting",q:"How do you schedule reports?",a:"Navigate to Tools > Scheduled Processes > Schedule New Process. Select the ESS job or report, configure parameters, and set the frequency (once, daily, weekly, etc.)."},
+{cat:"hr-reporting",q:"What are secured reports?",a:"Reports configured to enforce user security roles — the data returned is filtered by the user's security profile, so each user only sees records they are authorized to access."},
+{cat:"hr-integration",q:"What integration methods are available in Oracle HCM?",a:"REST APIs, SOAP APIs, HCM Data Loader (HDL), HCM Extract (outbound), and Oracle Integration Cloud (OIC) for managed integration flows."},
+{cat:"hr-integration",q:"Explain HCM REST APIs.",a:"RESTful web services for accessing and manipulating HCM data using JSON payloads over HTTP. Support CRUD operations on business objects. Documented in Oracle's REST API catalog."},
+{cat:"hr-integration",q:"Difference between SOAP and REST APIs?",a:"SOAP is XML-based, uses WSDL contracts, and is more verbose. REST is lightweight, JSON-based, and uses standard HTTP verbs. REST is preferred for modern integrations."},
+{cat:"hr-integration",q:"What is Oracle Integration Cloud (OIC)?",a:"Oracle's iPaaS middleware for building, deploying, and monitoring integrations. Provides pre-built adapters for HCM, ERP, and third-party applications."},
+{cat:"hr-integration",q:"Explain inbound vs outbound integrations.",a:"Inbound integrations send data into HCM (e.g., recruitment system sending new hires via HDL or REST). Outbound integrations extract data from HCM for external systems (e.g., payroll bureau, benefits carriers via HCM Extract)."},
+{cat:"hr-integration",q:"What is HDL used for in integrations?",a:"Bulk-loading HR, setup, and payroll data from external systems into Oracle HCM as part of ongoing integrations or initial data migration."},
+{cat:"hr-trouble",q:"Employee is not visible to manager — how do you troubleshoot?",a:"Check the Line Manager field on the employee's assignment. Verify the manager's security profile includes the employee (person security profile). Run the Diagnose HCM Roles diagnostic. Check if the Maintain Data Role process has run."},
+{cat:"hr-trouble",q:"HDL load completed but worker was not created — what would you check?",a:"Navigate to Data Exchange > View Business Object Data. Check the Worker and WorkRelationship object status. Review the error message — common causes: missing required fields, invalid reference values, or duplicate SourceSystemId."},
+{cat:"hr-trouble",q:"How do you migrate setup from TEST to PROD?",a:"Use the Functional Setup Manager to create a Configuration Package in the source environment. Export the package, import it in the target environment, and verify the migration status."},
+{cat:"hr-trouble",q:"How do you handle duplicate person records?",a:"Navigate to the Merge Person Records task. Review matching criteria (name, DOB, national ID). Select the records to merge and choose the surviving record. Review associated assignments and relationships before confirming."},
+{cat:"hr-trouble",q:"How do you secure HR data country-wise?",a:"Use separate LDGs per country for payroll. Configure organization security profiles scoped to specific legal employers or countries. Attach these to data roles for country-specific HR teams."},
+{cat:"hr-trouble",q:"How do you mass update employee records?",a:"Use HDL with the MERGE operation for bulk updates. Use HSDL for smaller spreadsheet-based updates. Always test in a non-production environment and validate the results before production."},
+{cat:"hr-trouble",q:"How do you troubleshoot role assignment issues?",a:"Check the user's assigned roles in Security Console. Review auto-provisioning rules in Manage Role Provisioning Rules. Check LDAP sync status in Manage User Account. Review user's person type and system person type."},
+{cat:"hr-technical",q:"Explain termination and rehire process.",a:"Terminate by submitting the Terminate action with a termination date, reason, and notified date. To rehire, search for the person record and use Add Work Relationship — the person's history and records are preserved."},
+{cat:"hr-technical",q:"Explain checklist/task configuration.",a:"Checklists (Journeys) are sets of tasks assigned to workers or administrators during HR events like onboarding, offboarding, or transfers. Tasks can include forms, documents, videos, or manual steps."},
+{cat:"hr-technical",q:"How do you configure Journeys?",a:"Navigate to Journeys setup, define the journey category, add steps (tasks, questions, content), set eligibility conditions, and assign the journey to worker populations or specific events."},
+{cat:"hr-technical",q:"What is Workforce Structure?",a:"The set of organizational building blocks — jobs, positions, grades, departments, locations — that define how the workforce is structured for HR and payroll processing."},
+{cat:"hr-technical",q:"Explain Tree Structures in HCM.",a:"Hierarchical tree structures represent department reporting lines, position hierarchies, or organization rollups. They are used in approval routing, security, and reporting."},
+{cat:"hr-technical",q:"What is Enterprise Scheduler Service (ESS)?",a:"Oracle Cloud's background job scheduling service. Used to submit, monitor, and schedule batch processes like HDL loads, payroll runs, extract jobs, and report generation."},
+{cat:"hr-technical",q:"What are Lookups in Oracle HCM?",a:"Predefined reference values used in dropdown fields (e.g., Marital Status, Employment Category). Extensible Lookups allow administrators to add new values; System Lookups are Oracle-controlled."},
+{cat:"hr-technical",q:"What are Value Sets and Descriptive Flexfields (DFF)?",a:"Value Sets validate acceptable input values for flexfield segments. DFFs are configurable custom field extensions on standard pages — capturing additional data without development."},
+{cat:"hr-technical",q:"Explain Extensible Flexfields (EFF).",a:"EFFs allow structured context-sensitive custom attributes with multiple contexts, data types, and validation. More powerful than DFFs for complex additional data requirements."},
+{cat:"hr-technical",q:"What is Sandbox in Oracle HCM?",a:"An isolated configuration environment where UI personalizations and Page Composer changes are tested before publishing to all users in the live environment."},
+{cat:"hr-technical",q:"What are Page Composer and Visual Builder Studio?",a:"Page Composer is the legacy tool for personalizing Fusion pages (hiding fields, reordering sections). Visual Builder Studio (VBS) is the modern tool for extending HCM with custom pages and flows."},
+{cat:"hr-technical",q:"Explain responsive UI in HCM.",a:"Oracle's modern mobile-friendly interface built with Oracle JET framework. Replaced the legacy Fusion UI. Pages adapt to any screen size and support guided process flows."},
+{cat:"hr-technical",q:"What are audit configurations in Oracle HCM?",a:"Audit policies track changes made to HCM business objects — capturing who changed what, when, and the old/new values. Configured via Manage Audit Policies for specific objects and attributes."},
+{cat:"hr-process",q:"Steps to create a new employee?",a:"1) Create Person record (name, DOB, national ID)  2) Create Work Relationship (legal employer, hire date, person type)  3) Create Assignment (business unit, job, department, location, grade, manager)  4) Assign roles (auto or manual provisioning)."},
+{cat:"hr-process",q:"How do you correct employee data?",a:"Use the Correct action on employment pages to edit an existing date-effective record. Correct changes the record in place without creating a new date row."},
+{cat:"hr-process",q:"Difference between Correct and Update?",a:"Correct edits the existing date-effective row (modifies history). Update creates a new date-effective record from the effective date forward, preserving prior history."},
+{cat:"hr-process",q:"How do you transfer an employee?",a:"Use the Transfer action. Specify the effective date, new assignment details (department, location, job, manager, grade), and whether it is a local or global transfer."},
+{cat:"hr-process",q:"How do you terminate an employee?",a:"Use the Terminate action. Specify the termination date, notified date, last working day, termination reason, and whether to terminate all current assignments."},
+{cat:"hr-process",q:"How do you rehire an employee?",a:"Search for the person record of the terminated worker. Use Add Work Relationship to create a new employment record. All prior person-level records and history are retained."},
+{cat:"hr-process",q:"How do you create a manager hierarchy?",a:"Assign the Line Manager in the employee's assignment record. The hierarchy flows through Line Manager assignments and is used in org charts, approval routing, and reporting."},
+{cat:"hr-process",q:"How do you assign roles manually?",a:"Navigate to Security Console > Users, find the user, go to the Roles tab, and add the required roles. Or use Manage User Account in HCM for HR-managed role assignment."},
+{cat:"hr-process",q:"How do you run scheduled processes?",a:"Navigate to Tools > Scheduled Processes > Schedule New Process. Search for the process, enter required parameters, and submit. Optionally set a recurrence schedule."},
+{cat:"hr-process",q:"What are common Core HR implementation mistakes?",a:"Poor enterprise structure design that is hard to change later, overly broad security configurations, insufficient data quality checks during migration, not testing approval workflows end-to-end, and incorrect LDG assignment causing legislative data issues."},
+{cat:"hr-project",q:"Describe your Oracle HCM implementation project.",a:"Implemented Core HR covering enterprise structure design, security configuration using RBAC and data roles, HDL data migration, OTBI/BIP report development, and API-based integrations with third-party systems."},
+{cat:"hr-project",q:"What challenges did you face during implementation?",a:"Common challenges: data quality issues requiring extensive cleansing before HDL loads, complex security requirements for multi-country setups, designing approval workflows that match client processes, and performance testing of bulk processes."},
+{cat:"hr-project",q:"Have you worked on global implementations?",a:"Yes — designed multi-country enterprise structures, configured country-specific LDGs, handled localized security profiles, and managed legislative compliance requirements across regions."},
+{cat:"hr-project",q:"How did you handle data migration?",a:"Used HDL templates per business object. Ran iterative validation loads in the TEST environment, fixed errors, reconciled counts, then executed the production cut-over load with a parallel verification run."},
+{cat:"hr-project",q:"Explain your role in UAT.",a:"Supported testers with test script walkthroughs, resolved defects identified during testing, coordinated retesting cycles, prepared test summary documentation, and obtained sign-off before go-live."},
+{cat:"hr-project",q:"Have you worked with client-facing activities?",a:"Yes — conducted requirement gathering workshops, presented solution designs, delivered demos, ran training sessions, and provided hypercare support post go-live."},
+{cat:"hr-project",q:"What integrations have you worked on?",a:"REST API-based integrations for real-time employee data sync, OIC integration flows for HR data exchange, HCM Extract for payroll bureau and benefits carrier feeds, and HDL-based inbound data loads from third-party systems."},
+{cat:"hr-project",q:"Have you worked on security customization?",a:"Yes — created custom job roles by copying seeded roles, added/removed duty roles, built custom person and organization security profiles, and tested access via Security Console diagnostics."},
+{cat:"hr-project",q:"How do you handle production support tickets?",a:"Triage the ticket, reproduce the issue in a non-production environment, identify root cause (configuration, data, or product defect), apply and test the fix, document the resolution, and communicate to the client."},
+{cat:"hr-project",q:"Explain a critical issue you resolved.",a:"Resolved a failed worker integration where duplicate person records were being created due to an incorrect SourceSystemId mapping. Fixed the mapping in the source system, used HDL to merge duplicate records, and added a validation check to prevent recurrence."},
 ];
 
-const gccQuestions = [
-  { cat:"wps", q:"What is the Wage Protection System (WPS) and how does Oracle HCM support it?", a:"WPS is a UAE/GCC initiative requiring employers to pay salaries electronically through approved financial institutions and submit salary files to the Ministry of Labour. Oracle HCM supports WPS via the WPS-compliant payment file generation process. You configure a specific Organization Payment Method with the WPS file format (SIF — Salary Information File), and the system generates the file post-prepayments for submission to the bank or MoL." },
-  { cat:"wps", q:"What is a Salary Information File (SIF) and what data does it contain?", a:"A SIF is the electronic file submitted to the UAE Central Bank via the WPS. It contains: employer details (MOL establishment code), employee details (MOL labour card number, Emirates ID), bank/agent routing codes, payment amounts, and period details. In Oracle HCM, the SIF is generated using the Generate Payments process with the WPS payment type. Each row maps to one employee's net salary transfer instruction." },
-  { cat:"wps", q:"How do you set up WPS compliance in Oracle HCM Cloud for UAE?", a:"1) Configure the UAE Legislative Data Group  2) Set up the Organization Payment Method with WPS-SIF format  3) Enter MOL establishment code at the legal employer level  4) Populate employee MOL labour card numbers and Emirates IDs in Person records  5) Configure employee personal payment methods pointing to UAE bank accounts with IBAN  6) Run Prepayments and then Generate Payments to produce the SIF file  7) Submit the SIF to the bank/CBUAE portal." },
-  { cat:"wps", q:"An employee's WPS file was rejected by the bank. What are common reasons and how do you fix them?", a:"1) Invalid or missing IBAN — verify employee bank details in Personal Payment Methods  2) MOL Labour Card number mismatch — update in the person record  3) Establishment code errors — verify at the legal employer TRU level  4) Amount mismatch — ensure prepayments completed successfully  5) Duplicate reference number — regenerate the file with a new batch reference  6) File format errors — check the payment file extract template version matches bank requirements. Fix the root cause and regenerate the payment file." },
-  { cat:"gratuity", q:"Explain how End of Service Gratuity (EOSG) is calculated under UAE Labour Law.", a:"Under UAE Federal Labour Law, gratuity is based on basic salary: 21 days' basic pay per year for the first 5 years of service, and 30 days' basic pay per year for each year thereafter. If the employee resigns before 1 year, no gratuity is payable. Between 1-3 years, 1/3 of entitlement is paid; 3-5 years, 2/3; above 5 years, full entitlement. Total gratuity is capped at 2 years' total salary." },
-  { cat:"gratuity", q:"How do you configure End of Service Gratuity calculation in Oracle HCM for GCC?", a:"1) Create an EOSG element with classification 'Employer Liabilities' or 'Involuntary Deductions'  2) Write a Fast Formula to calculate gratuity based on service years, basic salary, and resignation/termination reason  3) Link the element to a balance to accumulate the accrual  4) Set up a trigger (e.g., termination event) to fire the element at off-boarding  5) Configure the gratuity provision element for monthly accounting accruals  6) Test with various scenarios: resignation under 1 year, 1-3 years, over 5 years, dismissal." },
-  { cat:"gratuity", q:"What is the difference in gratuity calculation for Saudi Arabia (KSA) vs UAE?", a:"In KSA (Saudi Labour Law): half a month's wages for each year of the first 5 years, and one full month's wage per year thereafter, based on last drawn wage. For resignation with less than 2 years, no gratuity. 2-5 years: 1/3 entitlement; 5-10 years: 2/3; 10+ years: full. In UAE, it is based on basic salary only, while KSA uses the full last wage. Oracle requires separate Fast Formula configurations for each country's LDG to handle these differences." },
-  { cat:"gratuity", q:"How is gratuity provisioning handled in payroll for accounting purposes?", a:"Monthly gratuity accrual is set up as an employer charge element. Each month, the Fast Formula calculates the incremental liability (annual entitlement divided by 12) and the result is costed to a Gratuity Provision GL account (liability) and Gratuity Expense (P&L). On actual termination, the provision is reversed and the actual payment is processed. Oracle's costing setup handles the DR/CR entries via the element's costing configuration." },
-  { cat:"gratuity", q:"How do you handle gratuity for an employee transferred between two GCC entities?", a:"On a global transfer in Oracle HCM, the service continuity setup determines whether prior service counts. If the transfer is a legal termination and rehire, gratuity may be settled at transfer (EOSG paid out). If it is an internal transfer preserving service, configure the original hire date to be retained on the new assignment. The gratuity Fast Formula must read the original hire date (or adjusted service date) rather than the current assignment start date. Test both transfer scenarios explicitly during UAT." },
-  { cat:"gratuity", q:"How does probation period affect gratuity eligibility in GCC and how is this handled in Oracle HCM?", a:"In most GCC countries, the probation period (typically 3-6 months) counts toward total service for gratuity purposes as long as the employee completes it. If the employee is terminated during probation by the employer, gratuity may not apply (varies by country). In Oracle HCM, the gratuity Fast Formula checks the service start date and compares total months of service against the minimum threshold. The formula should also read the termination reason to apply the correct entitlement fraction per country legislation." },
-  { cat:"localization", q:"What is GOSI and how is it configured in Oracle HCM for Saudi Arabia?", a:"GOSI (General Organization for Social Insurance) is Saudi Arabia's social insurance body. Contributions apply to Saudi nationals (employer 11.75%, employee 9.75% of basic plus housing allowance) and differ for expats (employer 2% only — Occupational Hazard). In Oracle HCM KSA LDG, GOSI elements are delivered as seed data. You configure rates at the TRU level and enter the employee's GOSI number and nationality on the Calculation Card. The element formula references nationality to apply the correct rate." },
-  { cat:"localization", q:"Explain the Oracle HCM localization setup steps for a GCC country go-live.", a:"1) Create the Legislative Data Group (LDG) for the country (e.g., UAE, KSA)  2) Set up the Legal Entity, Legal Employer, and Payroll Statutory Unit  3) Configure the Tax Reporting Unit with statutory registration numbers (MOL, GOSI, etc.)  4) Define Organization Payment Methods (WPS/bank transfer formats)  5) Set up Payroll Definitions with country calendar  6) Configure delivered seed elements (gratuity, social insurance, housing allowance)  7) Set up employee Calculation Cards  8) Configure costing to map to local chart of accounts  9) Test end-to-end payroll run." },
-  { cat:"localization", q:"What legislative data groups (LDGs) are used for GCC countries in Oracle HCM and why are they separate?", a:"Each GCC country requires its own LDG: e.g., UAE LDG, KSA LDG, Qatar LDG. LDGs are separate because payroll legislation, statutory deduction rules, currency, payment formats, and tax rules differ by country. Elements, Fast Formulas, balances, and calculation cards are all scoped within an LDG. Cross-country payroll sharing is not possible within one LDG. A multinational with operations in UAE and KSA will have two LDGs and two sets of payroll configurations." },
-  { cat:"localization", q:"What are the key differences in payroll setup between UAE and Qatar in Oracle HCM?", a:"UAE: WPS compliance (SIF file to CBUAE), no income tax, gratuity under Federal Labour Law or DEWS scheme, social insurance only for UAE nationals (GPSSA), Emirates ID mandatory. Qatar: WPS (QCBW format), no income tax, gratuity under Qatar Labour Law with different calculation thresholds, social insurance via GRSIA for Qatari nationals, QID (Qatar ID) mandatory for WPS. Oracle HCM requires separate LDGs for each country with different payment file templates, seed elements, and statutory formula configurations." },
-  { cat:"leave", q:"How is Annual Leave encashment handled in Oracle HCM for GCC payroll?", a:"Annual leave encashment is paid when an employee takes leave in lieu of cash or upon termination. In Oracle HCM, configure a Leave Encashment element under the Earnings classification. The Fast Formula calculates: (Basic Salary divided by 30) multiplied by Number of leave days encashed. The leave days are sourced from the Absence Management balance or an input value. On termination, the leave balance is read and the encashment element fires automatically via a termination flow or manually via element entry." },
-  { cat:"leave", q:"What is the difference between leave salary and leave encashment in GCC context?", a:"Leave Salary is the pay an employee receives while on actual annual leave — typically the full monthly salary paid in advance before the employee goes on leave. Leave Encashment is the cash payment for unused leave days, usually paid on termination or sometimes mid-service by policy. In Oracle HCM, Leave Salary is handled via the advance salary element or payroll frequency adjustment, while Leave Encashment is a separate earnings element triggered by leave balance data from Absence Management." },
-  { cat:"leave", q:"How do you configure Hajj leave as a special leave type in Oracle HCM for KSA?", a:"Hajj leave is a once-in-service entitlement in Saudi Arabia (typically 10-15 days for eligible Muslim employees). Configure it in Oracle Absence Management as a separate absence type with a usage rule limiting it to once per employment. Link it to an absence element classified separately from annual leave. In payroll, Hajj leave is typically paid at full salary and does not reduce the annual leave balance. Set up a flag on the absence plan to track whether the employee has already availed Hajj leave to enforce the once-in-service rule." },
-  { cat:"expat", q:"How do you handle expatriate payroll in GCC — split payroll between home and host country?", a:"Expat split payroll involves paying part of the salary in the home country currency and part in the host (GCC) country. In Oracle HCM: 1) Create two assignment records or use global transfer  2) Configure two payroll relationships — one per legal employer/country  3) Set up elements for host-country allowances (housing, transport, school fees)  4) Configure shadow payroll if needed for home-country social security  5) Use personal payment methods to split net pay to home bank (foreign currency) and local bank  6) Ensure FX rate tables are maintained in Oracle for currency conversion." },
-  { cat:"expat", q:"What allowances are typically set up as payroll elements for GCC expatriate employees?", a:"Typical GCC expat allowances include: Housing Allowance (often 25-30% of basic), Transport Allowance, Education/School Fee Allowance, Utility Allowance, Medical Allowance (if not covered by insurance), Annual Air Ticket Allowance, and Hardship Allowance. Each is configured as a separate Earnings element in Oracle HCM. Some allowances are pensionable (included in GOSI base) and some are not — the element classification and balance feeds must reflect this distinction accurately." },
-  { cat:"expat", q:"How does Oracle HCM handle the Annual Air Ticket allowance commonly provided in GCC?", a:"The Annual Air Ticket is typically paid once or twice a year. In Oracle HCM, configure it as a non-recurring Earnings element or a recurring element with a frequency rule (e.g., pay only in January). Use a Skip Rule Fast Formula to fire the element only in the designated period. Alternatively, it can be entered as a manual element entry each time it is due. It is typically excluded from GOSI/gratuity base salary calculations, so the balance feed must be configured accordingly." },
-  { cat:"expat", q:"How do you manage multiple currencies in GCC payroll — for example, paying housing in USD and salary in AED?", a:"Oracle HCM supports multi-currency element entries. For an element paid in a different currency, set the element's Currency input value to the foreign currency. The payroll run converts the amount to the ledger currency using the exchange rate defined in GL. Alternatively, for split payroll, set up separate personal payment methods — one for AED to local bank and one for USD to an offshore account. The prepayments process distributes net pay across both methods. Ensure GL FX rates are current to avoid conversion errors." },
-  { cat:"setup", q:"How do you set up housing and transport allowances as a percentage of basic salary in Oracle HCM?", a:"1) Create Earnings elements for Housing Allowance and Transport Allowance  2) Add an input value for 'Percentage' or hardcode the rate in the formula  3) Write a Fast Formula: Housing_Allowance = Basic_Salary_Balance * 0.25 (or use a rate from a rate definition)  4) Link the Basic Salary balance as an input to the formula using database items  5) Test that the formula correctly reads the current period's basic salary  6) Ensure the element processing order places Housing/Transport after Basic Salary." },
-  { cat:"setup", q:"What is a Calculation Card in Oracle HCM and how is it used in GCC payroll?", a:"A Calculation Card holds employee-specific statutory data used by payroll formulas. In GCC context, it stores: GOSI registration number, nationality (determines GOSI rate), WPS labour card number, Emirates ID, gratuity start date, and social insurance exemption flags. Each country has its own card structure delivered in the localization. The payroll Fast Formulas reference the calculation card via database items to retrieve these values during the run." },
-  { cat:"setup", q:"How do you configure a termination payroll run for a GCC employee in Oracle HCM?", a:"1) Process the HR termination in the system (set termination date and reason)  2) Run a QuickPay or off-cycle payroll for the termination period  3) The system fires termination elements automatically: final salary (pro-rated), leave encashment, and gratuity  4) Verify gratuity formula uses correct service dates and termination reason  5) Run Prepayments and generate WPS/bank payment file  6) Ensure final payslip is generated and archived  7) Reconcile GOSI final contribution for the partial month." },
-  { cat:"reporting", q:"What reports are typically run for GCC payroll compliance and reconciliation?", a:"Key reports include: WPS SIF file (UAE/Qatar — salary compliance), GOSI contribution report (KSA — monthly statutory filing), Payroll Register (employee-wise earnings and deductions summary), Gratuity Provision report (monthly accrual for finance), Leave Liability report (outstanding leave balance value), End of Service Calculation report (termination summary), and the GL posting journal for finance reconciliation. These are run via Oracle's delivered OTBI/BIP reports or custom reports built on the payroll data model." },
-  { cat:"reporting", q:"How do you reconcile payroll results between Oracle HCM Payroll and the GL in a GCC implementation?", a:"1) Run the Payroll Register and extract total earnings, deductions, and employer costs by cost center  2) Run the Payroll Costing report to see all GL account postings  3) Compare the two — net pay + total deductions should equal gross earnings  4) Run the GL journal report after SLA posting to confirm entries landed correctly  5) Common mismatches: missing costing on an element, a suspense account catch, or an element that was not costed  6) Use the Costing Results report in HCM to drill into individual mismatches." },
+const generalQuestions=[
+{cat:"core",q:"What are the key components of the Oracle HCM Payroll module and how do they interact?",a:"Oracle HCM Payroll consists of payroll definitions, elements, fast formulas, payroll relationships, costing, and the payroll run process. Elements define earnings, deductions, and taxes. Fast Formulas drive calculations. Payroll relationships link workers to payroll, and costing maps results to GL accounts."},
+{cat:"core",q:"Explain the difference between a Payroll Element and an Element Entry.",a:"An Element is a template defining the type of pay or deduction (e.g., Basic Salary, PF, Tax). An Element Entry is the instance of that element attached to a specific employee with actual values. Elements are setup-level; Element Entries are employee-level data."},
+{cat:"core",q:"What is a Payroll Relationship and how does it differ from an Employment record?",a:"A Payroll Relationship groups assignments for payroll processing under a legal employer. It can span multiple assignments. Employment records capture HR data (job, grade, position), while payroll relationships handle processing frequency, tax details, and payroll associations."},
+{cat:"core",q:"What are Element Classifications and why are they important?",a:"Element Classifications categorize elements as Earnings, Voluntary Deductions, Involuntary Deductions, Employer Charges, etc. They control processing priority, costing, retroactive processing behavior, and how elements interact with tax calculations."},
+{cat:"core",q:"Explain Input Values in Oracle Payroll elements.",a:"Input Values are the fields attached to an element that accept data such as Amount, Hours, Rate, or Date. They can be of types Number, Money, Character, Date, etc. Input Values drive formula calculations and are stored in Element Entries."},
+{cat:"config",q:"How do you configure a new Payroll Definition in Oracle HCM Cloud?",a:"Navigate to Payroll > Payroll Definitions. Define the legislative data group, payroll name, payment frequency, first period end date, number of years, and default payment method. Period dates are auto-generated and you associate the payroll to an organization payment method."},
+{cat:"config",q:"What is a Fast Formula and when would you write a custom one?",a:"Fast Formulas are Oracle's proprietary scripting language for payroll calculations. You write custom formulas when standard element processing is insufficient — for complex bonus calculations, percentage-based deductions, or eligibility logic."},
+{cat:"config",q:"Explain Payroll Costing configuration and its key components.",a:"Costing maps payroll results to the GL. Components include: Costing of Elements (element-level default accounts), Costing of Payroll Relationships (employee overrides), Costing of a Payroll (payroll-level defaults), and Distributed Costing. The hierarchy is: Element Entry > Assignment > Payroll > Element."},
+{cat:"config",q:"What are Balance Dimensions and Balance Feeds in Oracle Payroll?",a:"Balances accumulate payroll results over time. Balance Dimensions define the time scope (Year-to-Date, Period-to-Date) and context. Balance Feeds define which element results feed into a balance — either by input value or element classification."},
+{cat:"config",q:"How do you set up Absence Elements and integrate them with Payroll?",a:"Create an Absence plan in Absence Management, link it to an absence element with the Absence classification. When an absence is recorded, it creates element entries for the employee. Payroll picks these up during the run to apply the correct adjustment."},
+{cat:"config",q:"What is Retroactive Pay in Oracle HCM and how is it configured?",a:"Retropay recalculates historical payroll periods when data changes after processing. Configure it by enabling the Recalculate Paycheck event, setting up retroactive element definitions with a linked retro element, and running the Recalculate Payroll for Retroactive Changes process."},
+{cat:"process",q:"Walk me through the end-to-end payroll processing cycle in Oracle HCM Cloud.",a:"1) Load/verify employee data  2) Enter element entries (earnings, deductions)  3) Calculate payroll (payroll run)  4) Review and correct exceptions  5) Calculate QuickPay for exceptions  6) Prepayments (net pay and payment method allocation)  7) Payment (EFT/check)  8) Costing  9) GL transfer  10) Archive and lock."},
+{cat:"process",q:"What is the difference between a Payroll Run, QuickPay, and a Supplemental Run?",a:"A Payroll Run processes all employees in a payroll in bulk. QuickPay processes a single employee outside the normal cycle — useful for terminations or corrections. A Supplemental Run is an additional run within the same period for bonus or off-cycle payments."},
+{cat:"process",q:"What is the Prepayments process and what does it do?",a:"Prepayments calculates the net pay and distributes it across the employee's payment methods. Without a successful Prepayments run, the system cannot generate payment files. It must follow a successful payroll run."},
+{cat:"process",q:"Explain the purpose of Payroll Archiving and when it is run.",a:"Archiving locks processed payroll data for reporting and compliance. It stores final results in archive tables used by payslip generation and statutory reports. Typically run after payments are confirmed."},
+{cat:"process",q:"How do you handle a payroll reversal vs. a payroll correction?",a:"A Reversal undoes a payroll run for an employee — creates negative entries to cancel the original. Used when payment was made incorrectly. A Correction (Mark for Retry) marks an employee for reprocessing before the run is finalized. Reversals are post-payment; Corrections are pre-finalization."},
+{cat:"integration",q:"How does Oracle Payroll integrate with Oracle General Ledger?",a:"Costing results are posted to GL via the Transfer to Subledger Accounting (SLA) process, which creates journal entries. From SLA they are posted to the GL. Integration requires account code combination mapping and correct ledger/business unit setup."},
+{cat:"integration",q:"How does Benefits integration work with Payroll in Oracle HCM?",a:"When an employee enrolls in a benefit plan, the enrollment creates element entries automatically in Payroll via the Benefits-Payroll integration. Deduction amounts and employer contribution elements are passed from Benefits to Payroll."},
+{cat:"integration",q:"What role does HCM Data Loader (HDL) play in Payroll implementations?",a:"HDL is used for bulk loading payroll data — element entries, personal payment methods, salary data, and costing overrides. For payroll go-lives, HDL is the primary tool for loading historical YTD opening balances."},
+{cat:"integration",q:"Explain how Time and Labor data flows into Oracle Payroll.",a:"Time cards entered in Oracle Time and Labor are transferred to Payroll via the Transfer Time Cards to Payroll process. This creates element entries for hours worked and overtime. The payroll run calculates earnings based on rates in the elements."},
+{cat:"trouble",q:"An employee's payslip shows incorrect tax deductions. How would you troubleshoot this?",a:"1) Check employee tax card (filing status, withholding elections)  2) Verify tax code/element configuration  3) Review balance values (YTD earnings, prior deductions)  4) Check Fast Formula logic  5) Use Statement of Earnings  6) Run a QuickPay in audit mode  7) Check for manual element entry overrides."},
+{cat:"trouble",q:"A payroll run completed with exceptions for some employees. What are your next steps?",a:"1) Review Person Process Results to see which employees have errors  2) Check the Message tab for each exception  3) Common causes: missing element entries, invalid costing segments, missing tax setup, formula errors  4) Fix the underlying data issue  5) Mark for retry  6) Re-run the payroll  7) Verify results."},
+{cat:"trouble",q:"How do you verify payroll balance integrity, and what do you do if balances are incorrect?",a:"Use the Balance View report and Statement of Earnings to verify individual balances. For discrepancies: check balance feed configuration, look for manual adjustments, review retropay history, and check for reversed runs that may not have recalculated."},
+{cat:"compliance",q:"How do you configure and manage statutory deductions (e.g., PF, ESI in India or FICA in the US)?",a:"Statutory deductions are delivered as seed elements in the localization layer. Configuration involves: setting up employer/employee rates in the Tax Reporting Unit (TRU), verifying the Calculation Card for each employee, and ensuring the LDG is correctly tied to the payroll."},
+{cat:"compliance",q:"What is a Tax Reporting Unit (TRU) and why is it important?",a:"A TRU is a legal entity subdivision used for tax reporting purposes. It defines which tax authority the payroll reports to. In the US it maps to the Federal EIN. Employees must be associated with a TRU for proper tax filing. Incorrect TRU setup leads to incorrect tax reporting."},
 ];
 
-const generalCats = [
-  { id:"all", label:"All" },
-  { id:"core", label:"Core Concepts" },
-  { id:"config", label:"Configuration" },
-  { id:"process", label:"Processing" },
-  { id:"integration", label:"Integration" },
-  { id:"trouble", label:"Troubleshooting" },
-  { id:"compliance", label:"Compliance" },
-];
-const gccCats = [
-  { id:"all", label:"All" },
-  { id:"wps", label:"WPS" },
-  { id:"gratuity", label:"Gratuity / EOSG" },
-  { id:"localization", label:"Localization" },
-  { id:"leave", label:"Leave" },
-  { id:"expat", label:"Expat Payroll" },
-  { id:"setup", label:"Setup & Config" },
-  { id:"reporting", label:"Reporting" },
+const gccQuestions=[
+{cat:"wps",q:"What is the Wage Protection System (WPS) and how does Oracle HCM support it?",a:"WPS is a UAE/GCC initiative requiring employers to pay salaries electronically and submit salary files to the Ministry of Labour. Oracle HCM supports WPS via the WPS-compliant SIF (Salary Information File) payment file generation process."},
+{cat:"wps",q:"What is a Salary Information File (SIF) and what data does it contain?",a:"A SIF is the electronic file submitted to the UAE Central Bank via WPS. It contains: employer MOL establishment code, employee MOL labour card number and Emirates ID, bank routing codes, payment amounts, and period details."},
+{cat:"wps",q:"How do you set up WPS compliance in Oracle HCM Cloud for UAE?",a:"1) Configure the UAE Legislative Data Group  2) Set up Organization Payment Method with WPS-SIF format  3) Enter MOL establishment code at legal employer level  4) Populate employee MOL labour card numbers and Emirates IDs  5) Configure personal payment methods with IBAN  6) Run Prepayments then Generate Payments to produce the SIF  7) Submit to the bank/CBUAE portal."},
+{cat:"wps",q:"An employee's WPS file was rejected by the bank. What are common reasons and how do you fix them?",a:"1) Invalid or missing IBAN — verify employee bank details  2) MOL Labour Card number mismatch — update in person record  3) Establishment code errors — verify at TRU level  4) Amount mismatch — ensure prepayments completed  5) Duplicate reference number — regenerate the file  6) File format errors — check payment extract template version."},
+{cat:"gratuity",q:"Explain how End of Service Gratuity (EOSG) is calculated under UAE Labour Law.",a:"Under UAE Federal Labour Law: 21 days' basic pay per year for the first 5 years, and 30 days' basic pay per year thereafter. Resignation before 1 year: no gratuity. 1-3 years: 1/3 entitlement; 3-5 years: 2/3; above 5 years: full entitlement. Total capped at 2 years' total salary."},
+{cat:"gratuity",q:"How do you configure End of Service Gratuity calculation in Oracle HCM for GCC?",a:"1) Create an EOSG element with Employer Liabilities classification  2) Write a Fast Formula to calculate gratuity based on service years, basic salary, and termination reason  3) Link to a balance for monthly accrual  4) Set up termination event trigger  5) Configure monthly provision element for accounting  6) Test all service year and termination reason scenarios."},
+{cat:"gratuity",q:"What is the difference in gratuity calculation for Saudi Arabia (KSA) vs UAE?",a:"KSA uses the last drawn full wage (not just basic): half a month's wage per year for first 5 years, one full month per year thereafter. UAE uses basic salary only. Resignation thresholds also differ. Oracle requires separate Fast Formula configurations per country LDG."},
+{cat:"gratuity",q:"How is gratuity provisioning handled in payroll for accounting purposes?",a:"A monthly employer charge element calculates the incremental liability (annual entitlement divided by 12) each period, costed to a Gratuity Provision liability account and Gratuity Expense in P&L. On termination, the provision is reversed and the actual payment processed."},
+{cat:"gratuity",q:"How do you handle gratuity for an employee transferred between two GCC entities?",a:"If the transfer is a legal termination and rehire, gratuity is settled at transfer. If it is an internal transfer preserving service, configure the original hire date to be retained. The gratuity Fast Formula must reference the original hire date rather than the current assignment start date."},
+{cat:"gratuity",q:"How does probation period affect gratuity eligibility in GCC?",a:"In most GCC countries, the probation period counts toward total service for gratuity once the employee completes it. If terminated by the employer during probation, gratuity may not apply. The Fast Formula must check total service months and the termination reason to apply the correct entitlement fraction."},
+{cat:"localization",q:"What is GOSI and how is it configured in Oracle HCM for Saudi Arabia?",a:"GOSI (General Organization for Social Insurance) covers Saudi nationals (employer 11.75%, employee 9.75% of basic + housing) and expats (employer 2% Occupational Hazard only). In Oracle HCM KSA LDG, GOSI elements are seed data. Configure rates at TRU level and enter GOSI number and nationality on the Calculation Card."},
+{cat:"localization",q:"Explain the Oracle HCM localization setup steps for a GCC country go-live.",a:"1) Create the Legislative Data Group  2) Set up Legal Entity, Legal Employer, and Payroll Statutory Unit  3) Configure Tax Reporting Unit with statutory registration numbers  4) Define Organization Payment Methods  5) Set up Payroll Definitions with country calendar  6) Configure seed elements (gratuity, social insurance, allowances)  7) Set up employee Calculation Cards  8) Configure costing  9) Run end-to-end test."},
+{cat:"localization",q:"What legislative data groups (LDGs) are used for GCC countries and why are they separate?",a:"Each GCC country requires its own LDG because payroll legislation, statutory deduction rules, currency, payment formats, and compliance requirements differ per country. Elements, Fast Formulas, balances, and calculation cards are all scoped within an LDG."},
+{cat:"localization",q:"What are the key differences in payroll setup between UAE and Qatar in Oracle HCM?",a:"UAE uses CBUAE WPS SIF format, GPSSA for UAE nationals, Emirates ID mandatory. Qatar uses QCBW WPS format, GRSIA for Qatari nationals, QID mandatory. Gratuity thresholds also differ by country legislation. Each requires a separate LDG with distinct payment file templates and statutory formula configurations."},
+{cat:"leave",q:"How is Annual Leave encashment handled in Oracle HCM for GCC payroll?",a:"Configure a Leave Encashment earnings element. The Fast Formula calculates: (Basic Salary divided by 30) multiplied by Number of leave days encashed. Leave days are sourced from the Absence Management balance. On termination, the encashment element fires automatically or via manual element entry."},
+{cat:"leave",q:"What is the difference between leave salary and leave encashment in GCC context?",a:"Leave Salary is the full monthly salary paid in advance before the employee goes on leave. Leave Encashment is cash payment for unused leave days — typically on termination. In Oracle HCM, Leave Salary uses an advance salary element; Leave Encashment is a separate earnings element triggered by the leave balance."},
+{cat:"leave",q:"How do you configure Hajj leave as a special leave type in Oracle HCM for KSA?",a:"Configure in Absence Management as a separate absence type with a once-in-service usage rule. Link it to an absence element classified separately from annual leave. Paid at full salary, does not reduce the annual leave balance. A flag on the absence plan enforces the once-in-service restriction."},
+{cat:"expat",q:"How do you handle expatriate payroll in GCC — split payroll between home and host country?",a:"1) Create two assignment records or use global transfer  2) Configure two payroll relationships  3) Set up host-country allowance elements  4) Configure shadow payroll for home-country social security if needed  5) Use personal payment methods to split net pay to home and local bank accounts  6) Maintain FX rate tables in Oracle."},
+{cat:"expat",q:"What allowances are typically set up as payroll elements for GCC expatriate employees?",a:"Housing Allowance (25-30% of basic), Transport Allowance, Education/School Fee Allowance, Utility Allowance, Medical Allowance, Annual Air Ticket Allowance, and Hardship Allowance. Each is a separate Earnings element. Pensionable vs non-pensionable distinction must be reflected correctly in balance feeds."},
+{cat:"expat",q:"How does Oracle HCM handle the Annual Air Ticket allowance commonly provided in GCC?",a:"Configure as a non-recurring Earnings element or a recurring element with a Skip Rule Fast Formula that fires only in the designated period. Typically excluded from GOSI/gratuity base — configure balance feeds accordingly."},
+{cat:"expat",q:"How do you manage multiple currencies in GCC payroll?",a:"Oracle HCM supports multi-currency element entries. Set the Currency input value on the element for foreign-currency components. The payroll run converts amounts using GL FX rates. For split payroll, configure separate personal payment methods for each currency and bank account."},
+{cat:"setup",q:"How do you set up housing and transport allowances as a percentage of basic salary in Oracle HCM?",a:"1) Create Earnings elements for Housing and Transport Allowances  2) Write a Fast Formula referencing the Basic Salary balance (Housing = Basic * 0.25)  3) Use a Rate Definition or input value for the percentage  4) Ensure processing order places these elements after Basic Salary  5) Verify balance feed excludes these from GOSI base if required."},
+{cat:"setup",q:"What is a Calculation Card in Oracle HCM and how is it used in GCC payroll?",a:"A Calculation Card holds employee-specific statutory data used by payroll formulas — GOSI number, nationality, WPS labour card number, Emirates ID, gratuity start date, and social insurance exemption flags. Payroll Fast Formulas reference these via database items during the run."},
+{cat:"setup",q:"How do you configure a termination payroll run for a GCC employee in Oracle HCM?",a:"1) Process the HR termination in the system  2) Run a QuickPay or off-cycle payroll for the termination period  3) System fires termination elements: final salary (pro-rated), leave encashment, gratuity  4) Verify gratuity formula uses correct service dates and termination reason  5) Run Prepayments and generate WPS payment file  6) Archive and generate final payslip."},
+{cat:"reporting",q:"What reports are typically run for GCC payroll compliance and reconciliation?",a:"WPS SIF file (UAE/Qatar), GOSI contribution report (KSA), Payroll Register, Gratuity Provision report, Leave Liability report, End of Service Calculation report, and the GL posting journal. These are run via Oracle's delivered OTBI/BIP reports or custom reports on the payroll data model."},
+{cat:"reporting",q:"How do you reconcile payroll results between Oracle HCM Payroll and the GL in a GCC implementation?",a:"1) Run Payroll Register — extract total earnings, deductions, employer costs by cost center  2) Run Payroll Costing report for all GL account postings  3) Compare — net pay plus total deductions should equal gross earnings  4) Run GL journal report after SLA posting  5) Use the Costing Results report in HCM to drill into individual mismatches."},
 ];
 
-const tagLabel = {
-  core:"Core", config:"Config", process:"Process", integration:"Integration",
-  trouble:"Troubleshoot", compliance:"Compliance",
-  wps:"WPS", gratuity:"Gratuity", localization:"Localization",
-  leave:"Leave", expat:"Expat", setup:"Setup", reporting:"Reporting"
+const coreHRCats=[
+  {id:"all",label:"All"},
+  {id:"hr-foundation",label:"Foundation & Structures"},
+  {id:"hr-security",label:"Security & RBAC"},
+  {id:"hr-hdl",label:"HDL / Data Loading"},
+  {id:"hr-formula",label:"Fast Formula"},
+  {id:"hr-workflow",label:"Approvals & Workflow"},
+  {id:"hr-reporting",label:"Reporting"},
+  {id:"hr-integration",label:"Integration"},
+  {id:"hr-trouble",label:"Troubleshooting"},
+  {id:"hr-technical",label:"Technical / Config"},
+  {id:"hr-process",label:"Day-to-Day Processes"},
+  {id:"hr-project",label:"Project & Experience"},
+];
+const generalCats=[
+  {id:"all",label:"All"},
+  {id:"core",label:"Core Concepts"},
+  {id:"config",label:"Configuration"},
+  {id:"process",label:"Processing"},
+  {id:"integration",label:"Integration"},
+  {id:"trouble",label:"Troubleshooting"},
+  {id:"compliance",label:"Compliance"},
+];
+const gccCats=[
+  {id:"all",label:"All"},
+  {id:"wps",label:"WPS"},
+  {id:"gratuity",label:"Gratuity / EOSG"},
+  {id:"localization",label:"Localization"},
+  {id:"leave",label:"Leave"},
+  {id:"expat",label:"Expat Payroll"},
+  {id:"setup",label:"Setup & Config"},
+  {id:"reporting",label:"Reporting"},
+];
+
+const tagLabel={
+  core:"Core",config:"Config",process:"Process",integration:"Integration",
+  trouble:"Troubleshoot",compliance:"Compliance",
+  wps:"WPS",gratuity:"Gratuity",localization:"Localization",
+  leave:"Leave",expat:"Expat",setup:"Setup",reporting:"Reporting",
+  "hr-foundation":"Foundation","hr-security":"Security","hr-hdl":"HDL",
+  "hr-formula":"Formula","hr-workflow":"Workflow","hr-reporting":"Reporting",
+  "hr-integration":"Integration","hr-trouble":"Troubleshoot",
+  "hr-technical":"Technical","hr-process":"Processes","hr-project":"Project"
 };
-const tagClass = {
-  core:"tag-core", config:"tag-config", process:"tag-process", integration:"tag-integration",
-  trouble:"tag-trouble", compliance:"tag-compliance",
-  wps:"tag-wps", gratuity:"tag-gratuity", localization:"tag-localization",
-  leave:"tag-leave", expat:"tag-expat", setup:"tag-setup", reporting:"tag-reporting"
+const tagClass={
+  core:"tag-core",config:"tag-config",process:"tag-process",integration:"tag-integration",
+  trouble:"tag-trouble",compliance:"tag-compliance",
+  wps:"tag-wps",gratuity:"tag-gratuity",localization:"tag-localization",
+  leave:"tag-leave",expat:"tag-expat",setup:"tag-setup",reporting:"tag-reporting",
+  "hr-foundation":"tag-hr-foundation","hr-security":"tag-hr-security","hr-hdl":"tag-hr-hdl",
+  "hr-formula":"tag-hr-formula","hr-workflow":"tag-hr-workflow","hr-reporting":"tag-hr-reporting",
+  "hr-integration":"tag-hr-integration","hr-trouble":"tag-hr-trouble",
+  "hr-technical":"tag-hr-technical","hr-process":"tag-hr-process","hr-project":"tag-hr-project"
 };
 
-const state = { general:{ active:"all", expanded:false }, gcc:{ active:"all", expanded:false } };
+const state={corehr:{active:"all",expanded:false},general:{active:"all",expanded:false},gcc:{active:"all",expanded:false}};
 
-function switchTab(tab, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-  document.getElementById('panel-' + tab).classList.add('active');
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected','true');
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+  document.getElementById('panel-'+tab).classList.add('active');
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
 }
 
-function buildTab(tab, questions, cats) {
-  const statsBar = document.getElementById('statsBar-' + tab);
-  const statDefs = tab === 'general'
-    ? [ { num:questions.length, label:"Total Questions" }, { num:cats.length-1, label:"Categories" }, { num:questions.filter(q=>q.cat==='config').length, label:"Config Q&A" }, { num:questions.filter(q=>q.cat==='trouble').length, label:"Troubleshoot" } ]
-    : [ { num:questions.length, label:"Total Questions" }, { num:cats.length-1, label:"Categories" }, { num:questions.filter(q=>q.cat==='gratuity').length, label:"Gratuity Q&A" }, { num:questions.filter(q=>q.cat==='wps').length, label:"WPS Q&A" } ];
-  statsBar.innerHTML = statDefs.map(s => `<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
-
-  const filterBar = document.getElementById('filterBar-' + tab);
-  cats.forEach(cat => {
-    const count = cat.id === 'all' ? questions.length : questions.filter(q => q.cat === cat.id).length;
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (cat.id === 'all' ? ' active' : '');
-    btn.innerHTML = `${cat.label} <span style="opacity:0.5;font-size:11px;margin-left:4px">${count}</span>`;
-    btn.onclick = () => {
-      state[tab].active = cat.id;
-      state[tab].expanded = false;
-      document.getElementById('expandBtn-' + tab).textContent = 'Expand all';
-      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderList(tab, questions);
+function buildTab(tab,questions,cats){
+  const sb=document.getElementById('statsBar-'+tab);
+  const sd=tab==='corehr'
+    ?[{num:questions.length,label:"Total Questions"},{num:cats.length-1,label:"Categories"},{num:questions.filter(q=>q.cat==='hr-foundation').length,label:"Foundation"},{num:questions.filter(q=>q.cat==='hr-security').length,label:"Security"}]
+    :tab==='general'
+    ?[{num:questions.length,label:"Total Questions"},{num:cats.length-1,label:"Categories"},{num:questions.filter(q=>q.cat==='config').length,label:"Config Q&A"},{num:questions.filter(q=>q.cat==='trouble').length,label:"Troubleshoot"}]
+    :[{num:questions.length,label:"Total Questions"},{num:cats.length-1,label:"Categories"},{num:questions.filter(q=>q.cat==='gratuity').length,label:"Gratuity Q&A"},{num:questions.filter(q=>q.cat==='wps').length,label:"WPS Q&A"}];
+  sb.innerHTML=sd.map(s=>`<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
+  const fb=document.getElementById('filterBar-'+tab);
+  cats.forEach(cat=>{
+    const count=cat.id==='all'?questions.length:questions.filter(q=>q.cat===cat.id).length;
+    const btn=document.createElement('button');
+    btn.className='filter-btn'+(cat.id==='all'?' active':'');
+    btn.innerHTML=`${cat.label} <span style="opacity:0.5;font-size:11px;margin-left:4px">${count}</span>`;
+    btn.onclick=()=>{
+      state[tab].active=cat.id;state[tab].expanded=false;
+      document.getElementById('expandBtn-'+tab).textContent='Expand all';
+      fb.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');renderList(tab,questions);
     };
-    filterBar.appendChild(btn);
+    fb.appendChild(btn);
   });
-  renderList(tab, questions);
+  renderList(tab,questions);
 }
 
-function renderList(tab, questions) {
-  const filtered = state[tab].active === 'all' ? questions : questions.filter(q => q.cat === state[tab].active);
-  document.getElementById('count-' + tab).textContent = `Showing ${filtered.length} question${filtered.length !== 1 ? 's' : ''}`;
-  document.getElementById('qList-' + tab).innerHTML = filtered.map((q, i) => `
+function renderList(tab,questions){
+  const filtered=state[tab].active==='all'?questions:questions.filter(q=>q.cat===state[tab].active);
+  document.getElementById('count-'+tab).textContent=`Showing ${filtered.length} question${filtered.length!==1?'s':''}`;
+  document.getElementById('qList-'+tab).innerHTML=filtered.map((q,i)=>`
     <div class="q-card">
       <div class="q-header" onclick="toggleQ(this)" role="button" aria-expanded="false">
         <span class="q-num">${String(i+1).padStart(2,'0')}</span>
@@ -405,33 +499,34 @@ function renderList(tab, questions) {
   `).join('');
 }
 
-function formatA(a) {
-  if (/ {2}\d+\)/.test(a) || /^\d+\)/.test(a.trim())) {
-    const parts = a.split(/\s{2,}(?=\d+\))/);
-    return '<ol>' + parts.map(p => `<li>${p.replace(/^\d+\)\s*/,'')}</li>`).join('') + '</ol>';
+function formatA(a){
+  if(/ {2}\d+\)/.test(a)||/^\d+\)/.test(a.trim())){
+    const parts=a.split(/\s{2,}(?=\d+\))/);
+    return '<ol>'+parts.map(p=>`<li>${p.replace(/^\d+\)\s*/,'')}</li>`).join('')+'</ol>';
   }
   return `<p>${a}</p>`;
 }
 
-function toggleQ(header) {
-  const ans = header.nextElementSibling;
-  const chev = header.querySelector('.q-chevron');
-  const isOpen = ans.classList.contains('show');
-  ans.classList.toggle('show', !isOpen);
-  chev.classList.toggle('open', !isOpen);
-  header.setAttribute('aria-expanded', String(!isOpen));
+function toggleQ(header){
+  const ans=header.nextElementSibling;
+  const chev=header.querySelector('.q-chevron');
+  const isOpen=ans.classList.contains('show');
+  ans.classList.toggle('show',!isOpen);
+  chev.classList.toggle('open',!isOpen);
+  header.setAttribute('aria-expanded',String(!isOpen));
 }
 
-function toggleAll(tab) {
-  state[tab].expanded = !state[tab].expanded;
-  const panel = document.getElementById('panel-' + tab);
-  panel.querySelectorAll('.q-answer').forEach(a => a.classList.toggle('show', state[tab].expanded));
-  panel.querySelectorAll('.q-chevron').forEach(c => c.classList.toggle('open', state[tab].expanded));
-  document.getElementById('expandBtn-' + tab).textContent = state[tab].expanded ? 'Collapse all' : 'Expand all';
+function toggleAll(tab){
+  state[tab].expanded=!state[tab].expanded;
+  const panel=document.getElementById('panel-'+tab);
+  panel.querySelectorAll('.q-answer').forEach(a=>a.classList.toggle('show',state[tab].expanded));
+  panel.querySelectorAll('.q-chevron').forEach(c=>c.classList.toggle('open',state[tab].expanded));
+  document.getElementById('expandBtn-'+tab).textContent=state[tab].expanded?'Collapse all':'Expand all';
 }
 
-buildTab('general', generalQuestions, generalCats);
-buildTab('gcc', gccQuestions, gccCats);
+buildTab('corehr',coreHRQuestions,coreHRCats);
+buildTab('general',generalQuestions,generalCats);
+buildTab('gcc',gccQuestions,gccCats);
 </script>
 </body>
 </html>
