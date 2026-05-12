@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle HCM Absence Management - Complete Tutorial, Setup & Interview Q&A</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f4f9;
+            color: #1a2c3e;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding: 2rem 2rem 2.5rem 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            border-left: 8px solid #d97706;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #7c2d12;
+        }
+        .badge {
+            background: #ffedd5;
+            color: #c2410c;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: #d97706;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            margin-bottom: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: #fff3e6;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            margin: 0.8rem 0 1rem 0;
+            color: #b45309;
+        }
+        .qa-grid, .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.2rem;
+        }
+        .card {
+            background: #fefefe;
+            border-radius: 20px;
+            border: 1px solid #f0e1ce;
+            overflow: hidden;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .card:hover {
+            border-color: #f3b987;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .question, .step-title {
+            background: #fffaf5;
+            padding: 0.8rem 1.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #9a3412;
+            border-bottom: 1px solid #fbe5cf;
+        }
+        .answer, .step-desc {
+            padding: 0.9rem 1.2rem;
+            font-size: 0.9rem;
+            color: #2c3e2f;
+            background: white;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #fde68a;
+            padding: 0.8rem;
+            border-radius: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin: 0.5rem 0;
+        }
+        .info-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.9rem 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid #f0e1ce;
+            padding: 0.6rem;
+            text-align: left;
+        }
+        th {
+            background: #fff3e6;
+            font-weight: 600;
+        }
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7c5e3a;
+            border-top: 1px solid #f0e1ce;
+            padding-top: 1.5rem;
+        }
+        @media (max-width: 780px) {
+            body { padding: 0.8rem; }
+            .container { padding: 1rem; }
+            .qa-grid, .setup-grid { grid-template-columns: 1fr; }
+        }
+        .highlight {
+            background: #fef3c7;
+            padding: 0.1rem 0.3rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #b45309;
+        }
+        .flow-step {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            border-radius: 30px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🌴 Oracle HCM Absence Management</h1>
+    <div class="badge">Complete Tutorial · Setup Guide · Accrual Formulas · Certification & Interview Q&A</div>
+    
+    <!-- =============== SECTION 1: CONCEPTS =============== -->
+    <div class="section">
+        <div class="section-title">📘 1. What is Oracle Absence Management?</div>
+        <div class="info-box">
+            <strong>🎯 Definition:</strong> Oracle HCM Absence Management is a comprehensive module that automates the tracking, calculation, accrual, and approval of employee time off — including vacation, sick leave, maternity/paternity, unpaid leave, and statutory leaves. It integrates seamlessly with Payroll and Time & Labor.
+        </div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Key capabilities of Absence Management?</div><div class="answer">✓ Leave request workflows & approvals<br>✓ Automatic absence accruals (calendar/service-based)<br>✓ Balance consumption & carryover rules<br>✓ Integration with payroll (paid/unpaid absence)<br>✓ Statutory compliance (FMLA, parental, sick)</div></div>
+            <div class="card"><div class="question">Core components of Absence Management?</div><div class="answer"><strong>Absence Plans</strong> (leave types), <strong>Accrual Formulas</strong> (Fast Formula), <strong>Absence Types</strong>, <strong>Certification Requirements</strong>, <strong>Validation Formulas</strong>, <strong>Approval Workflows</strong>, <strong>Balance Definitions</strong>.</div></div>
+            <div class="card"><div class="question">What is an Absence Plan?</div><div class="answer">A container defining a leave type: accrual method (periodic or service-based), carryover limits, entitlement cap, payment percentage, and integration with payroll.</div></div>
+            <div class="card"><div class="question">Difference between Absence Plan and Absence Type?</div><div class="answer">Plan is the overarching policy (Vacation Policy). Type is specific leave within plan (Paid Vacation, Unpaid Vacation). One plan can have multiple absence types.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 2: ABSENCE TYPES & PLANS =============== -->
+    <div class="section">
+        <div class="section-title">📋 2. Absence Types & Plan Configuration</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">How to create an Absence Plan?</div><div class="answer">Setup → Absence Administration → Manage Absence Plans → Define name, classification (Vacation/Sick/Other), accrual method (Periodic Accrual or Service-Based), carryover rules, and maximum balance.</div></div>
+            <div class="card"><div class="question">What are absence classifications?</div><div class="answer">System categories: Vacation, Sick, Bereavement, Maternity/Paternity, Unpaid, Jury Duty, Training, etc. Each classification has default behavior.</div></div>
+            <div class="card"><div class="question">Periodic Accrual vs Service-Based Accrual</div><div class="answer"><span class="highlight">Periodic:</span> Employees accrue fixed hours per month/quarter (e.g., 8 hrs/month). <span class="highlight">Service-Based:</span> Accrual rate increases with years of service (e.g., 10 days/year for 0-5 yrs, 15 days after 5 yrs).</div></div>
+            <div class="card"><div class="question">Carryover Rules explained.</div><div class="answer">Define how much unused leave can be carried to next period: maximum carryover (e.g., 10 days), expiration date, and cash-out options.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 3: ACCRUAL FAST FORMULA =============== -->
+    <div class="section">
+        <div class="section-title">⚙️ 3. Accrual Fast Formulas (Critical)</div>
+        <div class="info-box">
+            <strong>📌 Fast Formula use in Absence:</strong> Accrual formulas calculate how much leave is earned each period. They can consider service length, grade, full-time equivalency (FTE), and other factors.
+        </div>
+        <div class="code-block">
+            /* Sample Fast Formula for Vacation Accrual based on years of service */
+            Formula Type: Absence Accrual Plan
+    
+            DEFAULT for ASG_FTE_VALUE is 1
+            DEFAULT for ASG_HIRE_DATE is '1900-01-01'
+    
+            years_of_service = MONTHS_BETWEEN(TRUNC(TODAY()), ASG_HIRE_DATE) / 12
+    
+            IF years_of_service < 5 THEN
+                monthly_accrual_hours = 6.67   /* 80 hrs per year / 12 */
+            ELSE IF years_of_service >= 5 AND years_of_service < 10 THEN
+                monthly_accrual_hours = 10
+            ELSE
+                monthly_accrual_hours = 13.33
+            END IF
+    
+            /* Multiply by FTE */
+            result = monthly_accrual_hours * ASG_FTE_VALUE
+        </div>
+        <div class="card"><div class="question">Common Accrual Database Items (DBIs)</div><div class="answer">• ASG_HIRE_DATE – employee hire date<br>• ASG_FTE_VALUE – full-time equivalent<br>• ASG_WORK_DAY_HOURS – standard daily hours<br>• ABSENCE_BALANCE_VALUE – current balance</div></div>
+    </div>
+
+    <!-- =============== SECTION 4: WORKFLOW & APPROVALS =============== -->
+    <div class="section">
+        <div class="section-title">✅ 4. Absence Request Workflow & Approvals</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Absence request lifecycle</div><div class="answer">Employee submits request → Manager approval (or auto-approve) → HR verification (if needed) → Absence recorded → Balance updated → Payroll integration triggered.</div></div>
+            <div class="card"><div class="question">How to configure approval rules?</div><div class="answer">Use BPM Worklist: Define rule conditions (duration>3 days, manager approval; emergency leave → director approval). Use "Manage Absence Approval Rules".</div></div>
+            <div class="card"><div class="question">What is a Validation Formula for absence?</div><div class="answer">Fast formula that checks eligibility before submission: e.g., “Can employee take leave during probation period?” “Maximum consecutive days?”</div></div>
+            <div class="card"><div class="question">What is a Certification Type?</div><div class="answer">Medical certificate or document required for certain absences (sick leave >3 days). Employees can upload documents during request.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 5: BALANCES & CONSUMPTION =============== -->
+    <div class="section">
+        <div class="section-title">⚖️ 5. Absence Balances & Consumption Logic</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">How are absence balances calculated?</div><div class="answer">Opening balance (carryover) + Accruals during period - Consumed leave (approved absences) = Current balance. Oracle updates real-time after approval or payroll accrual.</div></div>
+            <div class="card"><div class="question">What is "Negative Balance" control?</div><div class="answer">Plan setting that allows or restricts leave requests when balance insufficient. Options: Hard limit (reject), Soft warning (allow with note).</div></div>
+            <div class="card"><div class="question">Balance Initialization for Absence</div><div class="answer">When implementing, use "Initial Balance Upload" via HDL or Spreadsheet to load historic accrued leaves as opening balances for each employee.</div></div>
+            <div class="card"><div class="question">What are Absence Certifications?</div><div class="answer">Verification milestones: e.g., for long-term sick leave, employee must submit doctor's note every 30 days. System can trigger reminders.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 6: INTEGRATION WITH PAYROLL =============== -->
+    <div class="section">
+        <div class="section-title">🔄 6. Payroll Integration (Paid & Unpaid Absence)</div>
+        <div class="info-box">
+            <strong>🔗 Critical Integration:</strong> When an absence is approved, Oracle creates corresponding <strong>Payroll Elements</strong> (Paid Leave earnings or Unpaid Deduction). These elements are picked up during payroll run.
+        </div>
+        <table>
+            <thead><tr><th>Absence Type</th><th>Payroll Element</th><th>Effect on Pay</th></tr></thead>
+            <tbody>
+                <tr><td>Paid Vacation</td><td>Vacation Pay (Earnings)</td><td>Normal salary paid</td></tr>
+                <tr><td>Sick Leave (Paid)</td><td>Sick Pay Earnings</td><td>Full or partial salary</td></tr>
+                <tr><td>Unpaid Leave</td><td>Unpaid Deduction</td><td>Salary reduced by days missed</td></tr>
+                <tr><td>Maternity Leave</td><td>Maternity Benefit</td><td>Statutory benefit amount</td></tr>
+            </tbody>
+        </table>
+        <div class="card"><div class="question">How is Unpaid Leave deduction calculated?</div><div class="answer">Formula: (Monthly Salary / Working Days in Month) × Number of Unpaid Days. Oracle generates negative earnings or deduction element automatically.</div></div>
+    </div>
+
+    <!-- =============== SECTION 7: STATUTORY ABSENCES =============== -->
+    <div class="section">
+        <div class="section-title">🏛️ 7. Statutory Leaves (FMLA, Parental, Sick)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">FMLA (Family & Medical Leave Act) support</div><div class="answer">Tracks FMLA entitlement (12 weeks in 12 months), eligibility period, intermittent leave, and certifications. Generates necessary notices and compliance reports.</div></div>
+            <div class="card"><div class="question">Maternity/Paternity leave setup</div><div class="answer">Define plan with statutory weeks, payment percentage (e.g., 100% for 6 weeks, then 60%), and certification required (birth certificate).</div></div>
+            <div class="card"><div class="question">How does Oracle handle overlapping statutory leaves?</div><div class="answer">Rules define which plan takes precedence. For example, FMLA runs concurrent with company parental leave, ensuring total entitlement not exceeded.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 8: ABSENCE PATTERNS & CALENDARS =============== -->
+    <div class="section">
+        <div class="section-title">📅 8. Absence Patterns & Work Schedules</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What are Absence Patterns?</div><div class="answer">Define recurring absence (e.g., every Friday half-day, weekly therapy). Supports regular, intermittent leave tracking without daily requests.</div></div>
+            <div class="card"><div class="question">Work Schedule integration</div><div class="answer">System uses employee's work schedule (M-F, shift hours) to calculate absence duration in hours or days. Part-time employees accrue prorated leave.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 9: REPORTING & DASHBOARDS =============== -->
+    <div class="section">
+        <div class="section-title">📊 9. Absence Management Reporting</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Key OTBI subject areas for Absence</div><div class="answer">• Absence Real Time – requests, approvals, balances<br>• Absence Accrual Real Time – accrual details<br>• Workforce Absence – combined with assignments</div></div>
+            <div class="card"><div class="question">Popular Absence Reports</div><div class="answer">✓ Absence Balance Report (by employee)<br>✓ Absence Calendar (team view)<br>✓ Absence Liability Report (accrued liability for finance)<br>✓ FMLA Tracking Report</div></div>
+            <div class="card"><div class="question">Absence Dashboard in HCM</div><div class="answer">Infolets: Absence Requests Pending Approval, Team Absence Summary, Leave Balance Exceptions, Accrual Projections.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 10: INTERVIEW Q&A (25+ questions) =============== -->
+    <div class="section">
+        <div class="section-title">💼 10. Absence Management Interview Q&A</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Q1: What is the difference between Absence Plan and Absence Type?</div><div class="answer">Plan defines policy (accrual, carryover). Type is specific leave within plan (e.g., "Vacation Plan" contains "Paid Vacation", "Unpaid Vacation" types).</div></div>
+            <div class="card"><div class="question">Q2: How do you calculate pro-rated accruals for mid-year hires?</div><div class="answer">Accrual formula can incorporate hire date: annual entitlement × (remaining months/12). Fast Formula can prorate based on hire date within calendar year.</div></div>
+            <div class="card"><div class="question">Q3: What happens to absence balances when an employee transfers departments?</div><div class="answer">Balances are retained unless different leave policies exist. Transfers can map old plan balances to new plan via balance transfer configuration.</div></div>
+            <div class="card"><div class="question">Q4: How do you handle unpaid leave deduction in payroll?</div><div class="answer">Unpaid absence plan links to "Unpaid Deduction" payroll element. During payroll run, system calculates (daily salary × unpaid days) and deducts.</div></div>
+            <div class="card"><div class="question">Q5: Explain "Validation Formula" vs "Accrual Formula".</div><div class="answer">Validation – checks request rules (balance sufficient, notice period). Accrual – calculates how much leave employee earns each period.</div></div>
+            <div class="card"><div class="question">Q6: Can an employee have multiple absence plans?</div><div class="answer">Yes. Employees can be enrolled in vacation, sick, paid time off (PTO), and statutory plans simultaneously. Balances tracked separately.</div></div>
+            <div class="card"><div class="question">Q7: How do you configure carryover expiration?</div><div class="answer">In Absence Plan: Set carryover rule – maximum carryover hours, expiration date (e.g., March 31), and behavior (forfeit or cash-out).</div></div>
+            <div class="card"><div class="question">Q8: What is an "Absence Category"?</div><div class="answer">High-level grouping: Planned vs Unplanned, Paid vs Unpaid, Statutory vs Voluntary. Used for reporting and approval routing.</div></div>
+            <div class="card"><div class="question">Q9: How do you test absence accruals without waiting for month-end?</div><div class="answer">Use "Run Accruals" process in test mode, or run Quick Accrual for a single employee. Check "Absence Accrual Details" report.</div></div>
+            <div class="card"><div class="question">Q10: Leave encashment – how is it processed?</div><div class="answer">At termination or annually, HR runs "Leave Encashment" process that creates one-time earnings element in payroll for unused balance.</div></div>
+            <div class="card"><div class="question">Q11: Can managers approve absences in bulk?</div><div class="answer">Yes, Manager Dashboard includes "Team Absence Requests" where multiple requests can be approved/rejected simultaneously.</div></div>
+            <div class="card"><div class="question">Q12: What is an "Absence Half-Day" rule?</div><div class="answer">Define partial days as .5 day unit. System can split morning/afternoon absence based on work schedule.</div></div>
+            <div class="card"><div class="question">Q13: How do you handle retroactive absence approvals?</div><div class="answer">Manager can approve past-dated request. System adjusts balance from effective date and triggers retro payroll if needed.</div></div>
+            <div class="card"><div class="question">Q14: What is a "Holiday Calendar" impact on absence?</div><div class="answer">If absence includes public holidays, those days may not count against leave balance (configurable per plan).</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 11: TROUBLESHOOTING =============== -->
+    <div class="section">
+        <div class="section-title">🔧 11. Common Issues & Troubleshooting</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Employee balance not accruing?</div><div class="answer">Check: 1) Accrual formula active? 2) Enrollment effective date? 3) Run "Calculate Absence Balances" process. 4) FTE value = 0?</div></div>
+            <div class="card"><div class="question">Error: "Insufficient balance" but employee has balance</div><div class="answer">Check leave unit (hours vs days), pending approvals consuming balance, or hard limit on plan. Review "Available Balance" vs "Plan Balance".</div></div>
+            <div class="card"><div class="question">Absence request stuck in approval</div><div class="answer">Check BPM workflow: Is manager assigned? Does manager have role "Line Manager"? Approver may be inactive. Reassign or escalate.</div></div>
+            <div class="card"><div class="question">Payroll not deducting unpaid leave</div><div class="answer">1) Absence plan linked to correct payroll element? 2) Absence approved with effective date in payroll period? 3) Run "Absence to Payroll" extract.</div></div>
+            <div class="card"><div class="question">Accrual not prorated for part-time employees</div><div class="answer">Accrual formula must multiply by ASG_FTE_VALUE (part-time factor). Confirm FTE >0 on assignment.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 12: CERTIFICATION & BEST PRACTICES =============== -->
+    <div class="section">
+        <div class="section-title">🎓 12. Certification & Best Practices</div>
+        <div class="info-box">
+            <strong>📌 Recommended Certifications:</strong> Oracle Global Human Resources Cloud (1Z0-1047) includes Absence Management. Also Oracle Absence Management Cloud 2023 Implementation Specialist.
+        </div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Best Practices for Absence Implementation</div><div class="answer">✓ Start with statutory leaves first<br>✓ Use service-based accruals for long-term employees<br>✓ Test accrual formulas with historical data<br>✓ Train managers on approval dashboard<br>✓ Set up absence calendars before launch</div></div>
+            <div class="card"><div class="question">How to prepare for Absence certification?</div><div class="answer">Focus on: accrual formulas (Fast Formula), balance definitions, statutory leaves (FMLA), workflow configuration, OTBI reporting, and integration with payroll.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 13: SCENARIO-BASED EXERCISE =============== -->
+    <div class="section">
+        <div class="section-title">🧩 13. Real-World Scenario & Solution</div>
+        <div class="info-box">
+            <strong>Scenario:</strong> Company policy: Employees accrue 15 vacation days/year after 1 year of service, prorated monthly. After 5 years, 20 days/year. Max carryover 30 days. Unused leave paid at termination. Need to configure.
+        </div>
+        <div class="answer">
+            <span class="flow-step">Step 1</span> Create Absence Plan "Vacation" → Classification Vacation<br>
+            <span class="flow-step">Step 2</span> Accrual method: Periodic (Monthly)<br>
+            <span class="flow-step">Step 3</span> Write Fast Formula: IF years_of_service >=5 THEN monthly = 20/12 ELSE 15/12<br>
+            <span class="flow-step">Step 4</span> Carryover rule: Max 30 days<br>
+            <span class="flow-step">Step 5</span> Termination rule: Pay out unused balance<br>
+            <span class="flow-step">Step 6</span> Link to payroll element "Vacation Pay" for paid absence.
+        </div>
+    </div>
+
+    <!-- =============== SECTION 14: GLOSSARY =============== -->
+    <div class="section">
+        <div class="section-title">📖 14. Absence Management Glossary</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Accrual</div><div class="answer">Earning leave over time (monthly/annually).</div></div>
+            <div class="card"><div class="question">Balance Transfer</div><div class="answer">Moving leave balance between plans (e.g., acquisition).</div></div>
+            <div class="card"><div class="question">Entitlement</div><div class="answer">Total leave allowed per year.</div></div>
+            <div class="card"><div class="question">Intermittent Leave</div><div class="answer">Leave taken in separate blocks (FMLA).</div></div>
+            <div class="card"><div class="question">Certification</div><div class="answer">Supporting document required.</div></div>
+            <div class="card"><div class="question">Negative Balance</div><div class="answer">When leave taken exceeds available.</div></div>
+        </div>
+    </div>
+
+    <!-- =============== SECTION 15: QUICK REFERENCE =============== -->
+    <div class="section">
+        <div class="section-title">⚡ 15. Quick Reference: Essential Tables & DBIs</div>
+        <div class="code-block">
+            -- Key database tables for absence<br>
+            PER_ABSENCE_ATTENDANCES (absence requests)<br>
+            PER_ABSENCE_ENTRIES_G (balances and accruals)<br>
+            PER_ABSENCE_PLANS (plan definitions)<br>
+            <br>
+            -- Most used DBIs in formulas:<br>
+            ASG_HIRE_DATE, ASG_FTE_VALUE, ABSENCE_BALANCE_VALUE,<br>
+            ASG_WORK_DAY_HOURS, ASG_SCHEDULED_HOURS
+        </div>
+    </div>
+
+    <footer>
+        ✅ <strong>Oracle HCM Absence Management Mastery</strong> — From plan setup, accrual formulas, payroll integration to real interview Q&A.<br>
+        📌 Use this guide for implementation, certification preparation, and technical interviews.
+    </footer>
+</div>
+</body>
+</html>
