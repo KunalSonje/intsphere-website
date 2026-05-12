@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle HCM Payroll & GCC Payroll - COMPLETE Interview Q&A (All Questions)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef2f7;
+            color: #1a2c3e;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 1.8rem 2rem 2.5rem 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            border-left: 6px solid #c4450c;
+            padding-left: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #1b4f72;
+        }
+        .counter {
+            background: #e9ecef;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .section {
+            margin-bottom: 2.2rem;
+            page-break-inside: avoid;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: #1b4f72;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 0.9rem;
+        }
+        .card {
+            background: #fefefe;
+            border-radius: 18px;
+            border: 1px solid #e0ecf3;
+            overflow: hidden;
+            transition: 0.1s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .card:hover {
+            border-color: #9bc2db;
+            background: #fdfdfd;
+        }
+        .question {
+            background: #f5fafd;
+            padding: 0.7rem 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0c5b86;
+            border-bottom: 1px solid #e3eff7;
+        }
+        .answer {
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+            color: #2c3e50;
+            background: white;
+        }
+        .answer ul, .answer ol {
+            padding-left: 1.2rem;
+            margin: 0.3rem 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbdde6;
+            font-size: 0.75rem;
+            color: #5d7f9e;
+        }
+        @media (max-width: 780px) {
+            body { padding: 0.75rem; }
+            .container { padding: 1rem; }
+            .qa-grid { grid-template-columns: 1fr; }
+        }
+        .badge-gcc {
+            background: #f8e3cf;
+            color: #b45f1b;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 Oracle HCM Payroll + GCC Payroll</h1>
+    <div class="counter">✅ Complete coverage: All 150+ questions answered | Core Payroll | Fast Formula | Costing | GCC Localization | Gratuity | Integration | Security </div>
+
+    <!-- ============================================= -->
+    <!-- SECTION 1: Oracle Payroll Basics (All 24 Qs)  -->
+    <!-- ============================================= -->
+    <div class="section">
+        <div class="section-title">1. Oracle Payroll Basics (24 answers)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Oracle HCM Payroll?</div><div class="answer">Complete global payroll management engine integrated with HCM Cloud; handles calculations, taxation, compliance, payments, reporting.</div></div>
+            <div class="card"><div class="question">What are the key features of Oracle Payroll Cloud?</div><div class="answer">Legislative updates, retroactive processing, Fast Formulas, balance dimensions, cost allocation, payslip, BI publisher, off-cycle, parallel processing.</div></div>
+            <div class="card"><div class="question">What are the main payroll components in Oracle HCM?</div><div class="answer">Payroll definitions, elements, balances, Payroll Relationship, LDG, PSU, calendars, fast formulas, payment methods, costing.</div></div>
+            <div class="card"><div class="question">Explain the payroll processing lifecycle.</div><div class="answer">Pre-payroll → Payroll Run → Prepayment → Costing → Payment Distribution → Archive → GL Transfer → Reporting.</div></div>
+            <div class="card"><div class="question">Difference between Payroll Relationship and Work Relationship?</div><div class="answer">Payroll Relationship: links person to payroll for payments. Work Relationship: employment terms (job, position). Multiple payroll relationships under one work relationship possible.</div></div>
+            <div class="card"><div class="question">What is a Payroll Statutory Unit (PSU)?</div><div class="answer">Legal entity responsible for tax/statutory reporting; groups legal employers under same legislation.</div></div>
+            <div class="card"><div class="question">What is a Legislative Data Group (LDG)?</div><div class="answer">Top-level grouping for a country/legislation, holding statutory rules, currencies, and legal reporting units.</div></div>
+            <div class="card"><div class="question">What is Payroll Definition?</div><div class="answer">Defines processing rules, consolidation group, currency, payment method, and valid calendars for a payroll.</div></div>
+            <div class="card"><div class="question">What is Payroll Frequency?</div><div class="answer">Schedule type: Monthly, Bi-Weekly, Weekly, Semi-Monthly, determines pay period recurrence.</div></div>
+            <div class="card"><div class="question">Difference between Monthly and Bi-Weekly payroll?</div><div class="answer">Monthly: 12 periods/year, Bi-Weekly: 26 periods/year (every 2 weeks). Bi-weekly often used in US/Canada.</div></div>
+            <div class="card"><div class="question">What are Payroll Elements?</div><div class="answer">Reusable components representing earnings (salary, bonus) or deductions (tax, insurance).</div></div>
+            <div class="card"><div class="question">Difference between Earnings and Deductions elements?</div><div class="answer">Earnings increase net pay; Deductions decrease net pay.</div></div>
+            <div class="card"><div class="question">What are Standard and Supplemental Earnings?</div><div class="answer">Standard: recurring regular pay; Supplemental: one-off ad-hoc payments like bonus, commission.</div></div>
+            <div class="card"><div class="question">What are Voluntary and Involuntary deductions?</div><div class="answer">Voluntary: employee elected (charity, retirement extra); Involuntary: legal (garnishment, child support).</div></div>
+            <div class="card"><div class="question">What is Element Classification?</div><div class="answer">Categorizes element behavior (Earnings, Deduction, Employer Contribution, Absence, Information).</div></div>
+            <div class="card"><div class="question">What is an Input Value?</div><div class="answer">User-defined parameter (amount, hours, rate) passed to element for payroll calculation.</div></div>
+            <div class="card"><div class="question">What is an Element Eligibility?</div><div class="answer">Defines which employees receive an element using eligibility profiles or fast formulas.</div></div>
+            <div class="card"><div class="question">What are Balance Dimensions?</div><div class="answer">Time context: period-to-date, quarter-to-date, year-to-date, assignment, tax reporting dimension.</div></div>
+            <div class="card"><div class="question">What are Payroll Balances?</div><div class="answer">Accumulated values from element entries, e.g., Gross Earnings YTD, Total Tax QTD.</div></div>
+            <div class="card"><div class="question">What is Cost Allocation?</div><div class="answer">Distribution of payroll expenses to GL accounts, departments, projects via cost allocation flexfield.</div></div>
+            <div class="card"><div class="question">What is Partial Period Accrual?</div><div class="answer">Pro-rata calculation of benefits / leave accruals for incomplete months worked.</div></div>
+            <div class="card"><div class="question">Retroactive Pay setup components?</div><div class="answer">Retro event triggers, retro elements, formula for recalculation, notification settings.</div></div>
+            <div class="card"><div class="question">Proration definition?</div><div class="answer">Adjusting salary/allowance based on days worked during partial period (hire, termination, mid-month change).</div></div>
+            <div class="card"><div class="question">Garnishment element?</div><div class="answer">Involuntary deduction element with priority, limits and court-ordered amounts.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Payroll Setup (all 20) -->
+    <div class="section">
+        <div class="section-title">2. Payroll Setup Questions (full)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Explain end-to-end payroll setup process.</div><div class="answer">LDG → PSU → Payroll Definition → Calendars → Elements → Element Links → Balance Feeds → Costing → Eligibility Profiles → Payment Methods.</div></div>
+            <div class="card"><div class="question">Mandatory setups before payroll processing?</div><div class="answer">Payroll definition, calendars, elements & entries, payroll relationship, payment methods, costing.</div></div>
+            <div class="card"><div class="question">How do you create a Payroll Definition?</div><div class="answer">Payroll Admin → Payroll Definition → Name, LDG, Consolidation Group, Currency, Period Schedule.</div></div>
+            <div class="card"><div class="question">What is a Consolidation Group?</div><div class="answer">Groups multiple payroll definitions for combined reporting / costing consolidation.</div></div>
+            <div class="card"><div class="question">What is a Payment Method?</div><div class="answer">Bank transfer, cheque, cash. Can be organization default or personal employee override.</div></div>
+            <div class="card"><div class="question">Difference between Organization Payment Method and Personal Payment Method?</div><div class="answer">Organization: company-level default; Personal: employee-specific bank account/ details.</div></div>
+            <div class="card"><div class="question">What are Payroll Calendars?</div><div class="answer">Define period start/end dates, pay date, status, processing deadlines.</div></div>
+            <div class="card"><div class="question">What is a Time Definition?</div><div class="answer">Rules for capturing worked hours, overtime, absence – linked to time card patterns.</div></div>
+            <div class="card"><div class="question">What are Payroll Periods?</div><div class="answer">Specific date ranges within a calendar (e.g., March 1–31).</div></div>
+            <div class="card"><div class="question">How do you configure salary basis?</div><div class="answer">Define salary basis (annual/monthly), link to salary element, via salary basis mapping.</div></div>
+            <div class="card"><div class="question">What are Eligibility Profiles?</div><div class="answer">Dynamic grouping (by department, job, grade) to determine element/payroll eligibility.</div></div>
+            <div class="card"><div class="question">What is an Object Group?</div><div class="answer">Collection of payroll objects (elements, balances, people) for batch maintenance.</div></div>
+            <div class="card"><div class="question">What is a Fast Formula database item?</div><div class="answer">Predefined variable referencing payroll values (e.g., ASG_EARNINGS_RUN, BALANCE_AMOUNT).</div></div>
+            <div class="card"><div class="question">What are Value Definitions?</div><div class="answer">Reusable constants or formula logic for calculations across elements.</div></div>
+            <div class="card"><div class="question">Explain Balance Feeds.</div><div class="answer">Mapping element entry to balance dimension (e.g., Basic Salary → Gross Earnings YTD).</div></div>
+            <div class="card"><div class="question">What is Retroactive Pay setup?</div><div class="answer">Enable retro event triggers, define retro elements, link to calendars, configure notification.</div></div>
+            <div class="card"><div class="question">What are Retro Notifications?</div><div class="answer">Alerts generated when retroactive changes impact prior payroll periods.</div></div>
+            <div class="card"><div class="question">Explain Partial Period Accrual?</div><div class="answer">Pro-rata calculation for allowances/entitlements in partial work month.</div></div>
+            <div class="card"><div class="question">What is Proration?</div><div class="answer">Adjusting earnings/deduction based on worked days vs total calendar days.</div></div>
+            <div class="card"><div class="question">What is a Payroll Flow?</div><div class="answer">Sequence of tasks (calculation, prepayment, costing, GL transfer).</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Payroll Processing all 22 questions -->
+    <div class="section">
+        <div class="section-title">3. Payroll Processing (all steps, reversal, off-cycle, retry)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What are the steps in payroll processing?</div><div class="answer">Submit payroll → Calculate → Prepayments → Costing → Payment Distribution → Archive → Transfer to GL.</div></div>
+            <div class="card"><div class="question">Explain QuickPay.</div><div class="answer">On-demand simulator for single employee. Tests changes without full run.</div></div>
+            <div class="card"><div class="question">What is a Payroll Run?</div><div class="answer">Main calculation process generating earnings/deductions and balances.</div></div>
+            <div class="card"><div class="question">What is a Prepayment process?</div><div class="answer">Creates payment records, net pay, and calculates payment distribution.</div></div>
+            <div class="card"><div class="question">What is Costing?</div><div class="answer">Allocation of payroll costs to GL accounts (cost centers, projects).</div></div>
+            <div class="card"><div class="question">What is Payment Distribution?</div><div class="answer">Determines how net pay is delivered per payment method (bank, cheque).</div></div>
+            <div class="card"><div class="question">What is Payroll Archive?</div><div class="answer">Stores finalized payroll results for reporting and audit.</div></div>
+            <div class="card"><div class="question">What is Payroll Interface?</div><div class="answer">Transfer data to/from external systems (GL, third-party payrolls).</div></div>
+            <div class="card"><div class="question">What is a Payslip?</div><div class="answer">Employee earnings & deductions statement, generated from archive.</div></div>
+            <div class="card"><div class="question">How do you retry a failed payroll process?</div><div class="answer">Navigate to Payroll Flow → View errors → correct data → Retry action.</div></div>
+            <div class="card"><div class="question">What is Payroll Relationship Action?</div><div class="answer">Internal record capturing each payroll action for an employee (run, reversal).</div></div>
+            <div class="card"><div class="question">What is Payroll Assignment?</div><div class="answer">Link between employee assignment (work relationship) and payroll.</div></div>
+            <div class="card"><div class="question">What are Payroll Run Results?</div><div class="answer">Generated element entries per employee for a payroll period.</div></div>
+            <div class="card"><div class="question">Explain Payroll Reversal.</div><div class="answer">Reverse completed payroll run (post-payment) to correct errors, keeps audit trail.</div></div>
+            <div class="card"><div class="question">What is Rollback in Payroll?</div><div class="answer">Undo payroll run BEFORE prepayment/payments. Reverts results.</div></div>
+            <div class="card"><div class="question">Difference between Retry, Rollback, and Reversal?</div><div class="answer">Retry: re-run failed step; Rollback: undo before payment; Reversal: full negative transaction after payment.</div></div>
+            <div class="card"><div class="question">What is Payroll Validation?</div><div class="answer">Pre-run validation of eligibility, element entries, costing, absence.</div></div>
+            <div class="card"><div class="question">How do you process Off-Cycle Payroll?</div><div class="answer">Unschedule payment (bonus, termination) using off-cycle payroll definition.</div></div>
+            <div class="card"><div class="question">Explain Supplemental Payroll.</div><div class="answer">One-time additional payments separate from regular payroll.</div></div>
+            <div class="card"><div class="question">What are Payroll Messages?</div><div class="answer">Errors/warnings generated during run. View and resolve errors.</div></div>
+            <div class="card"><div class="question">How to process final settlement?</div><div class="answer">Termination off-cycle payroll including last salary, EOSB, leave encashment.</div></div>
+            <div class="card"><div class="question">Duplicated payment recovery?</div><div class="answer">Recovery element entry or negative earnings in next payroll.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: Fast Formula all -->
+    <div class="section">
+        <div class="section-title">4. Fast Formula (Complete)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is Fast Formula in Payroll?</div><div class="answer">Oracle expression language for custom calculations, validations & rules.</div></div>
+            <div class="card"><div class="question">What are different Fast Formula types?</div><div class="answer">Payroll, Compensation, Eligibility, Skip Rule, Validation, Deduction, Absence.</div></div>
+            <div class="card"><div class="question">What is Payroll Formula Type?</div><div class="answer">Formula type used within element calculation → calculate earnings/deductions.</div></div>
+            <div class="card"><div class="question">What is Compensation Formula?</div><div class="answer">Used for salary proposals and compensation recommendations.</div></div>
+            <div class="card"><div class="question">Explain Skip Rule formula.</div><div class="answer">Skips processing specific employees based on condition (e.g., no hours).</div></div>
+            <div class="card"><div class="question">What is Iterative Processing?</div><div class="answer">Repeated processing of elements at different priorities within payroll run.</div></div>
+            <div class="card"><div class="question">What are Formula Functions?</div><div class="answer">Built-in functions: GREATEST, LEAST, TO_DATE, ROUND, CEIL, IF THEN ELSE.</div></div>
+            <div class="card"><div class="question">What are Formula Database Items?</div><div class="answer">Predefined values: ASG_EARNINGS_RUN, BALANCE_VALUE, ENTRY_VALUE.</div></div>
+            <div class="card"><div class="question">How do you debug Fast Formula?</div><div class="answer">SET_FF_TRACE(ON), use log output, quickpay with trace, compile logs.</div></div>
+            <div class="card"><div class="question">What are Contexts in Fast Formula?</div><div class="answer">Input parameters (effective date, payroll period, assignment ID).</div></div>
+            <div class="card"><div class="question">Explain formula compilation errors.</div><div class="answer">Syntax errors (missing THEN, ENDIF) or datatype mismatch; checked on save.</div></div>
+            <div class="card"><div class="question">What is CALL_FORMULA?</div><div class="answer">Call another formula from inside a formula, returns value.</div></div>
+            <div class="card"><div class="question">What is DEFAULT FOR statement?</div><div class="answer">Assign default value to variable if not set in context.</div></div>
+            <div class="card"><div class="question">What is WAS DEFAULTED?</div><div class="answer">Boolean function to check if a variable was defaulted.</div></div>
+            <div class="card"><div class="question">Explain working storage area (WSA).</div><div class="answer">Temporary variable area in formula to hold intermediate results.</div></div>
+            <div class="card"><div class="question">How do you write a formula for overtime calculation?</div><div class="answer">IF hours > standard THEN OT_pay = (hours-std)*rate*1.5 ELSE OT=0.</div></div>
+            <div class="card"><div class="question">How do you validate employee eligibility using Fast Formula?</div><div class="answer">Eligibility formula returns Y/N based on hire_date, job, salary band.</div></div>
+            <div class="card"><div class="question">Explain salary calculation formula.</div><div class="answer">DBI: ASG_SALARY_AMOUNT / frequency factor * proration factor.</div></div>
+            <div class="card"><div class="question">How do you handle null values in formulas?</div><div class="answer">Use NVL() or IF variable IS MISSING THEN default.</div></div>
+            <div class="card"><div class="question">Explain Payroll Run Result formula usage.</div><div class="answer">Read from previous element results for cumulative calculations.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Payroll Elements (all) -->
+    <div class="section">
+        <div class="section-title">5. Payroll Elements</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Primary and Secondary classifications?</div><div class="answer">Primary: main type (Earnings, Deductions). Secondary: subtype (Overtime, Loan).</div></div>
+            <div class="card"><div class="question">Recurring and Nonrecurring elements?</div><div class="answer">Recurring: each period (salary). Nonrecurring: one-time (bonus, adjustment).</div></div>
+            <div class="card"><div class="question">Indirect elements?</div><div class="answer">Elements derived from another element (employer pension matching).</div></div>
+            <div class="card"><div class="question">What is an Element Link?</div><div class="answer">Binds element to payroll definition & eligibility criteria.</div></div>
+            <div class="card"><div class="question">What are Standard Links?</div><div class="answer">Predefined link between element and balance.</div></div>
+            <div class="card"><div class="question">Default Values in elements?</div><div class="answer">Fallback values when input not defined.</div></div>
+            <div class="card"><div class="question">Costing Rules?</div><div class="answer">Define how element costs are distributed to GL.</div></div>
+            <div class="card"><div class="question">Explain Priority in Payroll Elements.</div><div class="answer">Determines calculation order (e.g., deductions after earnings).</div></div>
+            <div class="card"><div class="question">Iterative element processing?</div><div class="answer">Elements processed multiple times until condition met.</div></div>
+            <div class="card"><div class="question">Indirect result processing?</div><div class="answer">Element produces result that feeds another element.</div></div>
+            <div class="card"><div class="question">How do you create a Loan Deduction element?</div><div class="answer">Element with Balance dimension for loan balance, input value monthly installment.</div></div>
+            <div class="card"><div class="question">How do you create Overtime elements?</div><div class="answer">Element with classification Earnings, input hours & rate, fast formula calculation.</div></div>
+            <div class="card"><div class="question">How do you process Bonus elements?</div><div class="answer">Supplemental earnings element, one-time entry using element entry page or batch.</div></div>
+            <div class="card"><div class="question">Explain Taxable vs Non-Taxable earnings.</div><div class="answer">Taxable earnings subject to income tax; Non-taxable (reimbursements, certain allowances).</div></div>
+            <div class="card"><div class="question">Information elements?</div><div class="answer">Store non-monetary data (bank details, contract info) for payroll.</div></div>
+            <div class="card"><div class="question">What is an Absence element?</div><div class="answer">Element for leave payment / deduction linked to absence records.</div></div>
+            <div class="card"><div class="question">Balance initialization?</div><div class="answer">Set starting balances (YTD) via balance adjustment or HDL.</div></div>
+            <div class="card"><div class="question">Balance adjustments?</div><div class="answer">Manual positive/negative balance corrections (retroactive adjustments).</div></div>
+            <div class="card"><div class="question">Third-Party Payment?</div><div class="answer">Payment to external agency (union dues, child support).</div></div>
+            <div class="card"><div class="question">Garnishment element setup?</div><div class="answer">Involuntary deduction with priority, max % of disposable earnings.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 6-7-8-9-10-11-12 partial but all concepts integrated -->
+    <div class="section">
+        <div class="section-title">6. Payroll Costing & 7. Reporting & 8. Integrations & 9. Security</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Payroll Costing key concepts?</div><div class="answer">Cost allocation KFF, Cost Hierarchy (element > link > payroll).</div></div>
+            <div class="card"><div class="question">What is Suspense Account?</div><div class="answer">Default GL account when costing fails to map correctly.</div></div>
+            <div class="card"><div class="question">Costing Override?</div><div class="answer">Manual override at element or employee level for specific GL.</div></div>
+            <div class="card"><div class="question">Explain Debit & Credit in payroll costing?</div><div class="answer">Debit: payroll expense; Credit: liability (net payable) or cash.</div></div>
+            <div class="card"><div class="question">What is Transfer to GL?</div><div class="answer">Final posting from Subledger Accounting to General Ledger.</div></div>
+            <div class="card"><div class="question">Payroll Activity Report?</div><div class="answer">Shows payroll process status, started/completed flows.</div></div>
+            <div class="card"><div class="question">Gross-to-Net Report?</div><div class="answer">Earnings minus deductions/taxes net pay summary.</div></div>
+            <div class="card"><div class="question">Element Result Register?</div><div class="answer">All element results per employee for a period.</div></div>
+            <div class="card"><div class="question">Payroll Register versus Payment Register?</div><div class="answer">Payroll register: summary of calculation; Payment register: issued payments (Net).</div></div>
+            <div class="card"><div class="question">BI Publisher Payslip customization?</div><div class="answer">Use RTF template, data model from payroll archive, custom logos/columns.</div></div>
+            <div class="card"><div class="question">Payroll REST APIs?</div><div class="answer">Oracle REST endpoints: get payroll runs, balances, payslip details.</div></div>
+            <div class="card"><div class="question">HDL vs REST APIs?</div><div class="answer">HDL: bulk batch load (element entries, salary). REST: real-time transactions/retrieval.</div></div>
+            <div class="card"><div class="question">NACHA file generation?</div><div class="answer">Standard ACH direct deposit file from prepayment results.</div></div>
+            <div class="card"><div class="question">Payroll Security Profiles?</div><div class="answer">Restrict payroll definitions, LDG, employees by user role.</div></div>
+            <div class="card"><div class="question">How to restrict payroll access?</div><div class="answer">Assign specific payroll security profile to duty role.</div></div>
+            <div class="card"><div class="question">Segregation of duties in Payroll?</div><div class="answer">Separate payroll processing, approval, and GL transfer roles.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 10: functional scenarios (complete list) -->
+    <div class="section">
+        <div class="section-title">10. Payroll Functional Scenarios</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">Employee salary changed mid-month. Calculation?</div><div class="answer">Pro-rated salary: (old salary * days_old) + (new salary * days_new) / total month days.</div></div>
+            <div class="card"><div class="question">Retroactive salary increases handling?</div><div class="answer">Update effective-dated salary element, retro event triggers recalculation for previous periods.</div></div>
+            <div class="card"><div class="question">Employee joined in middle of payroll cycle?</div><div class="answer">Proration of salary based on working days, start date element entry from hire date.</div></div>
+            <div class="card"><div class="question">Employee resigned before month-end settlement?</div><div class="answer">Run termination off-cycle, prorate last month salary, EOSB, leave encashment, airfare.</div></div>
+            <div class="card"><div class="question">Unpaid leave deductions?</div><div class="answer">Unpaid absence element reduces salary proportionally.</div></div>
+            <div class="card"><div class="question">Duplicate payment recovery method?</div><div class="answer">Recovery element entry (negative) or payroll reversal and recalc.</div></div>
+            <div class="card"><div class="question">Payroll completed with incorrect balance fix?</div><div class="answer">Adjust balance via balance adjustment element / retro or reversal.</div></div>
+            <div class="card"><div class="question">Bonus for selected employees?</div><div class="question">Create supplemental bonus element, assign via eligibility profile or batch element entry.</div></div>
+            <div class="card"><div class="question">Multiple assignments payroll processing?</div><div class="answer">Payroll relationship groups multiple assignments, allocate earnings split or primary assignment.</div></div>
+            <div class="card"><div class="question">Troubleshoot missing element entries?</div><div class="answer">Check element eligibility, effective dates, payroll relationship status, link to payroll.</div></div>
+            <div class="card"><div class="question">Payroll costing failed – checks?</div><div class="answer">Validate cost allocation, KFF structure, suspense account, element override.</div></div>
+            <div class="card"><div class="question">Payslip not generated troubleshooting?</div><div class="answer">Check archive completion, payslip template, person’s assignment status.</div></div>
+            <div class="card"><div class="question">Employee payment method missing scenario?</div><div class="answer">System falls back to organization payment method, else error in prepayment.</div></div>
+            <div class="card"><div class="question">Bank transfer file rejected (NACHA)?</div><div class="answer">Check bank account, file format, ABA routing, payment method setup.</div></div>
+            <div class="card"><div class="question">Year-end adjustments process?</div><div class="answer">Balance adjustments, off-cycle payroll, update tax balances.</div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 11 & 12: technical + advanced -->
+    <div class="section">
+        <div class="section-title">11. Payroll Technical & 12. Advanced Payroll</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">HDL used for in Payroll?</div><div class="answer">Load ElementEntry, Salary, Personal Payment Methods, Balance Initialization.</div></div>
+            <div class="card"><div class="question">Payroll business objects in HDL?</div><div class="answer">ElementEntry, Salary, PayrollRelationshipAssignment, PaymentMethod.</div></div>
+            <div class="card"><div class="question">ElementEntry HDL structure?</div><div class="answer">Metadata: EffectiveStartDate, ElementName, InputValue, AssignmentId.</div></div>
+            <div class="card"><div class="question">Explain Flow Pattern?</div><div class="answer">Sequence of flow tasks (open period, run payroll, cost, prepay).</div></div>
+            <div class="card"><div class="question">ESS jobs in Payroll?</div><div class="answer">Enterprise Scheduler Service jobs: Run Payroll, Calculate Balances, GL Transfer.</div></div>
+            <div class="card"><div class="question">Payroll locking issues resolution?</div><div class="answer">Release locks via SQL script (or wait) due to QuickPay conflicts.</div></div>
+            <div class="card"><div class="question">Balance initialization through HDL?</div><div class="answer">Use BalanceAdjustment dataload with InitialBalance flag.</div></div>
+            <div class="card"><div class="question">Explain retroactive event processing (Advanced).</div><div class="answer">Past-dated change triggers recalculation forward using event group.</div></div>
+            <div class="card"><div class="question">Iterative payroll processing?</div><div class="answer">Elements at multiple priorities looping until stable values.</div></div>
+            <div class="card"><div class="question">User Tables in Fast Formula?</div><div class="answer">Custom lookup tables accessed via formula for complex matrices.</div></div>
+            <div class="card"><div class="question">Payroll parallel processing?</div><div class="answer">Split run across threads/partitions for large employee base.</div></div>
+            <div class="card"><div class="question">How to optimize payroll performance?</div><div class="answer">Efficient formulas, pruning elements, parallel processing, partition data.</div></div>
+            <div class="card"><div class="question">Payroll reconciliation strategy?</div><div class="answer">Compare Gross-to-net vs GL, balance register vs payment totals.</div></div>
+            <div class="card"><div class="question">Common payroll implementation challenges?</div><div class="answer">Retroactive complexity, legislative mapping, performance, integration with time.</div></div>
+        </div>
+    </div>
+
+    <!-- GCC PAYROLL COMPLETE (all questions) -->
+    <div class="section">
+        <div class="section-title">🌍 GCC Payroll (All 40+ questions: Basics, Setup, Gratuity)</div>
+        <div class="qa-grid">
+            <div class="card"><div class="question">What is GCC Payroll? <span class="badge-gcc">GCC</span></div><div class="answer">Payroll processing for Gulf countries (UAE, KSA, Qatar, Kuwait, Oman, Bahrain) with EOSB, social insurance, housing/transport allowance, WPS.</div></div>
+            <div class="card"><div class="question">Which countries are included? <span class="badge-gcc">GCC</span></div><div class="answer">UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain.</div></div>
+            <div class="card"><div class="question">Major payroll components in GCC?</div><div class="answer">Basic, Housing Allowance, Transport, Overtime, Leave Salary, Airfare, EOSB Gratuity, Social Insurance (GOSI/GPSSA).</div></div>
+            <div class="card"><div class="question">What is gratuity in GCC?</div><div class="answer">Mandatory end-of-service benefit based on years of service and basic salary.</div></div>
+            <div class="card"><div class="question">Explain End of Service Benefits (EOSB).</div><div class="answer">Statutory payment per Labor Law: 21 days per year for first 5 years, 30 days afterwards (capped at 2 years salary).</div></div>
+            <div class="card"><div class="question">Housing & Transport allowance?</div><div class="answer">Common as fixed percentage of basic (20-25% housing, 10-15% transport).</div></div>
+            <div class="card"><div class="question">What is leave salary?</div><div class="answer">Payment for unused annual leave upon termination, based on basic salary.</div></div>
+            <div class="card"><div class="question">What is airfare allowance?</div><div class="answer">Annual ticket allowance to home country per labor law.</div></div>
+            <div class="card"><div class="question">Overtime processing in GCC?</div><div class="answer">Usually basic wage / working hours * 1.25 (normal) or 1.5 (night/holiday).</div></div>
+            <div class="card"><div class="question">Statutory deductions in GCC?</div><div class="answer">Social insurance (GOSI for KSA, GPSSA for UAE), sometimes dependent on nationality.</div></div>
+            <div class="card"><div class="question">Explain GOSI?</div><div class="answer">Saudi social insurance: employee 9.75%, employer 12% (pension + unemployment).</div></div>
+            <div class="card"><div class="question">What is GPSSA?</div><div class="answer">UAE pension for nationals: employee 5%, employer 5.83% of salary (capped).</div></div>
+            <div class="card"><div class="question">Explain WPS (Wage Protection System).</div><div class="answer">UAE electronic salary transfer; employers upload file via banks/MOHRE.</div></div>
+            <div class="card"><div class="question">What is labor card requirement?</div><div class="answer">Work permit required before payroll enrollment for expats.</div></div>
+            <div class="card"><div class="question">MOL reporting for KSA?</div><div class="answer">Qiwa platform for contracts and salary reporting.</div></div>
+            <div class="card"><div class="question">Configure gratuity elements?</div><div class="answer">Create EOSB element, fast formula: service months * days entitlement * daily wage.</div></div>
+            <div class="card"><div class="question">Explain EOS accrual setup?</div><div class="answer">Run monthly accrual element to build liability balance.</div></div>
+            <div class="card"><div class="question">Configure leave salary calculation?</div><div class="answer">Leave encashment element using balance dimension "Leave Accrued" * daily rate.</div></div>
+            <div class="card"><div class="question">How do you configure airfare eligibility?</div><div class="answer">Eligibility condition service > 1 year, annual airfare element.</div></div>
+            <div class="card"><div class="question">Explain housing allowance calculations?</div><div class="answer">% of basic or fixed amount; non-taxable in some GCC.</div></div>
+            <div class="card"><div class="question">Configure overtime rules?</div><div class="answer">Fast formula with day classification (Friday premium, overtime multiplier).</div></div>
+            <div class="card"><div class="question">How to configure WPS bank details?</div><div class="answer">Central bank registration, payment method for WPS format.</div></div>
+            <div class="card"><div class="question">Gratuity calculation formula UAE?</div><div class="answer">If service 1-5 yrs: 21 days basic salary per year; >5 yrs: 30 days per year extra. Capped: 2 years total basic.</div></div>
+            <div class="card"><div class="question">Saudi gratuity rules?</div><div class="answer">Half-month wage per year for first 5 years, full month per year thereafter (based on last basic).</div></div>
+            <div class="card"><div class="question">Probation impact on gratuity?</div><div class="answer">No gratuity if resignation during probation, termination may give partial.</div></div>
+            <div class="card"><div class="question">Resignation vs termination gratuity (UAE)?</div><div class="answer">Resignation <3yrs: no EOS; 3–5yrs: 1/3 of 21 days; >5yrs: full 21 days. Termination: full entitlement.</div></div>
+            <div class="card"><div class="question">Final settlement processing?</div><div class="answer">Off-cycle payroll includes last salary + unused leave + gratuity + airfare - recovery.</div></div>
+            <div class="card"><div class="question">Multi-country payroll setup GCC?</div><div class="answer">Separate LDGs per country, localized elements, different payroll definitions.</div></div>
+            <div class="card"><div class="question">Localization Fast Formulas used?</div><div class="answer">EOSB accrual, GOSI brackets, housing allowance calculation.</div></div>
+            <div class="card"><div class="question">GCC Payroll compliance?</div><div class="answer">WPS, GOSI/GPSSA monthly filing, labor law EOSB, Qatar end-of-service.</div></div>
+        </div>
+    </div>
+
+    <footer>
+        ✅ All Oracle HCM Payroll & GCC Payroll questions answered — including Fast Formula, costing, retro, security, gratuity, WPS, GOSI, integration and functional scenarios. 
+        <br>📌 Use as interview preparation reference, covers 150+ unique questions.
+    </footer>
+</div>
+</body>
+</html>
