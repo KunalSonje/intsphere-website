@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Oracle HCM Absence Management — 100 Interview Q&A | IntSphere</title>
+<meta name="description" content="IntSphere — 100 Oracle HCM Absence Management Interview Questions with detailed answers">
+<style>
+:root {
+  --primary: #0891b2;
+  --primary-dark: #0e7490;
+  --primary-light: #e0f2fe;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f8fafc;
+  --bg-white: #ffffff;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-hover: 0 4px 12px rgba(8,145,178,0.15), 0 8px 32px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-dark); }
+
+/* HEADER */
+#mainHeader { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+.header-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 68px; display: flex; align-items: center; gap: 2rem; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-text { font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+.logo-tagline { display: flex; gap: 5px; margin-top: -2px; }
+.logo-tagline span { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1px 5px; }
+#mainNav { display: flex; align-items: center; gap: 0.2rem; margin-left: auto; flex-wrap: wrap; }
+#mainNav a { font-size: 0.88rem; font-weight: 500; color: var(--text); padding: 6px 12px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+#mainNav a:hover { background: var(--primary-light); color: var(--primary-dark); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; cursor: pointer; border: none; transition: all 0.18s; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(8,145,178,0.3); }
+
+/* LAYOUT */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* PAGE BANNER */
+.page-banner { position: relative; background: linear-gradient(135deg, #0c4a6e 0%, #0891b2 55%, #06b6d4 100%); padding: 4.5rem 0 3.5rem; overflow: hidden; color: white; }
+.page-banner-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 36px 36px; pointer-events: none; }
+.page-banner .container { position: relative; z-index: 1; }
+.page-banner h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.04em; margin: 0.6rem 0 0.8rem; line-height: 1.15; }
+.page-banner p { font-size: 1.05rem; opacity: 0.88; max-width: 680px; line-height: 1.65; }
+.section-label-pill { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; background: rgba(255,255,255,0.14); color: #a5f3fc; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 0.8rem; }
+.stat-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.4rem; }
+.stat-pill { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 30px; padding: 5px 14px; font-size: 0.78rem; font-weight: 600; color: #e0f2fe; }
+.stat-pill i { font-size: 0.72rem; }
+
+/* SECTION DIVIDER */
+.section-divider { height: 1px; background: var(--border); max-width: 1280px; margin: 0 auto; }
+
+/* QA SECTION */
+.qa-block { padding: 2.5rem 0; }
+.qa-section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 1.4rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--border); }
+.qa-section-num { background: var(--primary); color: white; border-radius: 8px; min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; padding: 0 8px; }
+.qa-section-label { font-size: 1.08rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+.qa-section-count { margin-left: auto; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+
+/* QA GRID */
+.qa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
+
+/* QA CARD */
+.qa-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s; box-shadow: var(--shadow); }
+.qa-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: #bae6fd; }
+.qa-card-question { background: #f0f9ff; border-bottom: 1px solid #bae6fd; padding: 12px 16px; font-size: 0.88rem; font-weight: 600; color: var(--primary-dark); display: flex; align-items: baseline; gap: 9px; line-height: 1.45; }
+.q-num { background: var(--primary); color: white; border-radius: 4px; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; flex-shrink: 0; letter-spacing: 0.04em; font-family: 'Consolas', monospace; }
+.qa-card-answer { padding: 13px 16px 15px; font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+.qa-card-answer strong { color: var(--text); font-weight: 600; }
+.qa-card-answer ul { padding-left: 1.3rem; margin: 0.5rem 0; display: flex; flex-direction: column; gap: 4px; }
+.qa-card-answer li { line-height: 1.55; }
+.qa-card-answer code { font-family: 'Consolas', 'Courier New', monospace; font-size: 0.82rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 1px 5px; color: #0e7490; }
+.qa-card-answer .formula { font-family: 'Consolas', 'Courier New', monospace; font-size: 0.81rem; background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 10px 14px; margin-top: 8px; line-height: 1.7; display: block; overflow-x: auto; }
+.qa-card-answer .formula .kw { color: #7dd3fc; }
+.qa-card-answer .formula .cm { color: #64748b; }
+.qa-card-answer .formula .vl { color: #86efac; }
+
+/* INFO BOX */
+.info-box { background: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 1.4rem; font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+.info-box i { color: var(--primary); margin-right: 6px; }
+.info-box strong { color: var(--primary-dark); }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, var(--primary) 0%, #0e7490 100%); border-radius: 20px; padding: 3rem 2.5rem; text-align: center; color: white; }
+.cta-section h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.03em; }
+.cta-section p { opacity: 0.88; margin-bottom: 1.6rem; font-size: 1rem; }
+
+/* FOOTER */
+footer { background: #0f172a; color: #94a3b8; padding: 3.5rem 0 1.5rem; margin-top: 3rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+.footer-logo-text { font-size: 1.5rem; font-weight: 800; color: #e2e8f0; letter-spacing: -0.03em; display: block; margin-bottom: 0.7rem; }
+.footer-section p { font-size: 0.88rem; line-height: 1.65; }
+.footer-section h3 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e2e8f0; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.footer-links a { font-size: 0.87rem; color: #94a3b8; transition: color 0.15s; }
+.footer-links a:hover { color: #38bdf8; }
+.footer-links li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.87rem; }
+.footer-links li i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+.footer-bottom { border-top: 1px solid #1e293b; padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: #475569; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .page-banner h1 { font-size: 1.9rem; }
+  #mainNav { display: none; }
+  .qa-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-text">IntSphere</span>
+      <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+    </a>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="hcm.html"><i class="fas fa-users" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>HCM Services</a>
+      <a href="payforge.html"><i class="fas fa-file-invoice-dollar" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>PayForge</a>
+      <a href="ai.html"><i class="fas fa-brain" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>AI Solutions</a>
+      <a href="about.html">About</a>
+      <a href="#" class="btn btn-primary" style="padding:9px 20px;font-size:0.86rem;margin-left:0.4rem;">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<div style="padding-top:68px">
+
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <div class="page-banner-grid"></div>
+  <div class="container">
+    <div class="section-label-pill">Oracle HCM · Absence Management · Interview Preparation</div>
+    <h1>100 Absence Management<br>Interview Questions</h1>
+    <p>Deep-dive Q&amp;A covering accrual formulas, absence plans, balances, payroll integration, fast formulas, validation, statutory leaves, OTBI reporting, troubleshooting, and real-world scenarios. AI generated — for reference only.</p>
+    <div class="stat-pills">
+      <span class="stat-pill"><i class="fas fa-circle-check"></i> 100 Questions</span>
+      <span class="stat-pill"><i class="fas fa-layer-group"></i> 10 Sections</span>
+      <span class="stat-pill"><i class="fas fa-code"></i> Fast Formula Examples</span>
+      <span class="stat-pill"><i class="fas fa-scale-balanced"></i> FMLA &amp; Statutory</span>
+      <span class="stat-pill"><i class="fas fa-wrench"></i> Troubleshooting</span>
+      <span class="stat-pill"><i class="fas fa-bullseye"></i> Scenario-Based</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 1: CORE CONCEPTS (1–10)
+══════════════════════════════════════ -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">01</div>
+        <div class="qa-section-label">Core Concepts &amp; Definitions</div>
+        <div class="qa-section-count">Q 1–10</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">1</span>What is Oracle Absence Management and how does it integrate with HCM?</div>
+          <div class="qa-card-answer">Oracle Absence Management is the leave and time-off automation module within Oracle Fusion HCM Cloud. It handles the complete lifecycle of employee absences — from initial request submission through approval workflows, balance accrual, balance consumption, and final payroll impact — without any manual re-entry.
+            <ul>
+              <li><strong>Payroll Integration:</strong> Approved paid absences automatically create earnings element entries; unpaid absences create deduction entries. Both are picked up in the standard payroll run.</li>
+              <li><strong>Time &amp; Labor Integration:</strong> If employees use time cards, Oracle compares scheduled hours against actual worked hours to identify absences and post them automatically.</li>
+              <li><strong>Benefits Integration:</strong> Leave periods such as maternity leave can pause or modify benefit elections and premium deductions during the absence duration.</li>
+              <li><strong>Core HR Integration:</strong> The module reads work assignments, employment type, grade, department, and manager hierarchy directly from Core HR — no duplicate data entry needed.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">2</span>Explain the difference between an Absence Plan and an Absence Type.</div>
+          <div class="qa-card-answer"><strong>Absence Plan</strong> is the policy framework — it defines how leave is earned (accrual method and formula), how much can be accumulated (entitlement cap), what happens to unused leave (carryover rules), how it interacts with payroll (element link), and which employees are eligible (enrollment criteria). It is the "engine" behind a leave category.
+            <br><br>
+            <strong>Absence Type</strong> is the specific, employee-facing label that appears in self-service — for example "Annual Leave," "Sick Leave," or "Emergency Leave." Multiple Types can belong to one Plan. Each Type can have its own certification requirement, approval routing, and validation rules while inheriting the Plan's accrual and balance logic.
+            <br><br>
+            Practical example: a single "Vacation Plan" might contain three Types — <em>Paid Annual Leave</em> (full salary), <em>Unpaid Annual Leave</em> (no pay), and <em>Annual Leave Advance</em> (drawing future accruals). All three share one balance and one accrual formula but behave differently at the payroll level.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">3</span>What are the main absence classifications in Oracle?</div>
+          <div class="qa-card-answer">Oracle provides the following standard classifications, each with pre-configured default behaviours:
+            <ul>
+              <li><strong>Vacation:</strong> Paid annual leave — supports accruals, carryover, and encashment at termination.</li>
+              <li><strong>Illness/Sick:</strong> Can be paid (full or partial salary) or unpaid; typically requires medical certification beyond a threshold.</li>
+              <li><strong>Maternity/Paternity:</strong> Statutory parental leave with tiered payment percentages and birth certificate requirements.</li>
+              <li><strong>Bereavement:</strong> Fixed compassionate leave days per occurrence — no accrual, requires death certificate for extended duration.</li>
+              <li><strong>Jury Duty:</strong> Statutory leave for court attendance — no accrual, unlimited duration, court summons required.</li>
+              <li><strong>Unpaid:</strong> Any leave without pay — creates a deduction element entry in payroll.</li>
+              <li><strong>Training:</strong> Employer-authorised learning leave — can be paid or unpaid depending on policy.</li>
+              <li><strong>Statutory (FMLA/Parental):</strong> Country- or state-mandated leaves with specific entitlement and tracking rules.</li>
+              <li><strong>Other:</strong> Flexible catch-all for custom leave types not covered above.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">4</span>What is the purpose of an Absence Calendar?</div>
+          <div class="qa-card-answer">An Absence Calendar (also called a Work Calendar or Holiday Calendar) serves two distinct purposes in Oracle Absence Management:
+            <br><br>
+            <strong>1. Duration Calculation:</strong> When an employee submits a leave request spanning multiple days, Oracle uses the calendar to determine actual working days within the range — automatically excluding weekends and public holidays. Without a properly configured calendar, an employee's 5-day vacation over a weekend would incorrectly consume 7 days of balance.
+            <br><br>
+            <strong>2. Public Holiday Exclusion:</strong> The calendar defines official public holidays. The Absence Plan configuration determines whether holidays within a leave period count against the employee's balance (configurable — most companies exclude them). For multi-country deployments, separate calendars are created per country/LDG so UAE national day doesn't affect Saudi employees and vice versa.
+            <br><br>
+            Calendars must be set up and fully populated with holiday dates before any absence plans go live — a missing calendar causes duration errors that produce incorrect balance deductions immediately.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">5</span>What is a Certification Type in absence management?</div>
+          <div class="qa-card-answer">A Certification Type defines a formal supporting document that must be submitted to validate a specific absence request. It is configured under Manage Certification Requirements and linked to an Absence Type. Key configuration options:
+            <ul>
+              <li><strong>Document Type:</strong> Medical certificate, birth/death certificate, court summons, travel visa — whatever is appropriate for the absence type.</li>
+              <li><strong>Trigger Condition:</strong> Always required, or only when the absence exceeds a specified duration (e.g., require medical cert for sick leave beyond 3 consecutive days).</li>
+              <li><strong>Submission Deadline:</strong> Oracle enforces how many days after the absence starts (or after return to work) the document must be uploaded. Overdue submissions generate system reminders and HR tasks.</li>
+              <li><strong>Periodic Re-certification:</strong> For prolonged absences, a new certificate can be required every N days — preventing one certificate from covering an indefinite absence.</li>
+              <li><strong>Approval Gate:</strong> The plan can be configured so the approval workflow cannot reach final "Approved" status until the certification is uploaded and HR-verified — protecting the employer from approving unsubstantiated absences.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">6</span>How does Absence Management handle partial days (half-day leaves)?</div>
+          <div class="qa-card-answer">Half-day leave requires the Absence Plan to use <strong>Hours</strong> as the unit of measure (not Days). Once configured in hours, the Absence Type can be set to offer partial-day options. How it works:
+            <ul>
+              <li><strong>Employee Selection:</strong> In self-service, the employee selects "Half Day – Morning" or "Half Day – Afternoon" from the duration dropdown when submitting a request for a single day.</li>
+              <li><strong>Hours Calculation:</strong> Oracle reads the employee's work schedule to determine how many hours a half-day represents. For a standard 8-hour day, morning = 4 hours, afternoon = 4 hours. For non-standard schedules, it uses the actual scheduled hours divided by two.</li>
+              <li><strong>Balance Deduction:</strong> The balance is reduced by 0.5 of a standard working day's equivalent hours — not a full day. A 160-hour annual balance would have 4 hours deducted for a half-day.</li>
+              <li><strong>Payroll Impact:</strong> For unpaid half-days, the deduction = (daily salary ÷ 2). For paid leave, the earnings element records 0.5 days.</li>
+              <li><strong>Absence Patterns:</strong> Recurring half-day needs (e.g., every Thursday afternoon for physiotherapy) are handled via Absence Patterns to avoid repetitive individual submissions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">7</span>What are the key differences between Periodic Accrual and Service-Based Accrual?</div>
+          <div class="qa-card-answer"><strong>Periodic Accrual</strong> credits a fixed, identical amount of leave each period regardless of how long the employee has been with the company. Configuration is straightforward — you define the accrual amount and frequency (monthly, quarterly, annually) in the plan. Example: every employee accrues exactly 8 hours per month = 12 working days per year. Best suited for sick leave, PTO plans, or any leave where tenure doesn't affect the rate.
+            <br><br>
+            <strong>Service-Based Accrual</strong> awards increasing entitlement as employees build seniority, requiring a <strong>Fast Formula</strong> that calculates years of service from the hire date and maps it to the applicable rate. Example: 0–2 years = 15 days/year, 3–5 years = 20 days/year, 5+ years = 25 days/year. This better rewards loyalty and reflects legal minimums in many jurisdictions (UAE Labour Law requires a minimum of 30 days after one year of service). The formula must handle edge cases: employees hired mid-year, part-time FTE adjustments, and probation period exclusions.
+            <br><br>
+            Service-Based is significantly more complex to configure and test but is the standard for annual leave in most enterprise and GCC implementations.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">8</span>Describe the absence request lifecycle end to end.</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Submission:</strong> Employee selects absence type, dates, and attaches any required certification via Employee Self Service or mobile app.</li>
+              <li><strong>Validation:</strong> Oracle runs the plan's Validation Formula — checking balance sufficiency, probation status, notice period, maximum consecutive days, and concurrent leave restrictions. Failed validation returns an error to the employee; they cannot proceed.</li>
+              <li><strong>Pending Balance Reserve:</strong> Once submitted, the requested days are immediately reflected as "Pending" in the employee's available balance — preventing over-booking by other requests.</li>
+              <li><strong>Approval Routing:</strong> BPM Worklist routes the request to the configured approver(s) based on absence type, duration, and assignment attributes. Notifications are sent by email and in-app.</li>
+              <li><strong>Manager Decision:</strong> Approve, reject, or request more information. Manager can view team calendar for coverage check before approving.</li>
+              <li><strong>Absence Recording:</strong> On final approval, the absence is recorded with effective dates and marked as approved.</li>
+              <li><strong>Balance Consumption:</strong> The pending reservation becomes a confirmed deduction — actual balance is reduced by the approved days/hours.</li>
+              <li><strong>Payroll Element Creation:</strong> If linked to a payroll element, Oracle creates the element entry for the covering pay period automatically.</li>
+              <li><strong>Payslip Reflection:</strong> The leave appears as a named line on the payslip — either a paid leave earnings line or an unpaid deduction line.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">9</span>What is an Absence Balance Definition?</div>
+          <div class="qa-card-answer">An Absence Balance Definition specifies exactly how an employee's leave balance is computed at any point in time. It defines what contributes to the balance (increases it) and what consumes it (decreases it):
+            <ul>
+              <li><strong>Accrual Contributions:</strong> Leave earned through periodic or service-based accrual runs — the primary source of balance growth.</li>
+              <li><strong>Opening Balance / Carryover:</strong> The carried-forward amount from the previous plan year, subject to the maximum carryover limit.</li>
+              <li><strong>Manual Adjustments:</strong> HR-administered additions or subtractions (e.g., goodwill leave, correction of past errors).</li>
+              <li><strong>Absence Consumption:</strong> Each approved absence deducts from the balance as of its start date.</li>
+              <li><strong>Forfeiture:</strong> Balance lost at plan year-end if it exceeds the carryover maximum, or at expiry date for carried amounts.</li>
+              <li><strong>Balance Cap:</strong> Maximum accumulation ceiling — accruals stop posting once this limit is reached.</li>
+            </ul>
+            The Balance Definition also specifies the unit (hours or days), the plan year period, and which dimensions (by assignment vs by payroll relationship) the balance is tracked against.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">10</span>What is Negative Balance control and what are the typical settings?</div>
+          <div class="qa-card-answer">Negative Balance control determines what happens when an employee submits a leave request that would take their balance below zero. Oracle offers two primary modes:
+            <br><br>
+            <strong>Hard Limit (Block):</strong> The system rejects the submission entirely if the requested amount exceeds the available balance. The employee receives an error: "You have X hours available but requested Y hours." Used for annual leave in most GCC and European implementations where advance drawing is not permitted without explicit approval.
+            <br><br>
+            <strong>Soft Warning (Allow with Alert):</strong> The system warns the employee of the deficit but allows the request to be submitted. The manager sees the negative balance flagged on the approval screen and can make an informed decision. Commonly used for sick leave — blocking an ill employee from calling in sick is impractical and legally risky.
+            <br><br>
+            <strong>Advance Leave:</strong> Some plans allow drawing against future accruals up to a defined maximum advance (e.g., employees may draw up to 10 days in advance of accrual). The formula checks the combination of current balance plus future projected accruals before applying the hard limit.
+            <br><br>
+            A negative balance at termination triggers a payroll recovery deduction in the final settlement — the over-drawn days are deducted from the termination payment.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 2: ACCRUALS & FAST FORMULA (11–20)
+══════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">02</div>
+        <div class="qa-section-label">Accruals &amp; Fast Formula</div>
+        <div class="qa-section-count">Q 11–20</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">11</span>What Fast Formula types are used in Absence Management?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Absence Accrual Formula:</strong> Runs during the scheduled accrual process and returns the amount of leave (hours/days) to credit to the employee's balance for that period. This is the most commonly written custom formula in absence management.</li>
+              <li><strong>Validation Formula:</strong> Runs at the moment an employee submits a request in self-service. Returns Y (allow) or N (block) based on eligibility rules — balance check, probation period, notice period, maximum duration.</li>
+              <li><strong>Eligibility Formula:</strong> Evaluates whether an employee should be enrolled in a plan. Returns Y/N based on employment type, grade, department, nationality, or other attributes.</li>
+              <li><strong>Rate of Pay Formula:</strong> Defines what percentage of the employee's salary is paid during a specific absence type — e.g., 100% for the first 30 days of sick leave, 70% for days 31–90. Used for partial-pay leaves.</li>
+              <li><strong>Accrual Absence Duration Formula:</strong> Calculates the actual duration to post when an absence is recorded, handling complex scenarios like partial working days or shift-based hours.</li>
+              <li><strong>Entitlement Formula:</strong> Computes the maximum leave entitlement for a specific employee — used in plans where entitlement varies beyond simple service bands (e.g., by contract type or location).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">12</span>Write a Fast Formula for prorated vacation accrual for a mid-year hire.</div>
+          <div class="qa-card-answer">For an employee joining mid-year, the formula must calculate how many months remain in the plan year from their hire date and return proportional monthly accruals:
+            <span class="formula"><span class="cm">/* Prorated accrual for mid-year hire */</span>
+<span class="kw">DEFAULT FOR</span> ASG_HIRE_DATE <span class="kw">IS</span> <span class="vl">'1900-01-01'</span>
+<span class="kw">DEFAULT FOR</span> ASG_FTE_VALUE <span class="kw">IS</span> <span class="vl">1</span>
+
+annual_hours = <span class="vl">168</span>   <span class="cm">/* 21 days × 8 hrs */</span>
+monthly_rate = annual_hours / <span class="vl">12</span>
+
+<span class="cm">/* Only accrue if past hire date */</span>
+<span class="kw">IF</span> ACCRUAL_DATE >= ASG_HIRE_DATE <span class="kw">THEN</span>
+  accrual = monthly_rate * ASG_FTE_VALUE
+<span class="kw">ELSE</span>
+  accrual = <span class="vl">0</span>
+<span class="kw">END IF</span>
+<span class="kw">RETURN</span> accrual</span>
+            The key is the <code>IF ACCRUAL_DATE >= ASG_HIRE_DATE</code> guard — this prevents retroactive accrual for periods before the employee's hire date, which can happen if enrollment is processed in bulk at period start.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">13</span>Which Database Items (DBIs) are commonly used in absence accrual formulas?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><code>ASG_HIRE_DATE</code> — Employee's original hire date. Used to calculate years of service for service-based accrual bands. Always declare <code>DEFAULT FOR ASG_HIRE_DATE IS '1900-01-01'</code> to prevent null exceptions.</li>
+              <li><code>ASG_FTE_VALUE</code> — Full-Time Equivalent (0.0–1.0). Multiply every accrual result by this value to prorate for part-time employees. Default to 1 to avoid zero accruals for employees with missing FTE.</li>
+              <li><code>ASG_WORK_DAY_HOURS</code> — Standard daily working hours (typically 8). Used to convert between days and hours in the formula.</li>
+              <li><code>ASG_SCHEDULED_HOURS</code> — Weekly scheduled hours from the work schedule. Useful for shift workers where daily hours vary.</li>
+              <li><code>ASG_SALARY</code> — Current salary value. Used in Rate of Pay formulas to calculate absence payment amounts.</li>
+              <li><code>ABSENCE_BALANCE_VALUE</code> — Current balance at the time the formula runs. Used to implement balance caps — if balance already at maximum, return zero accrual.</li>
+              <li><code>ASG_GRADE</code> — Employee grade code. Used in grade-based entitlement formulas (e.g., senior managers get 5 extra days).</li>
+              <li><code>PER_ORIGINAL_DATE_OF_HIRE</code> — Original hire date across rehires. Important for companies that want to count continuous service including breaks for re-hired employees.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">14</span>How do you handle part-time employee accruals?</div>
+          <div class="qa-card-answer">Part-time accrual proration is achieved by multiplying the full-time accrual amount by the employee's FTE value from <code>ASG_FTE_VALUE</code>. For example, a 0.5 FTE employee on a plan that grants 168 hours/year to full-timers would receive 84 hours/year.
+            <br><br>
+            The critical implementation points:
+            <ul>
+              <li><strong>Always DEFAULT FOR ASG_FTE_VALUE IS 1:</strong> Without this, if FTE is null (common for legacy data), the formula returns zero — silently giving the employee no accruals.</li>
+              <li><strong>FTE on the Correct Assignment:</strong> For multi-assignment employees, confirm the FTE is set on the specific assignment enrolled in the plan.</li>
+              <li><strong>FTE Change Handling:</strong> When an employee moves from full-time to part-time mid-year, the formula automatically picks up the new FTE value from the next accrual run — no formula change needed, since it reads the DBI live.</li>
+              <li><strong>Minimum Hours Check:</strong> Some plans require a minimum FTE threshold for enrollment (e.g., only employees with FTE ≥ 0.5 qualify). This is enforced via an Eligibility Formula or enrollment criteria rather than the accrual formula itself.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">15</span>Can you use conditional logic in accrual formulas based on job grade?</div>
+          <div class="qa-card-answer">Yes — grade-based entitlement is a common requirement and Fast Formula handles it cleanly using the <code>ASG_GRADE</code> DBI:
+            <span class="formula"><span class="kw">DEFAULT FOR</span> ASG_GRADE    <span class="kw">IS</span> <span class="vl">'STANDARD'</span>
+<span class="kw">DEFAULT FOR</span> ASG_FTE_VALUE <span class="kw">IS</span> <span class="vl">1</span>
+
+<span class="cm">/* Grade-based annual entitlement in days */</span>
+<span class="kw">IF</span> ASG_GRADE = <span class="vl">'EXECUTIVE'</span> <span class="kw">THEN</span>
+    annual_days = <span class="vl">30</span>
+<span class="kw">ELSE IF</span> ASG_GRADE = <span class="vl">'MANAGER'</span> <span class="kw">THEN</span>
+    annual_days = <span class="vl">25</span>
+<span class="kw">ELSE</span>
+    annual_days = <span class="vl">21</span>
+<span class="kw">END IF</span>
+
+monthly = (annual_days * <span class="vl">8</span>) / <span class="vl">12</span> * ASG_FTE_VALUE
+<span class="kw">RETURN</span> monthly</span>
+            Important consideration: when an employee is promoted and their grade changes mid-year, the formula picks up the new grade value immediately on the next accrual run. If the promotion is backdated, you may need to run a balance adjustment to credit the difference retroactively for prior accrual periods — Oracle's formula runs prospectively, not retroactively, on its own.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">16</span>What is the purpose of the Regular Accrual process?</div>
+          <div class="qa-card-answer">The Regular Accrual process (formally called "Calculate Absence Accruals and Balances") is the scheduled batch job that runs the accrual formula for every enrolled employee and posts the computed leave credit to their balance. Key characteristics:
+            <ul>
+              <li><strong>Frequency:</strong> Typically scheduled monthly (on the last day of the month or first day of the new month) but can be configured quarterly or weekly depending on the plan's accrual frequency.</li>
+              <li><strong>Scope:</strong> Processes all active employees enrolled in plans with a pending accrual due. Can be filtered by payroll, department, or plan.</li>
+              <li><strong>Test Mode:</strong> The process can be submitted with a "Test" flag — it runs all calculations and produces a preview report without committing any balance changes to the database. Essential for validating formula changes before the live run.</li>
+              <li><strong>Retroactive Support:</strong> If the process is run for a past date (e.g., to correct a missed month), Oracle posts the accrual with the historical effective date, correctly updating YTD totals.</li>
+              <li><strong>Process Log:</strong> Each run produces a detailed log showing every employee processed, the formula result, and any skipped employees with the reason — critical for auditing accrual accuracy.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">17</span>How do you test an accrual formula before deploying?</div>
+          <div class="qa-card-answer">A structured testing approach for accrual formulas:
+            <ul>
+              <li><strong>Step 1 — Fast Formula Test Tool:</strong> In the Fast Formulas UI, click "Test Formula." Input specific DBI values (hire date, FTE, grade) and verify the formula returns the expected result for several test scenarios — new hire, 3-year employee, 6-year employee, 0.5 FTE, grade = Manager.</li>
+              <li><strong>Step 2 — Compilation Check:</strong> Always compile and save the formula first. Oracle validates syntax on save — fix all compile errors before proceeding.</li>
+              <li><strong>Step 3 — Quick Accrual for Single Employee:</strong> From Absence Administration, run "Process Absence Balance" for one specific test employee. Review the resulting balance change and the Accrual Details report to confirm the formula fired with the expected inputs and outputs.</li>
+              <li><strong>Step 4 — Regular Accrual in Test Mode:</strong> Submit the "Calculate Absence Accruals and Balances" process in Test Mode for a group of test employees covering all scenario types (new hire, part-time, senior, different grades). Compare output to manually calculated expected values.</li>
+              <li><strong>Step 5 — Historical Data Validation:</strong> Run the formula retrospectively against employees whose historical balances are known from the legacy system. If the formula produces different results, investigate the discrepancy before going live.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">18</span>What is an Accrual Cap and where is it defined?</div>
+          <div class="qa-card-answer">An Accrual Cap (also called Maximum Balance) is the ceiling on how many hours or days an employee can accumulate in a leave plan before accruals stop. Once the balance reaches the cap, further accrual runs return zero — no more leave is credited until the employee takes some leave and the balance drops below the cap.
+            <br><br>
+            <strong>Where configured:</strong> In the Absence Plan setup under the Balance tab — "Maximum Balance" field. Set in the plan's unit of measure (hours or days).
+            <br><br>
+            <strong>How enforced:</strong> Two methods:
+            <ul>
+              <li><strong>Plan-Level Config:</strong> Oracle automatically checks the cap against the current balance during the accrual run and caps the accrual at the plan level without formula changes.</li>
+              <li><strong>Formula-Level Cap:</strong> Include an explicit cap check in the accrual formula using <code>ABSENCE_BALANCE_VALUE</code> — <code>IF ABSENCE_BALANCE_VALUE >= MAX_HOURS THEN RETURN 0</code>. This approach gives more control and is transparent in the formula logic.</li>
+            </ul>
+            <strong>Business reason:</strong> Caps protect companies from unlimited leave liability accumulation and encourage employees to take leave regularly. Some plans use "use it or lose it" caps — once the cap is reached, new accruals are permanently forfeited rather than just paused.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">19</span>How do you configure service-based accrual that changes at 3, 5, and 10 years?</div>
+          <div class="qa-card-answer">A multi-band service accrual formula with four distinct rates:
+            <span class="formula"><span class="kw">DEFAULT FOR</span> ASG_HIRE_DATE  <span class="kw">IS</span> <span class="vl">'1900-01-01'</span>
+<span class="kw">DEFAULT FOR</span> ASG_FTE_VALUE  <span class="kw">IS</span> <span class="vl">1</span>
+
+years = MONTHS_BETWEEN(TRUNC(TODAY()), ASG_HIRE_DATE) / <span class="vl">12</span>
+
+<span class="kw">IF</span>   years < <span class="vl">3</span>  <span class="kw">THEN</span> annual_days = <span class="vl">21</span>  <span class="cm">/* 0–2 years  */</span>
+<span class="kw">ELSE IF</span> years < <span class="vl">5</span>  <span class="kw">THEN</span> annual_days = <span class="vl">24</span>  <span class="cm">/* 3–4 years  */</span>
+<span class="kw">ELSE IF</span> years < <span class="vl">10</span> <span class="kw">THEN</span> annual_days = <span class="vl">27</span>  <span class="cm">/* 5–9 years  */</span>
+<span class="kw">ELSE</span>                     annual_days = <span class="vl">30</span>  <span class="cm">/* 10+ years  */</span>
+<span class="kw">END IF</span>
+
+monthly_hours = (annual_days * <span class="vl">8</span>) / <span class="vl">12</span> * ASG_FTE_VALUE
+<span class="kw">RETURN</span> monthly_hours</span>
+            <strong>Important note:</strong> Service band transitions happen automatically on the next accrual run after the employee crosses a threshold. If the accrual runs on 1 June and the employee hit 5 years on 15 May, they get the 27-day rate from June onward — no manual action needed. Add documentation comments to each band explaining the business rule for future maintainers.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">20</span>What happens if an accrual formula returns NULL or zero?</div>
+          <div class="qa-card-answer">The outcome depends on why the formula returns zero or null:
+            <br><br>
+            <strong>Zero Return:</strong> Oracle treats a zero return as a valid result — no accrual is posted for this period, and the balance remains unchanged. This is the correct behaviour for situations like: employee in probation period (first year), balance at maximum cap, or employee on unpaid leave of absence where accruals are suspended.
+            <br><br>
+            <strong>NULL Return:</strong> If the formula returns NULL (typically caused by a missing DEFAULT FOR statement), Oracle may raise an error and the accrual process logs a failure for that employee — no accrual is posted but it's flagged as an error rather than a legitimate zero.
+            <br><br>
+            <strong>Silent Zero Bug:</strong> The most dangerous scenario is when the formula returns zero unexpectedly — for example, because <code>ASG_FTE_VALUE</code> defaulted to 0 instead of 1, or because a conditional path wasn't reached. The process completes without errors but employees have no accrual. This is why formula testing with the Accrual Details report is critical — you can see exactly what value the formula returned for each employee and identify unexpected zeros before they affect large populations.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 3: PLANS & ELIGIBILITY (21–30)
+══════════════════════════════════════ -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">03</div>
+        <div class="qa-section-label">Absence Plans &amp; Eligibility</div>
+        <div class="qa-section-count">Q 21–30</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">21</span>How do you restrict an absence plan to only full-time employees?</div>
+          <div class="qa-card-answer">There are two approaches depending on the rigidity of the requirement:
+            <br><br>
+            <strong>Eligibility Profile (Recommended):</strong> Create an Eligibility Profile with criteria <code>FTE = 1.0</code> and attach it to the plan's enrollment configuration. Oracle evaluates this automatically during plan enrollment — employees with FTE below 1.0 are simply not enrolled and will not see the leave type in self-service.
+            <br><br>
+            <strong>Eligibility Fast Formula:</strong> For more complex criteria (e.g., full-time AND permanent employment type AND not on probation), write an Eligibility Formula that returns Y/N based on multiple conditions. This is attached to the plan as the Eligibility Formula. More flexible but requires formula maintenance.
+            <br><br>
+            <strong>Practical note:</strong> When a full-time employee moves to part-time, Oracle's effective-dating means their plan enrollment becomes ineligible from the change date. Oracle can be configured to automatically un-enroll them and transfer their remaining balance to an appropriate part-time plan, or to keep them enrolled but prorate future accruals — depending on HR policy.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">22</span>What is the difference between "Enrolled" and "Assigned" status in absence plans?</div>
+          <div class="qa-card-answer"><strong>Assigned</strong> status means the employee meets the eligibility criteria for the plan (eligibility profile passes), so the system has identified them as a candidate for enrollment. However, the formal enrollment record has not yet been created — they are eligible but not yet participating.
+            <br><br>
+            <strong>Enrolled</strong> status means the enrollment record has been created and the employee is an active participant in the plan. Their accrual begins from the enrollment effective date, they can submit absence requests of the linked absence types, and their balance is actively tracked.
+            <br><br>
+            The transition from Assigned to Enrolled can be:
+            <ul>
+              <li><strong>Automatic:</strong> Plans can be configured for auto-enrollment — any eligible employee is automatically enrolled on the date they meet the criteria (hire date, end of probation, etc.).</li>
+              <li><strong>Manual:</strong> HR must explicitly complete the enrollment action for each eligible employee — useful for discretionary plans where HR needs to review each case.</li>
+              <li><strong>Bulk Enrollment:</strong> During go-live or policy changes, HR can bulk-enroll all eligible employees simultaneously using the Manage Absence Plans bulk enrollment process.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">23</span>Can an employee be enrolled in multiple absence plans simultaneously?</div>
+          <div class="qa-card-answer">Yes — concurrent multi-plan enrollment is standard and expected in most deployments. A typical employee might be simultaneously enrolled in:
+            <ul>
+              <li><strong>Annual Leave Plan</strong> — 30 days/year vacation entitlement</li>
+              <li><strong>Sick Leave Plan</strong> — 15 days/year paid sick leave</li>
+              <li><strong>Emergency Leave Plan</strong> — 3 days per occurrence, no accrual</li>
+              <li><strong>Maternity/Paternity Plan</strong> — eligible but unused until needed</li>
+              <li><strong>Unpaid Leave Plan</strong> — available on request, no balance</li>
+            </ul>
+            Each plan maintains its own independent balance, accrual history, and carryover. When the employee submits a leave request, they select the specific Absence Type — Oracle automatically identifies which plan governs that type and deducts from the correct balance. There is no cross-plan balance consumption unless a concurrent leave rule is configured.
+            <br><br>
+            In FMLA scenarios, an employee may consume both their company vacation plan and their FMLA entitlement simultaneously for the same days — Oracle tracks both independently through concurrency rules.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">24</span>What is a Plan Year and what are the available options?</div>
+          <div class="qa-card-answer">The Plan Year defines the 12-month period over which accruals accumulate and at the end of which carryover and forfeiture rules apply. Oracle supports three Plan Year types:
+            <ul>
+              <li><strong>Calendar Year (Jan 1 – Dec 31):</strong> The simplest and most common option. Easy for employees to understand and aligns with most tax-year reporting. Year-end processing runs on 31 December for all employees simultaneously.</li>
+              <li><strong>Fiscal Year:</strong> Aligns with the company's financial year-end (e.g., April 1 – March 31 for many UK companies, July 1 – June 30 in Australia). Balances roll over on the fiscal year-end date. Useful when leave liability needs to align with financial provisioning periods.</li>
+              <li><strong>Employee Anniversary Year:</strong> The plan year runs from each employee's individual hire anniversary date. Example: an employee hired on 15 June has a plan year of 16 June – 15 June the following year. This is the most equitable for employees (each person gets their full entitlement from day one of their employment year) but operationally complex — year-end processing happens on a different date for every employee, making bulk reporting harder.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">25</span>How do you configure a use-it-or-lose-it plan (no carryover)?</div>
+          <div class="qa-card-answer">A "use it or lose it" plan is configured by setting the Maximum Carryover to zero in the Absence Plan's balance rules. The year-end processing sequence:
+            <ul>
+              <li><strong>Maximum Carryover = 0:</strong> Any unused balance at the plan year-end is forfeited — reduced to zero. No balance rolls forward to the new plan year.</li>
+              <li><strong>Year-End Process:</strong> The "Calculate Absence Accruals and Balances" batch process must be run on or after the last day of the plan year with the carryover calculation enabled. This process evaluates every enrolled employee's balance and sets it to zero for the new year.</li>
+              <li><strong>Pre-Expiry Notifications:</strong> Best practice is to configure workflow notifications that alert employees 30 and 14 days before the plan year end — reminding them to use their remaining balance before it expires. This reduces disputes and complaints after the fact.</li>
+              <li><strong>Legal Compliance Check:</strong> In many jurisdictions (UAE, EU countries), use-it-or-lose-it policies may conflict with labour law minimum requirements. Always verify the plan configuration against local legislation — in UAE, unused annual leave cannot simply be forfeited without compensation per Federal Decree 33 of 2021.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">26</span>Explain cash-out at termination vs annual cash-out.</div>
+          <div class="qa-card-answer"><strong>Termination Cash-Out</strong> is the legally mandated (in most GCC jurisdictions) or company-policy payment of all accrued but unused leave balance when an employee leaves the company. Oracle handles this by:
+            <ul>
+              <li>Configuring the plan's Termination Rule as "Payout."</li>
+              <li>When HR processes the termination, Oracle calculates the final leave balance as of the last working day.</li>
+              <li>A Leave Encashment earnings element entry is automatically created and included in the termination off-cycle payroll run.</li>
+              <li>Calculation: unused hours × (annual salary ÷ annual working hours), or unused days × daily salary — per the applicable legislation.</li>
+            </ul>
+            <strong>Annual Cash-Out</strong> is an optional company policy that allows employees to convert a defined portion of their annual leave into cash each year — rather than taking it as time off. Configuration:
+            <ul>
+              <li>Set the plan's Cash-Out option to allow an annual encashment up to a specified number of days (e.g., max 5 days per year).</li>
+              <li>HR runs the encashment process at the defined period — typically year-end or at a specific cycle.</li>
+              <li>Oracle creates payroll element entries for the encashment amount and reduces the employee's balance accordingly.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">27</span>What is a Wait Period in an absence plan?</div>
+          <div class="qa-card-answer">A Wait Period (also called a Waiting Period or Probation Restriction) is the duration after hire during which an employee cannot take leave under a specific plan. It is enforced through a <strong>Validation Formula</strong> attached to the Absence Type rather than a plan-level setting, giving precise control over the restriction logic.
+            <br><br>
+            A typical implementation:
+            <span class="formula"><span class="cm">/* Block leave during first 90 days */</span>
+days_since_hire = (TODAY() - ASG_HIRE_DATE)
+
+<span class="kw">IF</span> days_since_hire < <span class="vl">90</span> <span class="kw">THEN</span>
+  <span class="kw">RETURN</span> <span class="vl">'N'</span>   <span class="cm">/* Block request */</span>
+<span class="kw">ELSE</span>
+  <span class="kw">RETURN</span> <span class="vl">'Y'</span>   <span class="cm">/* Allow request */</span>
+<span class="kw">END IF</span></span>
+            In UAE, the Labour Law (Decree 33) specifies that an employee must complete 6 months of service before becoming entitled to take annual leave — though the leave continues to accrue from day one. The wait period formula enforces the 6-month taking restriction while allowing accrual to continue, so when the employee finally takes leave after 6 months, they have a full 6-month accrual available.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">28</span>How do you handle employees transferring between departments with different leave policies?</div>
+          <div class="qa-card-answer">Department transfers in Oracle are HR assignment changes — they don't automatically trigger plan changes. The handling depends on whether the new department uses a different Absence Plan:
+            <br><br>
+            <strong>Same plan in both departments:</strong> No action needed. The employee's enrollment, balance, and accrual continue uninterrupted through the transfer.
+            <br><br>
+            <strong>Different plans (e.g., different entitlement or accrual rules):</strong>
+            <ul>
+              <li>Un-enroll the employee from the old plan as of the transfer effective date.</li>
+              <li>Enrol them in the new plan from the same date.</li>
+              <li>Use the <strong>Balance Transfer</strong> function to move the remaining balance from the old plan to the new plan — preventing the employee from losing leave they legitimately earned. Navigate to Manage Absence Balances → Transfer Balance → specify source plan, target plan, and amount.</li>
+              <li>The new plan's accrual formula begins running from the transfer date. Old plan accruals stop.</li>
+            </ul>
+            For large-scale reorganisations affecting hundreds of employees, Balance Transfers can be bulk-processed via HDL using the AbsenceBalance business object.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">29</span>What is a Hardship Carryover?</div>
+          <div class="qa-card-answer">A Hardship Carryover is a policy exception that allows an employee to carry forward more leave than the standard plan maximum in recognition of circumstances outside their control — for example, an employee who was unable to take leave because of a critical business project, extended sick leave that prevented vacation, or a natural disaster that occurred during their planned holiday.
+            <br><br>
+            Oracle does not have a native "hardship carryover" feature — it is implemented as an exception process:
+            <ul>
+              <li>The normal plan carryover rule runs at year-end, applying the standard maximum carryover limit.</li>
+              <li>HR identifies employees needing hardship exceptions — typically through a formal request and manager/director approval process outside Oracle.</li>
+              <li>Once approved, HR uses the <strong>Adjust Balance</strong> function in Absence Administration to manually add the approved additional days to the employee's balance after the standard year-end carryover process has run.</li>
+              <li>The adjustment is recorded with a comment explaining the hardship reason — maintaining an audit trail for compliance and finance (who needs to provision the additional liability).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">30</span>How does Absence Management support international/multi-country locations?</div>
+          <div class="qa-card-answer">Multi-country absence management in Oracle Fusion is built on the Legislative Data Group (LDG) architecture — each country has its own LDG with country-specific configurations:
+            <ul>
+              <li><strong>Separate Absence Plans per Country:</strong> UAE plans reflect 30 days annual leave (Decree 33); KSA plans reflect 21 days (increasing to 30 after 5 years); plans reference their country's LDG and therefore only appear for employees in that country.</li>
+              <li><strong>Country-Specific Holiday Calendars:</strong> Each LDG has its own public holiday calendar. UAE national day doesn't appear in the KSA calendar.</li>
+              <li><strong>Statutory Compliance:</strong> Local statutory rules (maternity duration, sick pay percentages, mandatory carryover limits) are configured per-plan within the appropriate LDG.</li>
+              <li><strong>Work Schedules:</strong> Different countries often have different working weeks (5-day week in UAE/KSA; working Saturday possible in some Asian countries). Each country's work schedule is assigned to employees in that location.</li>
+              <li><strong>Currency and Pay:</strong> Leave encashment calculations use the local currency salary from the employee's pay record, which is already denominated in the correct currency per their LDG payroll.</li>
+              <li><strong>Centralised HR, Local Rules:</strong> Global HR administrators can manage the entire organisation from one Oracle instance while each country's absence rules remain independently configured and legally compliant.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 4: VALIDATION & APPROVAL (31–40)
+══════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">04</div>
+        <div class="qa-section-label">Validation &amp; Approval Workflows</div>
+        <div class="qa-section-count">Q 31–40</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">31</span>Write a validation formula that blocks leave during the first 90 days (probation).</div>
+          <div class="qa-card-answer">
+            <span class="formula"><span class="cm">/* Validation Formula: Block leave in first 90 days */</span>
+<span class="cm">/* Formula Type: Absence Validation              */</span>
+
+<span class="kw">DEFAULT FOR</span> ASG_HIRE_DATE <span class="kw">IS</span> <span class="vl">'1900-01-01'</span>
+
+days_since_hire = TRUNC(TODAY()) - TRUNC(ASG_HIRE_DATE)
+
+<span class="kw">IF</span> days_since_hire < <span class="vl">90</span> <span class="kw">THEN</span>
+  message = <span class="vl">'Leave not permitted during 90-day probation period'</span>
+  <span class="kw">RETURN</span> <span class="vl">'N'</span>, message
+<span class="kw">ELSE</span>
+  <span class="kw">RETURN</span> <span class="vl">'Y'</span>
+<span class="kw">END IF</span></span>
+            The formula returns two values — the Y/N eligibility flag and an optional message string that Oracle displays to the employee in the self-service UI explaining why the request was blocked. Always return a clear, human-readable message when blocking — vague error messages generate a disproportionate volume of HR helpdesk calls. Also add <code>DEFAULT FOR ASG_HIRE_DATE</code> to prevent null exceptions for employees with missing hire date data.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">32</span>What is a Concurrent Leave validation?</div>
+          <div class="qa-card-answer">A Concurrent Leave validation prevents an employee from having two different paid absence types overlapping on the same calendar dates. For example, an employee cannot be on both Annual Leave and Training Leave for the same day — only one paid absence type should be active at a time.
+            <br><br>
+            Implementation in Oracle: The Validation Formula for the second absence type queries the employee's existing approved absences for the requested date range. If any overlapping approved absence is found, the formula returns N with an error message. The formula uses the <code>ABSENCE_EXISTS</code> DBI or a custom query via Oracle's formula functions to check for existing records in the requested period.
+            <br><br>
+            Common exceptions deliberately allowed:
+            <ul>
+              <li>Sick Leave can overlap FMLA (FMLA runs concurrently — by law it must).</li>
+              <li>Bereavement can overlap Annual Leave (employee may want to extend an absence period).</li>
+            </ul>
+            These exceptions are built into the validation logic as conditional exclusions. The formula checks the type of any overlapping absence before deciding to block.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">33</span>How do you restrict maximum consecutive absence days (e.g., max 15 days)?</div>
+          <div class="qa-card-answer">Maximum consecutive days are enforced through a Validation Formula that checks the requested duration before allowing submission:
+            <span class="formula"><span class="cm">/* Restrict to max 15 consecutive days */</span>
+<span class="kw">DEFAULT FOR</span> ABSENCE_DURATION <span class="kw">IS</span> <span class="vl">0</span>
+
+<span class="kw">IF</span> ABSENCE_DURATION > <span class="vl">15</span> <span class="kw">THEN</span>
+  msg = <span class="vl">'Maximum 15 consecutive days allowed.'</span>
+       + <span class="vl">' Contact HR for longer leave requests.'</span>
+  <span class="kw">RETURN</span> <span class="vl">'N'</span>, msg
+<span class="kw">ELSE</span>
+  <span class="kw">RETURN</span> <span class="vl">'Y'</span>
+<span class="kw">END IF</span></span>
+            A common variation adds a "Director approval required" path rather than an outright block — if duration exceeds 15 days, the request is allowed but routed to an additional approval tier. This is implemented by combining the validation formula (which always returns Y) with a BPM workflow rule that checks the duration attribute and adds an extra approver when it exceeds the threshold. The formula handles the business message; BPM handles the routing.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">34</span>Can absence approvals be delegated? How?</div>
+          <div class="qa-card-answer">Yes — Oracle provides full delegation support for absence approvals through Delegation Management in HCM. How it works:
+            <ul>
+              <li><strong>Manager-Initiated Delegation:</strong> A manager going on leave can set up a delegation period: specify a delegate person, the start and end dates, and which tasks to delegate (e.g., "Absence Approval" specifically). During this period, BPM automatically routes new absence requests to the delegate instead of the original manager.</li>
+              <li><strong>Pending Task Transfer:</strong> Existing pending approval tasks in the original manager's BPM Worklist can be transferred to the delegate manually, or Oracle can be configured to auto-reassign all pending tasks when delegation activates.</li>
+              <li><strong>HR-Initiated Delegation:</strong> HR Administrators can set up or modify delegation records on behalf of managers via the Manage Delegations task — useful when a manager leaves suddenly and has not set up their own delegation.</li>
+              <li><strong>Scope of Authority:</strong> Delegation can be scoped to specific task types — a manager might delegate absence approvals to a team lead while keeping expense approvals for themselves.</li>
+              <li><strong>Notification:</strong> Both the original manager and the delegate receive notifications confirming the delegation is active.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">35</span>Explain multi-level approval routing — manager then HR director.</div>
+          <div class="qa-card-answer">Multi-level approval is configured in BPM (Business Process Management) Worklist via the "Manage Absence Approval Rules" task. A two-stage routing for extended absences:
+            <ul>
+              <li><strong>Stage 1 — Line Manager:</strong> All absence requests first route to the employee's direct line manager. The manager has a configurable number of days to respond before the request auto-escalates.</li>
+              <li><strong>Stage 2 — Conditional HR Director:</strong> A BPM rule fires after Stage 1 approval — IF the absence duration exceeds 10 days (or absence type = Maternity/FMLA), THEN route to the HR Director or HRBP for a second approval. Otherwise, the Stage 1 approval is final.</li>
+              <li><strong>Parallel vs Sequential:</strong> Stages can be sequential (Stage 2 only begins after Stage 1 completes) or parallel (both approvers are notified simultaneously and the first to respond determines the outcome — rare for absence but used for time-sensitive approvals).</li>
+              <li><strong>FYI Notifications:</strong> HR managers can receive informational notifications (not action-required) for all approved absences above a certain duration — keeping HR informed without requiring their sign-off on every request.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">36</span>What is a Dynamic Approver based on absence type?</div>
+          <div class="qa-card-answer">A Dynamic Approver is a routing rule where the approver identity is determined by the attributes of the absence request itself — not a static assignment. This allows different absence types to go to different people without requiring separate workflow configurations for each type.
+            <br><br>
+            Examples:
+            <ul>
+              <li><strong>Sick Leave:</strong> Routes to the line manager (standard path).</li>
+              <li><strong>Maternity/Paternity Leave:</strong> Routes directly to the HRBP (HR Business Partner) who handles parental leave programs and statutory documentation.</li>
+              <li><strong>Study/Training Leave:</strong> Routes to the L&amp;D Manager for approval alongside (or instead of) the line manager.</li>
+              <li><strong>Emergency/Bereavement Leave:</strong> Auto-approves (no routing needed) — the compassionate nature of these leave types makes routing inappropriate.</li>
+            </ul>
+            This is implemented in BPM using approval rule conditions that evaluate the <code>AbsenceType</code> attribute of the request and return the appropriate approver role or person. The approver can be a specific person, a role (e.g., HR Generalist for the employee's department), or derived from the org hierarchy.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">37</span>Can approval rules consider employee location or job grade?</div>
+          <div class="qa-card-answer">Yes — BPM approval rules can evaluate any attribute from the employee's work assignment when determining the routing path. This makes approval workflows highly contextual:
+            <ul>
+              <li><strong>By Location/Country:</strong> UAE employees' annual leave requests route to their local HR team; KSA employees route to the KSA HR team. This is particularly important for statutory leaves where different local HR specialists handle country-specific compliance.</li>
+              <li><strong>By Job Grade:</strong> Senior employees (Grade = Executive) may have their long-duration leave routed directly to the CEO's EA; junior employees follow the standard manager path.</li>
+              <li><strong>By Department:</strong> Operations employees needing extended leave require an additional Operations Manager sign-off to confirm coverage; back-office employees do not.</li>
+              <li><strong>By Person Type:</strong> Contractors follow a different approval path than permanent employees — their absence requests may route through procurement or the agency manager rather than HR.</li>
+            </ul>
+            All these conditions are configured as BPM rule conditions using XPATH expressions that reference the HCM person and assignment payload included in the approval task context. No custom code is needed — Oracle's BPM rule engine provides this out of the box.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">38</span>What happens to pending approvals when a manager leaves the company?</div>
+          <div class="qa-card-answer">When a manager is terminated, their BPM Worklist tasks become orphaned — no one receives new routing and existing pending tasks are stuck. Oracle handles this through several mechanisms:
+            <ul>
+              <li><strong>HR Update First:</strong> Best practice is to update the terminated manager's direct reports to a new manager in Core HR before or immediately after processing the termination. New submissions will automatically route to the new manager.</li>
+              <li><strong>BPM Admin Reassignment:</strong> IT or HR Admins access the BPM Worklist Administration console, search for tasks assigned to the terminated manager, and bulk-reassign them to the new manager or HR.</li>
+              <li><strong>Supervisor Hierarchy Fallback:</strong> BPM can be configured with a fallback rule — if the primary approver is inactive or absent, escalate to their manager (the departing manager's manager). This prevents indefinite blocking.</li>
+              <li><strong>Auto-Escalation:</strong> A time-based escalation rule (e.g., escalate after 5 days without action) will fire for any stuck tasks and route them upward in the hierarchy.</li>
+              <li><strong>Acting Manager:</strong> When an interim manager is appointed in Oracle HR, new routing immediately reflects the acting assignment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">39</span>How do you configure auto-approval for absences below 2 days?</div>
+          <div class="qa-card-answer">Auto-approval for short absences is configured as a BPM rule condition:
+            <ul>
+              <li><strong>BPM Rule Setup:</strong> In Manage Absence Approval Rules, create a rule: IF <code>AbsenceDuration &lt;= 2</code> (or &lt;= 16 hours if using hours) AND AbsenceType = "Sick Leave" THEN set the approval to <code>AutoApprove</code>.</li>
+              <li><strong>Scope the Rule:</strong> Auto-approval is typically limited to specific absence types (sick leave, personal days) rather than all types. Annual leave requests usually require manager oversight regardless of duration.</li>
+              <li><strong>FYI Notification:</strong> Even with auto-approval, configure an FYI notification to the manager so they are aware their team member is absent — important for coverage planning even when formal approval isn't needed.</li>
+              <li><strong>Audit Trail:</strong> Auto-approved requests are still recorded with an "Auto-Approved" status in the workflow history — maintaining full auditability for HR compliance and absenteeism pattern reporting.</li>
+              <li><strong>Balance Check:</strong> Validation Formula still runs before auto-approval — if the employee has insufficient balance, the auto-approval rule does not override the validation block.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">40</span>What is Retroactive Approval and when is it used?</div>
+          <div class="qa-card-answer">Retroactive Approval occurs when an absence request is submitted and approved after the leave dates have already passed — meaning the actual absence occurred before the formal system record was created. Common scenarios:
+            <ul>
+              <li>An employee was sick and unable to submit a request until they returned to work.</li>
+              <li>A manager approved a verbal urgent leave request but the employee forgot to log it in the system.</li>
+              <li>HR is back-loading historical absences during an Oracle go-live project.</li>
+            </ul>
+            Oracle handles retroactive approvals as follows:
+            <ul>
+              <li><strong>Balance Adjustment:</strong> Once approved, Oracle adjusts the balance retroactively from the absence effective date — not the submission date. The balance history accurately reflects the consumption on the correct historical date.</li>
+              <li><strong>Payroll Retro:</strong> If the absence was unpaid and the relevant payroll period has already closed and been archived, Oracle raises a retro payroll notification. The retro processing engine picks up the delta unpaid deduction and includes it in the current pay period.</li>
+              <li><strong>Restriction Option:</strong> Plans can be configured with a maximum backdating limit (e.g., absences cannot be submitted more than 30 days in the past) to prevent misuse of retroactive submission.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 5: BALANCES & CARRYOVERS (41–50)
+══════════════════════════════════════ -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">05</div>
+        <div class="qa-section-label">Balances, Carryovers &amp; Initialization</div>
+        <div class="qa-section-count">Q 41–50</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">41</span>How do you initialize absence balances during implementation?</div>
+          <div class="qa-card-answer">Balance initialization is the process of loading employees' existing leave balances from the legacy system into Oracle before go-live. Methods:
+            <ul>
+              <li><strong>HCM Data Loader (HDL):</strong> Primary method for large populations. Use the <code>AbsenceBalance</code> business object — create a DAT file with columns: EmployeeNumber, PlanName, EffectiveDate, BalanceAmount. Upload via the HCM Data Loader UI or SFTP. Set the effective date to the go-live date to prevent double-counting with future accruals.</li>
+              <li><strong>Spreadsheet Data Loader (SDL):</strong> For HR teams without technical resources, Oracle provides an Excel template for absence balance loading. The spreadsheet maps to the same underlying HDL objects but uses a UI-based upload. Suitable for populations under 500 employees.</li>
+              <li><strong>Manual Adjust Balance:</strong> For individual corrections or small teams, HR can use the "Adjust Balance" action in Absence Administration — navigate to the employee's plan enrollment and enter the opening balance directly with an appropriate reason code.</li>
+            </ul>
+            Critical validation step: extract a sample of 20–30 employees from the legacy system, load their balances, then independently verify the loaded values match the source. Balance errors discovered post-go-live are difficult to trace and affect termination settlements months later.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">42</span>What is a Balance Adjustment and how is it performed?</div>
+          <div class="qa-card-answer">A Balance Adjustment is a manual, HR-initiated change to an employee's leave balance outside the normal accrual or consumption process. Use cases:
+            <ul>
+              <li>Correcting a loading error from implementation.</li>
+              <li>Goodwill leave granted by management (e.g., +3 days for exceptional performance).</li>
+              <li>Recovering balance consumed for a leave that was subsequently cancelled or rejected.</li>
+              <li>Back-loading a missed monthly accrual run.</li>
+            </ul>
+            <strong>How to perform:</strong> Navigate to Absence Administration → Manage Absence Balances → Search for the employee → Select the plan → Click "Adjust Balance." Enter the adjustment amount (positive to add, negative to deduct), the effective date, and a mandatory reason/comment. The adjustment is recorded in the balance history with the HR user's name, date, and reason — providing a full audit trail for compliance review.
+            <br><br>
+            Balance adjustments flow through the standard absence balance calculation — they appear in the Absence Accrual Details report and are reflected immediately in the employee's self-service balance view.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">43</span>How are carryover balances calculated at year-end?</div>
+          <div class="qa-card-answer">The year-end carryover calculation is executed by running the "Calculate Absence Accruals and Balances" process with the carryover calculation option enabled — typically scheduled to run on or just after the last day of the plan year. The process:
+            <ul>
+              <li><strong>Step 1 — Final Balance Snapshot:</strong> Oracle takes the employee's end-of-plan-year balance (total accrued minus total consumed for the year).</li>
+              <li><strong>Step 2 — Apply Maximum Carryover:</strong> If the final balance exceeds the plan's Maximum Carryover limit, the excess is either forfeited (set to zero) or cashed out (payroll element created) depending on the plan configuration.</li>
+              <li><strong>Step 3 — Open New Plan Year:</strong> The allowed carryover amount (up to the maximum) becomes the Opening Balance for the new plan year. New accruals begin accumulating on top of this opening balance.</li>
+              <li><strong>Step 4 — Carryover Expiry Tracking:</strong> If the carryover has an expiry date (e.g., must be used by 31 March), Oracle tags the carried balance with this expiry. A separate expiry process runs on that date and forfeits any remaining carried balance that wasn't consumed.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">44</span>Explain a Negative Balance scenario after carryover.</div>
+          <div class="qa-card-answer">A negative balance after carryover occurs when an employee has taken more leave during the plan year than they accrued — resulting in a deficit balance that then carries forward. Common causes:
+            <ul>
+              <li>The plan allowed advance drawing (soft negative balance setting) — employee drew against future accruals that were never fully earned (e.g., resigned mid-year).</li>
+              <li>A retroactive absence was approved after year-end, reducing the prior year's balance below zero.</li>
+              <li>An accrual process error under-credited the employee, but the full entitlement was already consumed.</li>
+            </ul>
+            <strong>Oracle handling at year-end:</strong> If the year-end balance is negative and the plan is configured to carry negatives forward, the new plan year opens with a negative balance. Future accruals reduce this deficit before the employee has a positive balance again. If the plan does not allow negative carryover, HR is alerted and must decide whether to recover the over-drawn amount through payroll deduction, waive it, or process it as a balance adjustment. For terminating employees, a negative balance always triggers a payroll recovery deduction in the final settlement.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">45</span>Can employees view their leave balances in self-service?</div>
+          <div class="qa-card-answer">Yes — balance visibility in Employee Self Service is one of the key user-facing features of Oracle Absence Management. What employees can see:
+            <ul>
+              <li><strong>Current Balance:</strong> The actual accrued-minus-consumed balance as of today's date.</li>
+              <li><strong>Available Balance:</strong> Current balance minus any pending (submitted-but-not-yet-approved) requests. This is the amount truly available for new requests.</li>
+              <li><strong>Accrued to Date:</strong> How much has been earned this plan year so far.</li>
+              <li><strong>Consumed to Date:</strong> How much has been taken this plan year.</li>
+              <li><strong>Projected Balance:</strong> Forecasted balance at future dates (e.g., end of plan year) assuming no further leave is taken. Helps employees plan their remaining leave.</li>
+              <li><strong>Carryover Expiry Alert:</strong> If the employee has carried-over leave with an expiry date, the balance view highlights how much will expire and when.</li>
+            </ul>
+            Managers can see their team members' balances through the Manager Self Service Absence section — critical for approval decisions and capacity planning discussions.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">46</span>What is a Balance Transfer between plans?</div>
+          <div class="qa-card-answer">A Balance Transfer moves an employee's accrued leave balance from one Absence Plan to another — typically needed in these scenarios:
+            <ul>
+              <li><strong>Policy Change:</strong> A company replaces its old "Vacation Plan" with a new "Annual Leave Plan" with different rules. All employees' existing balances must be transferred to the new plan to prevent loss of earned leave.</li>
+              <li><strong>Department/Role Transfer:</strong> Employee moves to a department that uses a different plan (e.g., moving from hourly to salaried role with a different accrual structure).</li>
+              <li><strong>Corporate Acquisition:</strong> Acquired company's employees are migrated to the parent company's Oracle instance and their legacy balances must be loaded to the equivalent plans.</li>
+              <li><strong>Part-Time to Full-Time:</strong> If different plans govern FT and PT employees and the employee changes status, their balance transfers to the appropriate plan.</li>
+            </ul>
+            <strong>Execution:</strong> HR performs the transfer via Manage Absence Balances → Transfer Balance. Specify the source plan, target plan, transfer amount, and effective date. The source balance reduces and the target balance increases by the same amount. The transaction is fully audited.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">47</span>How does absence management handle leave encashment?</div>
+          <div class="qa-card-answer">Leave encashment converts unused leave days into cash payment. Oracle handles two scenarios:
+            <br><br>
+            <strong>Termination Encashment (most common):</strong>
+            <ul>
+              <li>Configured in the plan's Termination Rules as "Payout."</li>
+              <li>When HR terminates the employee in Oracle, the system calculates the remaining leave balance as of the last working day.</li>
+              <li>Oracle creates a Leave Encashment earnings element entry automatically, included in the termination off-cycle payroll run.</li>
+              <li>Calculation (GCC): Unused Days × (Monthly Basic Salary ÷ 30).</li>
+              <li>The absence balance is set to zero post-termination.</li>
+            </ul>
+            <strong>Annual Cash-Out (optional policy):</strong>
+            <ul>
+              <li>HR runs the "Process Leave Encashment" process at the configured annual frequency.</li>
+              <li>Oracle identifies employees with encashable balance (up to the plan's configured cash-out maximum).</li>
+              <li>Payroll element entries are created for the cash-out amount — processed in the next payroll run.</li>
+              <li>The employee's absence balance is reduced by the encashed days.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">48</span>What are Projected Balances and how are they used?</div>
+          <div class="qa-card-answer">Projected Balances are forecasted leave balance values at a specified future date, calculated by taking the current balance and adding expected future accruals while subtracting already-approved future absences.
+            <br><br>
+            <strong>How Oracle calculates them:</strong> The projection engine runs the accrual formula forward from today to the specified future date (e.g., end of plan year), crediting projected monthly accruals at each period — adjusted for the employee's current FTE and service years. Any already-approved future absences (with start dates after today) are deducted from the projected total.
+            <br><br>
+            <strong>Practical uses:</strong>
+            <ul>
+              <li><strong>Employee Planning:</strong> Employees can check how much leave they'll have in December before booking a Christmas holiday in October — preventing over-booking.</li>
+              <li><strong>Manager Capacity Planning:</strong> Managers can see projected team availability for upcoming quarters during workforce planning sessions.</li>
+              <li><strong>Finance Provisioning:</strong> The Absence Liability Report uses projected year-end balances to calculate the financial liability that needs to be provisioned in the company's accounts.</li>
+              <li><strong>HR Alerts:</strong> Employees with large projected unused balances near carryover expiry can be proactively flagged to encourage leave taking before forfeiture.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">49</span>Difference between Available Balance and Plan Balance.</div>
+          <div class="qa-card-answer">This distinction is one of the most frequent sources of employee confusion and HR helpdesk calls:
+            <br><br>
+            <strong>Plan Balance</strong> = Total accrued leave earned to date minus total leave already consumed (approved and completed absences). This is the "official" balance and the number shown in historical reports. It does not account for requests currently in the approval pipeline.
+            <br><br>
+            <strong>Available Balance</strong> = Plan Balance minus Pending Balance (leave in submitted-but-not-yet-approved requests). This is what Oracle uses to enforce negative balance rules when a new request is submitted. It represents what is truly available for additional requests right now.
+            <br><br>
+            <strong>Example:</strong> An employee has a Plan Balance of 10 days. They have submitted a 4-day request that is awaiting manager approval. Their Available Balance = 10 − 4 = 6 days. If they try to submit another 7-day request, Oracle will block it (hard limit) even though their Plan Balance shows 10 days. The employee sees "insufficient balance" and is confused because their "balance shows 10 days." This is why displaying Available Balance (not Plan Balance) in self-service is the best practice — it reflects what the employee can actually request.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">50</span>What happens to balances when an employee terminates?</div>
+          <div class="qa-card-answer">Termination triggers a specific balance processing sequence in Oracle Absence Management:
+            <ul>
+              <li><strong>Final Accrual Calculation:</strong> Oracle calculates any outstanding accrual up to the termination date — pro-rating the final partial period's accrual if the termination falls mid-month.</li>
+              <li><strong>Final Balance Determination:</strong> Total accrued balance (including final pro-rata accrual) minus all consumed leave = final leave balance as of last working day.</li>
+              <li><strong>Payout (if plan configured):</strong> A Leave Encashment element entry is created for the final balance value — included in the termination off-cycle payroll run.</li>
+              <li><strong>Recovery (if negative balance):</strong> If the final balance is negative (employee over-drew), a recovery deduction element is created — deducted from the termination settlement.</li>
+              <li><strong>Balance Zeroing:</strong> After the encashment/recovery is processed, the absence balance is set to zero and the enrollment is end-dated to the termination date.</li>
+              <li><strong>WPS Compliance (GCC):</strong> The final settlement payment including leave encashment must be reported via WPS SIF in UAE — ensure the payroll element is included in the payment file.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 6: PAYROLL INTEGRATION (51–60)
+══════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">06</div>
+        <div class="qa-section-label">Payroll Integration</div>
+        <div class="qa-section-count">Q 51–60</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">51</span>How are paid absences reflected in payroll?</div>
+          <div class="qa-card-answer">When a paid absence is approved in Oracle Absence Management, the integration with Oracle Payroll works through a <strong>Payroll Element Entry</strong> that is automatically created on the employee's record:
+            <ul>
+              <li>The Absence Plan is configured with a linked <strong>Paid Leave Earnings element</strong> (e.g., "Annual Leave Pay").</li>
+              <li>Upon final approval, Oracle creates an element entry for this earnings element, populating the input values with the leave duration (days or hours) and the pay period covering the absence dates.</li>
+              <li>During the payroll run, the element's fast formula (or calculation rule) computes the payment — typically full salary continuation, meaning no deduction is applied and the employee receives their normal pay.</li>
+              <li>The paid leave line appears separately on the payslip as "Annual Leave Pay: X days" — transparent to the employee even though the net amount is the same as a normal working period.</li>
+              <li>Balance confirmation: The payroll element entry serves as a secondary record of leave consumption — payroll reports can be cross-referenced with absence records for reconciliation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">52</span>How does unpaid leave deduction work in payroll?</div>
+          <div class="qa-card-answer">Unpaid leave creates a deduction from the employee's normal salary. The mechanism:
+            <ul>
+              <li>The Absence Plan for unpaid leave is linked to an <strong>Unpaid Leave Deduction element</strong>.</li>
+              <li>When the unpaid absence is approved, Oracle creates an element entry for this deduction element, with input values: number of unpaid days and the effective pay period.</li>
+              <li>The deduction element's fast formula calculates: <code>(Monthly Salary ÷ Working Days in Month) × Unpaid Days</code>.</li>
+              <li>This amount is subtracted in the gross-to-net payroll calculation, reducing the employee's net pay for that period.</li>
+              <li>The payslip shows a named deduction line: "Unpaid Leave – 3 days: –AED 1,364" — fully transparent.</li>
+              <li><strong>Day Basis:</strong> The divisor (calendar days vs working days) is a policy decision. GCC typically uses 30 calendar days as the denominator (monthly salary ÷ 30 × unpaid days) for simplicity. Western implementations typically use actual working days in the month.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">53</span>Explain Rate of Pay formula for partial paid leaves (e.g., 70% sick pay).</div>
+          <div class="qa-card-answer">A Rate of Pay formula defines what fraction of the employee's normal salary is paid during a specific absence type. For a 70% sick pay scenario:
+            <span class="formula"><span class="cm">/* Rate of Pay: 70% sick pay formula */</span>
+<span class="kw">DEFAULT FOR</span> ASG_SALARY       <span class="kw">IS</span> <span class="vl">0</span>
+<span class="kw">DEFAULT FOR</span> ASG_WORK_DAY_HOURS <span class="kw">IS</span> <span class="vl">8</span>
+<span class="kw">DEFAULT FOR</span> ABSENCE_DURATION   <span class="kw">IS</span> <span class="vl">0</span>
+
+daily_rate  = ASG_SALARY / <span class="vl">30</span>
+pay_percent = <span class="vl">0.70</span>
+payment     = daily_rate * ABSENCE_DURATION * pay_percent
+
+<span class="kw">RETURN</span> payment</span>
+            For tiered sick pay (common in UK/EU where full pay applies first, then statutory rate), the formula adds a duration check:
+            <span class="formula"><span class="kw">IF</span> ABSENCE_DURATION <= <span class="vl">15</span> <span class="kw">THEN</span> rate = <span class="vl">1.0</span>   <span class="cm">/* full pay days 1-15 */</span>
+<span class="kw">ELSE IF</span> ABSENCE_DURATION <= <span class="vl">45</span> <span class="kw">THEN</span> rate = <span class="vl">0.70</span>  <span class="cm">/* 70% days 16-45 */</span>
+<span class="kw">ELSE</span>                              rate = <span class="vl">0.50</span>  <span class="cm">/* 50% beyond 45  */</span>
+<span class="kw">END IF</span></span>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">54</span>What is the Absence to Payroll extract?</div>
+          <div class="qa-card-answer">The "Absence Information for Payroll" extract is required when Oracle Absence Management is used alongside a <strong>third-party payroll system</strong> (SAP, ADP, Ramco, or a regional GCC payroll processor) rather than Oracle Payroll Cloud. In a pure Oracle Payroll environment, absence data flows automatically through shared database tables and no extract is needed.
+            <br><br>
+            <strong>How it works:</strong>
+            <ul>
+              <li>The extract queries all approved absences within a specified payroll period that have not yet been flagged as "sent to payroll."</li>
+              <li>It generates a structured output file (XML, CSV, or delimited flat file) containing: employee ID, absence type, start/end dates, approved duration, pay percentage, and the payroll period reference.</li>
+              <li>The file is transmitted to the external payroll system via SFTP or API for processing.</li>
+              <li>After a successful transmission, Oracle marks the absences as "extracted" — preventing duplicate transmission in subsequent runs.</li>
+              <li>Even in full Oracle environments, some companies run the extract purely as an audit file to maintain an independent record of what absence data was included in each payroll period.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">55</span>How does retroactive payroll work with backdated absence approvals?</div>
+          <div class="qa-card-answer">When an absence is approved with dates falling in an already-processed payroll period, Oracle's retroactive payroll processing handles the correction:
+            <ul>
+              <li><strong>Retro Event Trigger:</strong> The backdated absence approval creates a Retro Event in Oracle Payroll — specifically, the creation of the payroll element entry for a past period triggers the retro engine.</li>
+              <li><strong>Recalculation:</strong> Oracle recalculates the affected prior period with the absence element entry included. For paid absence, there is no change (salary continues either way). For unpaid absence, the deduction amount is computed for the past period.</li>
+              <li><strong>Delta in Current Period:</strong> The difference between the original calculation (no deduction) and the recalculated result (with deduction) is created as a Retro Element entry in the current payroll run.</li>
+              <li><strong>Payslip Transparency:</strong> The current period payslip shows the retro adjustment as a named line item: "Unpaid Leave Retro – March: –AED 1,364" — clearly explaining the deduction to the employee.</li>
+              <li><strong>Timing Dependency:</strong> Retro processing only triggers if the payroll period has been archived. If the period is still open (payroll calculated but not yet archived), HR can simply roll back and reprocess with the absence included.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">56</span>Can absence deductions be overridden in payroll?</div>
+          <div class="qa-card-answer">Yes — payroll administrators have the ability to manually adjust element entries before the payroll run is finalised. Override scenarios:
+            <ul>
+              <li><strong>Incorrect Duration:</strong> If the absence record shows 5 days but the correct amount should be 3 days (manager agreed informally), the payroll admin can update the element entry's "Number of Days" input value before running payroll.</li>
+              <li><strong>Waived Deduction:</strong> Management approves waiving an unpaid deduction as a goodwill gesture. The payroll admin deletes the deduction element entry or sets the amount to zero.</li>
+              <li><strong>Currency/Basis Change:</strong> In multi-country deployments, an exchange rate error may require the deduction amount to be manually corrected.</li>
+            </ul>
+            <strong>Governance:</strong> All manual element entry overrides should require dual authorisation and be documented with a reason code. Oracle records the user who created, modified, and approved each element entry in the audit trail — visible in the Payroll Audit Report. Override without documentation creates compliance risk, particularly for statutory audits where every payroll deduction must be traceable to an approved absence record.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">57</span>How are statutory sick pay (SSP) or workers' compensation integrated?</div>
+          <div class="qa-card-answer">Statutory Sick Pay and workers' compensation integration follows the same Absence Plan → Payroll Element architecture as regular leave, with additional complexity for the variable payment calculation:
+            <ul>
+              <li><strong>SSP (UK example):</strong> The absence plan for sick leave is linked to an SSP earnings element. A Rate of Pay formula checks: if the employee earns above the Lower Earnings Limit and has been sick for more than 3 qualifying days, return the weekly SSP rate (fixed statutory amount) ÷ 7 per day. If the employee's normal salary is higher than SSP, the company may top up to full pay — a second element handles the top-up difference.</li>
+              <li><strong>Workers' Compensation (US):</strong> Absence due to workplace injury links to a Workers' Compensation element. Payment comes from the insurance carrier — Oracle creates a third-party payment element where the company advances the payment and tracks the insurance reimbursement liability.</li>
+              <li><strong>GCC Sick Leave:</strong> Under UAE Labour Law, sick leave during probation is unpaid; post-probation: full pay for first 15 days, half pay for next 30 days, unpaid beyond 45 days. The Rate of Pay formula implements this tiered calculation based on cumulative sick leave duration within a rolling year.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">58</span>What happens if an absence plan is not linked to any payroll element?</div>
+          <div class="qa-card-answer">If an Absence Plan has no payroll element link configured, the absence management module functions in a purely informational/tracking capacity:
+            <ul>
+              <li>Absence requests are submitted, approved, and recorded normally — the approval workflow runs, balances are consumed, and the absence appears in all absence reports.</li>
+              <li>No payroll element entry is ever created — the absence has zero financial impact on the employee's pay regardless of whether it is paid, unpaid, or partial-pay.</li>
+            </ul>
+            <strong>Valid use cases for no payroll link:</strong>
+            <ul>
+              <li>Informational tracking of absences that don't affect pay (e.g., personal day that is covered by a separate deduction mechanism).</li>
+              <li>Absence types that are paid by a government body or insurance provider — the employer needs the HR record but doesn't process the payment through their payroll.</li>
+              <li>Training or conference attendance recorded as "planned absence" for coverage visibility without any pay implication.</li>
+            </ul>
+            A missing payroll link that should exist is a common implementation defect — always verify the link in UAT by submitting a test absence and confirming the element entry appears in the employee's payroll record for the covering period.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">59</span>How do you manage absence payments via third-party insurers?</div>
+          <div class="qa-card-answer">When an absence is partially or fully reimbursed by a third-party insurer (e.g., income protection insurance for long-term sick leave), Oracle manages this through a two-element structure:
+            <ul>
+              <li><strong>Employer Advance Element:</strong> The company pays the employee their full (or contractual) salary during the insured absence — maintaining good employee relations and legal compliance. This is a standard earnings element linked to the absence plan.</li>
+              <li><strong>Insurance Recovery Element:</strong> A separate element (typically classified as an asset or receivable) records the expected reimbursement from the insurer. This is either posted as a GL credit (reducing the net payroll expense) or tracked as an accounts receivable until the insurer settles.</li>
+              <li><strong>Net Liability:</strong> Finance sees the net cost of the absence = total salary paid minus insurance recovery expected. The Absence Liability Report can be configured to show the net cost after expected recovery.</li>
+              <li><strong>When insurer pays directly:</strong> Some insurers pay the employee directly. In this case, Oracle records an unpaid leave deduction (reducing the employer's payroll cost) and a separate informational record confirming the insurance payment was received by the employee — avoiding double-payment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">60</span>How to test the payroll impact of an absence plan?</div>
+          <div class="qa-card-answer">A structured payroll integration test for an absence plan:
+            <ul>
+              <li><strong>Step 1 — Test Employee Setup:</strong> Create or use a dedicated test employee with a known salary (e.g., AED 10,000/month) enrolled in the absence plan under test.</li>
+              <li><strong>Step 2 — Submit and Approve Test Absence:</strong> Submit a known-quantity absence (e.g., exactly 3 days unpaid leave or 5 days paid leave) and approve it for a specific pay period.</li>
+              <li><strong>Step 3 — Check Element Entry:</strong> Navigate to the test employee's element entries and confirm the correct payroll element was created with the expected input values (days, pay period, amount if pre-calculated).</li>
+              <li><strong>Step 4 — Run QuickPay:</strong> Submit a QuickPay run for the test employee covering the absence pay period. QuickPay processes only this employee — no risk to the live population.</li>
+              <li><strong>Step 5 — Review Payroll Results:</strong> Check the employee's Gross-to-Net results. For unpaid leave: verify the deduction amount = (10,000 ÷ 30) × 3 = AED 1,000. For paid leave: verify no deduction and normal gross pay. For partial pay: verify the reduction matches the configured percentage.</li>
+              <li><strong>Step 6 — Check Payslip:</strong> Archive the QuickPay and generate the payslip — confirm the absence line item appears correctly labelled.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 7: STATUTORY & COMPLIANCE (61–70)
+══════════════════════════════════════ -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">07</div>
+        <div class="qa-section-label">Statutory Leaves &amp; Compliance</div>
+        <div class="qa-section-count">Q 61–70</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">61</span>How does Oracle support FMLA (Family &amp; Medical Leave Act)?</div>
+          <div class="qa-card-answer">Oracle provides purpose-built FMLA functionality within the Absence Management module for US deployments:
+            <ul>
+              <li><strong>Eligibility Checking:</strong> Oracle automatically evaluates the two federal criteria — 12 months of employment AND 1,250 hours worked in the past 12 months — and flags whether the employee qualifies when they submit a qualifying leave request.</li>
+              <li><strong>12-Week Entitlement Tracking:</strong> The FMLA plan tracks cumulative consumption against the 12-week bank. Once exhausted, further requests are not designated as FMLA-qualifying.</li>
+              <li><strong>Multiple Calculation Methods:</strong> Oracle supports all four methods: calendar year, fixed fiscal year, 12-month period from first FMLA use, or rolling backward 12-month (the most common and most protective for employees).</li>
+              <li><strong>Intermittent Leave:</strong> Fragmented FMLA (hours or half-days at a time) accumulates cumulatively against the 12-week bank — Oracle tracks these in hours to enable precise consumption reporting.</li>
+              <li><strong>Certification Management:</strong> Medical certification (WH-380E for employee's own condition, WH-380F for family member) is tracked with submission deadlines.</li>
+              <li><strong>Concurrent Counting:</strong> FMLA runs concurrently with company-paid leave — Oracle tracks both simultaneously ensuring the FMLA bank is consumed even when paid leave applies.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">62</span>What is the FMLA Rolling Backward method?</div>
+          <div class="qa-card-answer">The Rolling Backward (or Rolling 12-Month Backward) method calculates FMLA entitlement by looking back exactly 12 months from the date of each new leave request — rather than using a fixed calendar year.
+            <br><br>
+            <strong>How it works:</strong> On 15 April 2026, an employee requests FMLA leave. Oracle looks back to 15 April 2025 and sums all FMLA leave taken between those two dates. If the employee has used 6 weeks in that window, they have 6 weeks remaining.
+            <br><br>
+            <strong>Why it is employer-preferred:</strong> The rolling backward method prevents employees from "stacking" FMLA — taking 12 weeks at the end of a calendar year and another 12 weeks at the start of the next year back-to-back. With rolling backward, each new leave request re-evaluates what was consumed in the prior 12 months.
+            <br><br>
+            <strong>Configuration in Oracle:</strong> Set the Plan Year to "Rolling Backward" in the FMLA plan's Year Definition. Oracle's accrual and tracking engine automatically implements the rolling calculation — no fast formula required for the calculation method itself, though custom formulas may be needed for eligibility edge cases.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">63</span>How do you track intermittent FMLA leaves?</div>
+          <div class="qa-card-answer">Intermittent FMLA is leave taken in separate, non-continuous increments — for example, 2 hours every Tuesday for chemotherapy, or occasional unplanned days for a chronic condition. Oracle tracks this through two mechanisms:
+            <ul>
+              <li><strong>Individual Absence Requests:</strong> Each intermittent absence is submitted as a separate request with its own date and duration. Oracle accumulates these individual consumptions against the FMLA 12-week bank in hours. The running total is visible in the employee's FMLA balance at all times.</li>
+              <li><strong>Absence Patterns (for predictable schedules):</strong> If the intermittent need is on a regular schedule (e.g., every Tuesday afternoon), an Absence Pattern is configured specifying the recurring schedule, hours per occurrence, and duration of the pattern. Oracle generates the absence records automatically on each scheduled occurrence — the employee doesn't need to submit individually each time.</li>
+            </ul>
+            The FMLA Tracking Report (available via OTBI or as an Oracle-delivered report) shows: total entitlement, hours consumed, hours remaining, individual absence dates and durations, and certification status — everything needed for a DOL audit.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">64</span>How is California Paid Sick Leave (PSL) configured?</div>
+          <div class="qa-card-answer">California PSL has specific statutory requirements that drive the Oracle configuration:
+            <ul>
+              <li><strong>Accrual Rate:</strong> 1 hour for every 30 hours worked (or an alternative "front-loading" method of 3 days at the start of the year). The accrual formula uses <code>ASG_HOURS_WORKED</code> (from Time &amp; Labor integration) rather than a fixed monthly amount: <code>accrual = hours_worked / 30</code>.</li>
+              <li><strong>Annual Usage Cap:</strong> Employees can accrue more than 3 days but are capped at using 3 days (24 hours) per year for PSL-qualifying reasons. A usage formula enforces this cap.</li>
+              <li><strong>Carryover:</strong> Accrued but unused PSL carries over year-to-year. Many employers use the alternative "front-load" method to avoid carryover complexity.</li>
+              <li><strong>No Cash-Out at Termination:</strong> Unlike vacation in California, PSL accrued does not need to be paid out at termination — the plan's termination rule is set to "Forfeit."</li>
+              <li><strong>Qualifying Reasons:</strong> PSL can only be used for specific statutory reasons (illness, preventive care, domestic violence, etc.) — validation formula checks can be added to enforce appropriate usage, though typically this is managed through the approval process rather than system blocking.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">65</span>How does Oracle support state-mandated parental leave?</div>
+          <div class="qa-card-answer">US state parental leave laws (CFRA in California, NJFLA in New Jersey, PFML in Massachusetts/Washington, etc.) each have distinct entitlement rules. Oracle supports them through:
+            <ul>
+              <li><strong>State-Specific Plans:</strong> Create separate Absence Plans per state-mandated program. Each plan reflects the correct entitlement weeks, eligibility criteria, and payment rules for that state's law.</li>
+              <li><strong>Payment Configuration:</strong> Most state paid family leave programs pay a percentage of the employee's wages up to a weekly cap. The Rate of Pay formula implements: <code>MIN(weekly_wage * pay_pct, state_cap)</code>.</li>
+              <li><strong>Coordination with FMLA:</strong> State family leave typically runs concurrently with FMLA — Oracle tracks both banks simultaneously. When both are active, the employee receives the most favorable payment (usually the state benefit, since FMLA itself is unpaid federally).</li>
+              <li><strong>Coordination with Company Leave:</strong> Companies may allow or require employees to use accrued paid leave (vacation, PTO) simultaneously with state leave — reducing the accrued liability while the employee receives state benefits. Oracle's concurrent leave rules enable this double-tracking.</li>
+              <li><strong>Certification:</strong> Birth certificate, adoption papers, or medical certification is required and configured in the plan's certification type.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">66</span>What is a Statutory Absence Plan vs a Company Plan?</div>
+          <div class="qa-card-answer"><strong>Statutory Absence Plan</strong> represents legally mandated leave requirements that the employer is legally obligated to provide and track. The entitlement rules, payment percentages, and documentation requirements are fixed by law — the company has little or no discretion. Examples: FMLA (US), UAE Annual Leave under Decree 33 (30 days minimum), KSA Sick Leave, UAE Maternity Leave (60 days). Oracle's statutory plans must precisely match the legislation — any deviation is a compliance risk.
+            <br><br>
+            <strong>Company Absence Plan</strong> represents employer-discretionary leave that goes beyond the statutory minimum. Examples: extended parental leave (company offers 6 months, law requires only 3), additional personal days, employee wellness days, or study leave. Companies design these plans based on culture, talent retention strategy, and competitive benchmarking — not legal obligation.
+            <br><br>
+            In Oracle, both types are configured the same way technically — the distinction is in governance. Statutory plans should be locked down (change-controlled) and reviewed against legislative updates each quarter. Company plans are more flexible and can be modified by HR Policy without legal review.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">67</span>How is jury duty leave managed in Oracle?</div>
+          <div class="qa-card-answer">Jury Duty leave has distinct characteristics that differentiate it from standard leave types:
+            <ul>
+              <li><strong>No Accrual:</strong> The plan has no accrual formula — employees don't earn jury duty days; they simply have an entitlement when summoned.</li>
+              <li><strong>Duration:</strong> Unlimited or as long as the court service requires — no maximum duration cap is typically set.</li>
+              <li><strong>Certification Required:</strong> Court summons document must be uploaded when submitting the request. For extended jury service, a new court confirmation may be required periodically.</li>
+              <li><strong>Pay Type Options:</strong> Three common policy approaches: Full company pay (most common for short service), Court pay only (the stipend paid by the court, the company pays nothing extra), or Differential pay (company tops up the court stipend to the employee's normal salary).</li>
+              <li><strong>Payroll Element:</strong> For differential pay, the Rate of Pay formula calculates: <code>MAX(normal_daily_salary - court_stipend, 0)</code> — the company pays only the difference.</li>
+              <li><strong>Return to Work:</strong> When jury service ends early (case settled), the employee returns. Any remaining days on the approved absence are cancelled and the balance adjusted.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">68</span>How is bereavement leave configured?</div>
+          <div class="qa-card-answer">Bereavement leave has a straightforward but carefully managed configuration:
+            <ul>
+              <li><strong>No Accrual:</strong> Bereavement leave is granted per occurrence, not accumulated over time. The plan has no accrual formula.</li>
+              <li><strong>Entitlement by Relationship:</strong> Most policies vary by the deceased's relationship to the employee. Common structure: immediate family (spouse, child, parent) = 5 days; extended family (sibling, grandparent, in-law) = 3 days; distant relative = 1 day. A validation formula checks the declared relationship and returns the appropriate maximum duration.</li>
+              <li><strong>Certification:</strong> Death certificate is required for extended bereavement (typically for claims over 3 days or for re-occurrence within a short period). Configured as a Certification Type with a submission deadline of 7 days after leave starts.</li>
+              <li><strong>Pay:</strong> Typically full pay — linked to a Bereavement Pay earnings element that ensures no deduction from the employee's normal salary.</li>
+              <li><strong>Sensitive Handling:</strong> Configure auto-approval for bereavement leave — requiring a manager to formally approve a bereavement request adds unnecessary administrative friction at a difficult time for the employee.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">69</span>How does ADA interact with absence management?</div>
+          <div class="qa-card-answer">The Americans with Disabilities Act (ADA) requires employers to provide reasonable accommodations to employees with qualifying disabilities — and leave can be a form of reasonable accommodation even after FMLA entitlement is exhausted. Oracle Absence Management supports ADA accommodation leave through:
+            <ul>
+              <li><strong>Extended Unpaid Leave:</strong> A separate ADA Accommodation Absence Type (under an Unpaid Leave plan) is configured to allow leave beyond the standard FMLA 12 weeks. The duration is not fixed — it depends on the accommodation agreement, which is typically managed outside the system as an HR/legal document.</li>
+              <li><strong>Tracking Without Accrual:</strong> The plan has no accrual — it's an entitlement-based plan that HR grants per accommodation agreement. HR manually creates the element entry or absence record for the approved accommodation period.</li>
+              <li><strong>Separation from FMLA Tracking:</strong> ADA accommodation leave is tracked separately from FMLA — after FMLA is exhausted, the ADA tracking begins. Both records coexist in Oracle with different absence type labels.</li>
+              <li><strong>Documentation:</strong> Medical certification supporting the disability and accommodation is required and tracked in the certification module.</li>
+              <li><strong>Interactive Process Log:</strong> HR teams often track the ADA interactive process (meetings with employee, medical review) outside Oracle in a case management tool, with only the final approved leave dates entered in Oracle.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">70</span>What is the DOL WH-381 form and how does Oracle produce it?</div>
+          <div class="qa-card-answer">The WH-381 is the US Department of Labor's <strong>Notice of Eligibility and Rights &amp; Responsibilities</strong> form that employers are legally required to provide to employees within 5 business days of an FMLA request. It informs the employee whether they are eligible for FMLA and what their rights and obligations are.
+            <br><br>
+            Oracle generates this document through two methods:
+            <ul>
+              <li><strong>BI Publisher (BIP) Report:</strong> A customized BIP template pre-populated with the employee's eligibility determination, leave request dates, and certification requirements — pulled directly from the FMLA tracking data in Oracle. HR generates it from the Absence Administration UI and delivers it to the employee electronically or via print.</li>
+              <li><strong>HCM Extracts:</strong> For bulk generation, an HCM Extract can produce WH-381 data for multiple FMLA requests simultaneously — useful for HR teams processing many FMLA designations at once.</li>
+            </ul>
+            The companion form, <strong>WH-382 (Designation Notice)</strong> — informing the employee whether the leave is FMLA-designated — is similarly generated through BI Publisher once the employer has reviewed the medical certification and made a designation decision. Oracle maintains the FMLA designation status and dates that populate this form.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 8: REPORTING & OTBI (71–80)
+══════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">08</div>
+        <div class="qa-section-label">Reporting &amp; OTBI</div>
+        <div class="qa-section-count">Q 71–80</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">71</span>Name the 5 important OTBI subject areas for absence.</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Workforce Management — Absence Real Time:</strong> The primary subject area for absence request data — covers request status, type, dates, duration, approval history, and request-level attributes. Used to build pending approval dashboards and absence frequency reports.</li>
+              <li><strong>Workforce Management — Absence Accrual Real Time:</strong> Focuses on accrual transactions — amounts credited per period, formula applied, FTE factor used. Used to audit accrual accuracy and investigate balance disputes.</li>
+              <li><strong>Workforce Management — Absence Balance Real Time:</strong> Shows current, available, accrued, consumed, and projected balances per employee per plan. Used for leave liability reporting and employee balance queries.</li>
+              <li><strong>Workforce Management — Workforce Absence:</strong> Joins absence data with assignment attributes (department, grade, manager, location) — enabling cross-dimensional absence analysis such as absence rate by department or average sick days by job grade.</li>
+              <li><strong>Workforce Management — Absence Certification Real Time:</strong> Tracks certification submissions, overdue certifications, expiry dates, and verification status. Used by HR to monitor certification compliance for extended sick leaves and FMLA documentation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">72</span>How do you create a report showing employees nearing a negative balance?</div>
+          <div class="qa-card-answer">Using the <strong>Absence Balance Real Time</strong> OTBI subject area:
+            <ul>
+              <li><strong>Columns:</strong> Employee Name, Employee Number, Plan Name, Available Balance, Planned Absence Duration (from approved future requests).</li>
+              <li><strong>Calculated Measure:</strong> Create a derived column: <code>Projected Balance = Available Balance − Sum of Future Approved Absence Duration</code>.</li>
+              <li><strong>Filter:</strong> Apply a filter where Projected Balance &lt; 2 days (or whichever threshold HR defines as the early warning point). This catches employees who have approved upcoming leave that will nearly exhaust or exceed their available balance.</li>
+              <li><strong>Secondary Filter (optional):</strong> Add <code>AND Available Balance &gt; 0</code> to exclude employees already in deficit — handle those separately.</li>
+              <li><strong>Delivery:</strong> Schedule the report to run weekly and deliver to HR Business Partners by email — allowing them to proactively contact employees approaching negative balance before the leave occurs rather than dealing with the deficit after the fact.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">73</span>What is the Absence Liability Report used for?</div>
+          <div class="qa-card-answer">The Absence Liability Report is a finance-facing report that calculates the monetary value of all accrued but unused leave across the organisation — representing a financial obligation the company owes to employees. It is used for:
+            <ul>
+              <li><strong>Balance Sheet Provisioning:</strong> Accounting standards (IAS 19, US GAAP) require companies to recognise the current value of employee leave entitlements as a liability. The report provides the input data for the annual (or quarterly) provision calculation.</li>
+              <li><strong>Audit Compliance:</strong> External auditors request this report to verify that the leave liability provision in the financial statements is materially accurate.</li>
+              <li><strong>Acquisition Due Diligence:</strong> When a company is acquired, the acquirer needs to understand the leave liability they are inheriting — this report quantifies it by employee, department, and total.</li>
+            </ul>
+            <strong>Calculation per employee:</strong> <code>Unused Balance (days) × (Annual Salary ÷ Annual Working Days)</code>. The report sums these across all employees to produce a total liability figure. For multi-currency companies, each employee's liability is reported in their local currency with optional conversion to the group reporting currency using GL exchange rates.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">74</span>How do you track absenteeism patterns like frequent Monday/Friday sick leaves?</div>
+          <div class="qa-card-answer">Absence pattern analysis uses the <strong>Workforce Management — Workforce Absence</strong> subject area with day-of-week analysis:
+            <ul>
+              <li><strong>Day-of-Week Column:</strong> Add a derived column extracting the day of the week from the absence start date: <code>DAYOFWEEK(Absence Start Date)</code> — returns 1 (Sunday) to 7 (Saturday) or Monday–Friday labels.</li>
+              <li><strong>Frequency Grouping:</strong> Group by Employee, Absence Type, and Day of Week. Count the number of occurrences per day per employee.</li>
+              <li><strong>Filter:</strong> Focus on "Sick Leave" or "Illness" type absences, duration = 1 day (single-day sick leave is more likely to indicate pattern absence than genuine illness).</li>
+              <li><strong>Threshold Alert:</strong> Flag employees with 3+ single-day sick leaves on Mondays or Fridays within a rolling 6-month period — this is the typical HR trigger for an informal absence management conversation.</li>
+              <li><strong>Bradford Factor:</strong> Many organisations use the Bradford Factor (B = S² × D, where S = number of sick occasions and D = total sick days) as a composite absenteeism score. Oracle's OTBI can calculate this as a derived measure and rank employees by their Bradford score for management review.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">75</span>What is the Absence Calendar report for managers?</div>
+          <div class="qa-card-answer">The Absence Calendar is a visual, month-view report that shows which team members are on leave on any given day — enabling managers to plan coverage, schedule meetings, and manage project resource allocation with full awareness of team availability.
+            <br><br>
+            <strong>Features:</strong>
+            <ul>
+              <li>Displays each team member as a row; calendar days as columns — approved absences appear as coloured blocks spanning the relevant dates.</li>
+              <li>Colour-coded by absence type (e.g., green = annual leave, yellow = sick, red = unpaid) for at-a-glance categorisation.</li>
+              <li>Public holidays from the assigned work calendar are highlighted — helping managers see combined impact of holidays and employee leave on team capacity.</li>
+              <li>Managers can filter by date range, specific team member, or absence type.</li>
+              <li>Pending (not yet approved) requests are shown in a lighter shade — managers can see what's pending before they approve further requests.</li>
+              <li>Drill-through links allow the manager to click on a block and jump directly to the absence request for approval or review.</li>
+            </ul>
+            The calendar is available in Manager Self Service and can be embedded in the HCM dashboard as an infolet for immediate visibility on the home page.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">76</span>Can you schedule absence reports for automatic email delivery?</div>
+          <div class="qa-card-answer">Yes — Oracle provides two mechanisms for automated absence report delivery:
+            <ul>
+              <li><strong>BI Publisher Scheduling:</strong> In BI Publisher, navigate to the report → Schedule → set frequency (daily, weekly, monthly), start time, and delivery destination (email addresses, shared folder, or FTP). The report runs automatically and is delivered as a PDF, Excel, or CSV attachment to the configured recipients.</li>
+              <li><strong>OTBI Report Subscriptions:</strong> OTBI analyses can be subscribed to — configure a delivery schedule and format. Managers can subscribe to their own team's absence summary report and receive it in their inbox every Monday morning without any manual action.</li>
+              <li><strong>BI Publisher Bursting:</strong> For reports that need to be delivered to many different recipients with each receiving only their own data (e.g., each manager gets only their team's absence report), Bursting splits a single report run into individual deliveries — one per manager — using the manager's email from HR data.</li>
+              <li><strong>Oracle Analytics Publisher Agents:</strong> More sophisticated alerting — send a report only when a condition is met (e.g., alert HR when any employee's sick leave exceeds 5 days in a month).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">77</span>What data does an Absence Inclusion/Exclusion report provide?</div>
+          <div class="qa-card-answer">The Absence Inclusion/Exclusion report (sometimes called Process Inclusion Report) shows which employees were included in or excluded from a specific absence management process run — such as the monthly accrual run or year-end carryover calculation. It is used for process auditing and error investigation:
+            <ul>
+              <li><strong>Included Employees:</strong> List of all employees for whom the process successfully ran and a result was posted. Confirms the expected population was processed.</li>
+              <li><strong>Excluded Employees with Reason:</strong> The critical section — lists employees the process skipped and why. Common exclusion reasons: enrollment not active for the period, assignment suspended, FTE = 0, plan not yet in effect, missing required DBI value. Each exclusion reason points to a specific configuration gap that HR can investigate and correct.</li>
+              <li><strong>Error Records:</strong> Employees where the process attempted to run but encountered an error — formula compilation failure, missing default value, invalid date. These require formula or data fixes before reprocessing.</li>
+            </ul>
+            Best practice: after every monthly accrual run, HR reviews the exclusion list before closing the period — any unexpected exclusions (e.g., an active employee not accruing) are investigated and corrected before the next cycle.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">78</span>How do you monitor absence approval SLA (requests pending &gt; 48 hours)?</div>
+          <div class="qa-card-answer">Absence approval SLA monitoring ensures requests are not stuck in approval queues, protecting employee experience and legal compliance. Oracle approaches:
+            <ul>
+              <li><strong>OTBI Report:</strong> Using Absence Real Time subject area, build a report with columns: Employee Name, Absence Type, Request Date, Current Approver, Status. Filter: Status = "Pending Approval" AND Request Date &lt; (TODAY − 2 days). This gives a live list of all overdue approvals at any point.</li>
+              <li><strong>BPM Escalation Configuration:</strong> More proactively, configure a BPM escalation rule — if no action is taken within 2 business days, automatically escalate to the approver's manager and send an alert email. This is configured in the workflow approval rules using a time-based escalation condition.</li>
+              <li><strong>Dashboard Infolet:</strong> Add a "Pending &gt;48 Hours" count infolet to the HR dashboard — provides instant visibility on the home page without running a manual report.</li>
+              <li><strong>Manager Reminder:</strong> Schedule an automated daily email to managers listing their outstanding absence approvals — reduces instances of managers simply forgetting about pending requests in their worklist.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">79</span>What is Absence Trend Analysis?</div>
+          <div class="qa-card-answer">Absence Trend Analysis is a strategic HR analytics use case that examines patterns in absence data over time to identify issues, predict future demand, and support workforce planning decisions:
+            <ul>
+              <li><strong>Seasonal Spikes:</strong> Comparing absence volumes month-over-month or year-over-year reveals predictable peaks — cold/flu season in winter, summer vacation demand in July–August, or religious holiday clusters. HR can use this to pre-plan coverage and avoid approving too many concurrent leaves during peak periods.</li>
+              <li><strong>Department Comparison:</strong> Which departments have the highest absence rates? A customer service department with 12% absence rate versus a finance department at 3% may indicate workload issues, management problems, or engagement differences worth investigating.</li>
+              <li><strong>Post-Event Analysis:</strong> Did absence rates spike after a restructuring announcement? After a major project went live? Correlating absence trends with organisational events helps HR and leadership understand employee wellbeing impact.</li>
+              <li><strong>Year-over-Year:</strong> Tracking total absence days by absence type each year reveals whether sick leave is increasing (potential wellness programme gap) or whether annual leave utilisation is dropping (employees not taking enough leave — burnout risk).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">80</span>Can OTBI calculate absence rates (absence days / available working days)?</div>
+          <div class="qa-card-answer">Yes — OTBI supports calculated measures that derive the absence rate as a percentage. The formula:
+            <br><br>
+            <code>Absence Rate (%) = (Total Absence Days ÷ Total Available Working Days) × 100</code>
+            <br><br>
+            <strong>Implementation in OTBI:</strong>
+            <ul>
+              <li><strong>Total Absence Days:</strong> Sum of <code>Absence Duration</code> from the Workforce Absence subject area, filtered by the reporting period and absence type (typically all paid and unpaid excluding planned vacation).</li>
+              <li><strong>Total Available Working Days:</strong> Calculated as headcount × working days in period (from the Holiday Calendar). This can be a derived measure or pulled from the Workforce subject area as <code>Sum(Scheduled Hours) ÷ Work Day Hours</code>.</li>
+              <li><strong>Calculated Measure:</strong> In OTBI, create a New Calculated Measure: <code>Absence Rate = SUM(absence_days) / SUM(scheduled_working_days) * 100</code>.</li>
+              <li><strong>Benchmark Comparison:</strong> Add a Reference Line at the industry benchmark (typically 2–4% for office environments) to highlight departments exceeding the norm.</li>
+            </ul>
+            The resulting report can be sliced by department, job, location, manager, or period — providing HR and leadership with the data needed for evidence-based absence management decisions.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 9: TROUBLESHOOTING (81–90)
+══════════════════════════════════════ -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">09</div>
+        <div class="qa-section-label">Troubleshooting Common Issues</div>
+        <div class="qa-section-count">Q 81–90</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">81</span>Employee balance not accruing — what do you check?</div>
+          <div class="qa-card-answer">Work through this diagnostic sequence before escalating:
+            <ul>
+              <li><strong>1. Enrollment Active?</strong> Confirm the employee has an active enrollment in the plan with an effective date in the past. A future-dated or inactive enrollment means accruals haven't started yet.</li>
+              <li><strong>2. Plan Status?</strong> Verify the Absence Plan itself is in Active status. A Draft or Inactive plan will not process accruals even for enrolled employees.</li>
+              <li><strong>3. Accrual Process Run?</strong> Check when the last "Calculate Absence Accruals and Balances" process ran for this employee/plan combination. A missed monthly run means that period's accrual was never posted.</li>
+              <li><strong>4. FTE = 0?</strong> Navigate to the employee's assignment and check the FTE value. FTE of 0 × any accrual rate = 0. Update FTE and rerun accruals for affected periods.</li>
+              <li><strong>5. Assignment Status?</strong> If the assignment was suspended (e.g., during unpaid LOA), some plan configurations pause accruals automatically. Check whether the suspension period aligns with the missing accruals.</li>
+              <li><strong>6. Balance Cap Reached?</strong> If the balance is already at the plan's Maximum Balance setting, new accruals are blocked. Check the cap value against the employee's current balance.</li>
+              <li><strong>7. Run Accrual Detail Report:</strong> Run the Absence Accrual Details OTBI report for the employee — it shows exactly what the formula returned for each accrual run, and whether any runs were skipped with a reason code.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">82</span>Absence request stuck in "Validation Failed" — how to resolve?</div>
+          <div class="qa-card-answer">When an absence request shows "Validation Failed" status and the employee cannot proceed, the error is coming from the plan's Validation Formula. Diagnostic steps:
+            <ul>
+              <li><strong>Read the Error Message:</strong> The validation formula should return a human-readable message string alongside the N flag. This message is displayed to the employee. Confirm the exact text — it should identify the specific rule that failed.</li>
+              <li><strong>Check Balance Sufficiency:</strong> Is the employee's available balance less than the requested duration? Remember Available Balance (not Plan Balance) is what the validation checks.</li>
+              <li><strong>Check Probation/Wait Period:</strong> Is the employee within a configured wait period (e.g., first 90 days)? Verify the hire date and the days-since-hire calculation against the formula's threshold.</li>
+              <li><strong>Check Maximum Duration:</strong> Does the requested duration exceed the plan's maximum consecutive days setting? Try a shorter request to confirm.</li>
+              <li><strong>Check Certification Requirement:</strong> Some plans require certification to be uploaded before the request can proceed to approval. If the plan has a "Certification Required Before Submission" setting, the employee must upload the document first.</li>
+              <li><strong>Test the Formula:</strong> Open the Validation Formula in Fast Formula editor and use the Test Formula feature with the employee's exact DBI values to reproduce and isolate the issue.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">83</span>Error: "Approver not found" for absence request.</div>
+          <div class="qa-card-answer">This error means BPM cannot identify a valid approver for the request. Systematic diagnosis:
+            <ul>
+              <li><strong>Check Line Manager Assignment:</strong> Navigate to the employee's Work Relationships → the manager field must be populated with an active employee. A null or terminated manager is the most common cause.</li>
+              <li><strong>Check Manager's Account:</strong> The assigned manager must have an active Oracle user account with the "Line Manager" role or equivalent. A manager whose Oracle account was suspended or whose role was removed cannot receive BPM tasks.</li>
+              <li><strong>Check BPM Approval Rule:</strong> In Manage Absence Approval Rules, verify the rule's "Approver" expression is correctly configured. A common error: the rule uses <code>HierarchyBuilder.getManager()</code> but the manager position is null, causing the lookup to fail.</li>
+              <li><strong>Check Dynamic Approver Formula (if used):</strong> If the routing uses a custom formula to derive the approver, test the formula for the specific employee and absence type to confirm it returns a valid person ID.</li>
+              <li><strong>Fallback Approver:</strong> Configure a BPM fallback rule — if the primary approver lookup returns null, route to a named HR role (e.g., HR Generalist) to prevent the error from blocking the employee.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">84</span>Payroll not picking up absence element entries.</div>
+          <div class="qa-card-answer">If an approved absence exists but no deduction or earnings element appears in payroll, investigate in this order:
+            <ul>
+              <li><strong>1. Check Element Link:</strong> Verify the Absence Plan's payroll integration tab shows a linked payroll element. If the link was added to the plan after the absence was already submitted and approved, the element entry may not have been created retroactively — you may need to re-approve or manually create the entry.</li>
+              <li><strong>2. Check Element Entry Existence:</strong> Navigate to the employee's element entries for the pay period. Search specifically for the absence-linked element. If it doesn't exist, the integration didn't fire.</li>
+              <li><strong>3. Check Absence Effective Dates vs Payroll Period:</strong> The absence dates must fall within the payroll period being processed. If the absence is in April but payroll is running for May, April's absence will not appear in May's run.</li>
+              <li><strong>4. Check Absence Approval Status:</strong> Only fully approved absences trigger element entries. A "Pending" or "Withdrawn" absence has no payroll impact.</li>
+              <li><strong>5. Run Absence to Payroll Extract (hybrid environments):</strong> If using a third-party payroll, confirm the extract was run after the absence was approved and that the output file was successfully transmitted and processed.</li>
+              <li><strong>6. Check Payroll Messages:</strong> The payroll run log may show an error for the specific absence element — invalid cost code, inactive element, or formula error — that silently suppressed the entry.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">85</span>Negative balance occurring despite a hard limit rule.</div>
+          <div class="qa-card-answer">If an employee's balance has gone negative despite the plan being configured with a Hard Limit (block), these scenarios can cause it to occur anyway:
+            <ul>
+              <li><strong>Retroactive Absence Approval:</strong> An absence was approved for a date in the past — at the time of the original request, the employee had sufficient balance. But if another absence was subsequently taken and consumed the balance, the backdated approval now creates a deficit. The hard limit only checks the balance at the time of submission, not retroactively.</li>
+              <li><strong>Retroactive Accrual Reduction:</strong> A correction to the accrual formula or a missed accrual period reduced the historical balance after the leave was already taken — creating a retrospective negative balance without any new leave being submitted.</li>
+              <li><strong>Balance Adjustment Error:</strong> An HR administrator incorrectly reduced the balance via a manual adjustment, not realising the employee had approved future leave pending that would now exceed the reduced balance.</li>
+              <li><strong>Plan Year Carryover:</strong> Year-end processing forfeited excess balance, and the new year opening balance is lower than approved-but-not-yet-started future leaves.</li>
+              <li><strong>Resolution:</strong> Run the "Calculate Absence Balances" recalculation process — it reprocesses all transactions in chronological order and corrects balance inconsistencies. Then investigate the root cause to prevent recurrence.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">86</span>Accrual shows zero for part-time employee.</div>
+          <div class="qa-card-answer">Zero accruals for part-time employees are almost always caused by one of three root causes:
+            <ul>
+              <li><strong>FTE Value is Zero or Null:</strong> The employee's assignment FTE field is blank or set to 0. Since the formula multiplies by <code>ASG_FTE_VALUE</code>, the result is always zero. Navigate to the employee's assignment and set the FTE to the correct value (e.g., 0.5 for half-time). Then run a balance adjustment or reprocess the accrual for affected periods.</li>
+              <li><strong>Formula DEFAULT FOR Missing:</strong> The formula does not have <code>DEFAULT FOR ASG_FTE_VALUE IS 1</code>. If FTE is null (not explicitly set), Oracle returns null for the DBI, and null × anything = null, which Oracle treats as zero accrual. Adding the DEFAULT line and recompiling fixes this.</li>
+              <li><strong>Minimum FTE Eligibility:</strong> The plan or an eligibility formula has a minimum FTE threshold (e.g., only employees with FTE ≥ 0.5 are eligible). If the employee's FTE is below the threshold, they are excluded from accruals entirely. Check the plan's eligibility criteria to confirm whether this is intentional.</li>
+            </ul>
+            After fixing the root cause, rerun the accrual process for the affected months and verify the Accrual Details report shows the correct prorated amount for each period.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">87</span>Error: "Invalid Absence Unit" (hours vs days mix).</div>
+          <div class="qa-card-answer">This error occurs when there is a mismatch between the unit of measure configured in the Absence Plan and the unit used in the leave request submission. Resolution steps:
+            <ul>
+              <li><strong>Identify the Mismatch:</strong> Check the Absence Plan's Unit of Measure setting. If the plan is in Days and the employee's request form is submitting in Hours (or vice versa), Oracle flags the unit conflict.</li>
+              <li><strong>Configure Conversion Factor:</strong> In the plan setup, define a conversion factor — e.g., 1 day = 8 hours. This allows Oracle to automatically convert between the two units when the employee submits in hours but the plan tracks in days.</li>
+              <li><strong>Align Absence Type Unit:</strong> The Absence Type's submission unit (what the employee selects in self-service) should match or have a defined conversion to the plan's storage unit. If the Type allows hours but the Plan stores days, the conversion factor is critical.</li>
+              <li><strong>Work Schedule Hours:</strong> For the conversion to work correctly, the employee must have a work schedule with valid <code>ASG_WORK_DAY_HOURS</code> — Oracle uses this to convert days to hours dynamically if a conversion factor is not explicitly set.</li>
+              <li><strong>Long-term Fix:</strong> Standardise on one unit across all related absence types and plans. Mixing units across the absence module creates ongoing confusion for employees and administrators.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">88</span>How do you debug accrual fast formula errors?</div>
+          <div class="qa-card-answer">A structured debugging process for a failing accrual formula:
+            <ul>
+              <li><strong>Step 1 — Compile:</strong> Save and compile the formula. Fix all syntax errors first — Oracle catches unmatched IF/END IF, missing THEN, type mismatches, and undefined variables at compile time.</li>
+              <li><strong>Step 2 — Test Formula Tool:</strong> In Fast Formulas UI → select the formula → Test Formula. Manually input known values for all DBI inputs (hire date, FTE, grade, today's date). Verify the output matches your manual calculation.</li>
+              <li><strong>Step 3 — Enable Trace:</strong> Add <code>TRACE_LOG('Debug: years=' || years_of_service)</code> statements at key decision points in the formula. Run Quick Accrual for one employee and review the process log to see the actual DBI values Oracle used and which conditional branch was taken.</li>
+              <li><strong>Step 4 — Check NULL Values:</strong> Review the trace log for any DBI that is showing as 0 or the default value when you expect a real value. This usually indicates a missing enrollment attribute or a data quality issue on the assignment.</li>
+              <li><strong>Step 5 — Accrual Details Report:</strong> After a test run, pull the Absence Accrual Details OTBI report for the affected employee. It shows every accrual transaction — the formula result, the DBI values used, and whether any errors were raised.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">89</span>Manager not seeing team absence requests — what to check?</div>
+          <div class="qa-card-answer">When a manager cannot see their team's absence requests in Manager Self Service, the issue is almost always data security or organisation hierarchy:
+            <ul>
+              <li><strong>Check Manager Assignment in HR:</strong> Confirm each direct report has the manager correctly populated in their Work Relationship. If even one employee's manager field is blank or points to a different person, those employees won't appear in the manager's team view.</li>
+              <li><strong>Check Person Security Profile:</strong> The manager's data role must include a Person Security Profile that covers the employees' organisation. If the security profile is scoped to a specific department or legal entity that doesn't include the team members, the manager cannot see them.</li>
+              <li><strong>Check Role Assignment:</strong> The manager must have a role that includes the "View Team Absences" function security privilege. If their role was recently changed or the "Line Manager" role was removed, they lose access to team absence views.</li>
+              <li><strong>Pending vs Approved Filter:</strong> The Manager Self Service Absence dashboard shows "Pending Approval" requests by default. If the requests are already approved, they may be filtered out. Ask the manager to change the status filter to "All" to see the complete history.</li>
+              <li><strong>Draft Status:</strong> Absence requests in Draft status (employee saved but not submitted) are not visible to managers — only submitted requests appear in the approval queue.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">90</span>Leave balance discrepancy between OTBI and employee dashboard.</div>
+          <div class="qa-card-answer">When the balance shown in OTBI reports differs from what an employee sees in Self Service, the cause is typically one of these timing or calculation differences:
+            <ul>
+              <li><strong>Available vs Plan Balance:</strong> OTBI may be reporting Plan Balance while the employee dashboard shows Available Balance (Plan Balance minus pending requests). Confirm which measure each display is using and align them.</li>
+              <li><strong>Effective Date Difference:</strong> OTBI reports as of the report run date. If the employee's dashboard is showing a future projected balance (accounting for a future approved absence), the numbers will differ from today's snapshot in OTBI. Verify the date context of each view.</li>
+              <li><strong>Caching:</strong> Oracle's dashboards are sometimes cached — the employee may be seeing a balance that was accurate 30 minutes ago before an approval was processed. Refresh the page or requery OTBI with the same timestamp.</li>
+              <li><strong>OTBI Subject Area:</strong> Different OTBI subject areas show different balance types. "Absence Balance Real Time" shows the actual balance; "Absence Real Time" shows plan-level data. Ensure you are reporting from the correct subject area.</li>
+              <li><strong>Run Balance Recalculation:</strong> If the discrepancy persists after ruling out the above, run the "Calculate Absence Balances" process for the employee — it recalculates the balance from all historical transactions and resolves inconsistencies caused by out-of-sequence processing.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 10: ADVANCED & SCENARIOS (91–100)
+══════════════════════════════════════ -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">10</div>
+        <div class="qa-section-label">Advanced &amp; Scenario-Based Questions</div>
+        <div class="qa-section-count">Q 91–100</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">91</span>Design a plan for unlimited PTO (no accrual, no carryover).</div>
+          <div class="qa-card-answer">Unlimited PTO is a policy where employees are trusted to take as much leave as they need without tracking a specific balance. Configuration in Oracle:
+            <ul>
+              <li><strong>Disable Accrual:</strong> Set the plan's Accrual Method to "None" — no accrual formula is needed and no balance builds up over time.</li>
+              <li><strong>Maximum Balance = 0 or Not Applicable:</strong> Since there's no balance to cap, leave the maximum balance field blank or zero.</li>
+              <li><strong>Carryover = Not Applicable:</strong> With no balance, there is nothing to carry over. The year-end process has no impact on this plan.</li>
+              <li><strong>Negative Balance = Not Applicable:</strong> No balance means the hard/soft limit setting is irrelevant — employees can always submit requests.</li>
+              <li><strong>Validation Formula:</strong> This is where the only real control lives. The formula can enforce reasonable constraints: manager approval required for absence &gt; 5 days; no absence during critical business periods (blackout dates); maximum concurrent absences in the team at one time.</li>
+              <li><strong>Payroll Link:</strong> Link to a paid leave earnings element — the plan records the leave for payroll continuity tracking, not for balance deduction.</li>
+              <li><strong>Reporting:</strong> Even with unlimited PTO, HR should track total days taken per employee per year via OTBI — for manager awareness, tax compliance (in countries where extended absence affects tax residency), and identifying misuse patterns.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">92</span>How would you handle a leave donation program?</div>
+          <div class="qa-card-answer">A leave donation program allows employees to voluntarily transfer some of their accrued leave to a colleague facing a medical emergency or hardship. Oracle does not have a native leave donation feature — it is implemented as a custom administrative process:
+            <ul>
+              <li><strong>Donor Process:</strong> The donating employee contacts HR with a formal donation request (email, paper form, or a configured HCM workflow task). HR verifies the donor has sufficient balance and processes a negative balance adjustment on the donor's plan — reducing their balance by the donated amount.</li>
+              <li><strong>Recipient Process:</strong> HR processes a positive balance adjustment on the recipient's plan — increasing their balance by the donated amount with a reason code "Leave Donation — from [Employee Name]."</li>
+              <li><strong>Audit Trail:</strong> Both adjustments are linked by comment with the donation reference number, ensuring the transfer can be traced and reversed if needed.</li>
+              <li><strong>Separate Donation Plan (optional):</strong> Some companies create a dedicated "Leave Bank" plan where donated days accumulate and are distributed by HR to eligible recipients. This separates donation tracking from the recipient's regular leave balance.</li>
+              <li><strong>Tax Implications:</strong> In some jurisdictions, donated leave has tax implications — HR/finance should confirm the tax treatment before implementing the program.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">93</span>Employee took 5 unpaid days but payroll deducted 6. Why?</div>
+          <div class="qa-card-answer">A 6-day deduction for a 5-day unpaid absence is typically caused by one of these scenarios:
+            <ul>
+              <li><strong>Public Holiday Included in Deduction:</strong> The employee's 5-day absence spans a week that includes a public holiday. If the holiday calendar is not correctly linked to the absence plan, Oracle does not exclude the holiday from the unpaid days count — deducting 6 calendar days including the holiday instead of 5 working days. Fix: verify the holiday calendar is assigned to the plan and contains the relevant public holiday.</li>
+              <li><strong>Deduction Basis Mismatch:</strong> The unpaid deduction formula uses calendar days (e.g., divides by 30) but counts the absence duration in working days. If the 5-day working absence spans 6 calendar days (e.g., Monday to Saturday), the formula deducts 6 calendar days. Ensure the day basis is consistent throughout the calculation.</li>
+              <li><strong>Overlap with Another Absence:</strong> A separate 1-day absence record (e.g., a previously submitted single sick day) falls within the same pay period and was also flagged as unpaid — creating a combined 6-day deduction total. Review all absence records for the period.</li>
+              <li><strong>Previous Period Retro:</strong> A retroactive unpaid absence from a prior period (1 day) was processed and included as a retro deduction in the current period alongside the current 5 days. Check the payslip for retro line items.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">94</span>How to configure: no leave in first 30 days, then max 5 days for next 60 days?</div>
+          <div class="qa-card-answer">This tiered probation-based restriction requires a validation formula with multiple service-length conditions:
+            <span class="formula"><span class="kw">DEFAULT FOR</span> ASG_HIRE_DATE    <span class="kw">IS</span> <span class="vl">'1900-01-01'</span>
+<span class="kw">DEFAULT FOR</span> ABSENCE_DURATION <span class="kw">IS</span> <span class="vl">0</span>
+
+days_employed = TRUNC(TODAY()) - TRUNC(ASG_HIRE_DATE)
+
+<span class="kw">IF</span> days_employed < <span class="vl">30</span> <span class="kw">THEN</span>
+  <span class="kw">RETURN</span> <span class="vl">'N'</span>, <span class="vl">'Leave not permitted in first 30 days'</span>
+
+<span class="kw">ELSE IF</span> days_employed < <span class="vl">90</span> <span class="kw">THEN</span>
+  <span class="kw">IF</span> ABSENCE_DURATION > <span class="vl">5</span> <span class="kw">THEN</span>
+    <span class="kw">RETURN</span> <span class="vl">'N'</span>, <span class="vl">'Max 5 days allowed in days 31-90'</span>
+  <span class="kw">ELSE</span>
+    <span class="kw">RETURN</span> <span class="vl">'Y'</span>
+  <span class="kw">END IF</span>
+
+<span class="kw">ELSE</span>
+  <span class="kw">RETURN</span> <span class="vl">'Y'</span>   <span class="cm">/* Normal access after 90 days */</span>
+<span class="kw">END IF</span></span>
+            Note: The 5-day restriction in the 31–90 day window is per-request duration, not cumulative. If you need a cumulative 5-day cap (employee cannot take more than 5 days total between days 31–90), you need to add a balance check using <code>ABSENCE_BALANCE_VALUE</code> or query consumed absences in the date window — more complex but achievable.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">95</span>How do you convert hourly-accrued leave to days for display to salaried employees?</div>
+          <div class="qa-card-answer">Oracle accrues in hours internally for precision (especially for part-time employees), but salaried employees typically think of leave in days. The conversion is handled at the display layer:
+            <ul>
+              <li><strong>Plan Configuration:</strong> The Absence Plan stores the balance in hours. A "Display Conversion Factor" is configured on the plan — for an 8-hour workday, the factor is 8. Oracle automatically converts the hours balance to days for display in Self Service.</li>
+              <li><strong>Employee Dashboard:</strong> The self-service balance view shows the converted balance in days (e.g., "Available: 15 days" rather than "Available: 120 hours") using the configured conversion factor.</li>
+              <li><strong>Request Submission:</strong> When submitting, the employee also selects in days. Oracle converts their day request back to hours using the same factor for internal processing and balance deduction.</li>
+              <li><strong>Work Schedule Driven:</strong> For employees with non-standard workdays (e.g., 6-hour shifts), the conversion should use <code>ASG_WORK_DAY_HOURS</code> rather than a fixed 8 — ensuring a "day" always means one standard working day for that employee's schedule.</li>
+              <li><strong>OTBI Reports:</strong> When building absence balance reports for salaried employees, add a calculated column: <code>Balance in Days = Balance Hours / Standard Work Day Hours</code> to display in the familiar unit.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">96</span>What is Absence Compensation Basis and give an example?</div>
+          <div class="qa-card-answer">The Absence Compensation Basis defines what financial basis is used to calculate the payment (or deduction) during an absence period. It determines whether absence pay is based on:
+            <ul>
+              <li><strong>Regular Salary:</strong> The employee's normal monthly or hourly rate — used for standard paid annual leave. No change to pay is reflected.</li>
+              <li><strong>Percentage of Salary:</strong> A defined fraction of normal pay — used for partial-pay sick leave or short-term disability. Example: 70% of monthly salary during sick leave days 16–45.</li>
+              <li><strong>Fixed Statutory Amount:</strong> A government-defined flat weekly or daily rate — used for statutory maternity pay, SSP, or government-mandated benefits that are not salary-linked.</li>
+              <li><strong>Tiered/Phased:</strong> The compensation basis changes depending on how long the absence has lasted. Classic example: Maternity leave — 100% salary for weeks 1–6, 60% for weeks 7–18, then fixed statutory amount for weeks 19–39. The Rate of Pay formula implements this as a series of duration-based conditional calculations.</li>
+              <li><strong>Average Earnings:</strong> Used for absence types where the employee's actual pay varies (bonus, commission, overtime). The compensation is the average of the prior 12 weeks of earnings rather than the fixed salary — relevant for holiday pay calculations in the UK under Working Time Regulations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">97</span>How does Oracle manage absence during an unpaid Leave of Absence (LOA) where no accrual should happen?</div>
+          <div class="qa-card-answer">When an employee is on an extended unpaid Leave of Absence (e.g., career break, personal sabbatical), their absence plan accruals should stop for the duration. Oracle handles this through plan-level accrual suspension rules:
+            <ul>
+              <li><strong>Assignment Suspension:</strong> When the HR team updates the employee's assignment status to "Suspended" or a custom LOA status, accrual formulas can check for this status using a DBI or assignment attribute and return zero for the suspension period.</li>
+              <li><strong>Plan Accrual Stop Rule:</strong> Some plan configurations include a "Stop Accrual During" setting — specifying which assignment statuses should pause accruals. When the assignment matches the configured status, the accrual process skips the employee automatically.</li>
+              <li><strong>Accrual Formula Check:</strong> Add a conditional to the formula: <code>IF ASG_STATUS = 'LOA' THEN RETURN 0</code> — explicitly returning zero accrual when the employee is on leave.</li>
+              <li><strong>Balance Frozen:</strong> The employee's balance remains unchanged during the LOA period — neither increasing (no accrual) nor decreasing (they aren't submitting requests while on LOA). When they return, accruals resume from the return date.</li>
+              <li><strong>Partial Month Handling:</strong> If the LOA starts mid-month, the accrual formula should prorate — credit accrual only for the working days before the LOA commenced.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">98</span>Explain Absence Pattern with Rolling Entitlement.</div>
+          <div class="qa-card-answer">An Absence Pattern with Rolling Entitlement is used primarily for FMLA and similar statutory leaves where the total entitlement is calculated by looking backward over a rolling 12-month window from each new request date — rather than a fixed calendar year.
+            <br><br>
+            <strong>How it works in practice:</strong> An employee requests FMLA leave on 1 March 2026. Oracle looks back to 2 March 2025 and sums all FMLA consumed in that 12-month window. If 6 weeks were used, 6 weeks remain available. On their next request on 1 August 2026, Oracle looks back to 2 August 2025 — some of the March 2025–July 2025 consumption is now outside the window, so more entitlement is available again.
+            <br><br>
+            <strong>Why this matters:</strong> The rolling window prevents employees from "double dipping" — taking 12 weeks at year-end and immediately taking another 12 weeks at year-start. Each new request dynamically recalculates based on what was consumed in the preceding 12 months.
+            <br><br>
+            <strong>Configuration:</strong> Set the Plan Year Type to "Rolling Backward" in the FMLA plan. Oracle's entitlement tracking engine implements the rolling calculation automatically — the accrual process does not need modification, only the plan year definition changes.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">99</span>How do you calculate leave liability in a multi-currency environment?</div>
+          <div class="qa-card-answer">Leave liability calculation across multiple currencies requires a two-stage approach:
+            <br><br>
+            <strong>Stage 1 — Local Currency Liability per Employee:</strong> For each employee, calculate: <code>Unused Leave Days × (Annual Salary ÷ Annual Working Days)</code>. The salary used is the employee's salary in their local currency (AED for UAE employees, SAR for KSA, GBP for UK, etc.). This produces a per-employee liability in the correct local currency — the most accurate representation of the actual obligation.
+            <br><br>
+            <strong>Stage 2 — Group Currency Consolidation:</strong> For corporate reporting, convert each employee's local liability to the group reporting currency (e.g., USD) using the applicable exchange rate. Oracle uses GL exchange rates for the conversion — typically the period-end rate for balance sheet items under IFRS/GAAP rules.
+            <br><br>
+            <strong>In Oracle OTBI:</strong> The Absence Liability Report can be configured with a Currency Conversion parameter. Set the reporting currency to the group currency and Oracle applies the GL exchange rates automatically. Publish the report showing both local currency (for local finance team reconciliation) and group currency (for group consolidation).
+            <br><br>
+            <strong>Sensitivity Analysis:</strong> Large FX movements can significantly change the reported leave liability even with no change in headcount or leave balances — this should be disclosed as a sensitivity in financial reports.
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-num">100</span>What are the top 5 best practices for absence management implementation?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>1. Start with Clean Opening Balance Data:</strong> The biggest go-live risk is inaccurate opening balances. Extract the full employee leave balance from the legacy system, reconcile it with payroll records and employee requests, and validate the loaded Oracle balances against the source for a 10% sample before cutover. Balance errors discovered post-go-live affect termination settlements months later and are difficult to investigate retrospectively.</li>
+              <li><strong>2. Test Accrual Formulas with Real Historical Data:</strong> Theoretical test cases miss the edge cases that real data exposes. Run your accrual formula against 12 months of historical employee data and compare results to the legacy system output. Discrepancies reveal formula logic gaps (missing probation handling, incorrect FTE proration, wrong service band boundaries) that only appear with diverse real-world hire dates and grades.</li>
+              <li><strong>3. Configure the Approval Matrix Before UAT:</strong> BPM approval rules need thorough testing across all absence types, durations, departments, and manager scenarios. Incomplete approval configuration is the most common cause of UAT failure. Map all routing scenarios in a decision matrix before building — including delegation, manager termination fallback, and auto-approval rules.</li>
+              <li><strong>4. Integrate Payroll from the Start of Development:</strong> Don't build absence management in isolation and add payroll integration at the end. Test the complete flow — submit absence → approve → verify element entry → run QuickPay → verify payslip — for every absence type during each sprint. Payroll integration defects discovered late are expensive to fix without disrupting the entire configuration.</li>
+              <li><strong>5. Train HR and Managers on the Dashboard, Not Just the Forms:</strong> Most implementation training focuses on how to submit a leave request. The value of Oracle Absence Management is in the manager's team calendar, balance visibility, and bulk approval tools. Dedicated manager training sessions focused on these operational features drive adoption and reduce post-go-live HR helpdesk call volume by 40–60%.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<div class="container" style="padding:2.5rem 0;">
+  <div class="cta-section reveal">
+    <h2>Looking for Oracle HCM Absence Management implementation support?</h2>
+    <p>Our certified HCM specialists have delivered absence management implementations across GCC, Europe, and North America.</p>
+    <button class="btn" style="background:white;color:var(--primary);font-weight:700;padding:14px 34px;font-size:0.95rem;">
+      <i class="fas fa-paper-plane"></i> Talk to an HCM Expert
+    </button>
+  </div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <span class="footer-logo-text">IntSphere</span>
+        <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Consulting Services</a></li>
+          <li><a href="pass.html">PaaS Services</a></li>
+          <li><a href="hcm.html">HCM Services</a></li>
+          <li><a href="intforge.html">IntForge</a></li>
+          <li><a href="payforge.html">PayForge</a></li>
+          <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+          <li><a href="ai.html">AI Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="hcm.html">Oracle Fusion HCM Cloud</a></li>
+          <li><a href="pass.html">OIC Implementation</a></li>
+          <li><a href="pass.html">VBCS Development</a></li>
+          <li><a href="pass.html">Process Automation</a></li>
+          <li><a href="pass.html">Fusion Extensions</a></li>
+          <li><a href="pass.html">IDCS &amp; Security</a></li>
+          <li><a href="ai.html">AI Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul class="footer-links">
+          <li><i class="fas fa-envelope"></i><a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+          <li><i class="fas fa-phone"></i><a href="tel:+919403526864">+91 9403526864</a></li>
+          <li><i class="fas fa-globe"></i><span style="font-size:0.87rem;">Global Services</span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span style="font-size:0.85rem;">401, Hawares Grand Heritage, Wakad, Pune – 411057, Maharashtra, India</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

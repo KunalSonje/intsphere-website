@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Oracle HCM Payroll & GCC Payroll Q&A | IntSphere</title>
+<meta name="description" content="IntSphere — Oracle HCM Payroll & GCC Payroll Interview Q&A Reference">
+<style>
+:root {
+  --primary: #0891b2;
+  --primary-dark: #0e7490;
+  --primary-light: #e0f2fe;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --bg: #f8fafc;
+  --bg-white: #ffffff;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-hover: 0 4px 12px rgba(8,145,178,0.15), 0 8px 32px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-dark); }
+
+/* HEADER */
+#mainHeader { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+.header-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 68px; display: flex; align-items: center; gap: 2rem; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-text { font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+.logo-tagline { display: flex; gap: 5px; margin-top: -2px; }
+.logo-tagline span { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1px 5px; }
+#mainNav { display: flex; align-items: center; gap: 0.2rem; margin-left: auto; flex-wrap: wrap; }
+#mainNav a { font-size: 0.88rem; font-weight: 500; color: var(--text); padding: 6px 12px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+#mainNav a:hover { background: var(--primary-light); color: var(--primary-dark); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; cursor: pointer; border: none; transition: all 0.18s; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(8,145,178,0.3); }
+
+/* LAYOUT */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* PAGE BANNER */
+.page-banner { position: relative; background: linear-gradient(135deg, #0c4a6e 0%, #0891b2 55%, #06b6d4 100%); padding: 4.5rem 0 3.5rem; overflow: hidden; color: white; }
+.page-banner-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 36px 36px; pointer-events: none; }
+.page-banner .container { position: relative; z-index: 1; }
+.page-banner h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.04em; margin: 0.6rem 0 0.8rem; line-height: 1.15; }
+.page-banner p { font-size: 1.05rem; opacity: 0.88; max-width: 680px; line-height: 1.65; }
+.section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; background: var(--primary-light); color: var(--primary-dark); margin-bottom: 0.8rem; }
+.stat-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.4rem; }
+.stat-pill { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 30px; padding: 5px 14px; font-size: 0.78rem; font-weight: 600; color: #e0f2fe; }
+.stat-pill i { font-size: 0.72rem; }
+
+/* SECTION DIVIDER */
+.section-divider { height: 1px; background: var(--border); max-width: 1280px; margin: 0 auto; }
+
+/* QA SECTION */
+.qa-block { padding: 2.5rem 0; }
+.qa-block + .qa-block { border-top: 1px solid var(--border); }
+.qa-section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 1.4rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--border); }
+.qa-section-num { background: var(--primary); color: white; border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+.qa-section-num.gcc { background: linear-gradient(135deg, #d97706, #dc2626); }
+.qa-section-label { font-size: 1.08rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+
+/* QA GRID */
+.qa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
+
+/* QA CARD */
+.qa-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s; box-shadow: var(--shadow); }
+.qa-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: #bae6fd; }
+.qa-card-question { background: #f0f9ff; border-bottom: 1px solid #bae6fd; padding: 12px 16px; font-size: 0.88rem; font-weight: 600; color: var(--primary-dark); display: flex; align-items: baseline; gap: 9px; line-height: 1.45; }
+.qa-card-question .q-icon { background: var(--primary); color: white; border-radius: 4px; font-size: 0.6rem; font-weight: 800; padding: 2px 6px; flex-shrink: 0; letter-spacing: 0.04em; }
+.qa-card-answer { padding: 13px 16px 15px; font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+.qa-card-answer strong { color: var(--text); font-weight: 600; }
+.qa-card-answer ul { padding-left: 1.3rem; margin: 0.5rem 0; display: flex; flex-direction: column; gap: 4px; }
+.qa-card-answer li { line-height: 1.55; }
+.qa-card-answer .note { margin-top: 0.5rem; font-size: 0.82rem; color: #94a3b8; font-style: italic; }
+.qa-card-answer code { font-family: 'Consolas', 'Courier New', monospace; font-size: 0.82rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 1px 5px; color: #0e7490; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, var(--primary) 0%, #0e7490 100%); border-radius: 20px; padding: 3rem 2.5rem; text-align: center; color: white; }
+.cta-section h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.03em; }
+.cta-section p { opacity: 0.88; margin-bottom: 1.6rem; font-size: 1rem; }
+
+/* FOOTER */
+footer { background: #0f172a; color: #94a3b8; padding: 3.5rem 0 1.5rem; margin-top: 3rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+.footer-logo-text { font-size: 1.5rem; font-weight: 800; color: #e2e8f0; letter-spacing: -0.03em; display: block; margin-bottom: 0.7rem; }
+.footer-section p { font-size: 0.88rem; line-height: 1.65; }
+.footer-section h3 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e2e8f0; margin-bottom: 1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.footer-links a { font-size: 0.87rem; color: #94a3b8; transition: color 0.15s; }
+.footer-links a:hover { color: #38bdf8; }
+.footer-links li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.87rem; }
+.footer-links li i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+.footer-bottom { border-top: 1px solid #1e293b; padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: #475569; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .page-banner h1 { font-size: 1.9rem; }
+  #mainNav { display: none; }
+  .qa-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-wrapper">
+        <span class="logo-text">IntSphere</span>
+        <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
+      </div>
+    </a>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="hcm.html"><i class="fas fa-users" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>HCM Services</a>
+      <a href="payforge.html"><i class="fas fa-file-invoice-dollar" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>PayForge</a>
+      <a href="ai.html"><i class="fas fa-brain" style="font-size:0.75rem;margin-right:4px;color:var(--primary)"></i>AI Solutions</a>
+      <a href="about.html">About</a>
+      <a href="#" class="btn btn-primary" style="padding:9px 20px;font-size:0.86rem;margin-left:0.4rem;">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<div style="padding-top:68px">
+
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <div class="page-banner-grid"></div>
+  <div class="container">
+    <div class="section-label" style="background:rgba(255,255,255,0.14);color:#a5f3fc;border:1px solid rgba(255,255,255,0.2);">Oracle HCM Payroll · Interview Reference</div>
+    <h1>Oracle HCM Payroll &amp;<br>GCC Payroll Q&amp;A</h1>
+    <p>Comprehensive interview preparation covering Core Payroll, Fast Formula, Costing, GCC Localization, Gratuity (UAE Decree 33), GOSI, GPSSA, WPS, and advanced payroll scenarios. AI generated — for reference only.</p>
+    <div class="stat-pills">
+      <span class="stat-pill"><i class="fas fa-circle-check"></i> 150+ Questions</span>
+      <span class="stat-pill"><i class="fas fa-code"></i> Fast Formula</span>
+      <span class="stat-pill"><i class="fas fa-globe"></i> GCC Localization</span>
+      <span class="stat-pill"><i class="fas fa-shield-halved"></i> UAE Decree 33</span>
+      <span class="stat-pill"><i class="fas fa-building-columns"></i> GOSI · GPSSA · WPS</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">01</div>
+        <div class="qa-section-label">Oracle Payroll Basics</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Oracle HCM Payroll?</div>
+          <div class="qa-card-answer">Oracle HCM Payroll is a fully integrated, cloud-native payroll engine within Oracle Fusion HCM Cloud. It manages the end-to-end payroll lifecycle — from element entry and gross-to-net calculation to statutory compliance, payment processing, payslip generation, and GL integration. It supports multiple countries through Legislative Data Groups (LDGs), handles retroactive pay, off-cycle runs, parallel processing, and delivers real-time reporting through BI Publisher and OTBI. Being part of the HCM suite, it shares the same employee data, org structures, and time &amp; absence records — eliminating the need for third-party middleware.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Key features of Oracle Payroll Cloud?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Legislative Updates:</strong> Oracle ships quarterly legislative patches covering tax changes, statutory rate updates, and country-specific rules.</li>
+              <li><strong>Retroactive Processing:</strong> Automatically recalculates prior periods when back-dated changes are made, generating retro entries in the current period.</li>
+              <li><strong>Fast Formulas:</strong> Proprietary scripting language for custom earnings, deductions, eligibility, and skip rules.</li>
+              <li><strong>Balance Dimensions:</strong> Track running totals (PTD, QTD, YTD) at assignment, payroll, or tax unit level.</li>
+              <li><strong>Parallel Processing:</strong> Splits payroll runs across threads for faster processing of large populations.</li>
+              <li><strong>Payroll Flows:</strong> Orchestrated task sequences covering the full payroll cycle.</li>
+              <li><strong>Off-Cycle Payroll:</strong> Handles terminations, bonuses, and corrections outside the normal calendar.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Main payroll components in Oracle HCM?</div>
+          <div class="qa-card-answer">The core building blocks are: <strong>Legislative Data Group (LDG)</strong> — the country-level container; <strong>Payroll Statutory Unit (PSU)</strong> — the legal tax-reporting entity; <strong>Payroll Definition</strong> — sets frequency, calendar, and payment method; <strong>Elements</strong> — represent earnings and deductions; <strong>Balances</strong> — accumulate element results over time; <strong>Fast Formulas</strong> — drive calculation logic; <strong>Payroll Relationships</strong> — link workers to the payroll; <strong>Costing</strong> — maps payroll costs to GL accounts; and <strong>Payment Methods</strong> — define how net pay is distributed to employees.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain the payroll processing lifecycle.</div>
+          <div class="qa-card-answer">The standard lifecycle flows through these stages:
+            <ul>
+              <li><strong>Pre-Payroll Validation:</strong> Check element entries, eligibility, and data completeness.</li>
+              <li><strong>Payroll Run:</strong> Calculates gross-to-net for all employees in scope.</li>
+              <li><strong>Prepayment:</strong> Creates payment records and determines net pay distribution.</li>
+              <li><strong>Costing:</strong> Allocates payroll expenses to GL cost centers and projects.</li>
+              <li><strong>Payment Distribution:</strong> Generates bank files, cheques, or cash payment instructions.</li>
+              <li><strong>Archive:</strong> Locks and stores results for payslip generation and audit.</li>
+              <li><strong>GL Transfer:</strong> Posts payroll journals to the General Ledger via Subledger Accounting.</li>
+              <li><strong>Reporting:</strong> Generates payslips, registers, and statutory reports.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Difference between Payroll Relationship and Work Relationship?</div>
+          <div class="qa-card-answer"><strong>Work Relationship</strong> represents the employment arrangement between a worker and a Legal Employer — it captures the legal basis of employment (employee, contractor). <strong>Payroll Relationship</strong> is a separate, payroll-specific construct that groups all of a worker's assignments under a single Payroll Statutory Unit (PSU) for processing and statutory reporting. A single worker can hold multiple Work Relationships across different Legal Employers, but typically has one Payroll Relationship per PSU. The Payroll Relationship is what gets submitted in a payroll run — not the Work Relationship directly. This distinction matters for multi-assignment employees, secondments, and multi-country scenarios.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Payroll Statutory Unit (PSU)?</div>
+          <div class="qa-card-answer">A Payroll Statutory Unit is the legal entity responsible for tax and statutory reporting to government authorities. It groups one or more Legal Employers that share the same tax registration and reporting obligations under a given legislation. All Payroll Relationships and balances are maintained at the PSU level. For example, in a conglomerate with multiple subsidiaries filing taxes under one registration, they would all sit under a single PSU. The PSU determines which legislative rules, tax tables, and statutory reports apply to the employees it covers.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Legislative Data Group (LDG)?</div>
+          <div class="qa-card-answer">The Legislative Data Group is the highest-level payroll configuration object, representing a specific country's payroll legislation and currency. All payroll setups — elements, balances, fast formulas, tax rules, and statutory configurations — are created within an LDG. One LDG typically covers one country (e.g., UAE LDG, KSA LDG). You cannot share elements or balances across different LDGs, which ensures that country-specific statutory rules remain isolated. In multi-country deployments, you create one LDG per country and separate Payroll Definitions under each.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Payroll Definition?</div>
+          <div class="qa-card-answer">A Payroll Definition is the master configuration record that drives payroll processing. It defines the <strong>payroll name</strong>, the <strong>LDG</strong> it belongs to, the <strong>payroll frequency</strong> (monthly, bi-weekly, etc.), the <strong>consolidation group</strong> for reporting, the <strong>default payment method</strong>, and the <strong>processing calendar</strong> with all pay period dates. Employees are assigned to a Payroll Definition via their Payroll Assignment. Multiple Payroll Definitions can exist under one LDG — for example, a Monthly Payroll for salaried staff and a Bi-Weekly Payroll for hourly workers.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Payroll Elements?</div>
+          <div class="qa-card-answer">Payroll Elements are the fundamental calculation units in Oracle Payroll. Each element represents a single earnings component (Basic Salary, Housing Allowance, Bonus) or deduction (Income Tax, GOSI, Loan Repayment). Elements are configured with a <strong>classification</strong> (Earnings, Deductions, Employer Contributions, etc.), <strong>input values</strong> (Amount, Hours, Rate), <strong>balance feeds</strong>, and an optional <strong>fast formula</strong> for complex calculations. Element entries are created per employee per pay period and drive the gross-to-net calculation. Elements can be recurring (processed every period) or non-recurring (one-time).</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Balance Dimensions?</div>
+          <div class="qa-card-answer">Balance Dimensions define the time scope and level at which a balance is accumulated. Common dimensions include:
+            <ul>
+              <li><strong>Period-to-Date (PTD):</strong> Total within the current pay period.</li>
+              <li><strong>Month-to-Date (MTD):</strong> Running total within the calendar month.</li>
+              <li><strong>Quarter-to-Date (QTD):</strong> Cumulative total for the current quarter.</li>
+              <li><strong>Year-to-Date (YTD):</strong> Total from the start of the fiscal/tax year.</li>
+            </ul>
+            Dimensions also specify the processing level — Assignment, Payroll Relationship, or Tax Unit — which determines how balances are aggregated for employees with multiple assignments. Correct dimension setup is critical for statutory reporting, GOSI/GPSSA ceilings, and end-of-year reconciliation.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Cost Allocation?</div>
+          <div class="qa-card-answer">Cost Allocation is the mechanism that distributes payroll expense to the correct GL accounts, cost centers, and projects. It uses the <strong>Cost Allocation Key Flexfield (KFF)</strong> — a configurable account code combination. Costing can be set at multiple levels following a hierarchy: Element level → Element Link level → Payroll Assignment level → Payroll Definition level. The most specific level overrides the higher level. If no valid cost account is found, the expense posts to a <strong>Suspense Account</strong> for manual correction. Proper costing ensures payroll journals reconcile with the General Ledger.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Difference between Earnings and Deductions?</div>
+          <div class="qa-card-answer"><strong>Earnings</strong> are positive components that increase an employee's gross pay — e.g., Basic Salary, Housing Allowance, Overtime, Bonus, Leave Encashment. They are classified under Earnings or Supplemental Earnings and feed into Gross Pay balances. <strong>Deductions</strong> are negative components that reduce gross pay to arrive at net pay — e.g., Income Tax, GOSI employee share, Loan Installments, Garnishments. Some deductions (like pension) also have an employer-side contribution element. The difference between total earnings and total deductions gives the <strong>Net Pay</strong> that is disbursed to the employee.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Voluntary and Involuntary Deductions?</div>
+          <div class="qa-card-answer"><strong>Voluntary Deductions</strong> are initiated by the employee — they choose to participate. Examples include additional pension contributions, charity donations, savings schemes, or optional health insurance top-ups. These require employee consent and can typically be stopped or changed by the employee. <strong>Involuntary Deductions</strong> are legally mandated and cannot be refused — examples include court-ordered garnishments, child support payments, tax levies, and mandatory social insurance contributions (GOSI/GPSSA). Involuntary deductions typically have priority ordering rules to ensure compliance with legal limits on disposable earnings.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Proration?</div>
+          <div class="qa-card-answer">Proration is the automatic adjustment of an element's value when an employee does not work a complete pay period. It applies in scenarios like mid-month hire, termination, or a salary change during the period. Oracle Payroll calculates the prorated amount using a <strong>Proration Formula</strong> that divides the period into worked and non-worked segments. For example, if a monthly salary of AED 10,000 applies and the employee joins on the 11th of a 30-day month, they receive AED 10,000 × (20/30) = AED 6,667. Proration rules are configured on the element and can use calendar days, working days, or hours as the basis.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Retroactive Pay and how is it triggered?</div>
+          <div class="qa-card-answer">Retroactive Pay handles situations where a payroll-impacting change is made after the period it should have applied to has already been processed. Common triggers include backdated salary increases, corrected element entries, or late-entered absence adjustments. Oracle detects these through <strong>Retro Event Groups</strong> — configured sets of events (salary changes, element entry updates) that trigger retroactive recalculation. When triggered, Oracle recalculates the affected prior periods, computes the difference, and creates <strong>Retro Elements</strong> that pay or recover the delta in the current period. Employees receive retro pay in their next payslip with a clear audit trail.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 2 -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">02</div>
+        <div class="qa-section-label">Payroll Setup</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain end-to-end payroll setup process.</div>
+          <div class="qa-card-answer">A complete Oracle Payroll setup follows this sequence:
+            <ul>
+              <li><strong>LDG:</strong> Create Legislative Data Group for the country.</li>
+              <li><strong>PSU:</strong> Define Payroll Statutory Unit under the Legal Entity.</li>
+              <li><strong>Payroll Definition:</strong> Configure name, frequency, consolidation group, and currency.</li>
+              <li><strong>Calendars:</strong> Generate pay periods with start/end dates and pay dates.</li>
+              <li><strong>Elements:</strong> Create earnings and deduction elements with input values and classifications.</li>
+              <li><strong>Element Links:</strong> Attach elements to payrolls via eligibility criteria.</li>
+              <li><strong>Balance Feeds:</strong> Map element results to the correct balances and dimensions.</li>
+              <li><strong>Costing:</strong> Configure cost allocation KFF and costing rules per element.</li>
+              <li><strong>Eligibility Profiles:</strong> Define criteria determining who receives each element.</li>
+              <li><strong>Payment Methods:</strong> Set up bank transfer, cheque, and WPS methods at org and personal levels.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Payroll Flow?</div>
+          <div class="qa-card-answer">A Payroll Flow is an orchestrated sequence of payroll tasks grouped together as a single submission. It is built on a <strong>Flow Pattern</strong> — a predefined or custom template that specifies which tasks run, in what order, and with what dependencies. A typical Full Payroll Run flow includes: Calculate Payroll → Calculate Prepayments → Archive Payroll Results → Run Payslips → Transfer to GL. Flows can be submitted from the Payroll Checklist page. Each task within the flow has its own status (Not Started, In Progress, Complete, Error), making it easy to monitor progress. Flows can be rolled back if errors are found before archival.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Consolidation Group?</div>
+          <div class="qa-card-answer">A Consolidation Group groups multiple Payroll Definitions together to enable combined reporting, costing, and payment processing. For example, if a company runs a Monthly Payroll and a Weekly Payroll under the same LDG, they can both be assigned to one Consolidation Group to generate a single consolidated costing journal or payment file. This simplifies GL reconciliation and reduces the number of bank transfer files generated. Every Payroll Definition must be assigned to a Consolidation Group before it can be used.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Eligibility Profiles?</div>
+          <div class="qa-card-answer">Eligibility Profiles define the criteria that determine whether an employee qualifies to receive a particular element or participate in a benefit. They can be based on attributes such as <strong>Department, Job, Grade, Location, Employment Type, Length of Service</strong>, or any combination. When an element link uses an eligibility profile, Oracle automatically evaluates each employee against the criteria during payroll processing — employees who don't meet the criteria are excluded. This eliminates the need to manually manage element entries for large populations. Eligibility profiles are also used in Compensation, Benefits, and Absence Management modules.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Payment Method?</div>
+          <div class="qa-card-answer">Payment Methods define how net pay is delivered to employees. Oracle supports three types:
+            <ul>
+              <li><strong>Bank Transfer (EFT/BACS/WPS):</strong> Electronic payment directly to the employee's bank account — the most common method in GCC.</li>
+              <li><strong>Cheque:</strong> Printed cheque payment, typically for employees without bank accounts.</li>
+              <li><strong>Cash:</strong> Manual cash disbursement, common for labour workers in some GCC contexts.</li>
+            </ul>
+            Payment methods exist at two levels: <strong>Organization Payment Method</strong> (company-level default) and <strong>Personal Payment Method</strong> (employee-specific bank details and split percentages). If no personal method is set, Oracle falls back to the organisation default. Multiple personal methods can be set up with percentage or amount splits.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Balance Feeds?</div>
+          <div class="qa-card-answer">Balance Feeds are the mappings that connect an element's result to one or more balances. When an element is processed, its result (e.g., Basic Salary amount) is fed into the configured balances — for instance, <code>Basic Salary → Gross Earnings YTD</code>, <code>Basic Salary → Pensionable Pay YTD</code>, <code>Basic Salary → GOSI Earnings MTD</code>. Each feed specifies the <strong>balance dimension</strong> and whether the feed is an <strong>add</strong> or <strong>subtract</strong>. Correct balance feeds are critical for statutory reporting, GOSI/GPSSA ceiling calculations, and year-end processes. Missing or incorrect feeds are one of the most common payroll implementation defects.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is an Object Group?</div>
+          <div class="qa-card-answer">An Object Group is a named collection of payroll objects — such as elements, balance definitions, or people — used to scope payroll processing, reporting, and batch operations. For example, a <strong>Payroll Relationship Group</strong> identifies the set of employees to include in a specific payroll run or report. A <strong>Process Information Group</strong> defines which elements are included in a balance run. Object groups allow you to process subsets of employees efficiently — useful for running payroll for a specific department, legal entity, or union group — without having to redefine the entire payroll definition.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Retro Notifications?</div>
+          <div class="qa-card-answer">Retro Notifications are system-generated alerts that inform payroll administrators when a backdated change has been detected that will impact a prior payroll period. They are created when the Recalculate Payroll for Retroactive Changes process identifies that an event in the configured Retro Event Group has occurred. Each notification shows the affected employee, the nature of the change, and the periods impacted. Administrators can review these notifications in the Payroll Checklist and decide whether to process the retroactive recalculation in the current period or defer it. This controlled workflow prevents retroactive changes from being silently missed.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Proration vs Partial Period Accrual?</div>
+          <div class="qa-card-answer"><strong>Proration</strong> reduces a payroll element's value proportionally when an employee does not work the full pay period — applicable to salary, allowances, and deductions during hires, terminations, or mid-period changes. It is configured on the element using proration formulas and event groups. <strong>Partial Period Accrual</strong>, by contrast, is primarily an Absence Management concept used to calculate leave entitlement for employees who enrol mid-period. For example, if an annual leave plan accrues 2.5 days/month and an employee starts on the 15th, only half the monthly accrual is granted. Both concepts involve proportional calculation but apply to different modules and scenarios.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 3 -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">03</div>
+        <div class="qa-section-label">Payroll Processing — QuickPay, Rollback, Reversal</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are the steps in payroll processing?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Submit Payroll (Calculate):</strong> Runs gross-to-net calculations for all employees in the payroll.</li>
+              <li><strong>Prepayments:</strong> Creates payment records and calculates net pay distribution across payment methods.</li>
+              <li><strong>Costing:</strong> Allocates earnings/deductions to GL cost centres.</li>
+              <li><strong>Make EFT Payments / Generate Cheques:</strong> Produces payment files (WPS SIF, BACS, etc.).</li>
+              <li><strong>Archive Payroll Results:</strong> Locks results and makes them available for payslip generation.</li>
+              <li><strong>Generate Payslips:</strong> Creates employee payslips from archived data.</li>
+              <li><strong>Transfer to GL:</strong> Posts payroll journals to the General Ledger via Subledger Accounting.</li>
+              <li><strong>Reporting:</strong> Run registers, reconciliation reports, and statutory filings.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain QuickPay.</div>
+          <div class="qa-card-answer">QuickPay is a payroll processing feature that allows you to run payroll for a <strong>single employee</strong> outside the main payroll run. It is used for urgent scenarios: correcting an employee missed in the main run, processing a special payment, or verifying how a configuration change affects one person's results before running the full population. QuickPay is not just a test — it can produce fully processed, archived, and paid results just like a main run. After the QuickPay calculation, you can complete all subsequent payroll actions (Prepayments, Costing, Archive, Payslip) for that individual. QuickPay results are included in balance totals and consolidation reporting.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Payroll Assignment?</div>
+          <div class="qa-card-answer">A Payroll Assignment is the link that connects an employee's Work Assignment to a specific Payroll Definition and Payroll Relationship, enabling that assignment to be included in payroll processing. An employee can have multiple work assignments (e.g., primary job and a secondary role), and each can be on different payrolls. The Payroll Assignment stores the effective-dated payroll membership, meaning an employee can be moved between payrolls with a future-dated change. Without a valid, active Payroll Assignment, an employee will not be picked up in a payroll run. It is the bridge between HR data (work relationship/assignment) and payroll data (payroll relationship/definition).</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Difference between Retry, Rollback, and Reversal?</div>
+          <div class="qa-card-answer">These three actions each serve a different recovery purpose:
+            <ul>
+              <li><strong>Retry:</strong> Re-executes a specific failed task within a payroll flow (e.g., re-run costing after fixing a cost code). It does not undo completed work — only reruns the failed step.</li>
+              <li><strong>Rollback:</strong> Completely removes the results of an unfinished payroll action before it has been archived or payments made. It's a clean undo — leaving no audit trail — suitable when you want to start fresh after discovering an error early in the process.</li>
+              <li><strong>Reversal:</strong> Creates equal and opposite negative entries to offset a payroll that has already been fully processed and payments made. It preserves the full audit trail. After reversal, you can reprocess with correct data. Reversal is the only valid option once payments have been disbursed.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Payroll Archive?</div>
+          <div class="qa-card-answer">The Payroll Archive process locks and stores the final payroll run results, making them available for payslip generation, reporting, and audit. Once archived, results cannot be changed without a reversal. The archive stores element results, balance values, costing data, and payment information per employee. It is the basis for BI Publisher payslip templates — the payslip data model reads directly from the archive. The archive also enables the generation of period-specific reports (Element Result Register, Payroll Register) that reflect exactly what was paid in that period. Archival is a required step before transferring data to GL.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How do you process Off-Cycle Payroll?</div>
+          <div class="qa-card-answer">Off-Cycle Payroll handles payments that must be made outside the normal payroll schedule — such as termination final settlements, urgent corrections, sign-on bonuses, or mid-month adjustments. You create a separate Off-Cycle Payroll Definition (or use the existing one's off-cycle setting), then submit an Off-Cycle payroll run for the specific employee and date range. Off-cycle runs support the same full processing chain: Calculate → Prepayments → Costing → Payment → Archive. Results are included in balance totals and GL journals. In GCC, termination off-cycle runs are especially important as they must include final salary, EOSB gratuity, leave encashment, and airfare in a single settlement.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Payroll Messages?</div>
+          <div class="qa-card-answer">Payroll Messages are error, warning, and informational notifications generated during payroll run processing. They appear in the Payroll Flow results and can be viewed in the Process Results Summary or Payroll Dashboard. <strong>Error messages</strong> prevent an employee's pay from being calculated (e.g., missing element entry, invalid cost code). <strong>Warning messages</strong> allow processing to continue but flag potential issues (e.g., balance exceeded, formula defaulted). <strong>Information messages</strong> confirm expected behaviour. Best practice is to review and resolve all errors before archiving. Unresolved errors mean affected employees receive zero pay or are excluded from the run.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How to process a final settlement on termination?</div>
+          <div class="qa-card-answer">A termination final settlement is processed as an Off-Cycle payroll run. The following components must be calculated and paid:
+            <ul>
+              <li><strong>Last Month Salary:</strong> Prorated from the last pay period end to the termination date.</li>
+              <li><strong>Unused Annual Leave Encashment:</strong> Accrued leave balance × daily rate.</li>
+              <li><strong>EOSB Gratuity:</strong> Calculated per UAE Decree 33 or applicable country legislation.</li>
+              <li><strong>Airfare Allowance:</strong> If contractually entitled, a one-way ticket value is included.</li>
+              <li><strong>Recovery Deductions:</strong> Any outstanding loans, advances, or overpayments are deducted.</li>
+            </ul>
+            The final settlement run must be submitted before or on the last working day and the payment (typically via WPS or bank transfer) made promptly to avoid labour law violations.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 4 -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">04</div>
+        <div class="qa-section-label">Fast Formula</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Fast Formula in Payroll?</div>
+          <div class="qa-card-answer">Fast Formula is Oracle's proprietary rule-based scripting language used across HCM Cloud to implement custom calculations, business rules, and validations. In payroll, Fast Formulas are used to calculate element results (e.g., overtime pay, EOSB gratuity), define eligibility criteria, control processing logic (skip rules), and validate input values. Formulas have access to <strong>Database Items (DBIs)</strong> — predefined variables that pull live data from the HCM schema (salary, hire date, hours worked) — and <strong>Contexts</strong> (effective date, assignment ID, payroll period). Formulas are compiled and validated on save. Unlike SQL, they abstract the database layer, making them upgrade-safe across Oracle quarterly patches.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Fast Formula types used in Payroll?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Payroll Calculation:</strong> Computes element values (earnings, deductions) using DBIs and input values.</li>
+              <li><strong>Skip Rule:</strong> Returns Y/N to determine whether an element should be processed for an employee this period.</li>
+              <li><strong>Proration:</strong> Calculates partial amounts when an employee joins, leaves, or has a change mid-period.</li>
+              <li><strong>Eligibility:</strong> Evaluates whether an employee meets the criteria for an element or benefit.</li>
+              <li><strong>Validation:</strong> Checks that input values are within acceptable ranges before saving.</li>
+              <li><strong>Deduction Formula:</strong> Handles complex deduction logic such as loan repayment with balance tracking.</li>
+              <li><strong>Absence Formula:</strong> Calculates accrual rates, entitlement, or leave pay based on absence rules.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Database Items (DBIs) in Fast Formula?</div>
+          <div class="qa-card-answer">Database Items are predefined, named variables in Oracle HCM that expose live payroll and HR data to Fast Formulas without requiring direct SQL. Examples include: <code>ASG_SALARY_AMOUNT</code> (current salary), <code>PER_DATE_OF_HIRE</code> (hire date), <code>ASG_EARNINGS_RUN</code> (earnings for current run), <code>BALANCE_VALUE</code> (any balance dimension value). DBIs are context-sensitive — Oracle automatically filters them to the correct assignment, period, and legislation. They are maintained by Oracle and updated with each quarterly patch, ensuring formulas continue to work after legislative upgrades. Using DBIs (rather than hardcoded values) makes formulas portable and upgrade-resilient.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is the Working Storage Area (WSA)?</div>
+          <div class="qa-card-answer">The Working Storage Area (WSA) is a temporary in-memory storage mechanism that allows values to be written and read across multiple formula calls within the <strong>same payroll run</strong> for the same employee. It is used when one element's formula needs to pass a computed value to another element's formula — without having to recalculate it. For example, a taxable earnings total computed early in processing can be stored in WSA and accessed by the tax deduction formula later in the priority sequence. WSA values are stored using <code>SET_WSA_VALUE</code> and retrieved using <code>GET_WSA_VALUE</code>. WSA is cleared at the end of each employee's payroll run, so it does not persist between runs.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How do you debug a Fast Formula?</div>
+          <div class="qa-card-answer">Debugging Fast Formulas in Oracle Cloud follows these steps:
+            <ul>
+              <li><strong>Compile and Save:</strong> Oracle validates syntax on save — fix any compilation errors first.</li>
+              <li><strong>Enable Trace:</strong> Add <code>SET_FF_TRACE('Y')</code> at the start of the formula to write execution logs.</li>
+              <li><strong>Run QuickPay:</strong> Process a single employee through QuickPay to trigger the formula in a controlled way.</li>
+              <li><strong>Review Process Log:</strong> Navigate to the flow task's log file to see traced variable values and execution path.</li>
+              <li><strong>Check Payroll Messages:</strong> Error and warning messages often point directly to the formula line that failed.</li>
+              <li><strong>Use Diagnostic Tools:</strong> Oracle's HCM Extracts and payroll diagnostics can expose formula context values.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain CALL_FORMULA.</div>
+          <div class="qa-card-answer"><code>CALL_FORMULA</code> is a Fast Formula function that invokes another formula from within the current formula and returns its result. This enables modular formula design — common logic (e.g., a standard daily rate calculation used by multiple elements) can be written once in a called formula and reused. The syntax passes a formula name as a string parameter, along with any input values, and receives the output values back. Using <code>CALL_FORMULA</code> reduces duplication, simplifies maintenance, and makes formula libraries easier to manage. It is particularly useful for GCC localisation where the same gratuity or proration logic is referenced by multiple terminal benefit elements.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Overtime calculation formula example?</div>
+          <div class="qa-card-answer">A typical overtime fast formula structure:
+            <br><br>
+            <code>STANDARD_HOURS = 8<br>
+            IF HOURS_WORKED > STANDARD_HOURS THEN<br>
+            &nbsp;&nbsp;OT_HOURS = HOURS_WORKED - STANDARD_HOURS<br>
+            &nbsp;&nbsp;OT_AMOUNT = OT_HOURS * HOURLY_RATE * 1.5<br>
+            ELSE<br>
+            &nbsp;&nbsp;OT_AMOUNT = 0<br>
+            END IF<br>
+            RETURN OT_AMOUNT</code>
+            <br><br>
+            In GCC contexts, the multiplier varies: 1.25× for normal overtime, 1.5× for work on rest days or public holidays. The hourly rate is typically derived as <code>BASIC_SALARY / (working_days_in_month × 8)</code>. This formula is attached to an Overtime Earnings element and receives <code>HOURS_WORKED</code> as an input value from the time system or manual entry.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How do you handle null values in formulas?</div>
+          <div class="qa-card-answer">Unhandled null or missing values in Fast Formula cause runtime errors that stop payroll processing. Best practices:
+            <ul>
+              <li><strong>DEFAULT FOR:</strong> Declare a default value for any DBI or input value that may be absent — e.g., <code>DEFAULT FOR ASG_SALARY_AMOUNT IS 0</code>. This prevents null exceptions.</li>
+              <li><strong>WAS DEFAULTED:</strong> After using <code>DEFAULT FOR</code>, use <code>IF variable WAS DEFAULTED THEN</code> to explicitly handle the case where the value was missing and take appropriate action (log a warning, skip the calculation).</li>
+              <li><strong>NVL equivalent:</strong> While Fast Formula doesn't have a direct NVL function, the <code>DEFAULT FOR</code> pattern achieves the same result.</li>
+              <li><strong>IS MISSING check:</strong> Use <code>IF variable IS MISSING THEN</code> for conditional handling before using the variable in calculations.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 5 -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">05</div>
+        <div class="qa-section-label">Payroll Elements</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Standard Links?</div>
+          <div class="qa-card-answer">A Standard Link is a type of element eligibility link that automatically makes an element available to <strong>all employees assigned to a payroll</strong> without needing individual element entries. When an element is configured with a Standard Link and linked to a payroll, every employee on that payroll is eligible to receive it. This is used for universal elements such as Basic Salary, where every employee must have it. Standard Links simplify administration by removing the need to manually create element entries for new joiners — as long as they are assigned to the payroll, the element is active. Standard Links do not, however, set the amount — that still requires an individual element entry or a salary record.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is an Element Link?</div>
+          <div class="qa-card-answer">An Element Link is the configuration record that connects an element to a payroll or a set of employees defined by eligibility criteria. It has two modes: <strong>Standard Link</strong> (links to all employees on a payroll automatically) and <strong>Non-Standard Link</strong> (links to a specific subset defined by eligibility profiles — e.g., employees in a certain department or grade). Element Links are effective-dated, so you can schedule when an element becomes available. A link must exist before element entries can be created for employees. Multiple links can exist for one element across different payrolls or eligibility populations, enabling the same element to behave differently for different groups (e.g., different costing rules per department).</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is element Priority and why does it matter?</div>
+          <div class="qa-card-answer">Element Priority is a numeric value that determines the sequence in which elements are calculated within a payroll run. Lower numbers process first. Priority ordering is critical because some elements depend on the results of others. For example:
+            <ul>
+              <li>Basic Salary (priority 1000) must calculate before Housing Allowance (which may be 25% of Basic).</li>
+              <li>All Earnings elements must complete before Tax deduction elements can calculate taxable income.</li>
+              <li>Net Pay must be determined before Garnishment elements calculate what percentage of disposable earnings to deduct.</li>
+            </ul>
+            Incorrect priority ordering causes elements to receive zero or incorrect input values from upstream calculations, leading to systematic pay errors that are difficult to diagnose.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How do you create a Loan Deduction element?</div>
+          <div class="qa-card-answer">A loan deduction element is configured as follows:
+            <ul>
+              <li><strong>Classification:</strong> Voluntary Deductions (or a custom subclassification).</li>
+              <li><strong>Input Values:</strong> Loan Amount (total principal), Monthly Installment (amount per period), Interest Rate (if applicable).</li>
+              <li><strong>Balance:</strong> Create a <code>Loan Outstanding Balance</code> balance with a balance dimension that accumulates the loan principal. Feed the deduction result into this balance to track remaining balance.</li>
+              <li><strong>Fast Formula (optional):</strong> Implement skip logic — if the outstanding balance is zero, skip processing. Prevent over-deduction by capping the installment at the remaining balance.</li>
+              <li><strong>Element Entry:</strong> Created when a loan is granted, populating Loan Amount and Monthly Installment for the employee.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are Indirect Elements?</div>
+          <div class="qa-card-answer">Indirect Elements are generated automatically as a by-product of processing a primary element, without requiring a separate element entry. When the primary element is processed, Oracle creates entries for the indirect elements automatically. A classic example is an employer pension contribution: when the employee pension deduction element is processed, an Indirect Element for the employer's matching contribution is generated automatically. Similarly, a gross earnings element may trigger an indirect employer social insurance contribution element. Indirect elements are defined by linking them to their parent element in the element configuration. They cannot be entered directly by users — they are always system-generated.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Taxable vs Non-Taxable Earnings in GCC context?</div>
+          <div class="qa-card-answer">In GCC countries, <strong>income tax does not apply</strong> to expatriate or local employees in most jurisdictions (UAE, KSA, Qatar have no personal income tax). Therefore, the taxable/non-taxable distinction in Oracle Payroll for GCC is primarily relevant for <strong>GOSI/GPSSA contribution basis</strong> rather than income tax:
+            <ul>
+              <li><strong>GOSI-Applicable:</strong> Basic salary is the contribution base in KSA.</li>
+              <li><strong>Non-GOSI:</strong> Housing, transport, and other allowances are excluded from GOSI calculations.</li>
+              <li><strong>GPSSA (UAE):</strong> Basic salary plus some allowances may be included depending on emirate rules.</li>
+            </ul>
+            Each element's balance feeds should correctly map to the relevant social insurance earnings balance to ensure correct contribution calculations.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is a Garnishment element and how is it set up?</div>
+          <div class="qa-card-answer">A Garnishment element is an involuntary deduction ordered by a court or government authority — for example, child support payments, debt recovery orders, or tax levies. Setup involves:
+            <ul>
+              <li><strong>Classification:</strong> Involuntary Deductions with appropriate subtype.</li>
+              <li><strong>Priority:</strong> High priority after mandatory statutory deductions but before voluntary deductions.</li>
+              <li><strong>Calculation Rule:</strong> Can be a fixed amount, percentage of disposable earnings, or a combination.</li>
+              <li><strong>Disposable Earnings Protection:</strong> Fast formula ensures the employee retains a minimum protected amount as required by law (this varies by country).</li>
+              <li><strong>Third-Party Payment:</strong> Configure a Third-Party Payment method directing the deducted amount to the relevant external organisation (court, child support agency).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is Balance Initialization and when is it used?</div>
+          <div class="qa-card-answer">Balance Initialization is the process of loading opening balance values into Oracle Payroll when going live mid-year (e.g., a company implementing Oracle in July must load YTD balances from January to June to ensure statutory reporting is correct). Methods include:
+            <ul>
+              <li><strong>Balance Adjustment Element:</strong> A special element with a fast formula that accepts balance values as input and directly updates the balance dimensions.</li>
+              <li><strong>HDL Data Load:</strong> Using the <code>BalanceAdjustment</code> business object with <code>InitialBalance = TRUE</code> to bulk load historical balances.</li>
+              <li><strong>Initial Balance Load Flow:</strong> Oracle provides a dedicated payroll flow for bulk balance initialization during implementation.</li>
+            </ul>
+            Incorrect balance initialization leads to errors in GOSI/GPSSA annual ceilings, gratuity calculations, and year-end reporting.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 6-9 -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">06–09</div>
+        <div class="qa-section-label">Costing · Reporting · Integrations · Security</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain Payroll Costing in detail.</div>
+          <div class="qa-card-answer">Payroll Costing is the process that determines how payroll expenses are distributed to GL accounts. It uses the <strong>Cost Allocation Key Flexfield (KFF)</strong> — typically mapping to GL segments like Company, Cost Centre, Account, and Project. Costing is applied in a hierarchy — the most specific level wins:
+            <ul>
+              <li><strong>Element Level:</strong> Default costing for all employees who receive this element.</li>
+              <li><strong>Element Link Level:</strong> Costing for a specific eligibility group or payroll.</li>
+              <li><strong>Payroll Relationship/Assignment Level:</strong> Employee-specific override.</li>
+              <li><strong>Suspense Account:</strong> Used when no valid cost combination is found — flagged for manual correction.</li>
+            </ul>
+            After the costing run, the <strong>Transfer to GL</strong> process creates Subledger Accounting (SLA) journals and posts them to Oracle Fusion GL.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Key Payroll Reports and their purpose?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Gross-to-Net Report:</strong> Shows the full earnings and deductions breakdown leading to net pay for each employee — the primary payroll review report.</li>
+              <li><strong>Element Result Register:</strong> Lists every element processed per employee for a period — used for detailed verification.</li>
+              <li><strong>Payroll Register:</strong> Summarises totals by element across all employees — used for reconciliation.</li>
+              <li><strong>Payment Register:</strong> Shows net payment amounts and payment method per employee — reconciles against bank statement.</li>
+              <li><strong>Payroll Activity Report:</strong> Tracks the status of each flow task in the payroll process.</li>
+              <li><strong>Balance Report:</strong> Shows running balance totals (YTD, QTD) per employee and element — used for audits.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>BI Publisher Payslip Customization?</div>
+          <div class="qa-card-answer">Oracle Payslips are generated using <strong>BI Publisher (BIP)</strong>. The customization process:
+            <ul>
+              <li><strong>Data Model:</strong> Oracle provides a standard payslip data model that pulls data from the payroll archive. Custom columns can be added by extending the data model query.</li>
+              <li><strong>RTF Template:</strong> Download the base RTF template from BIP, edit in Microsoft Word using BIP Template Builder plugin — add company logo, rearrange sections, add custom fields.</li>
+              <li><strong>Upload to BIP:</strong> Upload the customised template back to the Oracle BIP Catalog under the payslip report.</li>
+              <li><strong>Test:</strong> Run Archive and Generate Payslips for a test employee to verify output.</li>
+            </ul>
+            Common customisations include adding IBAN details, breaking down GCC allowances (housing, transport, airfare), and adding EOSB accrual balance on the payslip.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>HDL vs REST APIs for Payroll data?</div>
+          <div class="qa-card-answer"><strong>HCM Data Loader (HDL)</strong> is designed for high-volume batch data loading. For payroll, it supports loading ElementEntry, Salary, PersonalPaymentMethod, PayrollRelationshipAssignment, and BalanceAdjustment records. HDL processes files asynchronously through ESS jobs — suitable for initial data migration, mass updates, and periodic bulk loads from external systems. <strong>REST APIs</strong> provide real-time, synchronous access to payroll data — retrieving payroll run status, querying balance values, retrieving payslip data, or creating individual element entries. REST is best for system integrations that need instant confirmation (HR portals, mobile apps). For an ERP-to-Oracle integration, HDL handles nightly bulk updates while REST handles real-time lookups.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>NACHA vs WPS SIF — what's the difference?</div>
+          <div class="qa-card-answer"><strong>NACHA</strong> (National Automated Clearing House Association) is a US-specific electronic payment file format used for ACH bank transfers in the United States. It is not used in GCC payroll. <strong>WPS SIF (Salary Information File)</strong> is the UAE Ministry of Human Resources and Emiratisation (MOHRE) mandated format for the Wage Protection System. Employers must submit a SIF file through their bank or MOHRE's WPS portal by the 10th of each month. The SIF file contains employee ID, bank account (IBAN), salary amount, and payment date for each employee. Non-compliance results in fines and can freeze a company's ability to hire new staff. Oracle Payroll Cloud generates the WPS SIF file as part of the payment distribution process when configured for UAE payroll.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Payroll Security Profiles and access control?</div>
+          <div class="qa-card-answer">Oracle Payroll uses a layered security model:
+            <ul>
+              <li><strong>Payroll Security Profile:</strong> Restricts which Payroll Definitions a user can view and process — e.g., a UAE payroll admin can only access UAE payrolls, not KSA ones.</li>
+              <li><strong>Person Security Profile:</strong> Limits which employees a user can see — based on org hierarchy, payroll, or relationship.</li>
+              <li><strong>Data Role:</strong> Combines a job role with a security profile to grant scoped access.</li>
+              <li><strong>Duty Roles:</strong> Define functional access — separate roles for Payroll Calculation, Payroll Approval, Payment Processing, and GL Transfer enforce segregation of duties.</li>
+            </ul>
+            The principle of least privilege ensures payroll analysts can view and calculate but not approve or pay. This is critical for SOX and audit compliance.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Payroll Locking Issues in Oracle Fusion Cloud.</div>
+          <div class="qa-card-answer">In Oracle Fusion HCM Cloud, customers have <strong>no direct database access</strong> — all operations must go through the application layer. Payroll locking occurs when a flow task gets stuck in "In Progress" status, preventing further processing. Resolution steps in Cloud:
+            <ul>
+              <li><strong>Flow Rollback:</strong> Roll back the stuck task from the Payroll Flow page if the task has not completed.</li>
+              <li><strong>Retry:</strong> Use the Retry action on the specific failed task.</li>
+              <li><strong>Mark as Complete:</strong> In some cases, Oracle allows manually marking a stuck task complete via the UI.</li>
+              <li><strong>Oracle Support SR:</strong> For persistent locks, raise a Service Request — Oracle Cloud Ops can purge stuck processes on the backend without impacting data integrity.</li>
+            </ul>
+            Never use direct SQL scripts in Cloud environments — this is Oracle's on-premise legacy approach and not supported in SaaS.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>HDL Business Objects for Payroll?</div>
+          <div class="qa-card-answer">The validated HDL business objects for Oracle Payroll data loading are:
+            <ul>
+              <li><strong>ElementEntry:</strong> Creates or updates element entries for employees (salary, allowances, deductions).</li>
+              <li><strong>Salary:</strong> Loads salary records and history under the compensation module.</li>
+              <li><strong>PersonalPaymentMethod:</strong> Loads employee bank account details and payment splits.</li>
+              <li><strong>PayrollRelationshipAssignment:</strong> Assigns employees to payroll definitions.</li>
+              <li><strong>BalanceAdjustment:</strong> Loads opening or correction balances — used extensively during go-live.</li>
+              <li><strong>AbsenceBalance:</strong> Loads leave balance opening values.</li>
+            </ul>
+            Each business object requires a specific DAT file format with a Metadata header row and data rows. Files are uploaded via the HCM Data Loader UI or SFTP.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 10 -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">10</div>
+        <div class="qa-section-label">Payroll Functional Scenarios</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Employee salary changed mid-month — how is it calculated?</div>
+          <div class="qa-card-answer">When a salary change is effective mid-period, Oracle uses proration to calculate the blended pay. The formula:
+            <br><br>
+            <code>Pay = (Old Salary × Days at Old Rate) + (New Salary × Days at New Rate) / Total Calendar Days</code>
+            <br><br>
+            For example: Old salary AED 10,000 for 10 days, new salary AED 12,000 for 20 days in a 30-day month:
+            <code>(10,000 × 10/30) + (12,000 × 20/30) = 3,333 + 8,000 = AED 11,333</code>
+            <br><br>
+            Oracle detects the effective-dated salary change via a <strong>Proration Event Group</strong> and automatically splits the period. The proration formula (custom or Oracle-provided) handles the calculation. The basis (calendar days vs working days) is configurable per element.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Retroactive salary increase handling?</div>
+          <div class="qa-card-answer">When a salary increase is approved and entered with a backdated effective date (e.g., increase effective 1st March entered in May), Oracle's retro processing handles it automatically:
+            <ul>
+              <li>The backdated salary change triggers a <strong>Retro Notification</strong> for the affected employee.</li>
+              <li>The <strong>Recalculate Payroll for Retroactive Changes</strong> process is run before the current month's payroll.</li>
+              <li>Oracle recalculates the affected period(s) — March, April — using the new salary.</li>
+              <li>The difference (new result minus original result) is created as <strong>Retro Element entries</strong>.</li>
+              <li>These retro entries are included in the current month's payroll run, paying the arrears in the current payslip with clear line-item labelling.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Troubleshoot payroll costing failure?</div>
+          <div class="qa-card-answer">When costing fails or posts to the Suspense Account, follow this diagnostic approach:
+            <ul>
+              <li><strong>Review Payroll Messages:</strong> Check for costing errors in the flow task log — messages typically identify the element and employee.</li>
+              <li><strong>Validate Cost Allocation KFF:</strong> Ensure the account code combination is active and not end-dated in GL.</li>
+              <li><strong>Check Costing Hierarchy:</strong> Verify that costing is defined at element, link, or assignment level — missing setup at all levels sends to Suspense.</li>
+              <li><strong>Element Override:</strong> Check if the employee has a manual costing override that references an invalid GL segment.</li>
+              <li><strong>Suspense Account:</strong> Query the GL Suspense Account journal to identify which cost codes need correcting.</li>
+              <li><strong>Rerun Costing:</strong> After fixing the GL account, rollback the costing task and rerun.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Payslip not generated — troubleshooting steps?</div>
+          <div class="qa-card-answer">If an employee's payslip is missing, check in this order:
+            <ul>
+              <li><strong>Archive Status:</strong> Confirm the Archive Payroll Results task completed successfully. Payslips cannot be generated without a successful archive.</li>
+              <li><strong>Employee Assignment Status:</strong> Ensure the employee was active on the payroll during the pay period — suspended or terminated assignments before pay period end may be excluded.</li>
+              <li><strong>Payslip Template:</strong> Verify the BI Publisher payslip template is correctly assigned to the payroll and the report parameters match.</li>
+              <li><strong>Generate Payslips Task:</strong> Check the flow task status — if it errored, review the log for the specific employee ID.</li>
+              <li><strong>Payroll Run Results:</strong> If the employee had zero pay (all elements errored), the archive may have no results to display.</li>
+              <li><strong>Self-Service Access:</strong> Confirm the employee has the correct role to view payslips in Employee Self Service.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How to handle duplicate payment recovery?</div>
+          <div class="qa-card-answer">When an employee has been overpaid or paid twice, recovery options include:
+            <ul>
+              <li><strong>Negative Element Entry:</strong> Create a recovery element (e.g., "Salary Overpayment Recovery") with a negative amount equal to the overpayment. This deducts from the employee's next payroll run.</li>
+              <li><strong>Installment Recovery:</strong> If the overpayment is large, split the recovery across multiple periods using a recovery element with monthly installments to avoid hardship.</li>
+              <li><strong>Payroll Reversal:</strong> If the duplicate payment is discovered before the next payroll, reverse the original run and reprocess correctly. This is the cleanest approach if still within the same period.</li>
+              <li><strong>Employer Agreement:</strong> In GCC, labour law may restrict the amount that can be deducted in a single period — always check UAE Labour Law Article limits on deductions before recovering in one shot.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How to process a bonus for selected employees only?</div>
+          <div class="qa-card-answer">Selective bonus payments are processed as follows:
+            <ul>
+              <li><strong>Create Bonus Element:</strong> A non-recurring Supplemental Earnings element with a single Amount input value.</li>
+              <li><strong>Element Link:</strong> Configure as a non-standard link (not automatic) so it doesn't apply to all employees.</li>
+              <li><strong>Element Entries:</strong> For the target employees, create element entries with the bonus amount for the specific pay period. This can be done:
+                <ul>
+                  <li>Manually via the Element Entries page for small groups.</li>
+                  <li>Via HCM Spreadsheet Data Loader (SDL) for bulk entry.</li>
+                  <li>Via HDL ElementEntry business object for automated loading from an external system.</li>
+                </ul>
+              </li>
+              <li>The bonus is processed in the next payroll run (or a separate off-cycle run if urgency requires it) and appears as a named line on the payslip.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Bank transfer file rejected — what do you check?</div>
+          <div class="qa-card-answer">A rejected WPS bank file in UAE requires these checks:
+            <ul>
+              <li><strong>IBAN Format:</strong> UAE IBANs are 23 characters starting with "AE". Verify no spaces, no incorrect bank codes.</li>
+              <li><strong>WPS SIF Format:</strong> Ensure the file is generated in the correct SIF format (not NACHA or BACS) — Oracle's UAE localisation handles this, but verify the payment method is configured as WPS.</li>
+              <li><strong>Employee WPS Registration:</strong> The employee's Emirates ID or Unified ID must be registered with MOHRE's WPS system — unregistered employees will cause file rejection.</li>
+              <li><strong>Account Status:</strong> The destination bank account must be active. Closed or frozen accounts reject at the bank level.</li>
+              <li><strong>Net Pay:</strong> Zero or negative net pay entries in the SIF file are rejected by most banks.</li>
+              <li><strong>Resubmission:</strong> Correct the issue, regenerate the payment file, and resubmit before the WPS deadline (10th of month).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 11-12 -->
+<section style="background:#f8fafc;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num">11–12</div>
+        <div class="qa-section-label">Payroll Technical &amp; Advanced</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain Flow Patterns in depth.</div>
+          <div class="qa-card-answer">A Flow Pattern is a reusable template that defines a sequence of payroll tasks, their dependencies, and parameters. Oracle ships predefined flow patterns for common processes (Calculate Payroll, Run QuickPay, Archive, Run Payslips). You can also create custom flow patterns combining standard tasks with custom tasks. Key attributes of a flow pattern include: task sequence, parameter mappings (which payroll, which period), prerequisite tasks (e.g., Costing cannot run until Calculate completes), and notification settings. When you submit a payroll flow, you are instantiating a flow pattern for a specific payroll and period. Multiple flow instances can run in parallel for different payrolls. Monitoring is done through the Payroll Checklist or Process Monitor.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What are ESS Jobs in Payroll?</div>
+          <div class="qa-card-answer">Enterprise Scheduler Service (ESS) jobs are the underlying Oracle middleware jobs that execute each payroll task. When you submit a payroll flow task — such as Calculate Payroll or Transfer to GL — Oracle creates an ESS job request in the background. Key payroll ESS jobs include:
+            <ul>
+              <li><code>Run Payroll</code> — triggers the gross-to-net calculation engine.</li>
+              <li><code>Calculate Prepayments</code> — creates payment records.</li>
+              <li><code>Archive Payroll Results</code> — locks payroll data.</li>
+              <li><code>Run GL Transfer</code> — posts to the General Ledger.</li>
+              <li><code>Calculate Balances</code> — refreshes balance values for reporting.</li>
+            </ul>
+            ESS jobs can be monitored in the Scheduled Processes page. Log files for each job are accessible there for debugging. In Cloud, customers cannot schedule ESS jobs directly via the database — only via the Flow or Scheduled Processes UI.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain Retroactive Event Processing in detail.</div>
+          <div class="qa-card-answer">Oracle's retroactive processing is event-driven. The setup involves:
+            <ul>
+              <li><strong>Event Groups:</strong> A configured set of events (changes to salary, element entries, work assignments) that should trigger retro recalculation.</li>
+              <li><strong>Retro Notification Generation:</strong> When a backdated change matches an event in the group, Oracle creates a retro notification for that employee.</li>
+              <li><strong>Recalculate Payroll for Retro Changes:</strong> This process evaluates all notifications, recalculates the prior period(s) in full, and determines the delta vs original results.</li>
+              <li><strong>Retro Elements:</strong> The delta values are created as entries on dedicated Retro Elements (typically one per original element) that process in the current live payroll run.</li>
+              <li><strong>Payslip Display:</strong> Retro earnings and deductions appear as separate labelled lines (e.g., "Basic Salary Retro - March") for employee transparency.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Payroll Parallel Processing — how does it work?</div>
+          <div class="qa-card-answer">For large employee populations, Oracle Payroll splits the payroll run into parallel threads to reduce processing time. This is controlled by the <strong>Payroll Processes parameter</strong> when submitting the Calculate Payroll task. Oracle partitions the employee population into groups and processes each partition simultaneously on separate server threads. Results are then merged. Key considerations:
+            <ul>
+              <li><strong>Thread Count:</strong> Optimal thread count depends on server CPU capacity — typically 4–8 threads for mid-size payrolls, up to 16+ for enterprise-scale.</li>
+              <li><strong>Data Dependency:</strong> Elements that reference other elements (indirect elements) must complete their upstream calculations before downstream ones — Oracle manages this within each thread.</li>
+              <li><strong>Monitoring:</strong> Each thread appears as a separate sub-process in the ESS job logs, allowing thread-level error isolation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Payroll Reconciliation Strategy?</div>
+          <div class="qa-card-answer">A robust payroll reconciliation process involves multiple checkpoints:
+            <ul>
+              <li><strong>Pre-Run:</strong> Verify headcount matches HR active headcount. Check element entry completeness for the period.</li>
+              <li><strong>Post-Calculate:</strong> Run the Gross-to-Net Report and compare totals to the previous period — investigate variances above threshold.</li>
+              <li><strong>Post-Costing:</strong> Reconcile costing totals to the expected GL journals. Confirm Suspense Account postings are zero or justified.</li>
+              <li><strong>Post-Payment:</strong> Reconcile the Payment Register against the bank statement or WPS acknowledgement file — every payment must match.</li>
+              <li><strong>GL Reconciliation:</strong> Compare the GL Payroll journal to the Payroll Register — net pay liability should equal the bank transfer total.</li>
+              <li><strong>Balance Reconciliation:</strong> Verify YTD balance totals are consistent with cumulative period-to-date totals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Common Payroll Implementation Challenges?</div>
+          <div class="qa-card-answer">
+            <ul>
+              <li><strong>Retroactive Complexity:</strong> Configuring retro event groups and retro elements correctly requires careful testing — incorrect setup causes missed retro payments or duplicated adjustments.</li>
+              <li><strong>Legislative Mapping:</strong> GCC legislation (GOSI, GPSSA, Decree 33) requires custom fast formulas and precise balance feeds — standard Oracle localisation may need extension.</li>
+              <li><strong>Balance Migration:</strong> Loading mid-year opening balances accurately is time-critical at go-live. Errors in YTD balances cause statutory reporting failures.</li>
+              <li><strong>Performance at Scale:</strong> Large payrolls (10,000+ employees) need parallel processing tuning and formula optimisation to meet overnight processing windows.</li>
+              <li><strong>Time &amp; Labor Integration:</strong> If Oracle Time &amp; Labor or a third-party timekeeping system feeds hours, interface timing and data format mapping must be tested end-to-end.</li>
+              <li><strong>User Acceptance:</strong> Payroll teams are risk-averse — parallel run strategy (running old and new system simultaneously) is usually required for 2–3 cycles before cutover.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- GCC PAYROLL -->
+<section style="background:#fff;padding:0.5rem 0;">
+  <div class="container">
+    <div class="qa-block reveal">
+      <div class="qa-section-title">
+        <div class="qa-section-num gcc"><i class="fas fa-globe" style="font-size:0.7rem;"></i></div>
+        <div class="qa-section-label">GCC Payroll — GOSI · GPSSA · UAE Decree 33 · WPS · MOL</div>
+      </div>
+      <div class="qa-grid">
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is GCC Payroll?</div>
+          <div class="qa-card-answer">GCC Payroll refers to payroll processing configured for the six Gulf Cooperation Council member states: <strong>UAE, Saudi Arabia, Qatar, Kuwait, Oman, and Bahrain</strong>. It differs from other regional payrolls primarily because of: mandatory End-of-Service Benefits (EOSB/Gratuity) calculated at termination; social insurance for nationals only (GOSI in KSA, GPSSA in UAE); no income tax for employees in most GCC states; Wage Protection System (WPS) compliance for electronic salary transfer; and a mix of housing, transport, and airfare allowances that form a significant portion of the package. Oracle Fusion supports GCC payroll through localised LDGs, fast formulas, and legislative objects, though some GCC-specific rules require custom configuration.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain End of Service Benefits (EOSB) under UAE Decree 33?</div>
+          <div class="qa-card-answer">Under <strong>UAE Federal Decree Law No. 33 of 2021</strong> (effective February 2022), the EOSB calculation is:
+            <ul>
+              <li><strong>First 5 years of service:</strong> 21 calendar days of basic salary per year.</li>
+              <li><strong>Beyond 5 years:</strong> 30 calendar days of basic salary per year for every year after the fifth.</li>
+              <li><strong>Maximum cap:</strong> Total EOSB cannot exceed 2 years' total basic salary.</li>
+              <li><strong>Full entitlement:</strong> Both resignation and termination now receive full entitlement — the old 1/3 and 2/3 reduction rules for resignation are abolished.</li>
+              <li><strong>Basis:</strong> Calculated on <strong>last drawn basic salary</strong> only — not gross salary.</li>
+            </ul>
+            Formula: <code>EOSB = (Basic/30) × 21 × MIN(years,5) + (Basic/30) × 30 × MAX(years-5,0)</code>, capped at 2 years basic.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How do you configure EOSB elements in Oracle Payroll?</div>
+          <div class="qa-card-answer">The EOSB configuration involves:
+            <ul>
+              <li><strong>EOSB Accrual Element:</strong> A recurring element that runs monthly, building a liability balance. The fast formula calculates 1/12th of the annual entitlement each month for financial provisioning.</li>
+              <li><strong>EOSB Terminal Element:</strong> A non-recurring element triggered at termination. Its fast formula implements the Decree 33 calculation using hire date, termination date, and last basic salary DBI.</li>
+              <li><strong>Service Years Calculation:</strong> Formula computes total years and months of service, handles partial-year proration (days/365).</li>
+              <li><strong>Cap Enforcement:</strong> Formula includes a conditional check — if computed EOSB exceeds 2 years' basic salary, it is capped.</li>
+              <li><strong>Probation Handling:</strong> A skip rule checks service length — employees with less than 1 year service receive zero EOSB on resignation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain GOSI in Saudi Arabia.</div>
+          <div class="qa-card-answer">GOSI (General Organization for Social Insurance) is the mandatory social insurance scheme for Saudi nationals employed in the private sector. Key details:
+            <ul>
+              <li><strong>Employee Contribution:</strong> Approximately 10% of salary (pension component).</li>
+              <li><strong>Employer Contribution:</strong> Approximately 12% of salary (split between pension and unemployment insurance — Hazard branch).</li>
+              <li><strong>Contribution Base:</strong> Basic salary only — housing and other allowances are excluded.</li>
+              <li><strong>Expats:</strong> Non-Saudi employees are not covered by GOSI in most branches (only the Hazard/work injury branch applies to all).</li>
+              <li><strong>Monthly Reporting:</strong> Employers must file GOSI contributions monthly via the GOSI portal.</li>
+            </ul>
+            In Oracle, GOSI elements are configured with the correct percentage rates and balance feeds ensuring only basic salary feeds the GOSI contribution base. Rates are subject to GOSI regulatory updates — always verify current rates.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Explain GPSSA in UAE.</div>
+          <div class="qa-card-answer">GPSSA (General Pension and Social Security Authority) manages pension for UAE nationals in the private and semi-government sector:
+            <ul>
+              <li><strong>Employee Contribution:</strong> 5% of salary.</li>
+              <li><strong>Employer Contribution:</strong> 12.5% of salary.</li>
+              <li><strong>Government Contribution:</strong> 2.5% (government tops up the scheme).</li>
+              <li><strong>Applicable to:</strong> UAE nationals only — expatriates are not enrolled in GPSSA (they receive EOSB gratuity instead).</li>
+              <li><strong>Contribution Base:</strong> Defined salary components per GPSSA regulations — varies slightly by emirate and sector.</li>
+              <li><strong>Reporting:</strong> Monthly submissions through the GPSSA portal.</li>
+            </ul>
+            In Oracle Payroll, nationality-based element eligibility ensures GPSSA elements only process for UAE national employees, while EOSB elements apply to expatriates.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is the Wage Protection System (WPS)?</div>
+          <div class="qa-card-answer">The Wage Protection System (WPS) is a UAE government initiative operated by the Central Bank of the UAE and enforced by the Ministry of Human Resources and Emiratisation (MOHRE). It requires all private sector employers to pay employee salaries electronically through approved banks or exchange houses, and to submit a <strong>Salary Information File (SIF)</strong> proving payment was made. Key facts:
+            <ul>
+              <li>Deadline: Salaries must be paid and SIF submitted by the <strong>10th of each month</strong> (or 15th for companies with fewer than 100 employees in some cases).</li>
+              <li>Penalties: Late submission leads to fines, a hiring freeze, and potential licence suspension.</li>
+              <li>SIF content: Employee ID, IBAN, gross salary, deductions, net pay, pay date.</li>
+              <li>Oracle generates the WPS SIF file as part of the Make EFT Payments process when the UAE WPS payment method is configured.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Saudi gratuity calculation rules?</div>
+          <div class="qa-card-answer">Saudi Arabian gratuity (End of Service Award) under the Saudi Labour Law:
+            <ul>
+              <li><strong>First 5 years:</strong> Half-month's (15 days) wage per year of service — applicable to the basic wage.</li>
+              <li><strong>After 5 years:</strong> One full month's wage per year of service for every year beyond five.</li>
+              <li><strong>Resignation:</strong> Unlike UAE Decree 33, Saudi law still differentiates: resignation before 2 years = no gratuity; 2–5 years = 1/3 entitlement; 5–10 years = 2/3 entitlement; 10+ years = full entitlement.</li>
+              <li><strong>Termination:</strong> Full entitlement regardless of service length.</li>
+              <li><strong>Basis:</strong> Last drawn basic wage — excluding housing, transport, and other allowances.</li>
+            </ul>
+            In Oracle, a Saudi EOSB fast formula must implement the resignation-years conditional logic and the escalating rate calculation.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>What is leave salary and how is it calculated in GCC?</div>
+          <div class="qa-card-answer">Leave salary is the compensation paid to an employee when they take annual leave. In GCC, the calculation basis varies by company policy and country legislation:
+            <ul>
+              <li><strong>Basic Salary Only:</strong> Some organisations pay only the basic salary component during leave — common in conservative interpretations of labour law.</li>
+              <li><strong>Gross Salary:</strong> Others pay the full gross (basic + all fixed allowances) — more employee-friendly and common in multinational companies.</li>
+              <li><strong>UAE Labour Law:</strong> Decree 33 does not mandate a specific definition of "wage" for leave — it refers to the employee's regular wage, which courts often interpret as gross fixed pay.</li>
+              <li><strong>KSA Labour Law:</strong> Specifies the full wage (including regular allowances) should be paid during leave.</li>
+            </ul>
+            In Oracle, the leave salary element's fast formula references either <code>BASIC_SALARY_AMOUNT</code> or a custom Gross Pay balance — depending on policy configuration.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>How does overtime work in GCC payroll?</div>
+          <div class="qa-card-answer">GCC overtime rules under UAE Labour Law (Decree 33) and KSA Labour Law:
+            <ul>
+              <li><strong>Standard Hours:</strong> 8 hours/day, 48 hours/week (40 during Ramadan in UAE).</li>
+              <li><strong>Overtime Rate (Normal):</strong> Basic hourly rate × 1.25 for hours worked beyond standard hours on regular workdays.</li>
+              <li><strong>Overtime Rate (Rest Day/Night):</strong> Basic hourly rate × 1.5 for work on weekly rest days or between 10PM–4AM.</li>
+              <li><strong>Hourly Rate Calculation:</strong> <code>Basic Salary / (Total Working Days × 8 hours)</code> — or per contractual terms.</li>
+              <li><strong>Maximum OT:</strong> UAE limits overtime to 2 additional hours per day except in emergencies.</li>
+            </ul>
+            In Oracle, overtime hours flow from Time &amp; Labor or manual entry. The OT fast formula applies the correct multiplier based on day classification, which can be driven by a calendar or shift schedule DBI.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>MOL and Qiwa reporting for KSA?</div>
+          <div class="qa-card-answer">In Saudi Arabia, labour compliance and payroll reporting are handled across two systems:
+            <ul>
+              <li><strong>Qiwa Platform:</strong> The digital platform of the Ministry of Human Resources and Social Development (formerly MOL). It manages employment contracts, Saudization (Nitaqat) compliance, work permit renewals, and labour dispute resolution. All employment contracts must be registered on Qiwa.</li>
+              <li><strong>GOSI Portal:</strong> Social insurance contributions are reported and paid monthly directly through the GOSI online portal — separate from Qiwa.</li>
+              <li><strong>WPS (KSA Musaned/Mudad):</strong> Saudi Arabia has its own wage protection system through the Mudad platform for private sector workers. Payment compliance is tracked through bank transfers reported to HRSD.</li>
+            </ul>
+            Oracle Payroll generates payroll results; integration with Qiwa and GOSI is typically handled via extract files or API connections built during implementation.</div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Multi-country payroll setup in GCC?</div>
+          <div class="qa-card-answer">When a GCC group of companies operates across multiple countries, the Oracle setup follows this pattern:
+            <ul>
+              <li><strong>Separate LDGs:</strong> One LDG per country — UAE LDG, KSA LDG, Qatar LDG. Elements, balances, and formulas under each LDG are country-specific.</li>
+              <li><strong>Separate PSUs:</strong> Each country's legal entity has its own PSU for statutory reporting purposes.</li>
+              <li><strong>Separate Payroll Definitions:</strong> Monthly UAE Payroll, Monthly KSA Payroll, etc. — each configured with the correct calendar and payment method.</li>
+              <li><strong>Country-Specific Elements:</strong> GOSI elements only appear in the KSA LDG; WPS payment method only in UAE LDG; GPSSA in UAE LDG for nationals.</li>
+              <li><strong>Shared HR Setup:</strong> The single HCM instance serves all countries — enterprise structures (BU, Legal Entity, Department) map to the correct country payroll through LDG assignments.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-card-question"><span class="q-icon">Q</span>Final settlement processing — complete steps?</div>
+          <div class="qa-card-answer">A complete GCC final settlement on termination includes:
+            <ul>
+              <li><strong>Terminate the employee in HCM:</strong> Set termination date and reason in Work Relationships.</li>
+              <li><strong>Final Month Salary:</strong> Prorated from start of final pay period to last working day.</li>
+              <li><strong>Unused Annual Leave:</strong> Leave accrued balance × daily rate (Basic or Gross per policy).</li>
+              <li><strong>EOSB Gratuity:</strong> Calculated per Decree 33 (UAE) or applicable country rules, based on total service years and last basic salary.</li>
+              <li><strong>Airfare:</strong> If contractually stipulated, include one-way economy airfare to home country.</li>
+              <li><strong>Deductions/Recoveries:</strong> Deduct any outstanding loan balance, advance, or overpayment.</li>
+              <li><strong>Off-Cycle Payroll Run:</strong> Process all components through an off-cycle payroll run, complete Prepayments, Costing, Archive, and Payment.</li>
+              <li><strong>WPS Compliance:</strong> Ensure the final settlement is reported via WPS SIF even for termination payments.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<div class="container" style="padding:2.5rem 0;">
+  <div class="cta-section reveal">
+    <h2>Planning an Oracle Fusion HCM Payroll implementation?</h2>
+    <p>Our HCM &amp; Payroll specialists are ready to discuss your GCC or global payroll requirements.</p>
+    <button class="btn" style="background:white;color:var(--primary);font-weight:700;padding:14px 34px;font-size:0.95rem;">
+      <i class="fas fa-paper-plane"></i> Talk to a Payroll Expert
+    </button>
+  </div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <span class="footer-logo-text">IntSphere</span>
+        <p>Expert Oracle Cloud Consulting &amp; Implementation Services Worldwide.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Consulting Services</a></li>
+          <li><a href="pass.html">PaaS Services</a></li>
+          <li><a href="hcm.html">HCM Services</a></li>
+          <li><a href="intforge.html">IntForge</a></li>
+          <li><a href="payforge.html">PayForge</a></li>
+          <li><a href="hcmaccelerators.html">HCM Accelerators</a></li>
+          <li><a href="ai.html">AI Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="hcm.html">Oracle Fusion HCM Cloud</a></li>
+          <li><a href="pass.html">OIC Implementation</a></li>
+          <li><a href="pass.html">VBCS Development</a></li>
+          <li><a href="pass.html">Process Automation</a></li>
+          <li><a href="pass.html">Fusion Extensions</a></li>
+          <li><a href="pass.html">IDCS &amp; Security</a></li>
+          <li><a href="ai.html">AI Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul class="footer-links">
+          <li><i class="fas fa-envelope"></i><a href="mailto:connect@intsphere.com">connect@intsphere.com</a></li>
+          <li><i class="fas fa-phone"></i><a href="tel:+919403526864">+91 9403526864</a></li>
+          <li><i class="fas fa-globe"></i><span style="font-size:0.87rem;">Global Services</span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span style="font-size:0.85rem;">401, Hawares Grand Heritage, Wakad, Pune – 411057, Maharashtra, India</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 IntSphere. All rights reserved. Oracle Cloud Consulting Experts.</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
