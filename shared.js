@@ -98,42 +98,52 @@ function toggleMenu() {
     const m = document.getElementById('mobileMenu');
     if (m) m.classList.toggle('active');
 }
-function toggleMobileProducts(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileProductSub');
-    const chevron = document.getElementById('prodChevron');
+
+const MOBILE_SUBMENUS = {
+    services: { sub: 'mobileSvcSub', chevron: 'svcChevron' },
+    products: { sub: 'mobileProductSub', chevron: 'prodChevron' },
+    accelerators: { sub: 'mobileAccSub', chevron: 'accChevron' },
+    insights: { sub: 'mobileInsSub', chevron: 'insChevron' },
+};
+function toggleMobileSubmenu(key) {
+    const cfg = MOBILE_SUBMENUS[key];
+    if (!cfg) return;
+    const sub = document.getElementById(cfg.sub);
+    const chevron = document.getElementById(cfg.chevron);
     if (!sub) return;
     const open = sub.style.display !== 'none';
     sub.style.display = open ? 'none' : 'block';
     if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
 }
-function toggleMobileAccelerators(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileAccSub');
-    const chevron = document.getElementById('accChevron');
-    if (!sub) return;
-    const open = sub.style.display !== 'none';
-    sub.style.display = open ? 'none' : 'block';
-    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
-}
-function toggleMobileServices(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileSvcSub');
-    const chevron = document.getElementById('svcChevron');
-    if (!sub) return;
-    const open = sub.style.display !== 'none';
-    sub.style.display = open ? 'none' : 'block';
-    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
-}
-function toggleMobileInsights(e) {
-    e.preventDefault();
-    const sub = document.getElementById('mobileInsSub');
-    const chevron = document.getElementById('insChevron');
-    if (!sub) return;
-    const open = sub.style.display !== 'none';
-    sub.style.display = open ? 'none' : 'block';
-    if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
-}
+// Backward-compatible wrappers for any page still using inline
+// onclick="toggleMobileX(event)" instead of data-mobile-toggle.
+function toggleMobileServices(e) { e.preventDefault(); toggleMobileSubmenu('services'); }
+function toggleMobileProducts(e) { e.preventDefault(); toggleMobileSubmenu('products'); }
+function toggleMobileAccelerators(e) { e.preventDefault(); toggleMobileSubmenu('accelerators'); }
+function toggleMobileInsights(e) { e.preventDefault(); toggleMobileSubmenu('insights'); }
+
+// ─── GLOBAL CLICK DELEGATION ───
+// Replaces inline onclick="…" attributes with data-* attributes so pages
+// don't rely on inline event handlers (CSP-friendly, fixes the PagePulse
+// "inline event handlers" finding). Pages that still have onclick="…"
+// inline keep working via the functions above/below — this is additive.
+document.addEventListener('click', function(e) {
+    const navEl = e.target.closest('[data-nav]');
+    if (navEl) { navigate(navEl.dataset.nav); return; }
+
+    const hrefEl = e.target.closest('[data-href]');
+    if (hrefEl) { window.location.href = hrefEl.dataset.href; return; }
+
+    if (e.target.closest('[data-action="open-modal"]')) { openModal(); return; }
+    if (e.target.closest('[data-action="close-modal"]')) { closeModal(); return; }
+    if (e.target.closest('[data-action="toggle-menu"]')) { toggleMenu(); return; }
+
+    const mobileToggle = e.target.closest('[data-mobile-toggle]');
+    if (mobileToggle) {
+        e.preventDefault();
+        toggleMobileSubmenu(mobileToggle.dataset.mobileToggle);
+    }
+});
 
 // ─── MODAL ───
 function openModal() {

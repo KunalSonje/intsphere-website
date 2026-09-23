@@ -62,8 +62,8 @@
                     <h1>Oracle Cloud <span>Consulting</span> &amp; Implementation Experts</h1>
                     <p>We help enterprises get more from Oracle Cloud, from strategy through go-live. Our certified architects work hands-on across OIC, Fusion HCM, APEX, VBCS, and more, and they deliver results you can measure.</p>
                     <div class="hero-actions">
-                        <a onclick="navigate('services')" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
-                        <a onclick="openModal()" class="btn btn-outline">Talk to an Expert</a>
+                        <a href="services.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
+                        <a data-action="open-modal" class="btn btn-outline">Talk to an Expert</a>
                     </div>
                 </div>
                 <div class="hero-image reveal">
@@ -90,8 +90,8 @@
                     <h2 style="color:#f1f5f9;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:0.75rem;line-height:1.2;">AI Platform for OIC Operations</h2>
                     <p style="color:rgba(203,213,225,0.85);max-width:560px;font-size:1rem;line-height:1.7;margin:0;">Monitor, analyze, and automate Oracle Cloud like never before. IntForge is built for Oracle teams and brings real-time OIC monitoring, AI root cause analysis, automatic documentation, and one-click deployments into one place.</p>
                     <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
-                        <button onclick="navigate('ai')" class="btn btn-primary"><i class="fas fa-brain"></i> Explore AI Solutions</button>
-                        <button onclick="openModal()" class="btn btn-outline">Book a Demo</button>
+                        <button data-nav="ai" class="btn btn-primary"><i class="fas fa-brain"></i> Explore AI Solutions</button>
+                        <button data-action="open-modal" class="btn btn-outline">Book a Demo</button>
                     </div>
                 </div>
                     <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:220px;">
@@ -156,7 +156,7 @@
                     <span style="font-size:0.78rem;color:var(--text-muted);margin-left:0.25rem;">What we do</span>
                 </div>
                 <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-                    <div class="card" onclick="navigate('services')" style="cursor:pointer;">
+                    <div class="card" data-nav="services" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
                             <h3>Consulting Services</h3>
@@ -164,7 +164,7 @@
                         <p>End-to-end from architecture &amp; strategy through implementation, migration, managed services, and training.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Services <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('expertise')" style="cursor:pointer;">
+                    <div class="card" data-nav="expertise" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                             <h3>Oracle PaaS Services</h3>
@@ -172,7 +172,7 @@
                         <p>OIC, VBCS, OPA, APEX, ODI, IDCS — deep Oracle platform skills across every PaaS layer.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View PaaS <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('hcm')" style="cursor:pointer;">
+                    <div class="card" data-nav="hcm" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-users-cog"></i></div>
                             <h3>Oracle Fusion HCM</h3>
@@ -180,7 +180,7 @@
                         <p>Full hire-to-retire HCM Cloud — Core HR, Payroll, Recruiting, Talent, Absence, Workforce Scheduling and more.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View HCM <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('ai')" style="cursor:pointer;">
+                    <div class="card" data-nav="ai" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-brain"></i></div>
                             <h3>AI Solutions</h3>
@@ -201,7 +201,7 @@
                     <span style="font-size:0.78rem;color:var(--text-muted);margin-left:0.25rem;">What we've built</span>
                 </div>
                 <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-                    <div class="card" onclick="navigate('platform')" style="cursor:pointer;">
+                    <div class="card" data-nav="platform" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-layer-group"></i></div>
                             <h3>IntForge</h3>
@@ -209,7 +209,7 @@
                         <p>A purpose-built platform for OIC and VBCS teams. It brings one-click deployment, AI-powered documentation, monitoring, and analytics into one place.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">Explore IntForge <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('payforge')" style="cursor:pointer;">
+                    <div class="card" data-nav="payforge" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                             <h3>PayForge</h3>
@@ -230,7 +230,7 @@
                     <span style="font-size:0.78rem;color:var(--text-muted);margin-left:0.25rem;">Ready-made assets that speed up delivery</span>
                 </div>
                 <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-                    <div class="card" onclick="navigate('accelerators')" style="cursor:pointer;">
+                    <div class="card" data-nav="accelerators" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-database"></i></div>
                             <h3>DataForge</h3>
@@ -238,7 +238,7 @@
                         <p>A smart data migration tool for Oracle Fusion HCM. It includes prebuilt templates, built-in validation, and automated reconciliation reports.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('accelerators')" style="cursor:pointer;">
+                    <div class="card" data-nav="accelerators" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-calculator"></i></div>
                             <h3>RecForge</h3>
@@ -246,7 +246,7 @@
                         <p>A payroll reconciliation accelerator. It compares legacy payroll data against Oracle Fusion HCM Payroll and flags discrepancies instantly.</p>
                         <div style="margin-top:1rem;"><span style="color:var(--primary);font-size:0.88rem;font-weight:600;">View Accelerators <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></span></div>
                     </div>
-                    <div class="card" onclick="navigate('accelerators')" style="cursor:pointer;">
+                    <div class="card" data-nav="accelerators" style="cursor:pointer;">
                         <div class="card-header">
                             <div class="card-icon"><i class="fas fa-star"></i></div>
                             <h3>ValueForge</h3>
@@ -267,7 +267,7 @@
                     <span style="font-size:0.78rem;color:var(--text-muted);margin-left:0.25rem;">How we work</span>
                 </div>
                 <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-                    <div class="card" onclick="window.location.href='harbor.html'" style="cursor:pointer;background:linear-gradient(135deg,rgba(8,145,178,0.04),rgba(6,182,212,0.07));border-color:rgba(8,145,178,0.25);">
+                    <div class="card" data-href="harbor.html" style="cursor:pointer;background:linear-gradient(135deg,rgba(8,145,178,0.04),rgba(6,182,212,0.07));border-color:rgba(8,145,178,0.25);">
                         <div class="card-header">
                             <div class="card-icon" style="background:linear-gradient(135deg,rgba(8,145,178,0.15),rgba(6,182,212,0.15));border-color:rgba(8,145,178,0.2);"><i class="fas fa-anchor"></i></div>
                             <h3>The Harbor Approach</h3>
@@ -291,7 +291,7 @@
         <div class="cta-section reveal">
             <h2>Ready to accelerate your Oracle Cloud journey?</h2>
             <p>Let's talk about how we can help your next Oracle Cloud project succeed.</p>
-            <button onclick="openModal()" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
+            <button data-action="open-modal" class="btn" style="background:white;color:#0891b2;font-weight:700;padding:14px 34px;">
                 <i class="fas fa-paper-plane"></i> Get in Touch
             </button>
         </div>
@@ -302,10 +302,10 @@
 <!-- CONTACT MODAL -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
-        <button type="button" class="close-modal" onclick="closeModal()" aria-label="Close dialog">&times;</button>
+        <button type="button" class="close-modal" data-action="close-modal" aria-label="Close dialog">&times;</button>
         <h2>Let's Connect</h2>
         <p class="modal-subtitle">Tell us about your Oracle requirements</p>
-        <form id="contactForm" onsubmit="return false;">
+        <form id="contactForm">
             <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
             <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
             <input type="text" name="company" placeholder="Company" aria-label="Company">
