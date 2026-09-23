@@ -21,8 +21,11 @@ function navigate(page) {
     if (file) window.location.href = file;
 }
 
-// ─── MARK ACTIVE NAV LINK ───
-(function() {
+// ─── HEADER-DEPENDENT BEHAVIOR (active nav link, scroll shadow, dropdowns) ───
+// Runs once the header markup is in the DOM — either already inline on the
+// page, or injected by loadFragment() below.
+function initHeader() {
+    // Mark active nav link
     const path = window.location.pathname.split('/').pop() || 'index.html';
     for (const [key, file] of Object.entries(pageMap)) {
         if (file === path || (path === '' && file === 'index.html')) {
@@ -30,18 +33,16 @@ function navigate(page) {
             if (el) el.classList.add('active');
         }
     }
-})();
 
-// ─── HEADER SCROLL ───
-const _header = document.getElementById('mainHeader');
-if (_header) {
-    window.addEventListener('scroll', () => {
-        _header.classList.toggle('scrolled', window.scrollY > 20);
-    });
-}
+    // Header scroll shadow
+    const _header = document.getElementById('mainHeader');
+    if (_header) {
+        window.addEventListener('scroll', () => {
+            _header.classList.toggle('scrolled', window.scrollY > 20);
+        });
+    }
 
-// ─── DESKTOP DROPDOWNS (click to open, click outside to close, hover to highlight) ───
-document.addEventListener('DOMContentLoaded', function() {
+    // Desktop dropdowns (click to open, click outside to close, hover to highlight)
     const dropdowns = document.querySelectorAll('.nav-dropdown');
     dropdowns.forEach(function(dropdown) {
         const trigger = dropdown.querySelector('.nav-dropdown-trigger');
@@ -68,7 +69,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function() {
         dropdowns.forEach(d => d.classList.remove('open'));
     });
-});
+}
+
+// ─── FRAGMENT LOADING ───
+// Fetches an HTML fragment and swaps it in for a placeholder element.
+// If the page has no such placeholder (header/footer already inline),
+// onDone runs immediately so behavior stays identical on those pages.
+function loadFragment(url, placeholderId, onDone) {
+    const el = document.getElementById(placeholderId);
+    if (!el) {
+        if (onDone) onDone();
+        return;
+    }
+    fetch(url)
+        .then(res => res.text())
+        .then(html => {
+            el.outerHTML = html;
+            if (onDone) onDone();
+        })
+        .catch(err => console.error('Could not load ' + url, err));
+}
+
+loadFragment('header.html', 'site-header-placeholder', initHeader);
+loadFragment('footer.html', 'site-footer-placeholder');
 
 // ─── MOBILE MENU ───
 function toggleMenu() {

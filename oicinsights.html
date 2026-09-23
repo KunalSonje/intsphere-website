@@ -6,7 +6,18 @@
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>OIC Insights | IntSphere</title>
-<meta name="description" content="Oracle Integration Cloud articles, reference notes, best practices and deep dives from the IntSphere team.">
+<meta name="description" content="Oracle Integration Cloud articles, reference notes, and best practices from the IntSphere team, practical deep dives for architects and developers.">
+<link rel="canonical" href="https://www.intsphere.com/oicinsights.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OIC Insights | IntSphere">
+<meta property="og:description" content="Oracle Integration Cloud articles, reference notes, and best practices from the IntSphere team, practical deep dives for architects and developers.">
+<meta property="og:url" content="https://www.intsphere.com/oicinsights.html">
+<meta property="og:image" content="https://www.intsphere.com/Logo.png">
+<meta property="og:image:width" content="200">
+<meta property="og:image:height" content="200">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OIC Insights | IntSphere">
+<meta name="twitter:description" content="Oracle Integration Cloud articles, reference notes, and best practices from the IntSphere team, practical deep dives for architects and developers.">
 <link rel="stylesheet" href="shared.css">
 <style>
 
@@ -240,84 +251,33 @@
     .blog-card.featured { grid-column: auto; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IntSphere",
+  "url": "https://www.intsphere.com/",
+  "logo": "https://www.intsphere.com/Logo.png",
+  "description": "IntSphere is an Oracle Cloud consulting firm specializing in OIC, VBCS, Fusion HCM, and PaaS implementation, migration, and managed services.",
+  "email": "connect@intsphere.com",
+  "telephone": "+91-9403526864",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "401, Hawares Grand Heritage, Kalewadi Chowk, opposite Ambience Executive, Wakad",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "411057",
+    "addressCountry": "IN"
+  }
+}
+</script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- ═══════════════ HEADER ═══════════════ -->
-<header id="mainHeader">
-    <div class="header-inner">
-        <a class="logo" onclick="navigate('home')" href="index.html">
-            <img src="Logo.webp" alt="IntSphere" class="logo-img" onerror="this.style.display='none'">
-            <div class="logo-wrapper">
-                <span class="logo-text">IntSphere</span>
-                <div class="logo-tagline"><span>Integrate</span><span>Innovate</span><span>Automate</span></div>
-            </div>
-        </a>
-        <nav id="mainNav">
-            <a href="index.html" id="nav-home">Home</a>
-            <div class="nav-dropdown" id="nav-services-group">
-                <a class="nav-dropdown-trigger" id="nav-services">Services <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
-                <div class="nav-dropdown-menu">
-                    <a href="services.html" style="color:var(--text);"><i class="fas fa-briefcase" style="width:16px;margin-right:8px;color:var(--primary);"></i>Consulting Services</a>
-                    <a href="pass.html" style="color:var(--text);"><i class="fas fa-cloud" style="width:16px;margin-right:8px;color:var(--primary);"></i>PaaS Services</a>
-                    <a href="hcm.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Services</a>
-                </div>
-            </div>
-            <div class="nav-dropdown" id="nav-products-group">
-                <a class="nav-dropdown-trigger" id="nav-products">Products <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
-                <div class="nav-dropdown-menu">
-                    <a href="intforge.html" style="color:var(--text);"><i class="fas fa-bolt" style="width:16px;margin-right:8px;color:var(--primary);"></i>IntForge</a>
-                    <a href="payforge.html" style="color:var(--text);"><i class="fas fa-file-invoice-dollar" style="width:16px;margin-right:8px;color:var(--primary);"></i>PayForge</a>
-                </div>
-            </div>
-            <div class="nav-dropdown" id="nav-accelerators-group">
-                <a class="nav-dropdown-trigger" id="nav-accelerators">Accelerators <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
-                <div class="nav-dropdown-menu">
-                    <a href="hcmaccelerators.html" style="color:var(--text);"><i class="fas fa-users" style="width:16px;margin-right:8px;color:var(--primary);"></i>HCM Accelerator</a>
-                </div>
-            </div>
-            <div class="nav-dropdown" id="nav-insights-group">
-                <a class="nav-dropdown-trigger" id="nav-insights" style="color:var(--primary);">Insights <i class="fas fa-chevron-down" style="font-size:0.65rem;margin-left:3px;vertical-align:middle;"></i></a>
-                <div class="nav-dropdown-menu">
-                    <a href="oicinsights.html" style="color:var(--text);"><i class="fas fa-plug" style="width:16px;margin-right:8px;color:var(--primary);"></i>OIC</a>
-                </div>
-            </div>
-            <a href="ai.html" id="nav-ai"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
-            <a href="about.html" id="nav-about">About</a>
-            <a href="faq.html" id="nav-faq">FAQ</a>
-            <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
-        </nav>
-        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileServices(event)">Services <i class="fas fa-chevron-down" id="svcChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
-            <div id="mobileSvcSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
-                <a href="services.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-briefcase" style="width:14px;margin-right:6px;color:var(--primary);"></i>Consulting Services</a>
-                <a href="pass.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-cloud" style="width:14px;margin-right:6px;color:var(--primary);"></i>PaaS Services</a>
-                <a href="hcm.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Services</a>
-            </div>
-            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileProducts(event)">Products <i class="fas fa-chevron-down" id="prodChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
-            <div id="mobileProductSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
-                <a href="intforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-bolt" style="width:14px;margin-right:6px;color:var(--primary);"></i>IntForge</a>
-                <a href="payforge.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-file-invoice-dollar" style="width:14px;margin-right:6px;color:var(--primary);"></i>PayForge</a>
-            </div>
-            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileAccelerators(event)">Accelerators <i class="fas fa-chevron-down" id="accChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
-            <div id="mobileAccSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
-                <a href="hcmaccelerators.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-users" style="width:14px;margin-right:6px;color:var(--primary);"></i>HCM Accelerator</a>
-            </div>
-            <a href="#" class="mobile-dropdown-toggle" onclick="toggleMobileInsights(event)">Insights <i class="fas fa-chevron-down" id="insChevron" style="font-size:0.65rem;margin-left:3px;transition:transform 0.2s;"></i></a>
-            <div id="mobileInsSub" style="display:none;padding-left:1.1rem;border-left:2px solid var(--primary);margin:0.2rem 0 0.4rem;">
-                <a href="oicinsights.html" style="font-size:0.9rem;padding:0.35rem 0.7rem;"><i class="fas fa-plug" style="width:14px;margin-right:6px;color:var(--primary);"></i>OIC</a>
-            </div>
-            <a href="ai.html"><i class="fas fa-brain" style="font-size:0.8rem;margin-right:3px;color:var(--primary);"></i>AI Solutions</a>
-            <a href="about.html">About</a>
-            <a href="faq.html">FAQ</a>
-            <a onclick="openModal()" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Contact Us</a>
-        </nav>
-    </div>
-</header>
+<!-- ═════════════════ HEADER (fetched from header.html by shared.js) ═════════════════ -->
+<div id="site-header-placeholder"></div>
+<main id="main" tabindex="-1">
 
 <div style="padding-top:72px">
 
@@ -433,22 +393,24 @@
 <!-- CONTACT MODAL -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <button type="button" class="close-modal" onclick="closeModal()" aria-label="Close dialog">&times;</button>
         <h2>Let's Connect</h2>
         <p class="modal-subtitle">Tell us about your Oracle requirements</p>
         <form id="contactForm" onsubmit="return false;">
             <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="text" name="company" placeholder="Company">
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="tel" name="phone" placeholder="Phone (optional)">
-            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
+            <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
+            <input type="text" name="company" placeholder="Company" aria-label="Company">
+            <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements" aria-label="Message"></textarea>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
         </form>
     </div>
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
     <div class="container">
         <div class="footer-grid">

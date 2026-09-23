@@ -9,8 +9,16 @@
 
         @font-face {
             font-family: 'Inter';
-            src: url('fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
             font-weight: 100 900;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
             font-display: swap;
         }
 :root {
@@ -205,8 +213,14 @@ footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; hei
 .modal-content input, .modal-content textarea { width: 100%; padding: 13px 16px; margin-bottom: 0.85rem; border: 1.5px solid var(--border-subtle); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.93rem; color: var(--heading); transition: border-color 0.2s, box-shadow 0.2s; outline: none; background: #fafafa; }
 .modal-content input:focus, .modal-content textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(8,145,178,0.1); background: white; }
 .modal-content textarea { resize: vertical; min-height: 110px; }
-.close-modal { position: absolute; top: 1.2rem; right: 1.5rem; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.2s; }
+.close-modal { position: absolute; top: 1.2rem; right: 1.5rem; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.2s; background: none; border: none; font-family: inherit; }
 .close-modal:hover { background: var(--bg-subtle); color: var(--heading); }
+.close-modal:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* SKIP LINK */
+.skip-link { position: absolute; top: -60px; left: 0; background: var(--primary); color: #fff; padding: 0.85rem 1.5rem; z-index: 10000; border-radius: 0 0 10px 0; font-weight: 600; text-decoration: none; transition: top 0.2s; }
+.skip-link:focus { top: 0; }
+main:focus { outline: none; }
 
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1); }

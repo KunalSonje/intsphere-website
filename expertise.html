@@ -6,10 +6,42 @@
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Oracle PaaS Expertise | IntSphere</title>
-<meta name="description" content="IntSphere - Expert Oracle Cloud Consulting.">
+<meta name="description" content="IntSphere's Oracle PaaS expertise spans OIC, VBCS, OPA, APEX, ODI, and IDCS, deep platform skills to design, build, and support enterprise Oracle integrations.">
+<link rel="canonical" href="https://www.intsphere.com/expertise.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oracle PaaS Expertise | IntSphere">
+<meta property="og:description" content="IntSphere's Oracle PaaS expertise spans OIC, VBCS, OPA, APEX, ODI, and IDCS, deep platform skills to design, build, and support enterprise Oracle integrations.">
+<meta property="og:url" content="https://www.intsphere.com/expertise.html">
+<meta property="og:image" content="https://www.intsphere.com/Logo.png">
+<meta property="og:image:width" content="200">
+<meta property="og:image:height" content="200">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle PaaS Expertise | IntSphere">
+<meta name="twitter:description" content="IntSphere's Oracle PaaS expertise spans OIC, VBCS, OPA, APEX, ODI, and IDCS, deep platform skills to design, build, and support enterprise Oracle integrations.">
 <link rel="stylesheet" href="shared.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IntSphere",
+  "url": "https://www.intsphere.com/",
+  "logo": "https://www.intsphere.com/Logo.png",
+  "description": "IntSphere is an Oracle Cloud consulting firm specializing in OIC, VBCS, Fusion HCM, and PaaS implementation, migration, and managed services.",
+  "email": "connect@intsphere.com",
+  "telephone": "+91-9403526864",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "401, Hawares Grand Heritage, Kalewadi Chowk, opposite Ambience Executive, Wakad",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "411057",
+    "addressCountry": "IN"
+  }
+}
+</script>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header id="mainHeader">
@@ -34,7 +66,7 @@
             <a href="faq.html" id="nav-faq">FAQ</a>
             <a onclick="openModal()" class="btn btn-primary" style="padding:9px 22px;font-size:0.88rem;margin-left:0.5rem;">Contact Us</a>
         </nav>
-        <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
         <nav>
@@ -52,6 +84,7 @@
         </nav>
     </div>
 </header>
+<main id="main" tabindex="-1">
 
 
 <div style="padding-top:72px">
@@ -176,22 +209,24 @@
 <!-- CONTACT MODAL -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <button type="button" class="close-modal" onclick="closeModal()" aria-label="Close dialog">&times;</button>
         <h2>Let's Connect</h2>
         <p class="modal-subtitle">Tell us about your Oracle requirements</p>
         <form id="contactForm" onsubmit="return false;">
             <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="text" name="company" placeholder="Company">
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="tel" name="phone" placeholder="Phone (optional)">
-            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements"></textarea>
+            <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
+            <input type="text" name="company" placeholder="Company" aria-label="Company">
+            <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone">
+            <textarea name="message" rows="4" placeholder="Tell us about your Oracle requirements" aria-label="Message"></textarea>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
         </form>
     </div>
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
