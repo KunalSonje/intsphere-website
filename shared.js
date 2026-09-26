@@ -10,6 +10,7 @@ const pageMap = {
     faq: 'faq.html',
     platform: 'intforge.html',
     payforge: 'payforge.html',
+    forbiaq: 'forbiaq.html',
     ai: 'ai.html',
     oicinsights: 'oicinsights.html',
     oicnotes: 'oicnotes.html',
